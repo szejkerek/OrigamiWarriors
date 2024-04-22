@@ -1,67 +1,89 @@
-name: Actions 😎
+name: Unity Continuous Integration Workflow
 
-on: [push, pull_request]
-
+on:
+  push:
+    branches:
+      - main
+env:
+    targetPlatform: StandaloneWindows64
 jobs:
-  test:
-    name: Test my project 🧪
+  unity_tests:
     runs-on: ubuntu-latest
+    env:
+      projectPath: OrigamiWarriors
+
     steps:
-      # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v2.4.0
         with:
           lfs: true
 
-      # Cache
-      - uses: actions/cache@v3
+      - name: Cache Unity Library
+        uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
-
-      # Test
-      - name: Run tests
-        uses: game-ci/unity-test-runner@v4
+              path: Library
+              key: Library-${{ matrix.projectPath }}
+              restore-keys: |
+                 Library-${{ matrix.projectPath }}
+                 Library-
+            
+      - name: Copy Unity to temporary folder
+        run: |
+          pwd
+          folderName=$(echo "${PWD##*/}")
+          rsync -r "$GITHUB_WORKSPACE" "copiedProject" 
+          ls -F "copiedProject/$folderName"
+          
+      - name: Run Unity Tests
+        id: runUnityTests
+        uses: game-ci/unity-test-runner@v3
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectPath: ./copiedProject/${{ env.projectPath }}
+          testMode: all
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport'
 
-  build:
-    name: Build my project ✨
+      - name: Upload Test Coverage Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test Coverage Results (all)
+          path: ${{ steps.runUnityTests.outputs.coveragePath }}
+
+  unity_build:
     runs-on: ubuntu-latest
+
     steps:
-      # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v2.4.0
         with:
           lfs: true
 
-      # Cache
-      - uses: actions/cache@v3
+      - name: Cache Unity Library
+        uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
-
-      # Build
-      - name: Build project
-        uses: game-ci/unity-builder@v4
+              path: Library
+              key: Library-${{ matrix.projectPath }}
+              restore-keys: |
+                 Library-${{ matrix.projectPath }}
+                 Library-
+                 
+      - name: Build Unity Project
+        uses: game-ci/unity-builder@v3
+        id: myBuildStep
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: StandaloneWindows64
-          allowDirtyBuild: true
+          versioning: Semantic
+          targetPlatform: ${{ env.targetPlatform }}
+          
+      - run: echo 'Project Version:${{ steps.myBuildStep.outputs.buildVersion }}'
+          
 
-      # Output
-      - uses: actions/upload-artifact@v3
+      - name: Upload Unity Build
+        uses: actions/upload-artifact@v2
         with:
-          name: Build
-          path: build
+          name: Unity-Build-${{ env.targetPlatform }}-${{steps.myBuildStep.outputs.buildVersion}}
+          path: build/${{ env.targetPlatform }}
+
