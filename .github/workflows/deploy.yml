@@ -1,6 +1,9 @@
 name: Actions 😎
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
@@ -12,8 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-
-      # Cache
+          
       - uses: actions/cache@v3
         with:
           path: Library
@@ -21,7 +23,6 @@ jobs:
           restore-keys: |
             Library-
 
-      # Test
       - name: Run tests
         uses: game-ci/unity-test-runner@v4
         env:
@@ -35,13 +36,11 @@ jobs:
     name: Build my project ✨
     runs-on: ubuntu-latest
     steps:
-      # Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      # Cache
       - uses: actions/cache@v3
         with:
           path: Library
@@ -49,7 +48,6 @@ jobs:
           restore-keys: |
             Library-
 
-      # Build
       - name: Build project
         uses: game-ci/unity-builder@v4
         env:
@@ -60,7 +58,6 @@ jobs:
           targetPlatform: StandaloneWindows64
           allowDirtyBuild: true
 
-      # Output
       - uses: actions/upload-artifact@v3
         with:
           name: Build
