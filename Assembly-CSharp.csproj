@@ -79,6 +79,7 @@
     <Compile Include="Assets\__Scripts\GOAP\GoapPlanner.cs" />
     <Compile Include="Assets\__Scripts\GOAP\Sensor.cs" />
     <Compile Include="Assets\__Scripts\Timer.cs" />
+    <Compile Include="Assets\__Scripts\ChooseLevelButton.cs" />
     <Compile Include="Assets\__Scripts\GOAP\GoapAgent.cs" />
     <Compile Include="Assets\__Scripts\MenuInterface.cs" />
   </ItemGroup>
