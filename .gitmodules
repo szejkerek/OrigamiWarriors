@@ -1,0 +1,3 @@
+[submodule "Packages/com.szejkerek.gordonessentials"]
+	path = Packages/com.szejkerek.gordonessentials
+	url = https://github.com/szejkerek/com.szejkerek.gordonessentials.git
