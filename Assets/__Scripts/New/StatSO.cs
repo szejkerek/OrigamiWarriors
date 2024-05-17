@@ -11,4 +11,5 @@ public class StatSO : ScriptableObject
     [field: SerializeField] public string DisplayName { private set; get; }
     [field: SerializeField] public int MaxLevel { private set; get; }
     [field: SerializeField] public bool IsUpgradeable { private set; get; }
+
 }
