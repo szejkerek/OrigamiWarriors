@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOnStart: 0
-  target: {fileID: 0}
+  target: {fileID: 2063128352025043773}
 --- !u!114 &6886085844148933396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,3 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290cf4dde344b074da4216ca92d753f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data:
+    money: 0
+  startingCharacters:
+  - {fileID: 11400000, guid: bb87217813ed79441a5726e927fbdf66, type: 2}

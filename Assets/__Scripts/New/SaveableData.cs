@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class SaveableData 
 {
-    int money;
+    public int money;
+    public List<Character> characters = new List<Character>();
 }

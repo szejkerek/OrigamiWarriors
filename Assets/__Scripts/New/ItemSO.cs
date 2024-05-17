@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ThrowableItem : IExecutable
 {
-    string displayName;
-    Sprite icon;
-    float throwPower;
+    public string displayName { get; private set; }
+    public Sprite icon { get; private set; }
+    public float throwPower { get; private set; }
     public ThrowableItem(ThrowableItemSO data)
     {
         displayName = data.DisplayName;

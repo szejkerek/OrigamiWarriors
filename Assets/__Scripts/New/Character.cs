@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Character 
 {
-    Sprite icon;
-    string displayName;
-    GameObject characterGameObject;
-    List<Stat> stats;
+    public Sprite icon { get; private set; }
+    public string displayName { get; private set; }
+    public GameObject characterGameObject { get; private set; }
+    public List<Stat> stats { get; private set; }
 
     public Character(CharacterSO data)
     {
