@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class TeamMember : MonoBehaviour
+public class TeamMemberInterface : MonoBehaviour
 {
     [SerializeField] Button characterBtn;
     [SerializeField] Button returnBtn;
@@ -33,7 +33,7 @@ public class TeamMember : MonoBehaviour
     {
         if (character != null)
         {
-            TeamManagementInterface.Instance.currentCharacter = character;
+            TeamManagementInterface.Instance.SetCurrentCharacterDisplay(character);
         }
         else
         {

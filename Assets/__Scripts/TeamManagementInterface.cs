@@ -6,7 +6,8 @@ using UnityEngine;
 public class TeamManagementInterface : Singleton<TeamManagementInterface> 
 {
     public Character currentCharacter;
-    [SerializeField] List<TeamMember> charactersSlot;
+    [SerializeField] CharacterPanel characterPanel;
+    [SerializeField] List<TeamMemberInterface> charactersSlot;
 
     private void Start()
     {
@@ -20,5 +21,11 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
         {
             charactersSlot[i].SetCharacter(savedCharacters[i]);
         }
+    }
+
+    public void SetCurrentCharacterDisplay(Character character)
+    {
+        currentCharacter = character;
+        characterPanel.SetupView(character);
     }
 }
