@@ -6,18 +6,20 @@ public class PlayerMovement : MonoBehaviour
   private MovementSchemes input = null;
   private Vector3 moveVector3D = Vector3.zero;
   private Rigidbody rb = null;
-  
+  private Animator animator = null;
+
   // adjust the velocity from the editor
-  public float moveSpeed = 5.0f;
+  [SerializeField] private float moveSpeed = 5;
   // adjust the gravity for this specific model
-  public float gravityFactor = 9.81f;
+  [SerializeField] private float gravityFactor = 250;
   // jumping factor
-  public float jumpingFactor = 50f;
+  [SerializeField] private float jumpingFactor = 50;
 
   private void Awake()
   {
     input = new MovementSchemes();
     rb = GetComponent<Rigidbody>();
+    animator = GetComponent<Animator>();
   }
 
   private void OnEnable()
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     //Debug.Log(moveVector3D);
     rb.velocity = moveVector3D * moveSpeed;
 
-    rb.AddForce(Vector3.down * gravityFactor, ForceMode.Acceleration); // force fo gravity
+    rb.AddForce(Vector3.down * gravityFactor, ForceMode.Acceleration); // force of gravity
   }
 
   // function to be called when we press appropriate button
@@ -53,6 +55,20 @@ public class PlayerMovement : MonoBehaviour
   {
     moveVector3D = keyValue.ReadValue<Vector3>();
     //rb.AddForce(moveVector3D * moveSpeed, ForceMode.Force);
+
+    // Add the animations based on the direction in which we are moving
+    if (moveVector3D != Vector3.zero)
+    {
+      animator.SetFloat("Z", 1);
+      animator.SetFloat("X", moveVector3D.x);
+      transform.rotation = Quaternion.LookRotation(moveVector3D);
+    } 
+    else
+    {
+      animator.SetFloat("X", moveVector3D.x);
+      animator.SetFloat("Z", moveVector3D.z);
+    }
+      
   }
 
   private void OnMovementCancelled(InputAction.CallbackContext keyValue)
