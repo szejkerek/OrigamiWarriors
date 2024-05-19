@@ -1,16 +1,27 @@
 using GordonEssentials;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TeamManagementInterface : Singleton<TeamManagementInterface> 
+public class TeamManagementInterface : Singleton<TeamManagementInterface>
 {
     public Character currentCharacter;
     [SerializeField] CharacterPanel characterPanel;
     [SerializeField] List<TeamMemberInterface> charactersSlot;
+    [SerializeField] TMP_Text money;
+    [SerializeField] Button returnBtn;
 
+
+    private void ReturnBehaviour()
+    {
+        SceneLoader.Instance.LoadScene(SceneConstants.ChooseMapScene);
+    }
     private void Start()
     {
+        money.text = SavableDataManager.Instance.data.money.ToString();
+        returnBtn.onClick.AddListener(ReturnBehaviour);
         FillStartingCharacters();
     }
 

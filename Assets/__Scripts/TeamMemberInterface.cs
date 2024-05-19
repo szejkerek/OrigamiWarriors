@@ -12,6 +12,8 @@ public class TeamMemberInterface : MonoBehaviour
     [SerializeField] Button returnBtn;
     [SerializeField] Image characterIcon;
 
+
+
     Character character;
 
     private void Awake()
