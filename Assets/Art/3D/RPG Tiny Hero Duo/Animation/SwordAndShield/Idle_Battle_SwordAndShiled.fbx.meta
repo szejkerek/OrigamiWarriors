@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 0308cf4e83cf517488b60af58b290fe0
 ModelImporter:
-  serializedVersion: 19301
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -16,7 +16,8 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -169,27 +170,35 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -509,11 +518,11 @@ ModelImporter:
     - name: Cloak02
       parentName: Idle_Battle_SwordAndShiled(Clone)
       position: {x: -0, y: 0.5790208, z: -0.81771773}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
     - name: root
       parentName: Idle_Battle_SwordAndShiled(Clone)
-      position: {x: -0, y: 0, z: 0}
+      position: {x: -0, y: 0.00007575201, z: 0.32165092}
       rotation: {x: -0.7093532, y: -0, z: -0, w: 0.7048532}
       scale: {x: 1, y: 1.0000006, z: 1.0000006}
     - name: pelvis
@@ -608,7 +617,7 @@ ModelImporter:
       scale: {x: 1.0000008, y: 1.0000013, z: 1.0000001}
     - name: thumb_02_l
       parentName: thumb_01_l
-      position: {x: -0.052380655, y: -4.6629366e-17, z: 0}
+      position: {x: -0.052380655, y: -4.6629366e-17, z: -1.4210854e-16}
       rotation: {x: -0.024324644, y: -0.023914147, z: -0.032934725, w: 0.9988753}
       scale: {x: 1.0000007, y: 1.0000002, z: 1.000003}
     - name: thumb_03_l
@@ -735,7 +744,7 @@ ModelImporter:
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: 
-    hasTranslationDoF: 1
+    hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
@@ -743,6 +752,9 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
