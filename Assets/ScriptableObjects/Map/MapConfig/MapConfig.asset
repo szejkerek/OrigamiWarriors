@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3870c95d514174492f28abaf9724ca, type: 3}
   m_Name: MapConfig
   m_EditorClassIdentifier: 
-  MapGridHeight: 4
-  MapGridWidth: 8
+  MapGridHeight: 3
+  MapGridWidth: 4
   mapNodeTypes:
   - {fileID: 11400000, guid: dbbcf0334dd1f9b47be1fc9c68e37918, type: 2}
   - {fileID: 11400000, guid: 4c670f1448d9daa4fbec99360f6c6495, type: 2}
@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22ab717f77097aa458e1916a5825fa23, type: 2}
   mapLayers:
   - minOutGoing: 2
-    maxOutGoing: 3
+    maxOutGoing: 4
     mapNodeTypesProbability:
     - mapNodeType: 0
       probability: 1
@@ -33,8 +33,8 @@ MonoBehaviour:
       probability: 0.8
     - mapNodeType: 2
       probability: 0.2
-  - minOutGoing: 1
-    maxOutGoing: 1
+  - minOutGoing: 2
+    maxOutGoing: 2
     mapNodeTypesProbability:
     - mapNodeType: 0
       probability: 0.5

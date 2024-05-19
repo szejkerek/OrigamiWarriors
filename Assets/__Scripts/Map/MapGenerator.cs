@@ -39,7 +39,7 @@ public static class MapGenerator
             return null;
         }
 
-        Vector2 location = new Vector2 (0, mapConfig.MapGridHeight / 2);
+        Vector2 location = new Vector2 (0, mapConfig.MapGridHeight / 2f);
 
         return new MapNode(location, mapLayer.DrawRandomNodeType());
     }
@@ -63,19 +63,20 @@ public static class MapGenerator
     private static List<MapNode> CreateNodesForLayer(Map map, int layer)
     {
         MapLayer mapLayer = mapConfig.mapLayers[layer];
-        MapNode formNode = map.mapNodes.Where(n => n.position == map.path[layer - 1]).First();
+        MapNode formNode = map.mapNodes.Where(n => n.locationOnMap == map.path[layer - 1]).First();
+        MapLayer mapLayerFrom = mapConfig.mapLayers[layer - 1];
         if (mapLayer == null)
         {
             Debug.LogWarning("mapConfig layer 0 was null");
             return null;
         }
 
-        int numberOfNodes = Random.Range(0f, 1f) <= 0.5f ? mapLayer.minOutGoing : mapLayer.maxOutGoing;
+        int numberOfNodes = Random.Range(0f, 1f) <= 0.5f ? mapLayerFrom.minOutGoing : mapLayerFrom.maxOutGoing;
         List<MapNode> mapNodes = new List<MapNode>();
 
         for (int i = 0; i < numberOfNodes; i++)
         {
-            Vector2 location = new Vector2(layer,(i+1) * mapConfig.MapGridHeight / (numberOfNodes +2));
+            Vector2 location = new Vector2(layer, (i+1f) * mapConfig.MapGridHeight / (numberOfNodes +2f));
             mapNodes.Add(new MapNode(location, mapLayer.DrawRandomNodeType()));
             formNode.outNodesLocations.Add(location);
         }
