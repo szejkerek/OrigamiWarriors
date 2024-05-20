@@ -6,6 +6,8 @@ public class StatSegment : MonoBehaviour
 {
     [SerializeField] GameObject activeGameObject, inActiveGameObject;
 
+    void Awake() => Deavtivate();
+
     public void Activate()
     {
         activeGameObject.SetActive(true);
