@@ -1,11 +1,10 @@
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class CharacterPanel : MonoBehaviour
 {
     Character character;
-    [SerializeField] UpgradeableStatInterface statPrefab;
+    [SerializeField] StatView statPrefab;
     [SerializeField] Transform upgradableStatsParent;
     [SerializeField] TMP_Text characterName;
 
@@ -30,7 +29,7 @@ public class CharacterPanel : MonoBehaviour
     {
         foreach(Stat s in character.stats)
         {
-            UpgradeableStatInterface display = Instantiate(statPrefab, upgradableStatsParent);
+            StatView display = Instantiate(statPrefab, upgradableStatsParent);
             display.SetupDisplay(s);
         }
     }

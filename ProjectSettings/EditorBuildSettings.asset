@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameplayScenes/Level_3.unity
     guid: 441444836eb4491429e09f9e958efc75
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 68e2504ea47a1094ba1985882163f5cd, type: 2}
