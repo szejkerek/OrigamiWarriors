@@ -12,7 +12,7 @@ namespace DependencyInjection
     {
       if (icon == null)
       {
-        icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Scripts/DependencyInjection/Editor/icon.png");
+        icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Project/Scripts/DependencyInjection/Editor/Icon.png");
       }
 
       return icon;
