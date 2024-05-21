@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowableItem : IExecutable
+public class Item
 {
     public string displayName { get; private set; }
     public Sprite icon { get; private set; }
-    public float throwPower { get; private set; }
-    public ThrowableItem(ThrowableItemSO data)
-    {
-        displayName = data.DisplayName;
-        icon = data.Icon;
-        throwPower = data.ThrowPower;
-    }
+    public CharacterClass characterClass { get; private set; }
 
-    public ThrowableItem(string displayName,Sprite icon,float throwPower)
+    public Item(string displayName, Sprite icon, CharacterClass characterClass)
     {
         this.displayName = displayName;
         this.icon = icon;
+        this.characterClass = characterClass;
+    }
+}
+
+public class ThrowableItem : Item, IExecutable
+{
+    public float throwPower { get; private set; }
+    public ThrowableItem(ThrowableItemSO data) : this (data.DisplayName, data.Icon, data.CharacterClass, data.ThrowPower) {}
+
+    public ThrowableItem(string displayName, Sprite icon, CharacterClass characterClass, float throwPower) : base(displayName, icon, characterClass)
+    {
         this.throwPower = throwPower;
     }
 
@@ -36,6 +41,16 @@ public class ItemSO : ScriptableObject
 {
     [field: SerializeField] public string DisplayName { private set; get; }
     [field: SerializeField] public Sprite Icon { private set; get; }
+    [field: SerializeField] public CharacterClass CharacterClass { private set; get; }
+}
+
+[System.Serializable]
+public enum CharacterClass
+{
+    ALL,
+    MELEE,
+    RANGED,
+    MAGE
 }
 
 [CreateAssetMenu(fileName = "NewThrowableItem", menuName = "CharacterCreator/Items/Throwable")]
@@ -56,13 +71,13 @@ public class AoEItemSO : ItemSO
     [field: SerializeField] public float Range { private set; get; }
 }
 
-[CreateAssetMenu(fileName = "NewPassivetem", menuName = "CharacterCreator/Items/Passive")]
+[CreateAssetMenu(fileName = "NewPassiveItem", menuName = "CharacterCreator/Items/Passive")]
 public class PassiveItemSO : ItemSO
 {
     [field: SerializeField] public float Damage { private set; get; }
 }
 
-[CreateAssetMenu(fileName = "NewEffecttem", menuName = "CharacterCreator/Items/Effect")]
+[CreateAssetMenu(fileName = "NewEffectItem", menuName = "CharacterCreator/Items/Effect")]
 public class EffectItemSO : ItemSO
 {
     [field: SerializeField] public float Power { private set; get; }

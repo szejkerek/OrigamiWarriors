@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterPanel : MonoBehaviour
 {
     Character character;
-    [SerializeField] StatView statPrefab;
+    [SerializeField] StatManagementView statPrefab;
     [SerializeField] Transform upgradableStatsParent;
     [SerializeField] TMP_Text characterName;
 
@@ -29,7 +29,7 @@ public class CharacterPanel : MonoBehaviour
     {
         foreach(Stat s in character.stats)
         {
-            StatView display = Instantiate(statPrefab, upgradableStatsParent);
+            StatManagementView display = Instantiate(statPrefab, upgradableStatsParent);
             display.SetupDisplay(s);
         }
     }

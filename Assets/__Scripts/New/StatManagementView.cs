@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
-public class StatView : MonoBehaviour
+public class StatManagementView : MonoBehaviour
 {
     [SerializeField] Image icon;
     [SerializeField] Button upgradeButton;
