@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Item
 {
-    public string displayName { get; private set; }
+    public string DisplayName { get; private set; }
     public Sprite icon { get; private set; }
     public CharacterClass characterClass { get; private set; }
+    public int maxLevel { get; private set; }
+    public int currentLevel { get; private set; }
 
     public Item(string displayName, Sprite icon, CharacterClass characterClass)
     {
-        this.displayName = displayName;
+        this.DisplayName = displayName;
         this.icon = icon;
         this.characterClass = characterClass;
     }
@@ -28,7 +30,7 @@ public class ThrowableItem : Item, IExecutable
 
     public void Execute()
     {
-        Debug.Log($"{displayName} is thrown with power {throwPower}!");
+        Debug.Log($"{DisplayName} is thrown with power {throwPower}!");
     }
 }
 
