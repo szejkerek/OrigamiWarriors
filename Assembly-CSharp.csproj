@@ -69,13 +69,15 @@
     <Compile Include="Assets\__Scripts\New\StatManagementView.cs" />
     <Compile Include="Assets\__Scripts\Utility\SceneConstants.cs" />
     <Compile Include="Assets\__Scripts\New\Character.cs" />
+    <Compile Include="Assets\__Scripts\New\UpgradableSegment.cs" />
     <Compile Include="Assets\__Scripts\New\StatSO.cs" />
-    <Compile Include="Assets\__Scripts\New\StatSegment.cs" />
     <Compile Include="Assets\__Scripts\New\ResourcesHolder.cs" />
     <Compile Include="Assets\__Scripts\New\ItemManagementView.cs" />
     <Compile Include="Assets\__Scripts\New\MenuInterface.cs" />
     <Compile Include="Assets\__Scripts\Input\PlayerMovement.cs" />
+    <Compile Include="Assets\__Scripts\New\IUpgradable.cs" />
     <Compile Include="Assets\__Scripts\New\SavableDataManager.cs" />
+    <Compile Include="Assets\__Scripts\New\UpgradeableComponent.cs" />
     <Compile Include="Assets\__Scripts\New\CharacterSO.cs" />
     <Compile Include="Assets\Animations\HeroAnimationController.cs" />
     <Compile Include="Assets\__Scripts\New\ChooseLevelButton.cs" />

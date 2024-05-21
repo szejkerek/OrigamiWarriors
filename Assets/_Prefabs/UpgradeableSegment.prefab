@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7267846537597077591}
   - component: {fileID: 2523414220031653473}
   - component: {fileID: 2968659833496275415}
-  - component: {fileID: 3429945399959692032}
+  - component: {fileID: -5106679002739390666}
   m_Layer: 5
   m_Name: UpgradeableSegment
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3429945399959692032
+--- !u!114 &-5106679002739390666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3273920775995203087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ecc2a57085cd147b6a82544ca954b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 09182eb9f8a7f894ca16c5e6187a5b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   activeGameObject: {fileID: 3487087968442037764}

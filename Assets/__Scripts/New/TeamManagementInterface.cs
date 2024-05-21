@@ -20,7 +20,7 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     }
     private void Start()
     {
-        money.text = SavableDataManager.Instance.data.money.ToString();
+        money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
         returnBtn.onClick.AddListener(ReturnBehaviour);
         FillStartingCharacters();
     }

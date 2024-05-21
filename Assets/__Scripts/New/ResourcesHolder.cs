@@ -9,26 +9,26 @@ public class ResourcesHolder
     public static Action OnResourcesUpdated;
 
     public int Money {  get; private set; }
-    private int money = 0;
     public int Expirience {  get; private set; }
-    private int expirience = 0; 
 
     public void AddMoney(int money)
     {
+        Money += money;
         OnResourcesUpdated?.Invoke();
     }
 
-    public void RemoveMoney(int money)
+    public bool TryRemoveMoney(int money)
     {
+        if (Money - money < 0) 
+            return false; 
+
+        Money -= money;
         OnResourcesUpdated?.Invoke();
+        return true;
     }
     public void AddExpirience(int exp)
     {
-        OnResourcesUpdated?.Invoke();
-    }
-
-    public void RemoveExpirience(int exp)
-    {
+        Expirience += exp;
         OnResourcesUpdated?.Invoke();
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatSegment : MonoBehaviour
+public class UpgradableSegment : MonoBehaviour
 {
     [SerializeField] GameObject activeGameObject, inActiveGameObject;
 

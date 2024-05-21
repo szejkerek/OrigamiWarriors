@@ -13,9 +13,9 @@ public class StatManagementView : MonoBehaviour
     [SerializeField] Button upgradeButton;
     [SerializeField] TMP_Text displayName;
     [SerializeField] Transform segmentsParent;
-    [SerializeField] StatSegment statSegmentPrefab;
+    [SerializeField] UpgradableSegment statSegmentPrefab;
 
-    List<StatSegment> segments = new List<StatSegment>();
+    List<UpgradableSegment> segments = new List<UpgradableSegment>();
 
     Stat stat;
     public void SetupDisplay(Stat stat)
@@ -41,7 +41,7 @@ public class StatManagementView : MonoBehaviour
         segments.Clear();
         for (int i = 0; i < stat.MaxLevel; i++)
         {
-            StatSegment segment = Instantiate(statSegmentPrefab, segmentsParent);
+            UpgradableSegment segment = Instantiate(statSegmentPrefab, segmentsParent);
             segments.Add(segment);
         }
     }
