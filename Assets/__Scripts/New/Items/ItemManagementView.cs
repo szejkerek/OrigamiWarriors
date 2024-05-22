@@ -14,7 +14,7 @@ public class ItemManagementView : MonoBehaviour
     List<UpgradableSegment> segments = new List<UpgradableSegment>();
 
     Item item;
-    //public void SetupDisplay(Item item)
+    //public void Init(Item item)
     //{
     //    this.item = item;
     //    displayName.text = this.item.DisplayName;

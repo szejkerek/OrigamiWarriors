@@ -33,7 +33,7 @@ public class UpgradeableComponent : MonoBehaviour
         }
         else
         {
-            Debug.Log($"{upgradable} is already maxed, cannot upgrade it.");
+            Debug.LogWarning($"{upgradable} is already maxed, cannot upgrade it.");
         }
        
 

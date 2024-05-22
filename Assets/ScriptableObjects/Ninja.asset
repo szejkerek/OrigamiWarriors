@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba110aea8cf23b439364595f90a061d, type: 3}
+  m_Script: {fileID: 11500000, guid: bb3a70df53c5bda45bd72016e1f00157, type: 3}
   m_Name: Ninja
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 92a1d2ad1dd802d45a44cb28b8032954, type: 3}
-  <DisplayName>k__BackingField: Ninjago
-  <CharacterGameObject>k__BackingField: {fileID: 2087243473035390541, guid: 306f4d5163228dd4abee16733819f26f, type: 3}
+  <DisplayName>k__BackingField: XD
+  <CharacterGameObject>k__BackingField: {fileID: 0}
   <Stats>k__BackingField:
-  - {fileID: 11400000, guid: e3c83d6cc6003c745868bc948e00bec6, type: 2}
   - {fileID: 11400000, guid: 5d701c7b068bc5446a890fb02c6c2cc6, type: 2}
+  - {fileID: 11400000, guid: e3c83d6cc6003c745868bc948e00bec6, type: 2}
