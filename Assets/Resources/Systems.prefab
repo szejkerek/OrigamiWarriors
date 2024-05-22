@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290cf4dde344b074da4216ca92d753f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    money: 0
+  data: {}
   startingCharacters:
   - {fileID: 11400000, guid: bb87217813ed79441a5726e927fbdf66, type: 2}
+  - {fileID: 11400000, guid: 5488baa884e7a324587a162a205d8caf, type: 2}

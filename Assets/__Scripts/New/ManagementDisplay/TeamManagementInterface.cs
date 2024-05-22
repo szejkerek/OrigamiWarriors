@@ -23,10 +23,20 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     private void Start()
     {
         money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
-        ResourcesHolder.OnResourcesUpdated += () => money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
+        ResourcesHolder.OnResourcesUpdated += UpdateMoneyDisplay;
         returnBtn.onClick.AddListener(ReturnBehaviour);
         FillStartingCharacters();
         moneyButton.onClick.AddListener(AddMoney);
+    }
+
+    private void OnDisable()
+    {
+        ResourcesHolder.OnResourcesUpdated -= UpdateMoneyDisplay;
+    }
+
+    void UpdateMoneyDisplay()
+    {
+        money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
     }
 
     private void AddMoney()

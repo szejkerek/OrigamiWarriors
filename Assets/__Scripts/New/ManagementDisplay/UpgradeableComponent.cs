@@ -17,6 +17,11 @@ public class UpgradeableComponent : MonoBehaviour
         ResourcesHolder.OnResourcesUpdated += UpdateView;
     }
 
+    private void OnDestroy()
+    {
+        ResourcesHolder.OnResourcesUpdated -= UpdateView;
+    }
+
     private void TryUpgrade()
     {
         int cost = upgradable.CostFunction();
