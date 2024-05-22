@@ -69,13 +69,13 @@
     <Compile Include="Assets\__Scripts\New\Characters\CharacterPanel.cs" />
     <Compile Include="Assets\__Scripts\Utility\SceneConstants.cs" />
     <Compile Include="Assets\__Scripts\New\Stats\StatSO.cs" />
-    <Compile Include="Assets\__Scripts\New\ManagementDisplay\TeamMemberInterface.cs" />
     <Compile Include="Assets\__Scripts\New\Characters\CharacterSO.cs" />
     <Compile Include="Assets\__Scripts\New\ManagementDisplay\UpgradableSegment.cs" />
     <Compile Include="Assets\__Scripts\New\Items\ItemSO.cs" />
     <Compile Include="Assets\__Scripts\New\ResourcesHolder.cs" />
     <Compile Include="Assets\__Scripts\New\ManagementDisplay\UpgradeableComponent.cs" />
     <Compile Include="Assets\__Scripts\New\MenuInterface.cs" />
+    <Compile Include="Assets\__Scripts\New\ManagementDisplay\CharacterView.cs" />
     <Compile Include="Assets\__Scripts\Input\PlayerMovement.cs" />
     <Compile Include="Assets\__Scripts\New\IUpgradable.cs" />
     <Compile Include="Assets\__Scripts\New\ManagementDisplay\TeamManagementInterface.cs" />

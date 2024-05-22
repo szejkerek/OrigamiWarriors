@@ -3,16 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Playables;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class TeamMemberInterface : MonoBehaviour
+public class CharacterView : MonoBehaviour
 {
     [SerializeField] Button characterBtn;
     [SerializeField] Button returnBtn;
     [SerializeField] Image characterIcon;
-
-
 
     Character character;
 
@@ -43,10 +43,10 @@ public class TeamMemberInterface : MonoBehaviour
         }
     }
 
-    public void SetCharacter(Character character)
+    public void SetCharacter(IDisplayable character)
     {
-        this.character = character;
-        characterIcon.sprite = character.icon;
+        this.character = character as Character;
+        new AssetReference(character.IconGUID).LoadAssetAsync<Sprite>().Completed += handle => { characterIcon.sprite = handle.Result; };
         returnBtn.gameObject.SetActive(true);
     }
 

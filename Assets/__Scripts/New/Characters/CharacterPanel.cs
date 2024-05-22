@@ -13,24 +13,26 @@ public class CharacterPanel : MonoBehaviour
     public void SetupView(Character character)
     {
         this.character = character;
-        ResetView();
-        characterName.text = character.displayName;
+        characterName.text = character.DisplayName;
+        
         CreateStats();
     }
+
+    void CreateStats()
+    {
+        ResetView();
+        foreach (Stat s in character.stats)
+        {
+            UpgradeableItemDisplay display = Instantiate(statPrefab, upgradableStatsParent);
+            display.Init(s);
+        }
+    }
+
     void ResetView()
     {
         foreach (Transform t in upgradableStatsParent)
         {
             Destroy(t.gameObject);
-        }
-    }
-
-    void CreateStats()
-    {
-        foreach(Stat s in character.stats)
-        {
-            UpgradeableItemDisplay display = Instantiate(statPrefab, upgradableStatsParent);
-            display.Init(s);
         }
     }
 }

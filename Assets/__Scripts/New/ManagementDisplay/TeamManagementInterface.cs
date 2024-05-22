@@ -10,7 +10,7 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
 {
     public Character currentCharacter;
     [SerializeField] CharacterPanel characterPanel;
-    [SerializeField] List<TeamMemberInterface> charactersSlot;
+    [SerializeField] List<CharacterView> charactersSlot;
     [SerializeField] TMP_Text money;
     [SerializeField] Button moneyButton;
     [SerializeField] Button returnBtn;
