@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,16 +14,28 @@ public class UpgradeableComponent : MonoBehaviour
     private void Awake()
     {
         upgradeButton.onClick.AddListener(TryUpgrade);
+        ResourcesHolder.OnResourcesUpdated += UpdateView;
     }
 
     private void TryUpgrade()
     {
         int cost = upgradable.CostFunction();
-        if(SavableDataManager.Instance.data.playerResurces.TryRemoveMoney(cost))
+        if(upgradable.Level < upgradable.MaxLevel)
         {
-            upgradable.Upgrade();
-            upgradable.Level++;
+            if (SavableDataManager.Instance.data.playerResurces.TryRemoveMoney(cost))
+            {
+                upgradable.Level++;
+            }
+            else
+            {
+                Debug.LogWarning($"Not enough money to upgrade {upgradable}");
+            }
         }
+        else
+        {
+            Debug.Log($"{upgradable} is already maxed, cannot upgrade it.");
+        }
+       
 
         UpdateView();
     }
@@ -50,6 +60,9 @@ public class UpgradeableComponent : MonoBehaviour
 
     void UpdateView()
     {
+        if (segments.Count == 0)
+            return;
+
         for (int i = 0; i < upgradable.Level; i++)
         {
             segments[i].Activate();

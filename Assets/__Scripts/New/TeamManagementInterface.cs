@@ -1,4 +1,5 @@
 using GordonEssentials;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,7 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     [SerializeField] CharacterPanel characterPanel;
     [SerializeField] List<TeamMemberInterface> charactersSlot;
     [SerializeField] TMP_Text money;
+    [SerializeField] Button moneyButton;
     [SerializeField] Button returnBtn;
 
 
@@ -21,8 +23,15 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     private void Start()
     {
         money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
+        ResourcesHolder.OnResourcesUpdated += () => money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
         returnBtn.onClick.AddListener(ReturnBehaviour);
         FillStartingCharacters();
+        moneyButton.onClick.AddListener(AddMoney);
+    }
+
+    private void AddMoney()
+    {
+        SavableDataManager.Instance.data.playerResurces.AddMoney(500);
     }
 
     private void FillStartingCharacters()

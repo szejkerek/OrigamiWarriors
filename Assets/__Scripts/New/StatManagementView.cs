@@ -10,58 +10,21 @@ using UnityEngine.UI;
 public class StatManagementView : MonoBehaviour
 {
     [SerializeField] Image icon;
-    [SerializeField] Button upgradeButton;
     [SerializeField] TMP_Text displayName;
-    [SerializeField] Transform segmentsParent;
-    [SerializeField] UpgradableSegment statSegmentPrefab;
-
-    List<UpgradableSegment> segments = new List<UpgradableSegment>();
 
     Stat stat;
+    UpgradeableComponent UpgradeableComponent;
+
     public void SetupDisplay(Stat stat)
     {
         this.stat = stat;
         displayName.text = this.stat.DisplayName;
+
+        UpgradeableComponent = GetComponentInChildren<UpgradeableComponent>();
+        UpgradeableComponent.Init(stat);
+
         AssetReference asset = new AssetReference(stat.IconGUID);
-        asset.LoadAssetAsync<Sprite>().Completed += OnAssetLoaded;
-
-        upgradeButton.onClick.AddListener(TryUpgradeStat);
-
-        CreateSegments();
-        UpdateView();
+        asset.LoadAssetAsync<Sprite>().Completed += handle => { icon.sprite = handle.Result; };
     }
 
-    void OnAssetLoaded(AsyncOperationHandle<Sprite> handle)
-    {
-        icon.sprite = handle.Result;
-    }
-
-    void CreateSegments()
-    {
-        segments.Clear();
-        for (int i = 0; i < stat.MaxLevel; i++)
-        {
-            UpgradableSegment segment = Instantiate(statSegmentPrefab, segmentsParent);
-            segments.Add(segment);
-        }
-    }
-
-    void TryUpgradeStat()
-    {
-        stat.IncrementLevel();
-        UpdateView();
-    }
-
-    void UpdateView()
-    {
-        for (int i = 0; i < stat.Level; i++)
-        {
-            segments[i].Activate();
-        }
-
-        if (!stat.CanBeUpgraded())
-        {
-            upgradeButton.gameObject.SetActive(false);
-        }
-    }
 }

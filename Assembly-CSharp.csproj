@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Animations\CactusAnimationController.cs" />
+    <Compile Include="Assets\__Scripts\New\IDisplayable.cs" />
     <Compile Include="Assets\__Scripts\Input\MovementSchemes.cs" />
     <Compile Include="Assets\__Scripts\New\CharacterPanel.cs" />
     <Compile Include="Assets\__Scripts\New\TeamMemberInterface.cs" />

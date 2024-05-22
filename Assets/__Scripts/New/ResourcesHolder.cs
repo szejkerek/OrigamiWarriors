@@ -7,7 +7,6 @@ using UnityEngine;
 public class ResourcesHolder
 {
     public static Action OnResourcesUpdated;
-
     public int Money {  get; private set; }
     public int Expirience {  get; private set; }
 

@@ -2,10 +2,9 @@
 {
     int MaxLevel { get; }
     int Level { get; set; }
+    int Cost { get; }
 
     int CostFunction();
-
-    void Upgrade();
 
     void ResetLevel()
     {

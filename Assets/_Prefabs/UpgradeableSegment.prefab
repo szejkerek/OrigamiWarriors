@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeGameObject: {fileID: 3487087968442037764}
-  inActiveGameObject: {fileID: 6137177895575873571}
+  inactiveGameObject: {fileID: 6137177895575873571}
 --- !u!1 &3487087968442037764
 GameObject:
   m_ObjectHideFlags: 0
