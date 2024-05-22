@@ -1,86 +1,69 @@
+using GordonEssentials.Types;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
-public class Item
+public class Item : IDisplayable, IUpgradable
 {
-    public string DisplayName { get; private set; }
-    public Sprite icon { get; private set; }
-    public CharacterClass characterClass { get; private set; }
-    public int maxLevel { get; private set; }
-    public int currentLevel { get; private set; }
+    public string IconGUID { get; }
+    public string DisplayName { get; }
+    public int MaxLevel { get; }
+    public int Level { get; set; }
+    public int Cost { get; }
+    public ItemType itemType { get; private set; }
+    public ClassType classType { get; private set; }
+    public AdditionalItemInfo additionalItemInfo { get; private set; }
 
-    public Item(string displayName, Sprite icon, CharacterClass characterClass)
+
+    public Item(string IconGUID, string displayName, int maxLevel, int level, ItemType itemType, ClassType classType, AdditionalItemInfo additionalItemInfo)
     {
-        this.DisplayName = displayName;
-        this.icon = icon;
-        this.characterClass = characterClass;
+        this.IconGUID = IconGUID;
+        this.DisplayName = displayName; 
+        this.MaxLevel = maxLevel;
+        this.Level = level;
+        this.itemType = itemType;
+        this.classType = classType;
+        this.additionalItemInfo = additionalItemInfo;
+    }
+
+    public int CostFunction()
+    {
+        return Cost * Level;
     }
 }
 
-public class ThrowableItem : Item, IExecutable
+[Serializable]
+public class AdditionalItemInfo
 {
-    public float throwPower { get; private set; }
-    public ThrowableItem(ThrowableItemSO data) : this (data.DisplayName, data.Icon, data.CharacterClass, data.ThrowPower) {}
-
-    public ThrowableItem(string displayName, Sprite icon, CharacterClass characterClass, float throwPower) : base(displayName, icon, characterClass)
-    {
-        this.throwPower = throwPower;
-    }
-
-    public void Execute()
-    {
-        Debug.Log($"{DisplayName} is thrown with power {throwPower}!");
-    }
+    public Interval<float> DamageBounds;
 }
 
-public interface IExecutable
-{
-    void Execute();
-}
-
+[CreateAssetMenu(fileName = "ItemSO", menuName = "ItemSO/ItemSO", order = 1)]
 public class ItemSO : ScriptableObject
 {
     [field: SerializeField] public string DisplayName { private set; get; }
-    [field: SerializeField] public Sprite Icon { private set; get; }
-    [field: SerializeField] public CharacterClass CharacterClass { private set; get; }
+    [field: SerializeField] public AssetReference Icon { private set; get; }
+    [field: SerializeField] public ItemType ItemType { private set; get; }
+    [field: SerializeField] public ClassType ClassType { private set; get; }
+    [field: SerializeField] public AdditionalItemInfo AdditionalItemInfo { private set; get; }
+}
+
+[Serializable]
+public enum ItemType
+{
+    WEAPON,
+    ARMOR,
+    SKILL
 }
 
 [System.Serializable]
-public enum CharacterClass
+public enum ClassType
 {
     ALL,
     MELEE,
     RANGED,
-    MAGE
-}
-
-[CreateAssetMenu(fileName = "NewThrowableItem", menuName = "CharacterCreator/Items/Throwable")]
-public class ThrowableItemSO : ItemSO
-{
-    [field: SerializeField] public float ThrowPower { private set; get; }
-}
-
-[CreateAssetMenu(fileName = "NewMeleeItem", menuName = "CharacterCreator/Items/Melee")]
-public class MeleeItemSO : ItemSO
-{
-    [field: SerializeField] public float Damage { private set; get; }
-}
-
-[CreateAssetMenu(fileName = "NewAoEItem", menuName = "CharacterCreator/Items/AoE")]
-public class AoEItemSO : ItemSO
-{
-    [field: SerializeField] public float Range { private set; get; }
-}
-
-[CreateAssetMenu(fileName = "NewPassiveItem", menuName = "CharacterCreator/Items/Passive")]
-public class PassiveItemSO : ItemSO
-{
-    [field: SerializeField] public float Damage { private set; get; }
-}
-
-[CreateAssetMenu(fileName = "NewEffectItem", menuName = "CharacterCreator/Items/Effect")]
-public class EffectItemSO : ItemSO
-{
-    [field: SerializeField] public float Power { private set; get; }
+    MAGE,
+    HEALER,
 }

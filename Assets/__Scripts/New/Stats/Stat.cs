@@ -7,9 +7,9 @@ public class Stat : IUpgradable, IDisplayable
     public int Cost { get; }
 
     #region Constructors
-    public Stat(StatSO data) : this(data.Icon.AssetGUID, data.DisplayName, data.MaxLevel, currentLevel: 0, data.Cost) {  }
+    public Stat(StatSO data) : this(data.Icon.AssetGUID, data.DisplayName, data.MaxLevel, data.Cost, currentLevel: 0) {  }
 
-    public Stat(string IconGUID, string displayName, int maxLevel, int currentLevel, int cost)
+    public Stat(string IconGUID, string displayName, int maxLevel, int cost, int currentLevel)
     {
         this.IconGUID = IconGUID;
         this.DisplayName = displayName;
@@ -21,6 +21,6 @@ public class Stat : IUpgradable, IDisplayable
 
     public int CostFunction()
     {
-        return Cost;
+        return Cost * Level;
     }
 }

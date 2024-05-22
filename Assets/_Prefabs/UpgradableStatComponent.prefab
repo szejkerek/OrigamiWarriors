@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 1532725411613656707}
   - component: {fileID: 8678927971938550068}
   m_Layer: 5
-  m_Name: UpgradableComponent
+  m_Name: UpgradableStatComponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
