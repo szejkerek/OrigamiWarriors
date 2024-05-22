@@ -1,11 +1,7 @@
 using GordonEssentials.Types;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Playables;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class CharacterView : MonoBehaviour
@@ -13,11 +9,13 @@ public class CharacterView : MonoBehaviour
     [SerializeField] Button characterBtn;
     [SerializeField] Button returnBtn;
     [SerializeField] Image characterIcon;
+    [SerializeField] TMP_Text characterName;
 
     Character character;
 
     private void Awake()
     {
+        characterName.text = "";
         returnBtn.gameObject.SetActive(false);
         characterBtn.onClick.AddListener(CharacterBehavior);
         returnBtn.onClick.AddListener(ReturnBehavior);
@@ -48,6 +46,7 @@ public class CharacterView : MonoBehaviour
         this.character = character as Character;
         new AssetReference(character.IconGUID).LoadAssetAsync<Sprite>().Completed += handle => { characterIcon.sprite = handle.Result; };
         returnBtn.gameObject.SetActive(true);
+        characterName.text = character.DisplayName;
     }
 
 
