@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: ItemSO
   m_EditorClassIdentifier: 
   <DisplayName>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   <ItemType>k__BackingField: 0
   <ClassType>k__BackingField: 0
   <AdditionalItemInfo>k__BackingField:
     DamageBounds:
-      _bottomBound: 0
-      _upperBound: 0
+      _bottomBound: 10
+      _upperBound: 15
