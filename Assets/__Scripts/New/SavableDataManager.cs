@@ -6,14 +6,14 @@ using UnityEngine;
 public class SavableDataManager : Singleton<SavableDataManager>
 {
     [HideInInspector] public SaveableData data;
-    public List<CharacterSO> startingCharacters = new List<CharacterSO>();
+    public List<AssetReferenceCharacterSO> startingCharacters = new List<AssetReferenceCharacterSO>();
 
     protected override void Awake()
     {
         base.Awake();
-        foreach (CharacterSO member in startingCharacters)
+        foreach (var member in startingCharacters)
         {
-            data.characters.Add(new Character(member));
+            data.characters.Add(new Character(member.AssetGUID));
         }
     }
 

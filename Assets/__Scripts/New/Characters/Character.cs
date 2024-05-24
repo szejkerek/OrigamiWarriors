@@ -6,14 +6,29 @@ public class Character : IDisplayable
 {
     public string IconGUID { get; }
     public string DisplayName { get; }
+    public CharacterStats Stats { get; }
     public GameObject characterGameObject { get; }
-    public List<Stat> stats { get; }
-    public Character(CharacterSO data) : this (data.Icon.AssetGUID, data.DisplayName, data.CharacterGameObject, data.CreateStats())  {}
-    public Character(string iconGUID, string displayName, GameObject characterGameObject, List<Stat> stats)
+    public List<UpgradableStat> upgradableStats { get; }
+
+    CharacterSO characterData;
+    string characterGuid;
+
+    public Character(string characterGuid)
     {
-        this.IconGUID = iconGUID;
-        this.DisplayName = displayName;
-        this.characterGameObject = characterGameObject;
-        this.stats = stats;
+        this.characterGuid = characterGuid;
+        characterData = new AssetReferenceItemSO(characterGuid).LoadAssetAsync<CharacterSO>().WaitForCompletion();
+
+        this.IconGUID = characterData.Icon.AssetGUID;
+        this.DisplayName = characterData.DisplayName;
+        this.characterGameObject = characterData.CharacterGameObject;
+        this.upgradableStats = characterData.CreateStats();
     }    
+}
+
+[System.Serializable]
+public class CharacterStats
+{
+    public int Damage;
+    public int Health;
+    public int Speed;
 }

@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 
-[CreateAssetMenu(fileName = "NewStat", menuName = "CharacterCreator/Stat")]
+[CreateAssetMenu(fileName = "NewStat", menuName = "CharacterCreator/UpgradableStat")]
 
-public class StatSO : ScriptableObject
+public class UpgradableStatSO : ScriptableObject
 {
     [field: SerializeField] public AssetReference Icon { private set; get; }
     [field: SerializeField] public string DisplayName { private set; get; }
     [field: SerializeField] public int MaxLevel { private set; get; }
     [field: SerializeField] public int Cost { private set; get; }
-
-    public Stat CreateStat()
-    {
-        return new Stat(Icon.AssetGUID, DisplayName, MaxLevel, Cost, currentLevel: 0);
-    }
 }

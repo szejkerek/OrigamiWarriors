@@ -21,7 +21,7 @@ public class CharacterPanel : MonoBehaviour
     void CreateStats()
     {
         ResetView();
-        foreach (Stat s in character.stats)
+        foreach (UpgradableStat s in character.upgradableStats)
         {
             UpgradeableItemDisplay display = Instantiate(statPrefab, upgradableStatsParent);
             display.Init(s);

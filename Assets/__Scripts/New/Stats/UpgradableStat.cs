@@ -1,4 +1,4 @@
-public class Stat : IUpgradable, IDisplayable
+public class UpgradableStat : IUpgradable, IDisplayable
 {
     public string IconGUID { get;}
     public string DisplayName { get;}
@@ -7,9 +7,9 @@ public class Stat : IUpgradable, IDisplayable
     public int Cost { get; }
 
     #region Constructors
-    public Stat(StatSO data) : this(data.Icon.AssetGUID, data.DisplayName, data.MaxLevel, data.Cost, currentLevel: 0) {  }
+    public UpgradableStat(UpgradableStatSO data) : this(data.Icon.AssetGUID, data.DisplayName, data.MaxLevel, data.Cost, currentLevel: 0) {  }
 
-    public Stat(string IconGUID, string displayName, int maxLevel, int cost, int currentLevel)
+    public UpgradableStat(string IconGUID, string displayName, int maxLevel, int cost, int currentLevel)
     {
         this.IconGUID = IconGUID;
         this.DisplayName = displayName;

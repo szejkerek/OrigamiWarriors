@@ -202,7 +202,7 @@ public class GoapAgent : MonoBehaviour
   }
 
   void SetupTimers()
-  { // update the stats every 2s
+  { // update the upgradableStats every 2s
     statsTimer = new CountdownTimer(2f);
     statsTimer.OnTimerStop += () => {
       UpdateStats();
@@ -211,7 +211,7 @@ public class GoapAgent : MonoBehaviour
     statsTimer.Start();
   }
 
-  // TODO move to stats system
+  // TODO move to upgradableStats system
   void UpdateStats()
   {
     stamina += InRangeOf(restingPosition.position, 3f) ? 20 : -10;

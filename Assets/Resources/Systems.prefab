@@ -313,5 +313,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {}
   startingCharacters:
-  - {fileID: 11400000, guid: bb87217813ed79441a5726e927fbdf66, type: 2}
-  - {fileID: 11400000, guid: 5488baa884e7a324587a162a205d8caf, type: 2}
+  - m_AssetGUID: 5f11a0d9c73033148a0baa4648eb580a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: bb87217813ed79441a5726e927fbdf66
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
