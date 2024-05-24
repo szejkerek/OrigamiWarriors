@@ -18,7 +18,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 0
+  <MaxLevel>k__BackingField: 5
   <Level>k__BackingField: 0
   <Cost>k__BackingField: 0
   <ItemType>k__BackingField: 0

@@ -481,7 +481,7 @@ MonoBehaviour:
   statPrefab: {fileID: 1098040579663306, guid: bbb00fcd07a801542882c87f2f4d09f1, type: 3}
   upgradableStatsParent: {fileID: 775031890}
   characterName: {fileID: 1951232399}
-  weaponSlot: {fileID: 1794884332}
+  weaponSlot: {fileID: 1794884333}
   armorSlot: {fileID: 463658196}
   skillSlot: {fileID: 103935522}
 --- !u!222 &115509888
@@ -1014,7 +1014,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5486093941498945527, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+    - {fileID: 6841917995428536978, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+    - {fileID: 2675636460410261886, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+    - {fileID: 1561019447632073270, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+    - {fileID: 290091848750874918, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
@@ -3979,7 +3984,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4766028323767852191, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
   m_PrefabInstance: {fileID: 1794884330}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1794884332 stripped
+--- !u!114 &1794884333 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1450156672844710286, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
   m_PrefabInstance: {fileID: 1794884330}
