@@ -54,13 +54,22 @@ public class UpgradeableComponent : MonoBehaviour
 
     void CreateSegments()
     {
-        segments.Clear();
+        DestroySegments();
         for (int i = 0; i < upgradable.MaxLevel; i++)
         {
             UpgradableSegment segment = Instantiate(SegmentPrefab, segmentsParent);
             segments.Add(segment);
         }
         UpdateView();
+    }
+
+    void DestroySegments()
+    {
+        foreach (Transform t in segmentsParent)
+        {
+            Destroy(t.gameObject);
+        }
+        segments.Clear();
     }
 
     void UpdateView()

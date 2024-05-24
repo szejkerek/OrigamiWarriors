@@ -19,7 +19,26 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   <DisplayName>k__BackingField: dssdasd
   <CharacterGameObject>k__BackingField: {fileID: 0}
+  <BaseStats>k__BackingField:
+    Damage: 0
+    Health: 0
+    Speed: 0
   <Stats>k__BackingField:
   - {fileID: 11400000, guid: 5d701c7b068bc5446a890fb02c6c2cc6, type: 2}
   - {fileID: 11400000, guid: e3c83d6cc6003c745868bc948e00bec6, type: 2}
   - {fileID: 11400000, guid: e3c83d6cc6003c745868bc948e00bec6, type: 2}
+  <Weapon>k__BackingField:
+    m_AssetGUID: 05bc212fa1f28a34abd620342fa7f814
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <Armor>k__BackingField:
+    m_AssetGUID: cfc28e7a4a3cc9640bccc23f9882305c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <Skill>k__BackingField:
+    m_AssetGUID: 4bf51785950e18442ae6a12f6ddd27d6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

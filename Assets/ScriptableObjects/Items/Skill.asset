@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c9f89dd82d3f84b96e9dbaa649c1d3, type: 3}
   m_Name: Skill
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: 
+  <DisplayName>k__BackingField: Skill
   <Icon>k__BackingField:
     m_AssetGUID: ba667f20e1fcf834db40169188cc3db9
     m_SubObjectName: 

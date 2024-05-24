@@ -1,64 +1,35 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 public class ItemManagementView : MonoBehaviour
 {
     [SerializeField] Image icon;
-    [SerializeField] Button upgradeButton;
     [SerializeField] TMP_Text displayName;
-    [SerializeField] Transform segmentsParent;
-    [SerializeField] UpgradableSegment statSegmentPrefab;
+    UpgradeableComponent UpgradeableComponent;
+    public void Init<T>(T item) where T : IDisplayable, IUpgradable
+    {
+        SetupDisplay(item);
+        SetupUpgradable(item);
+    }
 
-    List<UpgradableSegment> segments = new List<UpgradableSegment>();
+    void SetupUpgradable(IUpgradable upgradebleItem)
+    {
+        UpgradeableComponent = GetComponentInChildren<UpgradeableComponent>();
+        UpgradeableComponent?.Init(upgradebleItem);
+    }
 
-    Item item;
-    //public void Init(Item item)
-    //{
-    //    this.item = item;
-    //    displayName.text = this.item.DisplayName;
-    //    //AssetReference asset = new AssetReference(stat.IconGUID);
-    //    //asset.LoadAssetAsync<Sprite>().Completed += OnAssetLoaded;
+    void SetupDisplay(IDisplayable displayable)
+    {
+        displayName.text = displayable.DisplayName;
+        new AssetReference(displayable.IconGUID).LoadAssetAsync<Sprite>().Completed += handle => { icon.sprite = handle.Result; };
+    }
 
-    //    upgradeButton.onClick.AddListener(TryUpgradeItem);
-
-    //    CreateSegments();
-    //    UpdateView();
-    //}
-
-    //private void TryUpgradeItem()
-    //{
-    //    throw new NotImplementedException();
-    //}
-
-    //void OnAssetLoaded(AsyncOperationHandle<Sprite> handle)
-    //{
-    //    icon.sprite = handle.Result;
-    //}
-
-    //void CreateSegments()
-    //{
-    //    segments.Clear();
-    //    //for (int i = 0; i < item.MaxLevel; i++)
-    //    {
-    //        UpgradableSegment segment = Instantiate(statSegmentPrefab, segmentsParent);
-    //        segments.Add(segment);
-    //    }
-    //}
-
-    
-
-    //void UpdateView()
-    //{
-    //    //for (int i = 0; i < stat.Level; i++)
-    //    {
-    //        segments[i].Activate();
-    //    }
-
-    //    //if (!stat.CanBeUpgraded())
-    //    {
-    //        upgradeButton.gameObject.SetActive(false);
-    //    }
-    //}
+    public void RestartDisplay()
+    {
+        icon.sprite = null;
+        displayName.text = "";
+    }
 }

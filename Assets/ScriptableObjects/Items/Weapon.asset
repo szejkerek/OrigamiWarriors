@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c9f89dd82d3f84b96e9dbaa649c1d3, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: 
+  <DisplayName>k__BackingField: Weapon
   <Icon>k__BackingField:
-    m_AssetGUID: 
+    m_AssetGUID: 264b0d4ffdbaf7049816b7ad3031eca1
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ public class CharacterPanel : MonoBehaviour
     [SerializeField] Transform upgradableStatsParent;
     [SerializeField] TMP_Text characterName;
 
+    [SerializeField] ItemManagementView weaponSlot;
+    [SerializeField] ItemManagementView armorSlot;
+    [SerializeField] ItemManagementView skillSlot;
+
     private void Awake() => ResetView();
 
     public void SetupView(Character character)
@@ -16,6 +21,14 @@ public class CharacterPanel : MonoBehaviour
         characterName.text = character.DisplayName;
         
         CreateStats();
+        SetupItems();
+    }
+
+    private void SetupItems()
+    {
+        weaponSlot.Init(character.weapon);
+        armorSlot.Init(character.armor);
+        skillSlot.Init(character.skill);
     }
 
     void CreateStats()
@@ -30,6 +43,7 @@ public class CharacterPanel : MonoBehaviour
 
     void ResetView()
     {
+        
         foreach (Transform t in upgradableStatsParent)
         {
             Destroy(t.gameObject);

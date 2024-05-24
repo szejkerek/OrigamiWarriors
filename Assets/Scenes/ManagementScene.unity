@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -413,6 +413,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4766028323767852191, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
   m_PrefabInstance: {fileID: 103935520}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &103935522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1450156672844710286, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+  m_PrefabInstance: {fileID: 103935520}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b4d9a73a7f84245ba6bb8385de9965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &115509885
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +481,9 @@ MonoBehaviour:
   statPrefab: {fileID: 1098040579663306, guid: bbb00fcd07a801542882c87f2f4d09f1, type: 3}
   upgradableStatsParent: {fileID: 775031890}
   characterName: {fileID: 1951232399}
+  weaponSlot: {fileID: 1794884332}
+  armorSlot: {fileID: 463658196}
+  skillSlot: {fileID: 103935522}
 --- !u!222 &115509888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1009,6 +1023,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4766028323767852191, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
   m_PrefabInstance: {fileID: 463658194}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &463658196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1450156672844710286, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+  m_PrefabInstance: {fileID: 463658194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b4d9a73a7f84245ba6bb8385de9965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &541908838
 GameObject:
   m_ObjectHideFlags: 0
@@ -3954,6 +3979,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4766028323767852191, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
   m_PrefabInstance: {fileID: 1794884330}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794884332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1450156672844710286, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
+  m_PrefabInstance: {fileID: 1794884330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b4d9a73a7f84245ba6bb8385de9965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1802526435
 PrefabInstance:
   m_ObjectHideFlags: 0
