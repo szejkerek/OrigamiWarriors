@@ -7,9 +7,8 @@ public class Character : IDisplayable
 {
     public string IconGUID { get; }
     public string DisplayName { get; }
-    public CharacterStats Stats { get; }
+    public CharacterStats BaseStats { get; set; }
     public GameObject characterGameObject { get; }
-    public List<UpgradableStat> upgradableStats { get; }
 
     public Item weapon;
     public Item armor;
@@ -26,24 +25,17 @@ public class Character : IDisplayable
         this.IconGUID = characterData.Icon.AssetGUID;
         this.DisplayName = characterData.DisplayName;
         this.characterGameObject = characterData.CharacterGameObject;
-        this.upgradableStats = characterData.CreateStats();
         this.weapon = new Item(characterData.Weapon.AssetGUID);
         this.armor = new Item(characterData.Armor.AssetGUID);
         this.skill = new Item(characterData.Skill.AssetGUID);
-    }    
-}
+        this.BaseStats = characterData.BaseStats;
+ 
 
-[System.Serializable]
-public class CharacterStats
-{
-    public int Damage;
-    public int Health;
-    public int Speed;
-
-    public string DisplayText()
-    {
-        return $"Damage: {Damage}\n" +
-               $"Health: {Health}\n" +
-               $"Speed: {Speed}\n";
     }
+    
+    public CharacterStats GetStats()
+    {
+        return BaseStats + weapon.itemData.StatsModifiers + armor.itemData.StatsModifiers + skill.itemData.StatsModifiers;
+    }
+ 
 }

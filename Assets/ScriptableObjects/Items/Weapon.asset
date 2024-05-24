@@ -19,11 +19,9 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <MaxLevel>k__BackingField: 18
-  <Level>k__BackingField: 0
   <Cost>k__BackingField: 0
-  <ItemType>k__BackingField: 0
-  <ClassType>k__BackingField: 0
-  <AdditionalItemInfo>k__BackingField:
-    DamageBounds:
-      _bottomBound: 0
-      _upperBound: 0
+  <StatsModifiers>k__BackingField:
+    Damage: 36
+    Health: 9
+    Speed: 8
+    CritChance: 0.13
