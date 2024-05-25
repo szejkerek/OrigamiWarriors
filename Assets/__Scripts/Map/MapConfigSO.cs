@@ -6,9 +6,13 @@ using UnityEngine;
 public class MapConfigSO : ScriptableObject
 {   
 
-    public int MapGridHeight;
+    public int mapGridWidth;
 
-    public int MapGridWidth;
+    public int extraPaths;
+
+    public int numOfStartingNodes;
+
+    public int numOfPreBossNodes;
 
     public List<MapNodeTypeSO> mapNodeTypes;
     

@@ -6,9 +6,9 @@ public class Map
 {
     public List<MapNode> mapNodes;
 
-    public List<Vector2> path;
+    public List<Point> path;
 
-    public Map(List<MapNode> mapNodes, List<Vector2> path)
+    public Map(List<MapNode> mapNodes, List<Point> path)
     {
         this.mapNodes = mapNodes;
         this.path = path;

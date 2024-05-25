@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cd504f5534e06e4995447a940815a0b, type: 3}
-  m_Name: Boss
+  m_Name: Weapon Reroll
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 0}
-  <MapNodeType>k__BackingField: 6
+  <MapNodeType>k__BackingField: 1

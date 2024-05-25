@@ -12,22 +12,15 @@ public class MapManager : MonoBehaviour
     {
         currentMap = MapGenerator.CreateMap(config);
         mapUI.ShowMapLayer(currentMap, config);
-       
-
-        
-
-
-        
-
-        
         
     }
 
     public void DrawMap()
     {
-        currentMap.path.Add(currentMap.mapNodes[currentMap.mapNodes.Count - 1].locationOnMap);
-        MapGenerator.UpdateMap(currentMap, config);
-        mapUI.ShowMapLayer(currentMap, config);
+        //Ograniczenie do max u¿yæ gdzieœ
+        //currentMap.path.Add(currentMap.mapNodes[currentMap.mapNodes.Count - 1].locationOnMap);
+        //MapGenerator.UpdateMap(currentMap, config);
+        //mapUI.ShowMapLayer(currentMap, config);
     }
 
 }

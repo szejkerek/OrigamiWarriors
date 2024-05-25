@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class MapLayer
 {
-    public int minOutGoing;
+    public int minNumberOfNodes;
 
-    public int maxOutGoing;
+    public int maxNumberOfNodes;
 
     public List<MapNodeTypeProbability> mapNodeTypesProbability;
 

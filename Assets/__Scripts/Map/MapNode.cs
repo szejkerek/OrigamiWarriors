@@ -1,29 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 public class MapNode
 {
     public Vector2 position;
  
-    public Vector2 locationOnMap;
+    public Point locationOnMap;
 
-    public List<Vector2> outNodesLocations = new List<Vector2>();
+    public List<Point> outNodesLocations = new List<Point>();
+    
+    public List<Point> inNodesLocations = new List<Point>();
 
     public MapNodeType type;
 
-    public MapNode(Vector2 locationOnMap, MapNodeType type)
+    public MapNode(Point locationOnMap, MapNodeType type)
     {
         this.locationOnMap = locationOnMap;
         this.type = type;
     }
 
-    public void AddOutNode(Vector2 outNodesLocation)
+    public void AddOutNode(Point outNodesLocation)
     {
         if (outNodesLocations.Any(element => element.Equals(outNodesLocation)))
             return;
 
         outNodesLocations.Add(outNodesLocation);
     }
+
+    public void AddInNode(Point inNodesLocation)
+    {
+        if (inNodesLocations.Any(element => element.Equals(inNodesLocation)))
+            return;
+
+        inNodesLocations.Add(inNodesLocation);
+    }
+
+    public void RemoveOutNode(Point p)
+    {
+        outNodesLocations.RemoveAll(element => element.Equals(p));
+    }
+    public void RemoveInNode(Point p)
+    {
+        inNodesLocations.RemoveAll(element => element.Equals(p));
+    }
+
+
+
+    public bool HasNoConnections()
+    {
+        return inNodesLocations.Count == 0 && outNodesLocations.Count == 0;
+    }
+
+
 }

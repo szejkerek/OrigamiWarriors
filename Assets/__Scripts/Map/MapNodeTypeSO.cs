@@ -4,11 +4,13 @@ using UnityEngine;
 
 public enum MapNodeType
 {
-    Enemy,
-    RestSite,
-    Store,
-    Boss,
-    Mystery
+    Arena,
+    WeaponReroll,
+    Forge,
+    Armory,
+    Experience,
+    Temple,
+    Boss
 }
 
 
