@@ -12,16 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c9f89dd82d3f84b96e9dbaa649c1d3, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Armor
+  <DisplayName>k__BackingField: Miecz
   <Icon>k__BackingField:
     m_AssetGUID: 264b0d4ffdbaf7049816b7ad3031eca1
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 0
-  <Cost>k__BackingField: 0
+  <MaxLevel>k__BackingField: 5
+  <Cost>k__BackingField: 10
   <StatsModifiers>k__BackingField:
     Damage: 5
     Health: 5
     Speed: 3
     CritChance: 0.42
+  <StatsModifiersPerLevel>k__BackingField:
+    Damage: 82
+    Health: 0
+    Speed: 0
+    CritChance: 0
