@@ -20,7 +20,7 @@
 
     public int CostFunction()
     {
-        return Cost * Level;
+        return Cost * (Level+1);
     }
 
     public CharacterStats GetStats()
