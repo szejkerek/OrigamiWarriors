@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-[CreateAssetMenu(fileName = "NewCharacter", menuName = "CharacterCreator/Character", order = 0)]
+[CreateAssetMenu(fileName = "NewCharacter", menuName = "Character/Character", order = 0)]
 public class CharacterSO : ScriptableObject
 {
     [field: SerializeField] public AssetReference Icon { private set; get; }

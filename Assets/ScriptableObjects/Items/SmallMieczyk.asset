@@ -9,29 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
-  m_Name: Armor
+  m_Script: {fileID: 11500000, guid: 1fd2a430ff5faf4479d992ec78ba4753, type: 3}
+  m_Name: SmallMieczyk
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Armor
+  <DisplayName>k__BackingField: Small mieczyk
   <Icon>k__BackingField:
-    m_AssetGUID: 7e786942b2458c544a34b67ca7f51350
+    m_AssetGUID: fc0cc201e75ff91459b58bceff9dc7a4
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 10
-  <Cost>k__BackingField: 1
+  <MaxLevel>k__BackingField: 3
+  <Cost>k__BackingField: 5
   <NextItem>k__BackingField:
-    m_AssetGUID: 
+    m_AssetGUID: 8dd0c2db3a2e1074fa8e5c15b6e0c4a3
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 0
-    Health: 68
+    Damage: 15
+    Health: 0
     Speed: 0
-    CritChance: 0
+    CritChance: 0.07
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 0
-    Health: 9
+    Damage: 3
+    Health: 0
     Speed: 0
-    CritChance: 0
+    CritChance: 0.004
+  <Range>k__BackingField: 4.04

@@ -25,12 +25,12 @@ MonoBehaviour:
     Speed: 28
     CritChance: 0.22
   <Weapon>k__BackingField:
-    m_AssetGUID: cfc28e7a4a3cc9640bccc23f9882305c
+    m_AssetGUID: 7700d0574331b52439c49bfab7dec3b2
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <Armor>k__BackingField:
-    m_AssetGUID: cfc28e7a4a3cc9640bccc23f9882305c
+    m_AssetGUID: 46473a7d0a166fa4b922f979e1591588
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

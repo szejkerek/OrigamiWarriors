@@ -9,29 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
-  m_Name: Armor
+  m_Script: {fileID: 11500000, guid: 1fd2a430ff5faf4479d992ec78ba4753, type: 3}
+  m_Name: OgromnySword
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Armor
+  <DisplayName>k__BackingField: OgromnySword
   <Icon>k__BackingField:
-    m_AssetGUID: 7e786942b2458c544a34b67ca7f51350
+    m_AssetGUID: d8bd1ea9266df8c4b8b20f232f8100fa
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 10
-  <Cost>k__BackingField: 1
+  <MaxLevel>k__BackingField: 5
+  <Cost>k__BackingField: 10
   <NextItem>k__BackingField:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 0
-    Health: 68
+    Damage: 30
+    Health: 0
     Speed: 0
-    CritChance: 0
+    CritChance: 0.1
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 0
-    Health: 9
+    Damage: 5
+    Health: 0
     Speed: 0
-    CritChance: 0
+    CritChance: 0.01
+  <Range>k__BackingField: 5
