@@ -27,26 +27,27 @@ public class UpgradeableComponent : MonoBehaviour
     private void TryUpgrade()
     {
         int cost = upgradable.CostFunction();
-        if(upgradable.Level < upgradable.MaxLevel)
+
+        if (upgradable.Level >= upgradable.MaxLevel)
         {
-            if (SavableDataManager.Instance.data.playerResurces.TryRemoveMoney(cost))
-            {
-                upgradable.Level++;
-                OnUpgrade?.Invoke();
-            }
-            else
-            {
-                Debug.LogWarning($"Not enough money to upgrade {upgradable}");
-            }
+            Debug.LogWarning($"{upgradable} is already maxed, cannot upgrade it.");
+            UpdateView();
+            return;
+        }
+
+        if (SavableDataManager.Instance.data.playerResources.TryRemoveMoney(cost))
+        {
+            upgradable.Level++;
+            OnUpgrade?.Invoke();
         }
         else
         {
-            Debug.LogWarning($"{upgradable} is already maxed, cannot upgrade it.");
+            Debug.LogWarning($"Not enough money to upgrade {upgradable}");
         }
-       
 
         UpdateView();
     }
+
 
     public void Init(IUpgradable upgradable)
     {

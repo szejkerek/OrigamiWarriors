@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class SaveableData 
 {
-    public ResourcesHolder playerResurces;
+    public ResourcesHolder playerResources;
     public List<Character> characters = new List<Character>();
 }

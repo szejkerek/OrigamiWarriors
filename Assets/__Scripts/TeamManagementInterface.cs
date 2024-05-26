@@ -20,7 +20,7 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     }
     private void Start()
     {
-        money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
+        money.text = SavableDataManager.Instance.data.playerResources.Money.ToString();
         ResourcesHolder.OnResourcesUpdated += UpdateMoneyDisplay;
         returnBtn.onClick.AddListener(ReturnBehaviour);
         FillStartingCharacters();
@@ -35,12 +35,12 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
 
     void UpdateMoneyDisplay()
     {
-        money.text = SavableDataManager.Instance.data.playerResurces.Money.ToString();
+        money.text = SavableDataManager.Instance.data.playerResources.Money.ToString();
     }
 
     private void AddMoney()
     {
-        SavableDataManager.Instance.data.playerResurces.AddMoney(500);
+        SavableDataManager.Instance.data.playerResources.AddMoney(500);
     }
 
     private void FillStartingCharacters()
