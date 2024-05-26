@@ -1,12 +1,7 @@
-
 using GordonEssentials.Types;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting.FullSerializer;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEditor.Experimental.GraphView;
 using Unity.Mathematics;
 
 public static class MapGenerator
@@ -36,7 +31,7 @@ public static class MapGenerator
         RemoveCrossConnections();
 
         List<MapNode> nodes = mapNodes.SelectMany(n => n).Where(n => n.inNodesLocations.Count > 0 || n.outNodesLocations.Count > 0).ToList();
-        return new Map(nodes, new List<Point>());
+        return new Map(config.name,nodes, new List<Point>());
     }
 
 
@@ -190,7 +185,7 @@ public static class MapGenerator
                 if (topRight == null || topRight.HasNoConnections()) continue;
 
                 if (!node.outNodesLocations.Any(element => element.Equals(topRight.locationOnMap))) continue;
-                if (!right.inNodesLocations.Any(element => element.Equals(top.locationOnMap))) continue;
+                if (!right.outNodesLocations.Any(element => element.Equals(top.locationOnMap))) continue;
 
                 node.AddOutNode(top.locationOnMap);
                 top.AddInNode(node.locationOnMap);

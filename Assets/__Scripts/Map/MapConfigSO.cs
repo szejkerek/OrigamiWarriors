@@ -4,8 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewMapConfig", menuName = "Map/MapConfig")]
 public class MapConfigSO : ScriptableObject
-{   
-
+{
     public int mapGridWidth;
 
     public int extraPaths;

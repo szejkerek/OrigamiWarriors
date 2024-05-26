@@ -25,64 +25,44 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 496f974edd21929448adbe9b0cf1524f, type: 2}
   - {fileID: 11400000, guid: 4c670f1448d9daa4fbec99360f6c6495, type: 2}
   mapLayers:
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+  - mapNodeTypesProbability:
     - mapNodeType: 0
       probability: 1
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+  - mapNodeTypesProbability:
     - mapNodeType: 0
       probability: 0.8
     - mapNodeType: 2
       probability: 0.2
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+  - mapNodeTypesProbability:
     - mapNodeType: 0
       probability: 0.5
     - mapNodeType: 2
       probability: 0.2
     - mapNodeType: 1
       probability: 0.3
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
-    - mapNodeType: 6
+  - mapNodeTypesProbability:
+    - mapNodeType: 2
       probability: 1
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+  - mapNodeTypesProbability:
     - mapNodeType: 1
       probability: 0.578
-    - mapNodeType: 6
+    - mapNodeType: 4
       probability: 0.456
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+  - mapNodeTypesProbability:
     - mapNodeType: 3
       probability: 1
-    - mapNodeType: 6
-      probability: 0.564
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+    - mapNodeType: 2
+      probability: 0.119
+  - mapNodeTypesProbability:
     - mapNodeType: 3
       probability: 1
-    - mapNodeType: 6
+    - mapNodeType: 1
       probability: 0.564
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
+  - mapNodeTypesProbability:
     - mapNodeType: 3
       probability: 1
-    - mapNodeType: 6
+    - mapNodeType: 4
       probability: 0.564
-  - minNumberOfNodes: 0
-    maxNumberOfNodes: 0
-    mapNodeTypesProbability:
-    - mapNodeType: 3
+  - mapNodeTypesProbability:
+    - mapNodeType: 6
       probability: 1
-    - mapNodeType: 6
-      probability: 0.564

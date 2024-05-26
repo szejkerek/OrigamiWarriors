@@ -5,9 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class MapLayer
 {
-    public int minNumberOfNodes;
-
-    public int maxNumberOfNodes;
 
     public List<MapNodeTypeProbability> mapNodeTypesProbability;
 
@@ -31,8 +28,7 @@ public class MapLayer
             }
         }
 
-        // This should not be reached if probabilities are set correctly
-        return MapNodeType.Boss;
+        return MapNodeType.Arena;
     }
 
 }
