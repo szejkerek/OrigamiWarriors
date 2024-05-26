@@ -16,7 +16,7 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
 
     private void ReturnBehaviour()
     {
-        SceneLoader.Instance.LoadScene(SceneConstants.ChooseMapScene);
+        SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
     }
     private void Start()
     {

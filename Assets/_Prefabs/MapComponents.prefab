@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c0b61efa08b224aa29ccd17dfb4524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 46fb7c6e566c1cc4c89ca477642a8c89, type: 2}
+  configIndex: 0
+  allMapConfigs:
+  - {fileID: 11400000, guid: 46fb7c6e566c1cc4c89ca477642a8c89, type: 2}
   mapUI: {fileID: 92761192886802277}
 --- !u!1 &8206578306863837445
 GameObject:
@@ -91,8 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapManager: {fileID: 2837546399791382084}
-  allMapConfigs:
-  - {fileID: 11400000, guid: 46fb7c6e566c1cc4c89ca477642a8c89, type: 2}
+  mapConfigs: {fileID: 0}
   contentParent: {fileID: 0}
   mapNodeUIPrefab: {fileID: 4011797533409929308, guid: b06c64e4a68b30245856818c61d8da49, type: 3}
   rectTransform: {fileID: 0}

@@ -19,6 +19,6 @@ public class MenuInterface : MonoBehaviour
 
     private void StartGame()
     {
-        SceneLoader.Instance.LoadScene(SceneConstants.ChooseMapScene);
+        SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
     }
 }
