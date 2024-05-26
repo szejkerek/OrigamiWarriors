@@ -1,4 +1,6 @@
-﻿public class Item : IDisplayable, IUpgradable
+﻿using UnityEngine.AddressableAssets;
+
+public class Item : IDisplayable
 {
     public string IconGUID { get; }
     public string DisplayName { get; }
@@ -28,4 +30,13 @@
         return itemData.CalculateLevelAdditions(this.Level);
     }
 
+    public Item TryGetNextItem()
+    {
+        if(string.IsNullOrEmpty(itemData.NextItem.AssetGUID))
+        {
+            return null;
+        }
+
+        return new Item(itemData.NextItem.AssetGUID);
+    }
 }

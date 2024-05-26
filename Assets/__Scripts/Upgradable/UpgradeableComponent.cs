@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class UpgradeableComponent : MonoBehaviour
 {
     public static Action OnUpgrade;
+    public Action OnMaxedLevel;
+
     [SerializeField] UpgradableSegment SegmentPrefab;
     [SerializeField] Transform segmentsParent;
     [SerializeField] Button upgradeButton;
 
-    IUpgradable upgradable;
+    Item upgradable;
     List<UpgradableSegment> segments = new List<UpgradableSegment>();
 
     private void Awake()
@@ -30,7 +32,6 @@ public class UpgradeableComponent : MonoBehaviour
 
         if (upgradable.Level >= upgradable.MaxLevel)
         {
-            Debug.LogWarning($"{upgradable} is already maxed, cannot upgrade it.");
             UpdateView();
             return;
         }
@@ -38,6 +39,12 @@ public class UpgradeableComponent : MonoBehaviour
         if (SavableDataManager.Instance.data.playerResources.TryRemoveMoney(cost))
         {
             upgradable.Level++;
+
+            if (upgradable.Level == upgradable.MaxLevel) 
+            {
+                OnMaxedLevel?.Invoke();
+            }
+
             OnUpgrade?.Invoke();
         }
         else
@@ -49,11 +56,18 @@ public class UpgradeableComponent : MonoBehaviour
     }
 
 
-    public void Init(IUpgradable upgradable)
+    public void Init(Item upgradable)
     {
+        upgradeButton.gameObject.SetActive(true);
+
         this.upgradable = upgradable;
         CreateSegments();
         UpdateView();
+    }
+
+    public void BlockUpgrades()
+    {
+        upgradeButton.gameObject.SetActive(false);
     }
 
     void CreateSegments()
@@ -86,4 +100,6 @@ public class UpgradeableComponent : MonoBehaviour
             segments[i].Activate();
         }
     }
+
+
 }
