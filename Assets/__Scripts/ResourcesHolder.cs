@@ -1,19 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Unity.VisualScripting;
 
 [Serializable]
 public class ResourcesHolder
 {
-    public static Action OnResourcesUpdated;
+    public static Action<ResourcesHolder> OnResourcesUpdated;
     public int Money {  get; private set; }
     public int Expirience {  get; private set; }
 
     public void AddMoney(int money)
     {
         Money += money;
-        OnResourcesUpdated?.Invoke();
+        OnResourcesUpdated?.Invoke(this);
     }
 
     public bool TryRemoveMoney(int money)
@@ -22,13 +20,13 @@ public class ResourcesHolder
             return false; 
 
         Money -= money;
-        OnResourcesUpdated?.Invoke();
+        OnResourcesUpdated?.Invoke(this);
         return true;
     }
     public void AddExpirience(int exp)
     {
         Expirience += exp;
-        OnResourcesUpdated?.Invoke();
+        OnResourcesUpdated?.Invoke(this);
     }
 
 }

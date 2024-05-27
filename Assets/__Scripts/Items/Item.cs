@@ -2,11 +2,11 @@
 
 public class Item : IDisplayable
 {
-    public string IconGUID { get; }
-    public string DisplayName { get; }
-    public int MaxLevel { get; }
+    public string IconGUID { get; set; }
+    public string DisplayName { get; set; }
+    public int MaxLevel { get; set; }
     public int Level { get; set; }
-    public int Cost { get; }
+    public int Cost { get; set; }
     public ItemSO itemData {  get; }
     string itemDataGuid;
 

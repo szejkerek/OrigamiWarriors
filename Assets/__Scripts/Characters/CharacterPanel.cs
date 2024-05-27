@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterPanel : MonoBehaviour
 {
-    Character character;
+    public Character CurrentCharacter;
+
     [SerializeField] TMP_Text characterName;
 
     [SerializeField] StatsPanel statsPanel;
@@ -13,13 +14,13 @@ public class CharacterPanel : MonoBehaviour
 
     public void SetupView(Character character)
     {
-        this.character = character;
+        CurrentCharacter = character;
         characterName.text = character.DisplayName;
         statsPanel.Init(character);
 
         for (int i = 0; i < 3; i++)
         {
-            itemSlot[i].Init(character.items[i]);
+            itemSlot[i].Init(character.Items[i]);
 
         }
     }

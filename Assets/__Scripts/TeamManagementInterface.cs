@@ -1,18 +1,21 @@
 using GordonEssentials;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class TeamManagementInterface : Singleton<TeamManagementInterface>
 {
-    public Character currentCharacter;
-    [SerializeField] CharacterPanel characterPanel;
-    [SerializeField] List<CharacterView> charactersSlot;
+    public CharacterPanel CharacterPanel;
+
     [SerializeField] TMP_Text money;
     [SerializeField] Button moneyButton;
     [SerializeField] Button returnBtn;
 
+    [SerializeField] CharacterView CharacterViewPrefab;
+    [SerializeField] Transform charactersPartent;
 
     private void ReturnBehaviour()
     {
@@ -20,42 +23,48 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     }
     private void Start()
     {
-        money.text = SavableDataManager.Instance.data.playerResources.Money.ToString();
-        ResourcesHolder.OnResourcesUpdated += UpdateMoneyDisplay;
+        ResourcesHolder.OnResourcesUpdated += UpdateResourcesDisplay;
         returnBtn.onClick.AddListener(ReturnBehaviour);
+        CharacterPanel.gameObject.SetActive(false);
+
+
+        UpdateResourcesDisplay(SavableDataManager.Instance.data.playerResources);
         FillStartingCharacters();
-        moneyButton.onClick.AddListener(AddMoney);
-        characterPanel.gameObject.SetActive(false);
+
+        //Dev
+        moneyButton.onClick.AddListener(() => SavableDataManager.Instance.data.playerResources.AddMoney(500));
     }
 
     private void OnDisable()
     {
-        ResourcesHolder.OnResourcesUpdated -= UpdateMoneyDisplay;
+        ResourcesHolder.OnResourcesUpdated -= UpdateResourcesDisplay;
     }
 
-    void UpdateMoneyDisplay()
+    private void UpdateResourcesDisplay(ResourcesHolder holder)
     {
-        money.text = SavableDataManager.Instance.data.playerResources.Money.ToString();
-    }
-
-    private void AddMoney()
-    {
-        SavableDataManager.Instance.data.playerResources.AddMoney(500);
+        money.text = holder.Money.ToString();
     }
 
     private void FillStartingCharacters()
     {
-        List<Character> savedCharacters = SavableDataManager.Instance.data.characters;
-        for (int i = 0; i < charactersSlot.Count && i < savedCharacters.Count; i++)
+        Team currentTeam = SavableDataManager.Instance.data.team;
+        SpawnAndSetCharacter(currentTeam.General);
+
+        foreach (var member in currentTeam.TeamMembers)
         {
-            charactersSlot[i].SetCharacter(savedCharacters[i]);
+            SpawnAndSetCharacter(member);
         }
+    }
+
+    void SpawnAndSetCharacter(Character character)
+    {
+        CharacterView characterView = Instantiate(CharacterViewPrefab, charactersPartent);
+        characterView.SetCharacter(character);
     }
 
     public void SetCurrentCharacterDisplay(Character character)
     {
-        currentCharacter = character;
-        characterPanel.SetupView(character);
-        characterPanel.gameObject.SetActive(true);
+        CharacterPanel.SetupView(character);
+        CharacterPanel.gameObject.SetActive(true);
     }
 }

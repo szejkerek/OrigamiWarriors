@@ -21,6 +21,17 @@ public class UpgradeableComponent : MonoBehaviour
         ResourcesHolder.OnResourcesUpdated += UpdateView;
     }
 
+    private void UpdateView(ResourcesHolder holder = null)
+    {
+        if (segments.Count == 0)
+            return;
+
+        for (int i = 0; i < upgradable.Level; i++)
+        {
+            segments[i].Activate();
+        }
+    }
+
     private void OnDestroy()
     {
         ResourcesHolder.OnResourcesUpdated -= UpdateView;
@@ -89,17 +100,4 @@ public class UpgradeableComponent : MonoBehaviour
         }
         segments.Clear();
     }
-
-    void UpdateView()
-    {
-        if (segments.Count == 0)
-            return;
-
-        for (int i = 0; i < upgradable.Level; i++)
-        {
-            segments[i].Activate();
-        }
-    }
-
-
 }

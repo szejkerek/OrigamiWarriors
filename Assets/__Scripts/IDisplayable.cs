@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDisplayable
 {
-    public string IconGUID { get; }
-    public string DisplayName { get; }
+    public string IconGUID { get; set; }
+    public string DisplayName { get; set; }
 }

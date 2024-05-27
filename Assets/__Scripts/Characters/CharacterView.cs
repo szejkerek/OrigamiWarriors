@@ -24,7 +24,7 @@ public class CharacterView : MonoBehaviour
 
     void ResetView()
     {
-        TeamManagementInterface.Instance.currentCharacter = null;
+        TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter = null;
         character = null;
         characterIcon.sprite = null;
         returnBtn.gameObject.SetActive(false);
@@ -38,10 +38,10 @@ public class CharacterView : MonoBehaviour
         {
             TeamManagementInterface.Instance.SetCurrentCharacterDisplay(character);
         }
-        else
-        {
-            SetCharacter(SavableDataManager.Instance.data.characters.SelectRandomElement());
-        }
+        //else
+        //{
+        //    SetCharacter(SavableDataManager.Instance.data.characters.SelectRandomElement());
+        //}
     }
 
     public void SetCharacter(IDisplayable character)

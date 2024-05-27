@@ -28,14 +28,14 @@ public class ItemView : MonoBehaviour
         Item item = currentItem.TryGetNextItem();
         if (item != null)
         {
-            Character currentCharacter = TeamManagementInterface.Instance.currentCharacter;
+            Character currentCharacter = TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter;
             if(currentCharacter != null)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (currentCharacter.items[i] == currentItem)
+                    if (currentCharacter.Items[i] == currentItem)
                     {
-                        currentCharacter.items[i] = item;
+                        currentCharacter.Items[i] = item;
                     }
                 }
                 Init(item);

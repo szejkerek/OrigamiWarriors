@@ -6,16 +6,12 @@ using UnityEngine;
 public class SavableDataManager : Singleton<SavableDataManager>
 {
     [HideInInspector] public SaveableData data;
-    public List<AssetReferenceCharacterSO> startingCharacters = new List<AssetReferenceCharacterSO>();
+
+    [SerializeField] TeamSO team;
 
     protected override void Awake()
     {
         base.Awake();
-        foreach (var member in startingCharacters)
-        {
-            data.characters.Add(new Character(member.AssetGUID));
-        }
+        data = new SaveableData(team);
     }
-
-
 }

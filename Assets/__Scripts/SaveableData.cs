@@ -6,5 +6,11 @@ using UnityEngine;
 public class SaveableData 
 {
     public ResourcesHolder playerResources;
-    public List<Character> characters = new List<Character>();
+    public Team team;
+
+    public SaveableData(TeamSO startingTeam)
+    {
+        team = new Team(startingTeam);
+        playerResources = new ResourcesHolder();
+    }
 }

@@ -311,13 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290cf4dde344b074da4216ca92d753f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {}
-  startingCharacters:
-  - m_AssetGUID: 5f11a0d9c73033148a0baa4648eb580a
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: bb87217813ed79441a5726e927fbdf66
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 1
+  data:
+    team:
+      TeamMembers: []
+  team: {fileID: 11400000, guid: 38aea96828b59ea4b9bd9e26ffb6ec40, type: 2}
