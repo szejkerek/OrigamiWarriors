@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
-public class ItemManagementView : MonoBehaviour
+public class ItemView : MonoBehaviour
 {
     [SerializeField] Image icon;
     [SerializeField] TMP_Text displayName;
@@ -27,7 +28,18 @@ public class ItemManagementView : MonoBehaviour
         Item item = currentItem.TryGetNextItem();
         if (item != null)
         {
-            Init(item);
+            Character currentCharacter = TeamManagementInterface.Instance.currentCharacter;
+            if(currentCharacter != null)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (currentCharacter.items[i] == currentItem)
+                    {
+                        currentCharacter.items[i] = item;
+                    }
+                }
+                Init(item);
+            }
         }
         else
         {
@@ -50,7 +62,25 @@ public class ItemManagementView : MonoBehaviour
     void SetupDisplay(IDisplayable displayable)
     {
         displayName.text = displayable.DisplayName;
-        new AssetReference(displayable.IconGUID).LoadAssetAsync<Sprite>().Completed += handle => { icon.sprite = handle.Result; };
+
+        Color iconColor = icon.color;
+        iconColor.a = 0;
+        icon.color = iconColor;
+
+        var iconReference = new AssetReference(displayable.IconGUID);
+        iconReference.LoadAssetAsync<Sprite>().Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                icon.sprite = handle.Result;
+                iconColor.a = 1;
+                icon.color = iconColor;
+            }
+            else
+            {
+                Debug.LogError("Failed to load icon sprite.");
+            }
+        };
     }
 
     public void RestartDisplay()

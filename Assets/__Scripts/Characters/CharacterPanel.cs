@@ -9,17 +9,18 @@ public class CharacterPanel : MonoBehaviour
 
     [SerializeField] StatsPanel statsPanel;
 
-    [SerializeField] ItemManagementView weaponSlot;
-    [SerializeField] ItemManagementView armorSlot;
-    [SerializeField] ItemManagementView skillSlot;
+    [SerializeField] ItemView[] itemSlot = new ItemView[3];
 
     public void SetupView(Character character)
     {
         this.character = character;
         characterName.text = character.DisplayName;
         statsPanel.Init(character);
-        weaponSlot.Init(character.weapon);
-        armorSlot.Init(character.armor);
-        skillSlot.Init(character.skill);
+
+        for (int i = 0; i < 3; i++)
+        {
+            itemSlot[i].Init(character.items[i]);
+
+        }
     }
 }

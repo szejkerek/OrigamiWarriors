@@ -10,9 +10,7 @@ public class Character : IDisplayable
     public CharacterStats BaseStats { get; set; }
     public GameObject characterGameObject { get; }
 
-    public Item weapon;
-    public Item armor;
-    public Item skill;
+    public List<Item> items = new List<Item>(3);
 
     CharacterSO characterData;
     string characterGuid;
@@ -25,9 +23,9 @@ public class Character : IDisplayable
         this.IconGUID = characterData.Icon.AssetGUID;
         this.DisplayName = characterData.DisplayName;
         this.characterGameObject = characterData.CharacterGameObject;
-        this.weapon = new Item(characterData.Weapon.AssetGUID);
-        this.armor = new Item(characterData.Armor.AssetGUID);
-        this.skill = new Item(characterData.Skill.AssetGUID);
+        this.items.Add( new Item(characterData.Weapon.AssetGUID));
+        this.items.Add(new Item(characterData.Armor.AssetGUID));
+        this.items.Add(new Item(characterData.Skill.AssetGUID));
         this.BaseStats = characterData.BaseStats;
  
 
@@ -35,7 +33,12 @@ public class Character : IDisplayable
     
     public CharacterStats GetStats()
     {
-        return BaseStats + weapon.GetStats() + armor.GetStats() + skill.GetStats();
+        CharacterStats stats = new CharacterStats();
+        foreach(Item item in items)
+        {
+            stats += item.GetStats();
+        }
+        return BaseStats + stats;
     }
- 
+     
 }
