@@ -33,4 +33,9 @@ public class Team
         this.General = General;
         this.TeamMembers = TeamMembers;
     }
+
+    public void KillCharacter(Character character)
+    {
+        TeamMembers.Remove(character);
+    }
 }

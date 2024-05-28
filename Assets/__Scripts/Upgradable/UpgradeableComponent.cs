@@ -60,7 +60,7 @@ public class UpgradeableComponent : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Not enough money to upgrade {upgradable}");
+            Debug.LogWarning($"Not enough colectedMoney to upgrade {upgradable}");
         }
 
         UpdateView();

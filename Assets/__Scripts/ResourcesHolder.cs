@@ -29,4 +29,8 @@ public class ResourcesHolder
         OnResourcesUpdated?.Invoke(this);
     }
 
+    internal void AddMoney(object calculateMoney)
+    {
+        throw new NotImplementedException();
+    }
 }
