@@ -1,11 +1,22 @@
+using GordonEssentials.Serialization;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Map 
+[Serializable]
+public class Map
 {
     public List<MapNode> mapNodes;
     public List<Point> path;
     public string configName;
+
+    public Map()
+    {
+        this.mapNodes = null;
+        this.path = null;
+        this.configName = "";
+    }
 
     public Map(string configName, List<MapNode> mapNodes, List<Point> path)
     {
@@ -13,9 +24,14 @@ public class Map
         this.path = path;
         this.configName = configName;
     }
+
     public MapNode GetNode(Point point)
     {
         return mapNodes.FirstOrDefault(n => n.locationOnMap.Equals(point));
     }
 
+    public void Save()
+    {
+        SaveManager<Map>.Save(this, configName + ".json");
+    }
 }

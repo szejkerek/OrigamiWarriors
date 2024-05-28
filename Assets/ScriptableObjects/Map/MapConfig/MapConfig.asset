@@ -35,7 +35,7 @@ MonoBehaviour:
       probability: 0.2
   - mapNodeTypesProbability:
     - mapNodeType: 0
-      probability: 0.8
+      probability: 1
     - mapNodeType: 2
       probability: 0.1
     - mapNodeType: 0

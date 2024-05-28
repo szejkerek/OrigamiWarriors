@@ -13,6 +13,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         locked = lockAfterSelecting;
         mapManager.currentMap.path.Add(mapNode.mapNode.locationOnMap);
         //TODO: SAVE MAP
+        mapManager.currentMap.Save();
         view.SetAttainableNodes();
         view.SetLineColors();
 

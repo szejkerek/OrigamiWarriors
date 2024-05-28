@@ -1,5 +1,6 @@
 using System;
 
+[Serializable]
 public class Point : IEquatable<Point>
 {
     public int x;
