@@ -1,5 +1,5 @@
 using GordonEssentials;
-
+using System;
 
 public class MapPlayerTracker : Singleton<MapPlayerTracker>
 {
@@ -17,8 +17,27 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         view.SetAttainableNodes();
         view.SetLineColors();
 
-        //TODO ADD Delay, ANIMATION
-        mapNode.LoadNodeLevel();
+
+        switch (mapNode.mapNode.type)
+        {
+            case MapNodeType.Arena:
+                SceneLoader.Instance.LoadScene(SceneConstants.Level_4);
+                break;
+            case MapNodeType.Armory:
+                break;
+            case MapNodeType.Boss:
+                break;
+            case MapNodeType.Experience:
+                break;
+            case MapNodeType.Forge:
+                break;
+            case MapNodeType.Temple:
+                break;
+            case MapNodeType.WeaponReroll:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
 }

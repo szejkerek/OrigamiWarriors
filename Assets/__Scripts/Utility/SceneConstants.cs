@@ -6,4 +6,5 @@ public static class SceneConstants
     public const int Level_1 = 3;
     public const int Level_2 = 4;
     public const int Level_3 = 5;
+    public const int Level_4 = 6;
 }

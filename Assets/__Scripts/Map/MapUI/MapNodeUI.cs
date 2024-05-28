@@ -108,27 +108,6 @@ public class MapNodeUI : MonoBehaviour
         //int currentIndex = levelIndex + k_startLevelIndex;
         //SceneLoader.Instance.LoadScene(currentIndex);
 
-        Debug.Log("Entering node of type: " + mapNode.type);
-
-        switch (mapNode.type)
-        {
-            case MapNodeType.Arena:
-                break;
-            case MapNodeType.Armory:
-                break;
-            case MapNodeType.Boss:
-                break;
-            case MapNodeType.Experience:
-                break;
-            case MapNodeType.Forge:
-                break;
-            case MapNodeType.Temple:
-                break;
-            case MapNodeType.WeaponReroll:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
 
     }
 
