@@ -1,4 +1,4 @@
-using GordonEssentials.Types;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -6,20 +6,31 @@ using UnityEngine.UI;
 
 public class CharacterView : MonoBehaviour
 {
+    public static Action<Character> OnCharacterSelected;
     [SerializeField] Button characterBtn;
     [SerializeField] Button returnBtn;
     [SerializeField] Image characterIcon;
     [SerializeField] TMP_Text characterName;
 
     [SerializeField] GameObject textDisplay;
+    [SerializeField] GameObject selectedBorder;
 
     Character character;
 
     private void Awake()
     {
         ResetView();
-        characterBtn.onClick.AddListener(CharacterBehavior);
+        selectedBorder.SetActive(false);
+        characterBtn.onClick.AddListener(SelectCharacter);
+        OnCharacterSelected += (_) => selectedBorder.SetActive(false);
+
         returnBtn.onClick.AddListener(ResetView);
+    }
+
+    public void SelectCharacter()
+    {
+        OnCharacterSelected?.Invoke(character); 
+        selectedBorder.SetActive(true);
     }
 
     void ResetView()
@@ -32,17 +43,7 @@ public class CharacterView : MonoBehaviour
         textDisplay.gameObject.SetActive(false);
     }
 
-    private void CharacterBehavior()
-    {
-        if (character != null)
-        {
-            TeamManagementInterface.Instance.SetCurrentCharacterDisplay(character);
-        }
-        //else
-        //{
-        //    SetCharacter(SavableDataManager.Instance.data.characters.SelectRandomElement());
-        //}
-    }
+    
 
     public void SetCharacter(IDisplayable character)
     {

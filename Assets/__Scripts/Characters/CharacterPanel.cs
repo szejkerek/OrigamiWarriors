@@ -11,9 +11,16 @@ public class CharacterPanel : MonoBehaviour
     [SerializeField] StatsPanel statsPanel;
 
     [SerializeField] ItemView[] itemSlot = new ItemView[3];
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+        CharacterView.OnCharacterSelected += SetupView;
+    }
 
     public void SetupView(Character character)
     {
+        gameObject.SetActive(true);
+
         CurrentCharacter = character;
         characterName.text = character.DisplayName;
         statsPanel.Init(character);

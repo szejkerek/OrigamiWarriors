@@ -16,7 +16,7 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
 
     [SerializeField] CharacterView CharacterViewPrefab;
     [SerializeField] Transform charactersPartent;
-
+    List<CharacterView> characterViews = new List<CharacterView>();
     private void ReturnBehaviour()
     {
         SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
@@ -29,9 +29,8 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
 
 
         UpdateResourcesDisplay(SavableDataManager.Instance.data.playerResources);
-        FillStartingCharacters();
+        FillCharacterSlots();
 
-        //Dev
         moneyButton.onClick.AddListener(() => SavableDataManager.Instance.data.playerResources.AddMoney(500));
     }
 
@@ -45,8 +44,9 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
         money.text = holder.Money.ToString();
     }
 
-    private void FillStartingCharacters()
+    private void FillCharacterSlots()
     {
+        characterViews.Clear();
         Team currentTeam = SavableDataManager.Instance.data.team;
         SpawnAndSetCharacter(currentTeam.General);
 
@@ -60,11 +60,11 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     {
         CharacterView characterView = Instantiate(CharacterViewPrefab, charactersPartent);
         characterView.SetCharacter(character);
+        characterViews.Add(characterView);
     }
 
     public void SetCurrentCharacterDisplay(Character character)
     {
         CharacterPanel.SetupView(character);
-        CharacterPanel.gameObject.SetActive(true);
     }
 }
