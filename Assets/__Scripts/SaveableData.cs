@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveableData 
 {
     public ResourcesHolder playerResources;
+    public LevelResults levelResults = null;
     public Team team;
 
     public SaveableData(TeamSO startingTeam)

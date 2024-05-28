@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class SavableDataManager : Singleton<SavableDataManager>
 {
-    [HideInInspector] public SaveableData data;
-
+    public SaveableData data;
     [SerializeField] TeamSO team;
 
     protected override void Awake()
