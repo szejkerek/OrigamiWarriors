@@ -32,6 +32,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27e330edddede0c4a932413c8621588e
+    m_Address: ScriptableObjects
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4e8e0464184be44092c4797b72ade72
+    m_Address: ItemIcons
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87e310ff3b5eea34492f0c76279e2ca8
+    m_Address: SpellIconsVolume_1_Free
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f09f78c0cc6a4304e994adfab4308c06, type: 2}
   m_SchemaSet:

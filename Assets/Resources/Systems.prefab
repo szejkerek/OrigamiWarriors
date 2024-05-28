@@ -312,6 +312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    money: 0
-  startingCharacters:
-  - {fileID: 11400000, guid: bb87217813ed79441a5726e927fbdf66, type: 2}
+    team:
+      TeamMembers: []
+  team: {fileID: 11400000, guid: 38aea96828b59ea4b9bd9e26ffb6ec40, type: 2}

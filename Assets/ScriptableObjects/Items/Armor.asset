@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
+  m_Name: Armor
+  m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Armor
+  <Icon>k__BackingField:
+    m_AssetGUID: 7e786942b2458c544a34b67ca7f51350
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <MaxLevel>k__BackingField: 10
+  <Cost>k__BackingField: 1
+  <NextItem>k__BackingField:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <BaseStats>k__BackingField:
+    Damage: 0
+    Health: 68
+    Speed: 0
+    CritChance: 0
+  <StatsModifiersPerLevel>k__BackingField:
+    Damage: 0
+    Health: 9
+    Speed: 0
+    CritChance: 0
