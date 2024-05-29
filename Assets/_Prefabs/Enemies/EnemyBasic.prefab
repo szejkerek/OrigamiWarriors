@@ -849,6 +849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4552435963891901332}
+  - component: {fileID: 4787363723675587641}
   m_Layer: 0
   m_Name: EnemyBasic
   m_TagString: Untagged
@@ -873,6 +874,35 @@ Transform:
   - {fileID: 2934401527670469707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &4787363723675587641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355622456719026271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e0be01b95cbffc4aa066e5ec8f6a63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMaterial: {fileID: 2100000, guid: e47930b616c1e264195a80a22fed5a2b, type: 2}
+  renderer: {fileID: 7897699025246710485}
+  transforms:
+  - {fileID: 3905626176642630451}
+  - {fileID: 3905626176910615009}
+  - {fileID: 3905626177490148106}
+  - {fileID: 3905626176947093590}
+  - {fileID: 3905626177999596075}
+  - {fileID: 3905626177496566660}
+  - {fileID: 3905626176819497988}
+  - {fileID: 3905626178088010201}
+  - {fileID: 3905626177533161008}
+  - {fileID: 3905626177361925858}
+  - {fileID: 3905626176399328322}
+  scaleModifier:
+    _bottomBound: 0.7
+    _upperBound: 1.8
 --- !u!1 &2404290122388093653
 GameObject:
   m_ObjectHideFlags: 0
