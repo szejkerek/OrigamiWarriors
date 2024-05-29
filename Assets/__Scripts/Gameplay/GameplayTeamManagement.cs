@@ -54,7 +54,15 @@ public class GameplayTeamManagement : MonoBehaviour
     {
         Vector3 spawnPosition = (offsetFromSpawnPoint.With(y: 0) + spawnPoint.position);
         spawnPoints.Add(spawnPosition);
-        Instantiate(objectToSpawn.CharacterPrefab, spawnPosition, Quaternion.identity);
+        var spawned = Instantiate(objectToSpawn.CharacterPrefab, spawnPosition, Quaternion.identity);
+        if(spawned.TryGetComponent(out Samurai samurai))
+        {
+            samurai.SetCharacterData(objectToSpawn);  
+        }
+        else
+        {
+            Debug.LogWarning("Could not assign Character data to samurai");
+        }
     }
 
     Vector3 GetRandomPointInCircle(Vector3 center, float radius)

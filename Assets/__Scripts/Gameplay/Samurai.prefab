@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6153777992778404448}
-  - component: {fileID: 8174925128483155918}
+  - component: {fileID: 269637770349054642}
   m_Layer: 0
   m_Name: Samurai
   m_TagString: Untagged
@@ -123,7 +123,7 @@ Transform:
   - {fileID: 6855086868057935865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8174925128483155918
+--- !u!114 &269637770349054642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,10 +132,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2057009204468900264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2f6067b2becf44c8f2bb26ec925643, type: 3}
+  m_Script: {fileID: 11500000, guid: e22ad97f4c841bb4b9eea832743b8a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderers:
+  <Renderers>k__BackingField:
     Helmet_B: {fileID: 7420289443603704243}
     Helmet_F: {fileID: 1211213585549471888}
     Face_F: {fileID: 5896274188957302720}
@@ -143,15 +143,6 @@ MonoBehaviour:
     Weapon: {fileID: 6730405952943694867}
     Chestplate: {fileID: 5746216813206886600}
     Pants: {fileID: 7207633679973589770}
-  samuraiVisuals:
-    visualsSO: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
-    Helmet_B: 0
-    Helmet_F: 0
-    Face_F: 0
-    Head: 0
-    Weapon: 0
-    Chestplate: 0
-    Pants: 0
 --- !u!1 &2581271540194730318
 GameObject:
   m_ObjectHideFlags: 0

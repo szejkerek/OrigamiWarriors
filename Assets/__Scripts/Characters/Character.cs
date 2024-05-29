@@ -8,6 +8,7 @@ public class Character : IDisplayable
     public string IconGUID { get; set; }
     public string DisplayName { get; set; }
     public CharacterStats BaseStats { get; set; }
+    public SamuraiVisuals SamuraiVisuals { get; set; }
     public GameObject CharacterPrefab { get; set; }
 
     public List<Item> Items = new List<Item>(3);
@@ -28,7 +29,7 @@ public class Character : IDisplayable
         this.Items.Add(new Item(characterData.Skill.AssetGUID));
         this.BaseStats = characterData.BaseStats;
 
-
+        this.SamuraiVisuals = new SamuraiVisuals(characterData.SamuraiVisuals);
     }
 
     public CharacterStats GetStats()
