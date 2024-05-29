@@ -18,7 +18,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <DisplayName>k__BackingField: XD
-  <CharacterGameObject>k__BackingField: {fileID: 0}
+  <CharacterGameObject>k__BackingField: {fileID: 716192111869953920, guid: 55696fd7931ea6647be1a36a406c58e6, type: 3}
   <BaseStats>k__BackingField:
     Damage: 40
     Health: 102
