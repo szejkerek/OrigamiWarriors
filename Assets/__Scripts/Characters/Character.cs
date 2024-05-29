@@ -31,11 +31,6 @@ public class Character : IDisplayable
 
     }
 
-    private CharacterSO LoadCharacterData(string characterGuid)
-    {
-        return new AssetReferenceItemSO(characterGuid).LoadAssetAsync<CharacterSO>().WaitForCompletion();
-    }
-
     public CharacterStats GetStats()
     {
         CharacterStats stats = new CharacterStats();
