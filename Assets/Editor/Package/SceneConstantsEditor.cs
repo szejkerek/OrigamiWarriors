@@ -18,7 +18,7 @@ public class SceneConstantsEditor : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label("Create Scene Constants", EditorStyles.boldLabel);
-        className = EditorGUILayout.TextField("Class Name:", className);
+        className = EditorGUILayout.TextField("Class SavedFilename:", className);
 
         if (GUILayout.Button("Create/Update Scene Constants file"))
         {

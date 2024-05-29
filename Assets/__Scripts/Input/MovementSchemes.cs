@@ -21,14 +21,14 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
     public @MovementSchemes()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""MovementSchemes"",
+    ""Name"": ""MovementSchemes"",
     ""maps"": [
         {
-            ""name"": ""Player3D"",
+            ""Name"": ""Player3D"",
             ""id"": ""4443afe1-dbdd-4b46-9e02-c23836c027dd"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""Name"": ""Movement"",
                     ""type"": ""PassThrough"",
                     ""id"": ""55a23bdb-02b8-4a8f-8b92-2573770497d0"",
                     ""expectedControlType"": ""Vector3"",
@@ -37,7 +37,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""Name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f228af6c-52f1-4f92-8626-17bcdbbc5860"",
                     ""expectedControlType"": ""Button"",
@@ -48,7 +48,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""WSAD & Arrows"",
+                    ""Name"": ""WSAD & Arrows"",
                     ""id"": ""a91c3117-31fc-4db4-b963-3f15d5371c2f"",
                     ""path"": ""3DVector(mode=1)"",
                     ""interactions"": """",
@@ -59,7 +59,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""forward"",
+                    ""Name"": ""forward"",
                     ""id"": ""3075e62e-737f-4947-a4e7-bbf5d068fc05"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -70,7 +70,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""backward"",
+                    ""Name"": ""backward"",
                     ""id"": ""0eef8808-dc4a-4435-8676-2435135ecf5e"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -81,7 +81,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""Name"": ""left"",
                     ""id"": ""5c47d9d2-fe41-481c-8d4f-19fbd655b82d"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -92,7 +92,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""Name"": ""right"",
                     ""id"": ""e8a7693b-9dc0-45e1-b9ee-7adefa7757fe"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
@@ -103,7 +103,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""forward"",
+                    ""Name"": ""forward"",
                     ""id"": ""16d29fd5-f9af-48b1-95ef-54dc86dd06a9"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
@@ -114,7 +114,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""backward"",
+                    ""Name"": ""backward"",
                     ""id"": ""c530c426-d2ad-413c-a2c8-762810d655c4"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
@@ -125,7 +125,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""Name"": ""left"",
                     ""id"": ""df93c803-a470-47ca-b10c-855ee7ed1888"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
@@ -136,7 +136,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""Name"": ""right"",
                     ""id"": ""79beef21-fcbf-4653-9b41-d07e3787db1a"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
@@ -147,7 +147,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""LEFT Analog & D-PAD Controller"",
+                    ""Name"": ""LEFT Analog & D-PAD Controller"",
                     ""id"": ""0e8958b9-7c0e-4348-b8f6-634044102ac4"",
                     ""path"": ""3DVector"",
                     ""interactions"": """",
@@ -158,7 +158,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
+                    ""Name"": ""left"",
                     ""id"": ""4799719d-2cff-49ff-bd0c-81a758406cb6"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
@@ -169,7 +169,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""Name"": ""right"",
                     ""id"": ""e7ec1fc3-3aa5-497f-ae96-cb3812ed3314"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
@@ -180,7 +180,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""forward"",
+                    ""Name"": ""forward"",
                     ""id"": ""95fa7e0c-c252-46e5-a14d-b28b009c50fb"",
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
@@ -191,7 +191,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""backward"",
+                    ""Name"": ""backward"",
                     ""id"": ""0bfa141f-4b19-4824-a5d9-5f374d4583dc"",
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
@@ -202,7 +202,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""backward"",
+                    ""Name"": ""backward"",
                     ""id"": ""8a6e083f-b819-4e5a-8825-041e5fcc77b8"",
                     ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
@@ -213,7 +213,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""forward"",
+                    ""Name"": ""forward"",
                     ""id"": ""cc6bb3ec-13e9-4df6-a023-997193cf7957"",
                     ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
@@ -224,7 +224,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""Name"": ""right"",
                     ""id"": ""e77a3891-67e3-4b3c-abca-31c76735b6b1"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
@@ -235,7 +235,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""Name"": ""left"",
                     ""id"": ""81fdaa50-df30-461d-b646-3c2f3718343b"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
@@ -246,7 +246,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
+                    ""Name"": """",
                     ""id"": ""1d34f767-9bee-4421-8984-bcbe1160a9c4"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -257,7 +257,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
+                    ""Name"": """",
                     ""id"": ""debe7d2d-a024-43d5-92fe-0ed3bd390317"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -272,7 +272,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Keyboard"",
+            ""Name"": ""Keyboard"",
             ""bindingGroup"": ""Keyboard"",
             ""devices"": [
                 {
@@ -288,7 +288,7 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Controller"",
+            ""Name"": ""Controller"",
             ""bindingGroup"": ""Controller"",
             ""devices"": [
                 {

@@ -49,7 +49,7 @@ public class CharacterView : MonoBehaviour
     {
         this.character = character as Character;
         characterIcon.gameObject.SetActive(true);
-        new AssetReference(character.IconGUID).LoadAssetAsync<Sprite>().Completed += handle => { characterIcon.sprite = handle.Result; };
+        new AssetReference(character.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { characterIcon.sprite = handle.Result; };
         returnBtn.gameObject.SetActive(true);
         textDisplay.gameObject.SetActive(true);
         characterName.text = character.DisplayName;

@@ -109,8 +109,8 @@ namespace UnityServiceLocator
     /// <summary>
     /// Registers a service to the ServiceLocator using the service's type.
     /// </summary>
-    /// <param name="service">The service to register.</param>  
-    /// <typeparam name="T">Class type of the service to be registered.</typeparam>
+    /// <param Name="service">The service to register.</param>  
+    /// <typeparam Name="T">Class type of the service to be registered.</typeparam>
     /// <returns>The ServiceLocator instance after registering the service.</returns>
     public ServiceLocator Register<T>(T service)
     {
@@ -121,8 +121,8 @@ namespace UnityServiceLocator
     /// <summary>
     /// Registers a service to the ServiceLocator using a specific type.
     /// </summary>
-    /// <param name="type">The type to use for registration.</param>
-    /// <param name="service">The service to register.</param>  
+    /// <param Name="type">The type to use for registration.</param>
+    /// <param Name="service">The service to register.</param>  
     /// <returns>The ServiceLocator instance after registering the service.</returns>
     public ServiceLocator Register(Type type, object service)
     {
@@ -133,8 +133,8 @@ namespace UnityServiceLocator
     /// <summary>
     /// Gets a service of a specific type. If no service of the required type is found, an error is thrown.
     /// </summary>
-    /// <param name="service">Service of type T to get.</param>  
-    /// <typeparam name="T">Class type of the service to be retrieved.</typeparam>
+    /// <param Name="service">Service of type T to get.</param>  
+    /// <typeparam Name="T">Class type of the service to be retrieved.</typeparam>
     /// <returns>The ServiceLocator instance after attempting to retrieve the service.</returns>
     public ServiceLocator Get<T>(out T service) where T : class
     {
@@ -152,7 +152,7 @@ namespace UnityServiceLocator
     /// <summary>
     /// Allows retrieval of a service of a specific type. An error is thrown if the required service does not exist.
     /// </summary>
-    /// <typeparam name="T">Class type of the service to be retrieved.</typeparam>
+    /// <typeparam Name="T">Class type of the service to be retrieved.</typeparam>
     /// <returns>Instance of the service of type T.</returns>
     public T Get<T>() where T : class
     {
@@ -170,8 +170,8 @@ namespace UnityServiceLocator
     /// <summary>
     /// Tries to get a service of a specific type. Returns whether or not the process is successful.
     /// </summary>
-    /// <param name="service">Service of type T to get.</param>  
-    /// <typeparam name="T">Class type of the service to be retrieved.</typeparam>
+    /// <param Name="service">Service of type T to get.</param>  
+    /// <typeparam Name="T">Class type of the service to be retrieved.</typeparam>
     /// <returns>True if the service retrieval was successful, false otherwise.</returns>
     public bool TryGet<T>(out T service) where T : class
     {

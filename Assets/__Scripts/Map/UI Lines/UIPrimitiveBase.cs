@@ -289,8 +289,8 @@ namespace UnityEngine.UI.Extensions
         /// Return image adjusted position
         /// **Copied from Unity's Image component for now and simplified for UI Extensions primatives
         /// </summary>
-        /// <param name="local"></param>
-        /// <param name="rect"></param>
+        /// <param Name="local"></param>
+        /// <param Name="rect"></param>
         /// <returns></returns>
         private Vector2 MapCoordinate(Vector2 local, Rect rect)
         {

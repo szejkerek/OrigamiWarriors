@@ -67,7 +67,7 @@ public class ItemView : MonoBehaviour
         iconColor.a = 0;
         icon.color = iconColor;
 
-        var iconReference = new AssetReference(displayable.IconGUID);
+        var iconReference = new AssetReference(displayable.DisplayIconGuid);
         iconReference.LoadAssetAsync<Sprite>().Completed += handle =>
         {
             if (handle.Status == AsyncOperationStatus.Succeeded)

@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 public class CharacterSO : ScriptableObject
 {
     [field: SerializeField] public AssetReference Icon { private set; get; }
-    [field: SerializeField] public string DisplayName { private set; get; }
+    [field: SerializeField] public string Name { private set; get; }
     [field: SerializeField] public SamuraiVisualsSO SamuraiVisuals { private set; get; }
     [field: SerializeField] public GameObject CharacterGameObject { private set; get; }
     [field: SerializeField] public CharacterStats BaseStats { private set; get; }

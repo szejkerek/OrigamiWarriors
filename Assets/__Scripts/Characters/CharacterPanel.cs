@@ -22,7 +22,7 @@ public class CharacterPanel : MonoBehaviour
         gameObject.SetActive(true);
 
         CurrentCharacter = character;
-        characterName.text = character.DisplayName;
+        characterName.text = character.Name;
         statsPanel.Init(character);
 
         for (int i = 0; i < 3; i++)
