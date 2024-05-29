@@ -1,9 +1,5 @@
 using GordonEssentials;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuInterface : MonoBehaviour
@@ -13,12 +9,7 @@ public class MenuInterface : MonoBehaviour
 
     private void Awake()
     {
-        startBtn.onClick.AddListener(StartGame);
+        startBtn.onClick.AddListener(() => SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene));
         quitBtn.onClick.AddListener(() => Application.Quit());
-    }
-
-    private void StartGame()
-    {
-        SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
     }
 }
