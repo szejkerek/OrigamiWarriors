@@ -1,8 +1,6 @@
-using GordonEssentials;
 using UnityEngine;
 using Unity.Mathematics;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 using System.Linq;
 
@@ -12,6 +10,7 @@ public class MapDrawerUI : Singleton<MapDrawerUI>
     public MapConfigSO mapConfigs;
     public Map map;
     public GameObject contentParent;
+    public GameObject mapCanvas;
     public GameObject mapNodeUIPrefab;
     public RectTransform rectTransform;
     private float contentX, contentY;
@@ -44,6 +43,12 @@ public class MapDrawerUI : Singleton<MapDrawerUI>
     protected readonly List<LineConnection> lineConnections = new List<LineConnection>();
     public void ShowMap(Map map, MapConfigSO config)
     {
+        Clear();
+        contentParent = new GameObject("MapParent");
+        rectTransform = contentParent.AddComponent<RectTransform>();
+        SetPropertise();
+        contentParent.transform.SetParent(mapCanvas.transform, false);
+
         mapConfigs = config;
         contentX = rectTransform.rect.width;
         contentY = rectTransform.rect.height;
@@ -64,6 +69,26 @@ public class MapDrawerUI : Singleton<MapDrawerUI>
         
         this.map = map;
     }
+
+    private void SetPropertise()
+    {
+        rectTransform.offsetMin = new Vector2(50, 170); 
+        rectTransform.offsetMax = new Vector2(-50, -50);   
+        rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        rectTransform.anchorMin = new Vector2(0, 0);
+        rectTransform.anchorMax = new Vector2(1, 1);
+        rectTransform.localEulerAngles = new Vector3(0, 0, 0);
+        rectTransform.localScale = new Vector3(1, 1, 1);
+    }
+
+    private void Clear()
+    {
+        if (contentParent != null)
+            Destroy(contentParent);
+        MapNodesUI.Clear();
+        lineConnections.Clear();
+    }
+
     private void GenerateMapNodeUI(MapNode mapNode)
     {
         GameObject mapNodeObject = Instantiate(mapNodeUIPrefab, contentParent.transform);
@@ -74,7 +99,7 @@ public class MapDrawerUI : Singleton<MapDrawerUI>
         int levelIndex = 0;
         mapNodeUI.SetUp(mapNode, mapNodeTypeData , levelIndex);
         mapNodeObject.transform.localPosition = CalculatePosition(mapNode.position);
-        mapNode.position = mapNodeObject.transform.localPosition;
+        //mapNode.position = mapNodeObject.transform.localPosition;
         MapNodesUI.Add(mapNodeUI);
     }
     private Vector2 CalculatePosition(Vector2 postitionNormalized)

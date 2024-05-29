@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,14 +10,24 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        if(currentMap == null)
+        currentMap = SaveManager<Map>.Load(allMapConfigs[configIndex].name + ".json");
+        
+        if (currentMap.mapNodes == null)
         {
-            currentMap = MapGenerator.CreateMap(allMapConfigs[configIndex]);
+            GenerateNewMap();
+        }
+        else
+        {
             mapUI.ShowMap(currentMap, allMapConfigs[configIndex]);
-
-            //TODO: SAVE MAP
         }
 
+    }
+
+    public void GenerateNewMap()
+    {
+        currentMap = MapGenerator.CreateMap(allMapConfigs[configIndex]);
+        mapUI.ShowMap(currentMap, allMapConfigs[configIndex]);
+        currentMap.Save();
     }
 
 
