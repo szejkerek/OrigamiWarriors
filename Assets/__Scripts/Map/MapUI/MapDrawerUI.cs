@@ -1,11 +1,8 @@
-using GordonEssentials;
 using UnityEngine;
 using Unity.Mathematics;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 using System.Linq;
-using System.Net.Mime;
 
 public class MapDrawerUI : Singleton<MapDrawerUI>
 {

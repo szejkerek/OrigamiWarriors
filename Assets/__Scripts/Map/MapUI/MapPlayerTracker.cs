@@ -1,4 +1,3 @@
-using GordonEssentials;
 using System;
 
 public class MapPlayerTracker : Singleton<MapPlayerTracker>

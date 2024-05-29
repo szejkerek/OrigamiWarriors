@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3282244650083928545}
-  - component: {fileID: 6002585449371397220}
   m_Layer: 0
   m_Name: Music Source
   m_TagString: Untagged
@@ -116,21 +115,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5402129472759692481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6002585449371397220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4128973553660199373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a052d1df9ee54048bfa61f381091b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterMixer: {fileID: 0}
-  sfxMixer: {fileID: 0}
-  musicMixer: {fileID: 0}
 --- !u!1 &4814962449008637327
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +126,7 @@ GameObject:
   - component: {fileID: 8801173899168270387}
   - component: {fileID: 660455950991395031}
   - component: {fileID: 8553730359636276804}
-  - component: {fileID: 2063128352025043773}
+  - component: {fileID: 7475614494817176450}
   m_Layer: 0
   m_Name: BlackImage
   m_TagString: Untagged
@@ -207,7 +191,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2063128352025043773
+--- !u!114 &7475614494817176450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4814962449008637327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286b1edfc9590924092d3893ab07eec5, type: 3}
+  m_Script: {fileID: 11500000, guid: 94415b40cf717314c8d0b6a5856e59fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
@@ -230,8 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5402129472759692481}
   - component: {fileID: 5937372911066993613}
-  - component: {fileID: 2465133988648141420}
-  - component: {fileID: 6886085844148933396}
+  - component: {fileID: 7720857738305740360}
   - component: {fileID: 8840685285883880265}
   m_Layer: 0
   m_Name: Systems
@@ -270,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneChangeTime: 0.75
---- !u!114 &2465133988648141420
+--- !u!114 &7720857738305740360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,26 +262,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5360799528710062882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee54258615e080243812c9d6f5e7c5e1, type: 3}
+  m_Script: {fileID: 11500000, guid: d41367f5ce6ad9641906d05c786cf9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOnStart: 0
-  target: {fileID: 2063128352025043773}
---- !u!114 &6886085844148933396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5360799528710062882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a052d1df9ee54048bfa61f381091b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterMixer: {fileID: 0}
-  sfxMixer: {fileID: 0}
-  musicMixer: {fileID: 0}
+  target: {fileID: 7475614494817176450}
 --- !u!114 &8840685285883880265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +280,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
+    levelResults:
+      isWin: 0
+      colectedMoney: 0
+      collectedExp: 0
+      expOnWin: 0
+      moneyOnWin: 0
+      moneyOnLose: 0
+      deadCharacters: []
     team:
       TeamMembers: []
   team: {fileID: 11400000, guid: 38aea96828b59ea4b9bd9e26ffb6ec40, type: 2}
