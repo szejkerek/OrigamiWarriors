@@ -14,24 +14,23 @@ public class GameplayTeamManagement : MonoBehaviour
     private void Awake()
     {
         team = SavableDataManager.Instance.data.team;
-        if (spawnPoint != null) Debug.LogWarning("Set select of the level!");
-        minDistanceBetween = spawnRadius/2;
+        if (spawnPoint == null) Debug.LogWarning("Set spawn point of the level!");
+        minDistanceBetween = spawnRadius/4;
         SpawnTeam();
     }
 
     private void SpawnTeam()
     {
-        int attempts = 0;
-
         SpawnCharacter(team.General, Vector3.zero);
 
         foreach (Character objectToSpawn in team.TeamMembers)
         {
+            int attempts = 0;
             bool spawned = false;
 
             while (!spawned && attempts < maxAttempts)
             {
-                Vector3 newSpawnPoint = GetRandomPointInCircle(transform.position, spawnRadius);
+                Vector3 newSpawnPoint = GetRandomPointInCircle(spawnPoint.position, spawnRadius);
 
                 if (IsFarEnoughFromOthers(newSpawnPoint))
                 {
@@ -48,14 +47,14 @@ public class GameplayTeamManagement : MonoBehaviour
                 SpawnCharacter(objectToSpawn, Vector3.zero);
             }
 
-            attempts = 0;
         }
     }
 
     private void SpawnCharacter(Character objectToSpawn, Vector3 offsetFromSpawnPoint)
     {
-        spawnPoints.Add(offsetFromSpawnPoint + spawnPoint.position);
-        Instantiate(objectToSpawn.CharacterPrefab, offsetFromSpawnPoint + spawnPoint.position, Quaternion.identity);
+        Vector3 spawnPosition = (offsetFromSpawnPoint.With(y: 0) + spawnPoint.position);
+        spawnPoints.Add(spawnPosition);
+        Instantiate(objectToSpawn.CharacterPrefab, spawnPosition, Quaternion.identity);
     }
 
     Vector3 GetRandomPointInCircle(Vector3 center, float radius)
