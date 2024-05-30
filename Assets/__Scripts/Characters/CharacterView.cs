@@ -22,9 +22,19 @@ public class CharacterView : MonoBehaviour
         ResetView();
         selectedBorder.SetActive(false);
         characterBtn.onClick.AddListener(SelectCharacter);
-        OnCharacterSelected += (_) => selectedBorder.SetActive(false);
+        OnCharacterSelected += DisableBorder;
 
         returnBtn.onClick.AddListener(ResetView);
+    }
+
+    void DisableBorder(Character _)
+    {
+        selectedBorder.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        OnCharacterSelected -= DisableBorder;
     }
 
     public void SelectCharacter()

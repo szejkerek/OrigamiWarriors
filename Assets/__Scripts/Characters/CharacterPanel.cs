@@ -17,6 +17,11 @@ public class CharacterPanel : MonoBehaviour
         CharacterView.OnCharacterSelected += SetupView;
     }
 
+    private void OnDisable()
+    {
+        CharacterView.OnCharacterSelected -= SetupView;
+    }
+
     public void SetupView(Character character)
     {
         gameObject.SetActive(true);
