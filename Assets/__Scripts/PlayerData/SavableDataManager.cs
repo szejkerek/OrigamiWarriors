@@ -9,8 +9,6 @@ public class SavableDataManager : Singleton<SavableDataManager>, ISavable
     {
         base.Awake();
         data.team = new Team(team);
-        Save();
-        Load();
     }
 
     #region Save Logic
