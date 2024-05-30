@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd2a430ff5faf4479d992ec78ba4753, type: 3}
   m_Name: OgromnySword
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: OgromnySword
+  <Name>k__BackingField: 
   <Icon>k__BackingField:
-    m_AssetGUID: d8bd1ea9266df8c4b8b20f232f8100fa
+    m_AssetGUID: 2c2e934021cfcca498b975e58079a11a
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

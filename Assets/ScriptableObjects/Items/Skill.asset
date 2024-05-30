@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
   m_Name: Skill
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: "Ostre jebni\u0119cie"
+  <Name>k__BackingField: 
   <Icon>k__BackingField:
-    m_AssetGUID: b950f41b7df7ddd4ca66098e19509463
+    m_AssetGUID: aa4dfb01066234d44b5027cc6ba5fa4f
     m_SubObjectName: 
     m_SubObjectType: 
-    m_EditorAssetChanged: 1
+    m_EditorAssetChanged: 0
   <MaxLevel>k__BackingField: 1
   <Cost>k__BackingField: 15
   <NextItem>k__BackingField:

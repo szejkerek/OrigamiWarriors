@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd2a430ff5faf4479d992ec78ba4753, type: 3}
   m_Name: SmallMieczyk
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Small mieczyk
+  <Name>k__BackingField: 
   <Icon>k__BackingField:
-    m_AssetGUID: fc0cc201e75ff91459b58bceff9dc7a4
+    m_AssetGUID: 8a46c5e627e8db543bdc690131f85752
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
