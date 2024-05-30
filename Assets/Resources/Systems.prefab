@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5402129472759692481}
-  - component: {fileID: 5937372911066993613}
+  - component: {fileID: 8939040404933385550}
   - component: {fileID: 7720857738305740360}
   - component: {fileID: 8840685285883880265}
   m_Layer: 0
@@ -240,7 +240,7 @@ Transform:
   - {fileID: 6752330960476248101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5937372911066993613
+--- !u!114 &8939040404933385550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5360799528710062882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9550c6ba0f8cb84ea3624ef7247b46a, type: 3}
+  m_Script: {fileID: 11500000, guid: f219cd3e46c27164f8f63b3559177427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SceneChangeTime: 0.75
@@ -280,6 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
+    playerResources:
+      Money: 0
+      Expirience: 0
     levelResults:
       isWin: 0
       colectedMoney: 0
@@ -289,5 +292,24 @@ MonoBehaviour:
       moneyOnLose: 0
       deadCharacters: []
     team:
+      General:
+        IconGUID: 
+        Name: 
+        BaseStats:
+          Damage: 0
+          Health: 0
+          Speed: 0
+          CritChance: 0
+        SamuraiVisuals:
+          helmetBIndex: 0
+          helmetFIndex: 0
+          faceIndex: 0
+          headIndex: 0
+          weaponIndex: 0
+          chestplateIndex: 0
+          pantsIndex: 0
+        CharacterPrefab: {fileID: 0}
+        Items: []
+        characterGuid: 
       TeamMembers: []
   team: {fileID: 11400000, guid: 38aea96828b59ea4b9bd9e26ffb6ec40, type: 2}
