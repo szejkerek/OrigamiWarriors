@@ -29,6 +29,17 @@ public class SamuraiVisuals
         renderer.Pants.sprite = visualsSO.Pants[pantsIndex];
     }
 
+    public void Apply(SamuraiImages images)
+    {
+        images.Helmet_B.sprite = visualsSO.Helmet_B[helmetBIndex];
+        images.Helmet_F.sprite = visualsSO.Helmet_F[helmetFIndex];
+        images.Face_F.sprite = visualsSO.Face_F[faceIndex];
+        images.Head.sprite = visualsSO.Head[headIndex];
+        images.Weapon.sprite = visualsSO.Weapon[weaponIndex];
+        images.Chestplate.sprite = visualsSO.Chestplate[chestplateIndex];
+        images.Pants.sprite = visualsSO.Pants[pantsIndex];
+    }
+
     public void Randomize()
     {
         faceIndex = Random.Range(0, visualsSO.Face_F.Count);

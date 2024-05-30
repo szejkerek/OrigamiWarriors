@@ -9,7 +9,7 @@ public class CharacterView : MonoBehaviour
     public static Action<Character> OnCharacterSelected;
     [SerializeField] Button characterBtn;
     [SerializeField] Button returnBtn;
-    [SerializeField] Image characterIcon;
+    [SerializeField] SamuraiImages viusals;
     [SerializeField] TMP_Text characterName;
 
     [SerializeField] GameObject textDisplay;
@@ -37,19 +37,18 @@ public class CharacterView : MonoBehaviour
     {
         TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter = null;
         character = null;
-        characterIcon.sprite = null;
         returnBtn.gameObject.SetActive(false);
-        characterIcon.gameObject.SetActive(false);
+        viusals.SetActive(false);
         textDisplay.gameObject.SetActive(false);
     }
 
     
 
-    public void SetCharacter(IDisplayable character)
+    public void SetCharacter(Character character)
     {
-        this.character = character as Character;
-        characterIcon.gameObject.SetActive(true);
-        new AssetReference(character.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { characterIcon.sprite = handle.Result; };
+        this.character = character;
+        viusals.SetActive(true);
+        character.SamuraiVisuals.Apply(viusals);
         returnBtn.gameObject.SetActive(true);
         textDisplay.gameObject.SetActive(true);
         characterName.text = character.DisplayName;
