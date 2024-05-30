@@ -51,10 +51,12 @@ Material:
     - _BUILTIN_ZTest: 4
     - _BUILTIN_ZWrite: 1
     - _BUILTIN_ZWriteControl: 0
-    - _Emissive_Multiplier: 2.4
+    - _Emissive_Multiplier: 0.06
     m_Colors:
-    - _Albedo: {r: 1, g: 1, b: 1, a: 0}
+    - _Albedo: {r: 0.378471, g: 0.6895019, b: 0.990566, a: 1}
     - _Emissive_Color: {r: 0.3301887, g: 0.11755382, b: 0.0015574975, a: 1}
+    - _NormalMovement: {r: 0.01, g: -0.01, b: 0, a: 0}
+    - _UV: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5115793164081077121
 MonoBehaviour:
