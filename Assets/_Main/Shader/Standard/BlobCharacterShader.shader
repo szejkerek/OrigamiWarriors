@@ -55,7 +55,7 @@ CGINCLUDE
 #define PostEffectOutput SurfaceOutputStandard
 #define POST_EFFECT PostEffect
 
-#include "Assets/uRaymarching/Shaders/Include/Legacy/Common.cginc"
+#include "Assets/Plugins/uRaymarching/Shaders/Include/Legacy/Common.cginc"
 
 // @block DistanceFunction
 // These inverse transform matrices are provided
@@ -228,7 +228,7 @@ Pass
     ZWrite [_ZWrite]
 
     CGPROGRAM
-    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardBaseStandard.cginc"
+    #include "Assets/Plugins/uRaymarching/Shaders/Include/Legacy/ForwardBaseStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -245,7 +245,7 @@ Pass
     Blend One One
 
     CGPROGRAM
-    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardAddStandard.cginc"
+    #include "Assets/Plugins/uRaymarching/Shaders/Include/Legacy/ForwardAddStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -261,7 +261,7 @@ Pass
     Tags { "LightMode" = "ShadowCaster" }
 
     CGPROGRAM
-    #include "Assets/uRaymarching/Shaders/Include/Legacy/ShadowCaster.cginc"
+    #include "Assets/Plugins/uRaymarching/Shaders/Include/Legacy/ShadowCaster.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
