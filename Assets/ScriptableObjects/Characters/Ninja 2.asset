@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <DisplayName>k__BackingField: dssdasd
+  <Name>k__BackingField: Ninja 2
   <SamuraiVisuals>k__BackingField: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
   <CharacterGameObject>k__BackingField: {fileID: 808391767203527897, guid: ec5d570119cc01546b152a9815310d07, type: 3}
   <BaseStats>k__BackingField:
