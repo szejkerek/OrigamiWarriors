@@ -744,6 +744,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab9aff176a39b14f92b9d95a0af790c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentCharacter:
+    IconGUID: 
+    Name: 
+    BaseStats:
+      Damage: 0
+      Health: 0
+      Speed: 0
+      CritChance: 0
+    SamuraiVisuals:
+      helmetBIndex: 0
+      helmetFIndex: 0
+      faceIndex: 0
+      headIndex: 0
+      weaponIndex: 0
+      chestplateIndex: 0
+      pantsIndex: 0
+    CharacterPrefab: {fileID: 0}
+    Items: []
+    characterGuid: 
   characterName: {fileID: 1951232399}
   statsPanel: {fileID: 1891372875}
   itemSlot:
