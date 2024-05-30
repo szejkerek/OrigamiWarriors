@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode()]
 public class Tooltip : MonoBehaviour
 {
     public TMP_Text header;
@@ -12,7 +11,19 @@ public class Tooltip : MonoBehaviour
     public LayoutElement layoutElement;
     public int characterWrapLimit;
 
-    private void Update()
+    public void SetText(string content, string header = "")
+    {
+        this.header.text = header;
+        this.header.gameObject.SetActive(!string.IsNullOrEmpty(header));
+
+        this.content.text = content;
+
+
+
+        Resize();
+    }
+
+    private void Resize()
     {
         int headerLenght = header.text.Length;
         int contentLenght = content.text.Length;
