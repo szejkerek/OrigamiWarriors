@@ -26,6 +26,10 @@ public class CharacterView : MonoBehaviour
 
         returnBtn.onClick.AddListener(ResetView);
     }
+    public void EnableBorder()
+    {
+        selectedBorder.SetActive(true);
+    }
 
     void DisableBorder(Character _)
     {
