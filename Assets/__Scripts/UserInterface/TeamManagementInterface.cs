@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class TeamManagementInterface : Singleton<TeamManagementInterface>
@@ -45,23 +46,24 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     {
         characterViews.Clear();
         Team currentTeam = SavableDataManager.Instance.data.team;
-        SpawnAndSetCharacter(currentTeam.General);
-
+        SpawnAndSetCharacter(currentTeam.General, select:true);
+        
         foreach (var member in currentTeam.TeamMembers)
         {
             SpawnAndSetCharacter(member);
         }
     }
 
-    void SpawnAndSetCharacter(Character character)
+    void SpawnAndSetCharacter(Character character, bool select = false)
     {
         CharacterView characterView = Instantiate(CharacterViewPrefab, charactersPartent);
         characterView.SetCharacter(character);
         characterViews.Add(characterView);
-    }
 
-    public void SetCurrentCharacterDisplay(Character character)
-    {
-        CharacterPanel.SetupView(character);
+        if(select)
+        {
+            CharacterPanel.SetupView(character);
+            characterView.EnableBorder();
+        }
     }
 }

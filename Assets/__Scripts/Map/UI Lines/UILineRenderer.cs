@@ -383,8 +383,8 @@ namespace UnityEngine.UI.Extensions
         /// <remarks>
         /// Positive numbers should be used to specify Index and Segment
         /// </remarks>
-        /// <param name="index">Requied Index of the point, starting from point 1</param>
-        /// <param name="segmentIndex">(optional) Required Segment the point is held in, Starting from Segment 1</param>
+        /// <param Name="index">Requied Index of the point, starting from point 1</param>
+        /// <param Name="segmentIndex">(optional) Required Segment the point is held in, Starting from Segment 1</param>
         /// <returns>Vector2 position of the point within UI Space</returns>
         public Vector2 GetPosition(int index, int segmentIndex = 0)
         {
@@ -419,8 +419,8 @@ namespace UnityEngine.UI.Extensions
         /// <summary>
         /// Get the Vector2 position of a line within a specific segment
         /// </summary>
-        /// <param name="index">Requied Index of the point, starting from point 1</param>
-        /// <param name="segmentIndex"> Required Segment the point is held in, Starting from Segment 1</param>
+        /// <param Name="index">Requied Index of the point, starting from point 1</param>
+        /// <param Name="segmentIndex"> Required Segment the point is held in, Starting from Segment 1</param>
         /// <returns>Vector2 position of the point within UI Space</returns>
         public Vector2 GetPositionBySegment(int index, int segment)
         {
@@ -430,9 +430,9 @@ namespace UnityEngine.UI.Extensions
         /// <summary>
         /// Get the closest point between two given Vector2s from a given Vector2 point
         /// </summary>
-        /// <param name="p1">Starting postion</param>
-        /// <param name="p2">End position</param>
-        /// <param name="p3">Desired / Selected point</param>
+        /// <param Name="p1">Starting postion</param>
+        /// <param Name="p2">End position</param>
+        /// <param Name="p3">Desired / Selected point</param>
         /// <returns>Closest Vector2 position of the target within UI Space</returns>
         public Vector2 GetClosestPoint(Vector2 p1, Vector2 p2, Vector2 p3)
         {

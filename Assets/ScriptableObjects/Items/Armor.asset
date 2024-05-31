@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: 
-  <DisplayName>k__BackingField: Armor
+  <Name>k__BackingField: 
   <Icon>k__BackingField:
-    m_AssetGUID: 7e786942b2458c544a34b67ca7f51350
+    m_AssetGUID: 4c6a7c6eb69682641933ca3a8b83ea72
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <GameSprite>k__BackingField:
+    m_AssetGUID: 4c6a7c6eb69682641933ca3a8b83ea72
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

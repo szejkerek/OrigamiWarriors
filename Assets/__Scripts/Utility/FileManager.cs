@@ -8,6 +8,7 @@ using UnityEngine;
         public static bool WriteToFile(string a_FileName, string a_FileContents)
         {
             var fullPath = Path.Combine(Application.persistentDataPath, a_FileName);
+            Debug.Log(fullPath);
             try
             {
                 File.WriteAllText(fullPath, a_FileContents);

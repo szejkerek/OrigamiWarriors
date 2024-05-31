@@ -1,21 +1,26 @@
-﻿using UnityEngine.AddressableAssets;
-
+﻿
+[System.Serializable]
 public class Item : IDisplayable
 {
-    public string IconGUID { get; set; }
-    public string DisplayName { get; set; }
-    public int MaxLevel { get; set; }
-    public int Level { get; set; }
-    public int Cost { get; set; }
-    public ItemSO itemData {  get; }
-    string itemDataGuid;
+    public string DisplayIconGuid => IconGuid;
+    public string DisplayName => Name;
 
+    public string IconGuid;
+    public string SpriteGuid;
+    public string Name;
+    public int MaxLevel;
+    public int Level;
+    public int Cost;
+    public string itemDataGuid;
+
+    ItemSO itemData;
     public Item(string itemDataGuid)
     {
         this.itemDataGuid = itemDataGuid;
         itemData = new AssetReferenceItemSO(itemDataGuid).LoadAssetAsync<ItemSO>().WaitForCompletion();
-        this.IconGUID = itemData.Icon.AssetGUID;
-        this.DisplayName = itemData.DisplayName;
+        this.IconGuid = itemData.Icon.AssetGUID;
+        this.SpriteGuid = itemData.GameSprite.AssetGUID;
+        this.Name = itemData.Name;
         this.MaxLevel = itemData.MaxLevel;
         this.Cost = itemData.Cost;
     }

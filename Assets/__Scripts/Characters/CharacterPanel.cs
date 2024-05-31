@@ -17,12 +17,17 @@ public class CharacterPanel : MonoBehaviour
         CharacterView.OnCharacterSelected += SetupView;
     }
 
+    private void OnDisable()
+    {
+        CharacterView.OnCharacterSelected -= SetupView;
+    }
+
     public void SetupView(Character character)
     {
         gameObject.SetActive(true);
 
         CurrentCharacter = character;
-        characterName.text = character.DisplayName;
+        characterName.text = character.Name;
         statsPanel.Init(character);
 
         for (int i = 0; i < 3; i++)

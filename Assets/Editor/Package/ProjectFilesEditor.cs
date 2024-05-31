@@ -76,7 +76,7 @@ public partial class ProjectFilesEditor : EditorWindow
 
         for (int i = 0; i < AssetFolders.folderNames.Count; i++)
         {
-            AssetFolders.folderNames[i] = EditorGUILayout.TextField($"Folder Name {i + 1}:", AssetFolders.folderNames[i]);
+            AssetFolders.folderNames[i] = EditorGUILayout.TextField($"Folder SavedFilename {i + 1}:", AssetFolders.folderNames[i]);
         }
 
         EditorGUI.indentLevel--;

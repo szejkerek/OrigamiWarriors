@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd504f5534e06e4995447a940815a0b, type: 3}
   m_Name: Temple
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 1da6e447942f92d43968272c20ab6d6d, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 905b054dc1c291a40a0dc5f00d2cea9d, type: 3}
   <MapNodeType>k__BackingField: 5

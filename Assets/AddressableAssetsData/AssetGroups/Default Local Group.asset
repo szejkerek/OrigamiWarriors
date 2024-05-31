@@ -47,6 +47,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f94a1834b3f4f7340ad4c876968bc7b0
+    m_Address: Items
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa4dfb01066234d44b5027cc6ba5fa4f
+    m_Address: Assets/Art/2D/GUI-Maps/cherry-blossom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a46c5e627e8db543bdc690131f85752
+    m_Address: Assets/Art/2D/Character/Weapon/katana.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c2e934021cfcca498b975e58079a11a
+    m_Address: Assets/Art/2D/Character/Weapon/naginata.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c6a7c6eb69682641933ca3a8b83ea72
+    m_Address: Assets/Art/2D/Character/Body/3.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c876898c1384004e93201b101caf2f4
+    m_Address: Assets/Art/2D/Character/Weapon/bow.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f070e1f85c9df9d48891b7376218d436
+    m_Address: Assets/Art/2D/Character/Weapon/hammer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c365def9bafffd4d94f1588808881f0
+    m_Address: Assets/Art/2D/Character/Weapon/shuriken.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f09f78c0cc6a4304e994adfab4308c06, type: 2}
   m_SchemaSet:

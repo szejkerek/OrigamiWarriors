@@ -13,6 +13,6 @@ public abstract class Samurai : MonoBehaviour
     public void SetCharacterData(Character character)
     {
         this.Character = character; 
-        character.SamuraiVisuals.Apply(samuraiStylizer.Renderers);
+        character.SamuraiVisuals.Apply(samuraiStylizer.Renderers, character);
     }
 }

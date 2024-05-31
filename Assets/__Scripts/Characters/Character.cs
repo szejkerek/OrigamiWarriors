@@ -5,24 +5,28 @@ using UnityEngine;
 [System.Serializable]
 public class Character : IDisplayable
 {
-    public string IconGUID { get; set; }
-    public string DisplayName { get; set; }
-    public CharacterStats BaseStats { get; set; }
-    public SamuraiVisuals SamuraiVisuals { get; set; }
-    public GameObject CharacterPrefab { get; set; }
+    public string DisplayIconGuid => IconGUID;
+    public string DisplayName => Name;
 
-    public List<Item> Items = new List<Item>(3);
+    public string IconGUID;
+    public string Name;
+    public CharacterStats BaseStats;
+    public SamuraiVisuals SamuraiVisuals;
+    public GameObject CharacterPrefab;
+    public List<Item> Items;
+    public string characterGuid;
 
     CharacterSO characterData;
-    string characterGuid;
 
     public Character(string characterGuid)
     {
+        Items = new List<Item>(3);
+
         this.characterGuid = characterGuid;
         characterData = new AssetReferenceItemSO(characterGuid).LoadAssetAsync<CharacterSO>().WaitForCompletion();
 
         this.IconGUID = characterData.Icon.AssetGUID;
-        this.DisplayName = characterData.DisplayName;
+        this.Name = characterData.Name;
         this.CharacterPrefab = characterData.CharacterGameObject;
         this.Items.Add(new Item(characterData.Weapon.AssetGUID));
         this.Items.Add(new Item(characterData.Armor.AssetGUID));

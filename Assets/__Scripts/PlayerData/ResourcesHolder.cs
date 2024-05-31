@@ -5,8 +5,8 @@ using Unity.VisualScripting;
 public class ResourcesHolder
 {
     public static Action<ResourcesHolder> OnResourcesUpdated;
-    public int Money {  get; private set; }
-    public int Expirience {  get; private set; }
+    public int Money;
+    public int Expirience;
 
     public void AddMoney(int money)
     {
@@ -27,10 +27,5 @@ public class ResourcesHolder
     {
         Expirience += exp;
         OnResourcesUpdated?.Invoke(this);
-    }
-
-    internal void AddMoney(object calculateMoney)
-    {
-        throw new NotImplementedException();
     }
 }
