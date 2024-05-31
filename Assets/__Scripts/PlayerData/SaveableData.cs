@@ -8,6 +8,7 @@ public class SaveableData
     public ResourcesHolder playerResources = new ResourcesHolder();
     public LevelResults levelResults = null;
     public Team team;
+    public Map map = null;
 
 
 }

@@ -12,7 +12,8 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         locked = lockAfterSelecting;
         mapManager.currentMap.path.Add(mapNode.mapNode.locationOnMap);
         //TODO: SAVE MAP
-        mapManager.currentMap.Save();
+        SavableDataManager.Instance.data.map = mapManager.currentMap;
+        SavableDataManager.Instance.Save();
         view.SetAttainableNodes();
         view.SetLineColors();
 

@@ -26,7 +26,7 @@ MonoBehaviour:
     Speed: 12
     CritChance: 0.09
   <Weapon>k__BackingField:
-    m_AssetGUID: 8dd0c2db3a2e1074fa8e5c15b6e0c4a3
+    m_AssetGUID: f5d333ab1f8a763468d41aa50271ca83
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

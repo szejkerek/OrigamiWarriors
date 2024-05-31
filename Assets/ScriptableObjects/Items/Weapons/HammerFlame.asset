@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
-  m_Name: Armor
+  m_Name: HammerFlame
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Hammer Flame
   <Icon>k__BackingField:
-    m_AssetGUID: 4c6a7c6eb69682641933ca3a8b83ea72
+    m_AssetGUID: 39f72a98974980944a6278e8e330dbbe
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <GameSprite>k__BackingField:
-    m_AssetGUID: 4c6a7c6eb69682641933ca3a8b83ea72
+    m_AssetGUID: f070e1f85c9df9d48891b7376218d436
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 10
-  <Cost>k__BackingField: 1
+  <MaxLevel>k__BackingField: 4
+  <Cost>k__BackingField: 20
   <NextItem>k__BackingField:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 0
-    Health: 68
-    Speed: 0
-    CritChance: 0
+    Damage: 25
+    Health: 6
+    Speed: 7
+    CritChance: 0.6
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 0
-    Health: 9
-    Speed: 0
-    CritChance: 0
+    Damage: 5
+    Health: 6
+    Speed: 3
+    CritChance: 0.03

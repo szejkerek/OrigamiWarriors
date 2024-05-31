@@ -5,6 +5,7 @@ public abstract class ItemSO : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public AssetReferenceSprite Icon { get; private set; }
+    [field: SerializeField] public AssetReferenceSprite GameSprite { get; private set; }
     [field: SerializeField] public int MaxLevel {  get; private set; }
     [field: SerializeField] public int Cost { get; private set; }
     [field: SerializeField] public AssetReferenceItemSO NextItem { get; private set; }

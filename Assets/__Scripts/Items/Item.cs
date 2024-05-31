@@ -6,6 +6,7 @@ public class Item : IDisplayable
     public string DisplayName => Name;
 
     public string IconGuid;
+    public string SpriteGuid;
     public string Name;
     public int MaxLevel;
     public int Level;
@@ -18,6 +19,7 @@ public class Item : IDisplayable
         this.itemDataGuid = itemDataGuid;
         itemData = new AssetReferenceItemSO(itemDataGuid).LoadAssetAsync<ItemSO>().WaitForCompletion();
         this.IconGuid = itemData.Icon.AssetGUID;
+        this.SpriteGuid = itemData.GameSprite.AssetGUID;
         this.Name = itemData.Name;
         this.MaxLevel = itemData.MaxLevel;
         this.Cost = itemData.Cost;
