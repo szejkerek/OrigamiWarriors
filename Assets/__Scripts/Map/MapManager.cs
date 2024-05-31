@@ -10,7 +10,7 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        SavableDataManager.Instance.Load();
+        //SavableDataManager.Instance.Load();
         currentMap = SavableDataManager.Instance.data.map;
 
 
