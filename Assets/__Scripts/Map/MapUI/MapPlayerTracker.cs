@@ -1,11 +1,22 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class MapPlayerTracker : Singleton<MapPlayerTracker>
 {
+    public Action<int> OnPopupChooose;
     public bool lockAfterSelecting = false;
     public MapManager mapManager;
     public MapDrawerUI view;
     public bool locked;
+
+    private List<IDisplayable> choices = new List<IDisplayable>();
+    private LevelResults actualLevelResuls = new LevelResults();
+
+    public void Start()
+    {
+        OnPopupChooose += ApplyResult;
+    }
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
         if (locked) return;
@@ -17,7 +28,14 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         view.SetAttainableNodes();
         view.SetLineColors();
 
+        choices.Clear();
+        
+        //RANDOM THINGS FOR
         IDisplayable a = SavableDataManager.Instance.data.team.General;
+        IDisplayable b = SavableDataManager.Instance.data.team.TeamMembers[0];
+        IDisplayable c = SavableDataManager.Instance.data.team.TeamMembers[1];
+        choices = new List<IDisplayable> { a, b, c };
+
         switch (mapNode.mapNode.type)
         {
             case MapNodeType.Arena:
@@ -25,14 +43,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 break;
             case MapNodeType.Armory:
                 
-                //PopupController.Instance.popup.gameObject.SetActive(true);
-
-                //TODO tworzenie nowych Charakterów oraz obs³uga LevelResults z nowymi danymi które zdobyliœmy
-                
-                IDisplayable b = SavableDataManager.Instance.data.team.TeamMembers[0];
-                IDisplayable c = SavableDataManager.Instance.data.team.TeamMembers[1];
-
-                PopupController.Instance.popup.ShowAsCharacterChoose("Choose new ally", a, b, a, "opis", null, null, null);
+                PopupController.Instance.popup.ShowAsCharacterChoose("Choose new ally", choices, "opis", OnPopupChooose, null, null);
 
                 break;
             case MapNodeType.Boss:
@@ -53,4 +64,15 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         }
     }
 
+    public void ApplyResult(int indexOfChoice)
+    {
+        //TYP rzeczy któr¹ dodajemy DO SPRAWDZENIA
+        actualLevelResuls.newCharacters = new List<Character>() { choices[indexOfChoice] as Character };
+        actualLevelResuls.Apply();
+    }
+
+    public void ApplyResult()
+    {        
+        actualLevelResuls.Apply();
+    }
 }

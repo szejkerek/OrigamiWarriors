@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,10 +18,10 @@ public class PopupWindowPanel : MonoBehaviour
     [Header("Content")]
     [SerializeField] private Transform contentArea;
     [SerializeField] private Transform verticalLayoutArea;
-    [SerializeField] private Image verticalLayoutImage1;
-    [SerializeField] private Image verticalLayoutImage2;
-    [SerializeField] private Image verticalLayoutImage3;
+    [SerializeField] private Transform choices;
+    [SerializeField] private List<ChoiceUI> listOfChoices;
     [SerializeField] private TextMeshProUGUI verticalLayoutText;
+    [SerializeField] private ChoiceUI choiceUIPrefab;
     [Space]
     [SerializeField] private Transform horizontalLayoutArea;
     [SerializeField] private Transform horizontalLayoutImageContainer;
@@ -32,18 +33,17 @@ public class PopupWindowPanel : MonoBehaviour
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button declineButton;
     [SerializeField] private Button alternateButton;
-
-
     [SerializeField] private Animator animator;
 
-    private Action onConfirmAction;
+    private Action<int> onConfirmAction;
     private Action onDeclineAction;
     private Action onAlternateAction;
-
+    int choiceIndex;
 
     public void Confirm()
     {
-        onConfirmAction?.Invoke();
+        ChoiceUI.OnChoiceSelected -= SetChoice;
+        onConfirmAction?.Invoke(choiceIndex);
         Close();
     }
     public void Decline()
@@ -57,21 +57,32 @@ public class PopupWindowPanel : MonoBehaviour
         Close();
     }
 
-    public void ShowAsCharacterChoose(string title, IDisplayable element1, IDisplayable element2, IDisplayable element3, string massage, Action confirmAction, Action declineAction, Action alternateAction)
+    public void ShowAsCharacterChoose(string title, List<IDisplayable> elements, string massage, Action<int> confirmAction, Action declineAction, Action alternateAction)
     {
         Show();
         horizontalLayoutArea.gameObject.SetActive(false);
         verticalLayoutArea.gameObject.SetActive(true);
 
-        bool hasTitle = string.IsNullOrEmpty(title);
+        bool hasTitle = !string.IsNullOrEmpty(title);
         headerArea.gameObject.SetActive(hasTitle);
         headerText.text = title;
-        new AssetReference(element1.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { verticalLayoutImage1.sprite = handle.Result; };
-        new AssetReference(element2.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { verticalLayoutImage2.sprite = handle.Result; };
-        new AssetReference(element3.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { verticalLayoutImage3.sprite = handle.Result; };
-        verticalLayoutText.text = massage;
 
+        int i =0;
+        ChoiceUI.OnChoiceSelected += SetChoice;
+        foreach (var element in elements) 
+        { 
+            ChoiceUI ob = Instantiate(choiceUIPrefab, choices);
+            listOfChoices.Add(ob);
+            ob.choice = i++;
+            new AssetReference(element.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { ob.image.sprite = handle.Result; };
+        }
+
+
+        verticalLayoutText.text = massage;
         onConfirmAction = confirmAction;
+
+        bool hasDecline= declineAction != null;
+        declineButton.gameObject.SetActive(hasDecline);
         onDeclineAction = declineAction;
 
         bool hasAlternate = alternateAction != null;
@@ -79,7 +90,7 @@ public class PopupWindowPanel : MonoBehaviour
         onAlternateAction = alternateAction;
     }
 
-    public void ShowAsEvent(string title, IDisplayable element1, string massage, Action confirmAction, Action declineAction, Action alternateAction)
+    public void ShowAsEvent(string title, IDisplayable element1, string massage, Action<int> confirmAction, Action declineAction, Action alternateAction)
     {
         Show();
         horizontalLayoutArea.gameObject.SetActive(true);
@@ -112,6 +123,13 @@ public class PopupWindowPanel : MonoBehaviour
 
     private void Close()
     {
+        foreach (var item in listOfChoices)
+        {
+            Destroy(item.gameObject);
+        }
+        listOfChoices.Clear();
+
+
         if (animator != null)
         {
             animator.Play("PopupClose"); // Nazwa animacji zamykania
@@ -123,5 +141,10 @@ public class PopupWindowPanel : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
+    }
+
+    private void SetChoice(int choice)
+    {
+        choiceIndex = choice;
     }
 }

@@ -28,4 +28,9 @@ public class Team
     {
         TeamMembers.Remove(character);
     }
+
+    public void AddCharacter(Character character)
+    {
+        TeamMembers.Add(character);
+    }
 }
