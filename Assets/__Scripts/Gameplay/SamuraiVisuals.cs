@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [System.Serializable]
 public class SamuraiVisuals
@@ -8,8 +9,6 @@ public class SamuraiVisuals
     public int helmetFIndex;
     public int faceIndex;
     public int headIndex;
-    public int weaponIndex;
-    public int chestplateIndex;
     public int pantsIndex;
 
     public SamuraiVisuals(SamuraiVisualsSO visualsSO)
@@ -18,25 +17,25 @@ public class SamuraiVisuals
         Randomize();
     }
 
-    public void Apply(SamuraiRenderers renderer)
+    public void Apply(SamuraiRenderers renderer, Character character)
     {
         renderer.Helmet_B.sprite = visualsSO.Helmet_B[helmetBIndex];
         renderer.Helmet_F.sprite = visualsSO.Helmet_F[helmetFIndex];
         renderer.Face_F.sprite = visualsSO.Face_F[faceIndex];
         renderer.Head.sprite = visualsSO.Head[headIndex];
-        renderer.Weapon.sprite = visualsSO.Weapon[weaponIndex];
-        renderer.Chestplate.sprite = visualsSO.Chestplate[chestplateIndex];
+        renderer.Weapon.sprite = new AssetReferenceSprite(character.Items[0].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
+        renderer.Chestplate.sprite = new AssetReferenceSprite(character.Items[1].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
         renderer.Pants.sprite = visualsSO.Pants[pantsIndex];
     }
 
-    public void Apply(SamuraiImages images)
+    public void Apply(SamuraiImages images, Character character)
     {
         images.Helmet_B.sprite = visualsSO.Helmet_B[helmetBIndex];
         images.Helmet_F.sprite = visualsSO.Helmet_F[helmetFIndex];
         images.Face_F.sprite = visualsSO.Face_F[faceIndex];
         images.Head.sprite = visualsSO.Head[headIndex];
-        images.Weapon.sprite = visualsSO.Weapon[weaponIndex];
-        images.Chestplate.sprite = visualsSO.Chestplate[chestplateIndex];
+        images.Weapon.sprite = new AssetReferenceSprite(character.Items[0].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
+        images.Chestplate.sprite = new AssetReferenceSprite(character.Items[1].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
         images.Pants.sprite = visualsSO.Pants[pantsIndex];
     }
 
@@ -44,8 +43,6 @@ public class SamuraiVisuals
     {
         faceIndex = Random.Range(0, visualsSO.Face_F.Count);
         headIndex = Random.Range(0, visualsSO.Head.Count);
-        weaponIndex = Random.Range(0, visualsSO.Weapon.Count);
-        chestplateIndex = Random.Range(0, visualsSO.Chestplate.Count);
         pantsIndex = Random.Range(0, visualsSO.Pants.Count);
         helmetBIndex = Random.Range(0, visualsSO.Helmet_B.Count);
         helmetFIndex = Random.Range(0, visualsSO.Helmet_F.Count);

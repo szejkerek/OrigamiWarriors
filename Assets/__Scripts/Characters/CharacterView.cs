@@ -62,7 +62,7 @@ public class CharacterView : MonoBehaviour
     {
         this.character = character;
         viusals.SetActive(true);
-        character.SamuraiVisuals.Apply(viusals);
+        character.SamuraiVisuals.Apply(viusals, character);
         returnBtn.gameObject.SetActive(true);
         textDisplay.gameObject.SetActive(true);
         characterName.text = character.DisplayName;

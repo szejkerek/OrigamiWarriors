@@ -9,30 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd2a430ff5faf4479d992ec78ba4753, type: 3}
-  m_Name: OgromnySword
+  m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
+  m_Name: Naginata
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Naginata
   <Icon>k__BackingField:
-    m_AssetGUID: 2c2e934021cfcca498b975e58079a11a
+    m_AssetGUID: 6c876898c1384004e93201b101caf2f4
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 5
-  <Cost>k__BackingField: 10
+  <MaxLevel>k__BackingField: 4
+  <Cost>k__BackingField: 20
   <NextItem>k__BackingField:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 30
-    Health: 0
-    Speed: 0
-    CritChance: 0.1
+    Damage: 25
+    Health: 6
+    Speed: 7
+    CritChance: 0.6
   <StatsModifiersPerLevel>k__BackingField:
     Damage: 5
-    Health: 0
-    Speed: 0
-    CritChance: 0.01
-  <Range>k__BackingField: 4.92
+    Health: 6
+    Speed: 3
+    CritChance: 0.03
