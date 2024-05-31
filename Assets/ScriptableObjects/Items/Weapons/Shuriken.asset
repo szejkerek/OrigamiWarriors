@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Shuriken
   <Icon>k__BackingField:
+    m_AssetGUID: 1345f0a57f5dec44c9ea494f84ac7663
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <GameSprite>k__BackingField:
     m_AssetGUID: 4c365def9bafffd4d94f1588808881f0
     m_SubObjectName: 
     m_SubObjectType: 

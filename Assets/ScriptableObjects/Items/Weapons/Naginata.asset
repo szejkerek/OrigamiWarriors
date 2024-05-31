@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Naginata
   <Icon>k__BackingField:
-    m_AssetGUID: 6c876898c1384004e93201b101caf2f4
+    m_AssetGUID: 6eaecc3a6bb74dd4ab6f0d99e6e15155
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <GameSprite>k__BackingField:
+    m_AssetGUID: 2c2e934021cfcca498b975e58079a11a
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
