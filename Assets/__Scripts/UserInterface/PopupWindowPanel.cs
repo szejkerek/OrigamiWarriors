@@ -1,16 +1,50 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+
+public class PopupButton :MonoBehaviour
+{
+    Button button;
+    Action customAction;
+
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+        button.gameObject.SetActive(false);
+    }
+
+    public void Init(Action action)
+    {
+        customAction = action;
+        button.gameObject.SetActive(true);
+        button.onClick.AddListener(TriggerAction);
+    }
+
+    public void Deinit()
+    {
+        button.gameObject.SetActive(false);
+        button.onClick.RemoveListener(TriggerAction);
+    }
+
+    void TriggerAction()
+    {
+        if (customAction != null)
+        {
+            customAction?.Invoke();
+        }
+    }
+}
+
 
 public class PopupWindowPanel : MonoBehaviour
 {
+    public readonly int PopupShowHash = Animator.StringToHash("PopupShow");
+    public readonly int PopupCloseHash = Animator.StringToHash("PopupClose");
+
     [Header("Header")]
     [SerializeField] private Transform headerArea;
     [SerializeField] private TextMeshProUGUI headerText;
@@ -35,15 +69,13 @@ public class PopupWindowPanel : MonoBehaviour
     [SerializeField] private Button alternateButton;
     [SerializeField] private Animator animator;
 
-    private Action<int> onConfirmAction;
+    private Action onConfirmAction;
     private Action onDeclineAction;
     private Action onAlternateAction;
-    int choiceIndex;
-
     public void Confirm()
     {
         ChoiceUI.OnChoiceSelected -= SetChoice;
-        onConfirmAction?.Invoke(choiceIndex);
+        onConfirmAction?.Invoke();
         Close();
     }
     public void Decline()
@@ -57,37 +89,43 @@ public class PopupWindowPanel : MonoBehaviour
         Close();
     }
 
-    public void ShowAsCharacterChoose(string title, List<IDisplayable> elements, string massage, Action<int> confirmAction, Action declineAction, Action alternateAction)
+    public void ShowAsCharacterChoose(List<IDisplayable> elements, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
         Show();
         horizontalLayoutArea.gameObject.SetActive(false);
         verticalLayoutArea.gameObject.SetActive(true);
 
-        bool hasTitle = !string.IsNullOrEmpty(title);
-        headerArea.gameObject.SetActive(hasTitle);
+        headerArea.gameObject.SetActive(!string.IsNullOrEmpty(title));
         headerText.text = title;
 
-        int i =0;
         ChoiceUI.OnChoiceSelected += SetChoice;
-        foreach (var element in elements) 
-        { 
+        for (int i = 0; i < elements.Count; i++)
+        {
             ChoiceUI ob = Instantiate(choiceUIPrefab, choices);
             listOfChoices.Add(ob);
             ob.choice = i++;
-            new AssetReference(element.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { ob.image.sprite = handle.Result; };
+            new AssetReference(elements[i].DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { ob.image.sprite = handle.Result; };
         }
 
 
-        verticalLayoutText.text = massage;
-        onConfirmAction = confirmAction;
+        verticalLayoutText.text = content;
 
-        bool hasDecline= declineAction != null;
+        InitButton(confirmAction);
+
+        bool hasDecline = declineAction != null;
         declineButton.gameObject.SetActive(hasDecline);
         onDeclineAction = declineAction;
 
         bool hasAlternate = alternateAction != null;
         alternateButton.gameObject.SetActive(hasAlternate);
         onAlternateAction = alternateAction;
+    }
+
+    private void InitButton(Button button, Action action)
+    {
+        bool hasConfirm = action != null;
+        button.gameObject.SetActive(hasConfirm);
+        onConfirmAction = action;
     }
 
     public void ShowAsEvent(string title, IDisplayable element1, string massage, Action<int> confirmAction, Action declineAction, Action alternateAction)
@@ -117,7 +155,7 @@ public class PopupWindowPanel : MonoBehaviour
         if (animator != null)
         {
             gameObject.SetActive(true);
-            animator.Play("PopupShow"); // Nazwa animacji otwierania
+            animator.Play(PopupShowHash);
         }
     }
 
@@ -132,7 +170,7 @@ public class PopupWindowPanel : MonoBehaviour
 
         if (animator != null)
         {
-            animator.Play("PopupClose"); // Nazwa animacji zamykania
+            animator.Play(PopupCloseHash);
             StartCoroutine(DeactivateAfterAnimation(animator.GetCurrentAnimatorStateInfo(0).length));
         }
         

@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7672738032203730840}
   - component: {fileID: 8840535867619164286}
   - component: {fileID: 9194060035296674374}
-  - component: {fileID: 5365885597055534085}
+  - component: {fileID: 6576548294716438248}
   m_Layer: 5
   m_Name: ChooseLevelButton
   m_TagString: Untagged
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5365885597055534085
+--- !u!114 &6576548294716438248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
