@@ -10,7 +10,6 @@ public class PopupButton :MonoBehaviour
     TMP_Text buttonText;
 
     Action customAction;
-    Action closeAction;
 
     private void Awake()
     {
@@ -19,10 +18,9 @@ public class PopupButton :MonoBehaviour
         button.gameObject.SetActive(false);
     }
 
-    public void Init(string text, Action action, Action close)
+    public void Init(string text, Action action)
     {
         customAction = action;
-        closeAction = close;
         buttonText.text = text; 
         button.gameObject.SetActive(true);
         button.onClick.AddListener(TriggerAction);
@@ -35,9 +33,13 @@ public class PopupButton :MonoBehaviour
         button.onClick.RemoveListener(TriggerAction);
     }
 
+    private void OnDisable()
+    {
+        Deinit();
+    }
+
     void TriggerAction()
     {
         customAction?.Invoke();
-        closeAction?.Invoke();
     }
 }

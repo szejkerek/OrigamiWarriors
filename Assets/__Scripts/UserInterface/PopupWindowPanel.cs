@@ -74,9 +74,20 @@ public class PopupWindowPanel : MonoBehaviour
 
         verticalLayoutText.text = content;
 
-        confirmButton.Init("Confirm", confirmAction, Close);
-        declineButton.Init("Decline", declineAction, Close);
-        alternateButton.Init("Alternate", alternateAction, Close);
+        confirmButton.Init("Confirm", () => { 
+            confirmAction?.Invoke(); 
+            OnItemChoose?.Invoke(choiceItem); 
+            Close(); 
+        });
+
+        declineButton.Init("Decline", () => { 
+            declineAction?.Invoke(); 
+            Close(); 
+        });
+
+        alternateButton.Init("Alternate", () => { 
+            alternateAction?.Invoke();
+        });
     }
 
     //public void ShowAsEvent(string title, IDisplayable element1, string massage, Action<int> confirmAction, Action declineAction, Action alternateAction)
@@ -111,8 +122,7 @@ public class PopupWindowPanel : MonoBehaviour
     }
 
     private void Close()
-    {
-        OnItemChoose?.Invoke(choiceItem);
+    {      
         ChoiceUI.OnChoiceSelected -= SetChoice;
 
         if (animator != null)
