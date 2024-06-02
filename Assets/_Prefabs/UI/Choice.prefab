@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1017321357373552270}
   - component: {fileID: 2828043956742381073}
   - component: {fileID: 5057688038625695095}
-  - component: {fileID: 6771740737224772725}
+  - component: {fileID: 2486846948816657334}
   m_Layer: 5
   m_Name: Choice
   m_TagString: Untagged
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &6771740737224772725
+--- !u!114 &2486846948816657334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

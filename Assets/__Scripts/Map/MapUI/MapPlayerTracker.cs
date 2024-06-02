@@ -43,7 +43,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 break;
             case MapNodeType.Armory:
                 
-                PopupController.Instance.popup.ShowAsCharacterChoose("Choose new ally", choices, "opis", OnPopupChooose, null, null);
+                PopupController.Instance.PopupPanel.ShowAsCharacterChoose(choices, "Choose new ally", "opis", null, /*OnPopupChooose*/ null, null);
 
                 break;
             case MapNodeType.Boss:
@@ -52,7 +52,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 break;
             case MapNodeType.Forge:
 
-                PopupController.Instance.popup.ShowAsEvent("EVENT uuuu", a, "DAWNO DAWNO TEM ZA LASAMI I GLAZAMI", null, null, null);
+                //PopupController.Instance.PopupPanel.ShowAsEvent("EVENT uuuu", a, "DAWNO DAWNO TEM ZA LASAMI I GLAZAMI", null, null, null);
 
                 break;
             case MapNodeType.Temple:

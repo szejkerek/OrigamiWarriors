@@ -1135,6 +1135,7 @@ GameObject:
   - component: {fileID: 6375815372002256678}
   - component: {fileID: 1049785966795776294}
   - component: {fileID: 6514335199068639076}
+  - component: {fileID: 5137688903534402429}
   m_Layer: 5
   m_Name: DeclineBtn
   m_TagString: Untagged
@@ -1316,6 +1317,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &5137688903534402429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947716269768297193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eab9f18326cc6744af7016451ebbd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4951251296808177330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,7 +1365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505, y: -105}
+  m_AnchoredPosition: {x: 120, y: -105}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3760821417997406989
@@ -1822,6 +1835,7 @@ GameObject:
   - component: {fileID: 2742455755322707145}
   - component: {fileID: 1147989174557564094}
   - component: {fileID: 3776516585555278227}
+  - component: {fileID: 2592276024213051855}
   m_Layer: 5
   m_Name: AlternativeBtn
   m_TagString: Untagged
@@ -2003,6 +2017,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2592276024213051855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7156993232040959199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eab9f18326cc6744af7016451ebbd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7226932954588018567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2044,7 @@ GameObject:
   - component: {fileID: 5467306565936077439}
   - component: {fileID: 5577520465666593046}
   - component: {fileID: 3954066096364554924}
+  - component: {fileID: 6838182205058228064}
   m_Layer: 5
   m_Name: ConfirmBtn
   m_TagString: Untagged
@@ -2199,6 +2226,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6838182205058228064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226932954588018567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eab9f18326cc6744af7016451ebbd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8049113677189989401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,15 +2886,15 @@ MonoBehaviour:
   choices: {fileID: 6267360212563923021}
   listOfChoices: []
   verticalLayoutText: {fileID: 7612059396423816575}
-  choiceUIPrefab: {fileID: 6771740737224772725, guid: 25fda58e928357147b9fa1ce2a983c62, type: 3}
+  choiceUIPrefab: {fileID: 2486846948816657334, guid: 25fda58e928357147b9fa1ce2a983c62, type: 3}
   horizontalLayoutArea: {fileID: 813877942441895741}
   horizontalLayoutImageContainer: {fileID: 5534223572425867892}
   horizontalLayoutImage: {fileID: 328740500029293139}
   horizontalLayoutText: {fileID: 5060130821036848011}
   footerArea: {fileID: 5036383436207929226}
-  confirmButton: {fileID: 5519644032872278857}
-  declineButton: {fileID: 6473590684953040287}
-  alternateButton: {fileID: 1217486570251475475}
+  confirmButton: {fileID: 6838182205058228064}
+  declineButton: {fileID: 5137688903534402429}
+  alternateButton: {fileID: 2592276024213051855}
   animator: {fileID: 2095137187482715082}
 --- !u!95 &2095137187482715082
 Animator:

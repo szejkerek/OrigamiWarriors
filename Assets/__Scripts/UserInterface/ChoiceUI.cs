@@ -1,46 +1,46 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-
+//
 public class ChoiceUI : MonoBehaviour
 {
-    public static Action<int> OnChoiceSelected;
+    public static Action<IDisplayable> OnChoiceSelected;
     [SerializeField] Button choiceBtn;
     [SerializeField] GameObject selectedBorder;
-    [SerializeField] public Image image;
-    [SerializeField] public int choice;
+    [SerializeField] Image image;
 
+    IDisplayable choiceItem;
 
-
-    private void OnEnable()
+    public void Init(IDisplayable choiceItem)
     {
         selectedBorder.SetActive(false);
+        this.choiceItem = choiceItem;
+        new AssetReference(choiceItem.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { image.sprite = handle.Result; };
         choiceBtn.onClick.AddListener(SelectChoice);
         OnChoiceSelected += DisableBorder;
     }
+
     public void EnableBorder()
     {
         selectedBorder.SetActive(true);
     }
 
-    void DisableBorder(int _)
+    void DisableBorder(IDisplayable _)
     {
         selectedBorder.SetActive(false);
     }
 
-    private void OnDisable()
-    {
-        OnChoiceSelected -= DisableBorder;
-    }
-
-
     private void SelectChoice()
     {
-        OnChoiceSelected?.Invoke(choice);
+        OnChoiceSelected?.Invoke(choiceItem);
         selectedBorder.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        image.sprite = null;
+        OnChoiceSelected -= DisableBorder;
     }
 
 }

@@ -7,7 +7,5 @@ public class PopupController : Singleton<PopupController>
 {
     [SerializeField] private PopupWindowPanel popupPanel;
 
-    public PopupWindowPanel popup=> popupPanel;
-    // Start is called before the first frame update
-
+    public PopupWindowPanel PopupPanel=> popupPanel;
 }
