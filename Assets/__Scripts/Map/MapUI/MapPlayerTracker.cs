@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-
+using UnityEngine;
 public class MapPlayerTracker : Singleton<MapPlayerTracker>
 {
     public Action<int> OnPopupChooose;
@@ -42,8 +41,9 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 SceneLoader.Instance.LoadScene(SceneConstants.Level_4);
                 break;
             case MapNodeType.Armory:
-                
-                PopupController.Instance.PopupPanel.ShowAsCharacterChoose(choices, "Choose new ally", "opis", null, /*OnPopupChooose*/ null, null);
+
+                PopupWindowPanel.OnItemChoose += TryAddNewCharacter;
+                PopupController.Instance.PopupPanel.ChooseModal(choices, "Choose new ally", "opis");
 
                 break;
             case MapNodeType.Boss:
@@ -60,13 +60,18 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             case MapNodeType.WeaponReroll:
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                throw new NotImplementedException();
         }
+    }
+
+    private void TryAddNewCharacter(IDisplayable displayable)
+    {
+        Debug.Log(displayable);
+        PopupWindowPanel.OnItemChoose -= TryAddNewCharacter;
     }
 
     public void ApplyResult(int indexOfChoice)
     {
-        //TYP rzeczy któr¹ dodajemy DO SPRAWDZENIA
         actualLevelResuls.newCharacters = new List<Character>() { choices[indexOfChoice] as Character };
         actualLevelResuls.Apply();
     }

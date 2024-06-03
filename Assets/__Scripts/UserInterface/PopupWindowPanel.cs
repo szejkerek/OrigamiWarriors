@@ -55,7 +55,7 @@ public class PopupWindowPanel : MonoBehaviour
     //    Close();
     //}
 
-    public void ShowAsCharacterChoose(List<IDisplayable> elements, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    public void ChooseModal(List<IDisplayable> elements, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
         Show();
         horizontalLayoutArea.gameObject.SetActive(false);
