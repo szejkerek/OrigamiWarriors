@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,6 @@ public class PopupWindowPanel : MonoBehaviour
 
     [Header("Header")]
     [SerializeField] private Transform choicesParent;
-    [SerializeField] private List<ChoiceUI> listOfChoices;
     [SerializeField] private ChoiceUI choiceUIPrefab;
     
     [Header("Header")]
@@ -32,9 +32,17 @@ public class PopupWindowPanel : MonoBehaviour
     [SerializeField] private PopupButton confirmButton;
     [SerializeField] private PopupButton declineButton;
     [SerializeField] private PopupButton alternateButton;
-    [SerializeField] private Animator animator;
 
+    CanvasGroup canvasGroup;
     IDisplayable choiceItem;
+    List<ChoiceUI> listOfChoices;
+
+    private void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        Deinit();
+        Close();    
+    }
 
     public void ChooseModal(List<IDisplayable> elements, Action<IDisplayable> OnItemChoose, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
@@ -113,27 +121,27 @@ public class PopupWindowPanel : MonoBehaviour
         headerArea.gameObject.SetActive(string.IsNullOrEmpty(title));
         headerText.text = title;
 
-        if (animator != null)
-        {
-            gameObject.SetActive(true);
-            animator.Play(PopupShowHash);
-        }
+
+        gameObject.SetActive(true);
+        DOTween.Sequence()
+        .Append(canvasGroup.DOFade(1, 0.75f))
+        .Join(transform.DOScale(Vector3.one, 0.75f).SetEase(Ease.OutBounce))
+        .Play();
     }
 
     private void Close()
     {      
         ChoiceUI.OnChoiceSelected -= SetChoice;
 
-        if (animator != null)
-        {
-            animator.Play(PopupCloseHash);
-            StartCoroutine(DeactivateAfterAnimation(animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-        
+        DOTween.Sequence()
+        .Append(canvasGroup.DOFade(0, 0.5f))
+        .Join(transform.DOScale(Vector3.zero, 0.5f))
+        .OnComplete(Deinit)
+        .Play();
     }
-    private IEnumerator DeactivateAfterAnimation(float delay)
+
+    private void Deinit()
     {
-        yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
 
         foreach (var item in listOfChoices)
