@@ -12,24 +12,23 @@ public class PopupWindowPanel : MonoBehaviour
     public readonly int PopupCloseHash = Animator.StringToHash("PopupClose");
 
     [Header("Header")]
+    [SerializeField] private Transform choicesParent;
+    [SerializeField] private List<ChoiceUI> listOfChoices;
+    [SerializeField] private ChoiceUI choiceUIPrefab;
+    
+    [Header("Header")]
     [SerializeField] private Transform headerArea;
     [SerializeField] private TextMeshProUGUI headerText;
 
     [Header("Content")]
-    [SerializeField] private Transform contentArea;
     [SerializeField] private Transform verticalLayoutArea;
-    [SerializeField] private Transform choices;
-    [SerializeField] private List<ChoiceUI> listOfChoices;
     [SerializeField] private TextMeshProUGUI verticalLayoutText;
-    [SerializeField] private ChoiceUI choiceUIPrefab;
     [Space]
     [SerializeField] private Transform horizontalLayoutArea;
-    [SerializeField] private Transform horizontalLayoutImageContainer;
     [SerializeField] private Image horizontalLayoutImage;
     [SerializeField] private TextMeshProUGUI horizontalLayoutText;
 
     [Header("Footer")]
-    [SerializeField] private Transform footerArea;
     [SerializeField] private PopupButton confirmButton;
     [SerializeField] private PopupButton declineButton;
     [SerializeField] private PopupButton alternateButton;
@@ -85,7 +84,7 @@ public class PopupWindowPanel : MonoBehaviour
         ChoiceUI.OnChoiceSelected += SetChoice;
         for (int i = 0; i < elements.Count; i++)
         {
-            var choice = Instantiate(choiceUIPrefab, choices);
+            var choice = Instantiate(choiceUIPrefab, choicesParent);
             listOfChoices.Add(choice);
             choice.Init(elements[i]);
         }
