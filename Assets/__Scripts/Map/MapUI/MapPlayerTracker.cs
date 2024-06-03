@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 public class MapPlayerTracker : Singleton<MapPlayerTracker>
 {
     public Action<int> OnPopupChooose;
@@ -18,7 +19,11 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     }
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
-        if (locked) return;
+        if (locked)
+        {
+            return;
+        }
+
         locked = lockAfterSelecting;
         mapManager.currentMap.path.Add(mapNode.mapNode.locationOnMap);
         //TODO: SAVE MAP
@@ -51,9 +56,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             case MapNodeType.Experience:
                 break;
             case MapNodeType.Forge:
-
-                //PopupController.Instance.PopupPanel.ShowAsEvent("EVENT uuuu", a, "DAWNO DAWNO TEM ZA LASAMI I GLAZAMI", null, null, null);
-
+                PopupController.Instance.PopupPanel.ShowAsEvent("EVENT uuuu", new AssetReference(a.DisplayIconGuid).LoadAssetAsync<Sprite>().WaitForCompletion(), "DAWNO DAWNO TEM ZA LASAMI I GLAZAMI", null, null, null);
                 break;
             case MapNodeType.Temple:
                 break;
@@ -66,7 +69,14 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
 
     private void TryAddNewCharacter(IDisplayable displayable)
     {
-        Debug.Log(displayable);
+        Character character = displayable as Character;
+        if (character == null)
+        {
+            Debug.Log("Couldnt get Character from modal.");
+            return;
+        }
+
+
         PopupWindowPanel.OnItemChoose -= TryAddNewCharacter;
     }
 

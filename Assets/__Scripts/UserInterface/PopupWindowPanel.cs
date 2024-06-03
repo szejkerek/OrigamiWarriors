@@ -38,28 +38,9 @@ public class PopupWindowPanel : MonoBehaviour
 
     IDisplayable choiceItem;
 
-    //public void Confirm()
-    //{
-    //    ChoiceUI.OnChoiceSelected -= SetChoice;
-    //    onConfirmAction?.Invoke();
-    //    Close();
-    //}
-    //public void Decline()
-    //{
-    //    onDeclineAction?.Invoke();
-    //    Close();
-    //}
-    //public void Alternate()
-    //{
-    //    onAlternateAction?.Invoke();
-    //    Close();
-    //}
-
     public void ChooseModal(List<IDisplayable> elements, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
-        Show();
-        horizontalLayoutArea.gameObject.SetActive(false);
-        verticalLayoutArea.gameObject.SetActive(true);
+        Show(horizontal: false);
 
         headerArea.gameObject.SetActive(!string.IsNullOrEmpty(title));
         headerText.text = title;
@@ -76,7 +57,10 @@ public class PopupWindowPanel : MonoBehaviour
 
         confirmButton.Init("Confirm", () => { 
             confirmAction?.Invoke(); 
-            OnItemChoose?.Invoke(choiceItem); 
+            if(choiceItem != null)
+            {
+                OnItemChoose?.Invoke(choiceItem); 
+            }
             Close(); 
         });
 
@@ -90,30 +74,41 @@ public class PopupWindowPanel : MonoBehaviour
         });
     }
 
-    //public void ShowAsEvent(string title, IDisplayable element1, string massage, Action<int> confirmAction, Action declineAction, Action alternateAction)
-    //{
-    //    Show();
-    //    horizontalLayoutArea.gameObject.SetActive(true);
-    //    verticalLayoutArea.gameObject.SetActive(false);
-
-    //    bool hasTitle = string.IsNullOrEmpty(title);
-    //    headerArea.gameObject.SetActive(hasTitle);
-    //    headerText.text = title;
-    //    new AssetReference(element1.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { horizontalLayoutImage.sprite = handle.Result; };
-    //    horizontalLayoutText.text = massage;
-
-    //    onConfirmAction = confirmAction;
-    //    onDeclineAction = declineAction;
-
-    //    bool hasAlternate = alternateAction != null;
-    //    alternateButton.gameObject.SetActive(hasAlternate);
-    //    onAlternateAction = alternateAction;
-    //}
-
-
-
-    private void Show()
+    public void ShowAsEvent(string title, Sprite image, string massage, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
+        Show(horizontal: true);
+        headerArea.gameObject.SetActive(string.IsNullOrEmpty(title));
+        headerText.text = title;
+
+        horizontalLayoutImage.sprite = image;
+        horizontalLayoutText.text = massage;
+
+        confirmButton.Init("Confirm", () => {
+            confirmAction?.Invoke();
+            if (choiceItem != null)
+            {
+                OnItemChoose?.Invoke(choiceItem);
+            }
+            Close();
+        });
+
+        declineButton.Init("Decline", () => {
+            declineAction?.Invoke();
+            Close();
+        });
+
+        alternateButton.Init("Alternate", () => {
+            alternateAction?.Invoke();
+        });
+    }
+
+
+
+    private void Show(bool horizontal)
+    {
+        horizontalLayoutArea.gameObject.SetActive(horizontal);
+        verticalLayoutArea.gameObject.SetActive(!horizontal);
+
         if (animator != null)
         {
             gameObject.SetActive(true);
