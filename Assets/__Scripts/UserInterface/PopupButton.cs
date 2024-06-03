@@ -28,6 +28,7 @@ public class PopupButton :MonoBehaviour
 
     public void Deinit()
     {
+        customAction = null;
         button.gameObject.SetActive(false);
         buttonText.text = string.Empty;
         button.onClick.RemoveListener(TriggerAction);

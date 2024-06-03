@@ -11,12 +11,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public bool locked;
 
     private List<IDisplayable> choices = new List<IDisplayable>();
-    private LevelResults actualLevelResuls = new LevelResults();
 
-    public void Start()
-    {
-        OnPopupChooose += ApplyResult;
-    }
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
         if (locked)
@@ -32,9 +27,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         view.SetAttainableNodes();
         view.SetLineColors();
 
-        choices.Clear();
-        
-        //RANDOM THINGS FOR
+        choices.Clear();    
         IDisplayable a = SavableDataManager.Instance.data.team.General;
         IDisplayable b = SavableDataManager.Instance.data.team.TeamMembers[0];
         IDisplayable c = SavableDataManager.Instance.data.team.TeamMembers[1];
@@ -46,10 +39,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 SceneLoader.Instance.LoadScene(SceneConstants.Level_4);
                 break;
             case MapNodeType.Armory:
-
-                PopupWindowPanel.OnItemChoose += TryAddNewCharacter;
-                PopupController.Instance.PopupPanel.ChooseModal(choices, "Choose new ally", "opis");
-
+                PopupController.Instance.PopupPanel.ChooseModal(choices, TryAddNewCharacter, "Choose new ally", "opis");
                 break;
             case MapNodeType.Boss:
                 break;
@@ -75,19 +65,5 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             Debug.Log("Couldnt get Character from modal.");
             return;
         }
-
-
-        PopupWindowPanel.OnItemChoose -= TryAddNewCharacter;
-    }
-
-    public void ApplyResult(int indexOfChoice)
-    {
-        actualLevelResuls.newCharacters = new List<Character>() { choices[indexOfChoice] as Character };
-        actualLevelResuls.Apply();
-    }
-
-    public void ApplyResult()
-    {        
-        actualLevelResuls.Apply();
     }
 }

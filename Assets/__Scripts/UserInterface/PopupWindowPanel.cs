@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PopupWindowPanel : MonoBehaviour
 {
-    public static Action<IDisplayable> OnItemChoose;
     public readonly int PopupShowHash = Animator.StringToHash("PopupShow");
     public readonly int PopupCloseHash = Animator.StringToHash("PopupClose");
 
@@ -38,13 +37,51 @@ public class PopupWindowPanel : MonoBehaviour
 
     IDisplayable choiceItem;
 
-    public void ChooseModal(List<IDisplayable> elements, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    public void ChooseModal(List<IDisplayable> elements, Action<IDisplayable> OnItemChoose, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
-        Show(horizontal: false);
+        Show(title, horizontal: false);
+        verticalLayoutText.text = content;
+        FillChoices(elements);
 
-        headerArea.gameObject.SetActive(!string.IsNullOrEmpty(title));
-        headerText.text = title;
+        confirmAction += () =>
+        {
+            if (choiceItem != null)
+            {
+                OnItemChoose?.Invoke(choiceItem);
+            }
+            Close();
+        };
 
+        declineAction += () =>
+        {
+            Close();
+        };
+
+        SetupButtons(confirmAction, declineAction, alternateAction);
+    }
+
+    public void ShowAsEvent(string title, Sprite image, string massage, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    {
+        Show(title, horizontal: true);
+        horizontalLayoutText.text = massage;
+        horizontalLayoutImage.sprite = image;
+
+        confirmAction += () =>
+        {
+            Close();
+        };
+
+        declineAction += () =>
+        {
+            Close();
+        };
+
+        SetupButtons(confirmAction, declineAction, alternateAction);
+    }
+
+
+    private void FillChoices(List<IDisplayable> elements)
+    {
         ChoiceUI.OnChoiceSelected += SetChoice;
         for (int i = 0; i < elements.Count; i++)
         {
@@ -52,62 +89,30 @@ public class PopupWindowPanel : MonoBehaviour
             listOfChoices.Add(choice);
             choice.Init(elements[i]);
         }
-
-        verticalLayoutText.text = content;
-
-        confirmButton.Init("Confirm", () => { 
-            confirmAction?.Invoke(); 
-            if(choiceItem != null)
-            {
-                OnItemChoose?.Invoke(choiceItem); 
-            }
-            Close(); 
-        });
-
-        declineButton.Init("Decline", () => { 
-            declineAction?.Invoke(); 
-            Close(); 
-        });
-
-        alternateButton.Init("Alternate", () => { 
-            alternateAction?.Invoke();
-        });
     }
 
-    public void ShowAsEvent(string title, Sprite image, string massage, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    private void SetupButtons(Action confirmAction, Action declineAction, Action alternateAction)
     {
-        Show(horizontal: true);
-        headerArea.gameObject.SetActive(string.IsNullOrEmpty(title));
-        headerText.text = title;
-
-        horizontalLayoutImage.sprite = image;
-        horizontalLayoutText.text = massage;
-
-        confirmButton.Init("Confirm", () => {
-            confirmAction?.Invoke();
-            if (choiceItem != null)
-            {
-                OnItemChoose?.Invoke(choiceItem);
-            }
-            Close();
-        });
-
-        declineButton.Init("Decline", () => {
-            declineAction?.Invoke();
-            Close();
-        });
-
-        alternateButton.Init("Alternate", () => {
-            alternateAction?.Invoke();
-        });
+        InitializeButton(confirmButton, "Confirm", confirmAction);
+        InitializeButton(alternateButton, "Alternate", alternateAction);
+        InitializeButton(declineButton, "Decline", declineAction);
     }
 
+    private void InitializeButton(PopupButton button, string label, Action action)
+    {
+        if (action != null)
+        {
+            button.Init(label, action.Invoke);
+        }
+    }
 
-
-    private void Show(bool horizontal)
+    private void Show(string title, bool horizontal)
     {
         horizontalLayoutArea.gameObject.SetActive(horizontal);
         verticalLayoutArea.gameObject.SetActive(!horizontal);
+
+        headerArea.gameObject.SetActive(string.IsNullOrEmpty(title));
+        headerText.text = title;
 
         if (animator != null)
         {
