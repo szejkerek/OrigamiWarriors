@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+
 
 public class PopupWindowPanel : MonoBehaviour
 {
+    public readonly int PopupShowHash = Animator.StringToHash("PopupShow");
+    public readonly int PopupCloseHash = Animator.StringToHash("PopupClose");
+
     [Header("Header")]
     [SerializeField] private Transform headerArea;
     [SerializeField] private TextMeshProUGUI headerText;
@@ -17,10 +18,10 @@ public class PopupWindowPanel : MonoBehaviour
     [Header("Content")]
     [SerializeField] private Transform contentArea;
     [SerializeField] private Transform verticalLayoutArea;
-    [SerializeField] private Image verticalLayoutImage1;
-    [SerializeField] private Image verticalLayoutImage2;
-    [SerializeField] private Image verticalLayoutImage3;
+    [SerializeField] private Transform choices;
+    [SerializeField] private List<ChoiceUI> listOfChoices;
     [SerializeField] private TextMeshProUGUI verticalLayoutText;
+    [SerializeField] private ChoiceUI choiceUIPrefab;
     [Space]
     [SerializeField] private Transform horizontalLayoutArea;
     [SerializeField] private Transform horizontalLayoutImageContainer;
@@ -29,92 +30,104 @@ public class PopupWindowPanel : MonoBehaviour
 
     [Header("Footer")]
     [SerializeField] private Transform footerArea;
-    [SerializeField] private Button confirmButton;
-    [SerializeField] private Button declineButton;
-    [SerializeField] private Button alternateButton;
-
-
+    [SerializeField] private PopupButton confirmButton;
+    [SerializeField] private PopupButton declineButton;
+    [SerializeField] private PopupButton alternateButton;
     [SerializeField] private Animator animator;
 
-    private Action onConfirmAction;
-    private Action onDeclineAction;
-    private Action onAlternateAction;
+    IDisplayable choiceItem;
 
-
-    public void Confirm()
+    public void ChooseModal(List<IDisplayable> elements, Action<IDisplayable> OnItemChoose, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
-        onConfirmAction?.Invoke();
-        Close();
-    }
-    public void Decline()
-    {
-        onDeclineAction?.Invoke();
-        Close();
-    }
-    public void Alternate()
-    {
-        onAlternateAction?.Invoke();
-        Close();
-    }
+        Show(title, horizontal: false);
+        verticalLayoutText.text = content;
+        FillChoices(elements);
 
-    public void ShowAsCharacterChoose(string title, IDisplayable element1, IDisplayable element2, IDisplayable element3, string massage, Action confirmAction, Action declineAction, Action alternateAction)
-    {
-        Show();
-        horizontalLayoutArea.gameObject.SetActive(false);
-        verticalLayoutArea.gameObject.SetActive(true);
+        confirmAction += () =>
+        {
+            if (choiceItem != null)
+            {
+                OnItemChoose?.Invoke(choiceItem);
+            }
+            Close();
+        };
 
-        bool hasTitle = string.IsNullOrEmpty(title);
-        headerArea.gameObject.SetActive(hasTitle);
-        headerText.text = title;
-        new AssetReference(element1.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { verticalLayoutImage1.sprite = handle.Result; };
-        new AssetReference(element2.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { verticalLayoutImage2.sprite = handle.Result; };
-        new AssetReference(element3.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { verticalLayoutImage3.sprite = handle.Result; };
-        verticalLayoutText.text = massage;
+        declineAction += () =>
+        {
+            Close();
+        };
 
-        onConfirmAction = confirmAction;
-        onDeclineAction = declineAction;
-
-        bool hasAlternate = alternateAction != null;
-        alternateButton.gameObject.SetActive(hasAlternate);
-        onAlternateAction = alternateAction;
+        SetupButtons(confirmAction, declineAction, alternateAction);
     }
 
-    public void ShowAsEvent(string title, IDisplayable element1, string massage, Action confirmAction, Action declineAction, Action alternateAction)
+    public void ShowAsEvent(string title, Sprite image, string massage, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
-        Show();
-        horizontalLayoutArea.gameObject.SetActive(true);
-        verticalLayoutArea.gameObject.SetActive(false);
-
-        bool hasTitle = string.IsNullOrEmpty(title);
-        headerArea.gameObject.SetActive(hasTitle);
-        headerText.text = title;
-        new AssetReference(element1.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { horizontalLayoutImage.sprite = handle.Result; };
+        Show(title, horizontal: true);
         horizontalLayoutText.text = massage;
+        horizontalLayoutImage.sprite = image;
 
-        onConfirmAction = confirmAction;
-        onDeclineAction = declineAction;
+        confirmAction += () =>
+        {
+            Close();
+        };
 
-        bool hasAlternate = alternateAction != null;
-        alternateButton.gameObject.SetActive(hasAlternate);
-        onAlternateAction = alternateAction;
+        declineAction += () =>
+        {
+            Close();
+        };
+
+        SetupButtons(confirmAction, declineAction, alternateAction);
     }
 
 
-
-    private void Show()
+    private void FillChoices(List<IDisplayable> elements)
     {
+        ChoiceUI.OnChoiceSelected += SetChoice;
+        for (int i = 0; i < elements.Count; i++)
+        {
+            var choice = Instantiate(choiceUIPrefab, choices);
+            listOfChoices.Add(choice);
+            choice.Init(elements[i]);
+        }
+    }
+
+    private void SetupButtons(Action confirmAction, Action declineAction, Action alternateAction)
+    {
+        InitializeButton(confirmButton, "Confirm", confirmAction);
+        InitializeButton(alternateButton, "Alternate", alternateAction);
+        InitializeButton(declineButton, "Decline", declineAction);
+    }
+
+    private void InitializeButton(PopupButton button, string label, Action action)
+    {
+        if (action != null)
+        {
+            button.Init(label, action.Invoke);
+        }
+    }
+
+    private void Show(string title, bool horizontal)
+    {
+        horizontalLayoutArea.gameObject.SetActive(horizontal);
+        verticalLayoutArea.gameObject.SetActive(!horizontal);
+
+        headerArea.gameObject.SetActive(string.IsNullOrEmpty(title));
+        headerText.text = title;
+
         if (animator != null)
         {
             gameObject.SetActive(true);
-            animator.Play("PopupShow"); // Nazwa animacji otwierania
+            animator.Play(PopupShowHash);
         }
     }
 
     private void Close()
-    {
+    {      
+        ChoiceUI.OnChoiceSelected -= SetChoice;
+
         if (animator != null)
         {
-            animator.Play("PopupClose"); // Nazwa animacji zamykania
+            animator.Play(PopupCloseHash);
             StartCoroutine(DeactivateAfterAnimation(animator.GetCurrentAnimatorStateInfo(0).length));
         }
         
@@ -123,5 +136,16 @@ public class PopupWindowPanel : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
+
+        foreach (var item in listOfChoices)
+        {
+            Destroy(item.gameObject);
+        }
+        listOfChoices.Clear();
+    }
+
+    private void SetChoice(IDisplayable choice)
+    {
+        choiceItem = choice;
     }
 }

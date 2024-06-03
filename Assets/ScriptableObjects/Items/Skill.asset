@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
   m_Name: Skill
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Wind
   <Icon>k__BackingField:
-    m_AssetGUID: aa4dfb01066234d44b5027cc6ba5fa4f
+    m_AssetGUID: 6b31691c75d5a36469cf5fa35fd73132
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <GameSprite>k__BackingField:
-    m_AssetGUID: aa4dfb01066234d44b5027cc6ba5fa4f
+    m_AssetGUID: 6b31691c75d5a36469cf5fa35fd73132
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

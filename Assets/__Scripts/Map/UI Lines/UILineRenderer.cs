@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+//
 namespace UnityEngine.UI.Extensions
 {
     [AddComponentMenu("UI/Extensions/Primitives/UILineRenderer")]

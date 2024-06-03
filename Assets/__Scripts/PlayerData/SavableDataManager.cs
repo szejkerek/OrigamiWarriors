@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
-
+//
 public class SavableDataManager : Singleton<SavableDataManager>, ISavable
 {    
     public SaveableData data = new SaveableData();

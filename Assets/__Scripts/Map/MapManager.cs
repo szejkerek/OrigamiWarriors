@@ -10,9 +10,11 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        currentMap = SaveManager<Map>.Load(allMapConfigs[configIndex].name + ".json");
-        
-        if (currentMap.mapNodes == null)
+        //SavableDataManager.Instance.Load();
+        currentMap = SavableDataManager.Instance.data.map;
+
+
+        if (currentMap== null)
         {
             GenerateNewMap();
         }
@@ -25,9 +27,10 @@ public class MapManager : MonoBehaviour
 
     public void GenerateNewMap()
     {
-        currentMap = MapGenerator.CreateMap(allMapConfigs[configIndex]);
+        currentMap = MapGenerator.CreateMap(allMapConfigs[configIndex]);       
         mapUI.ShowMap(currentMap, allMapConfigs[configIndex]);
-        currentMap.Save();
+        SavableDataManager.Instance.data.map = currentMap;
+        SavableDataManager.Instance.Save();
     }
 
 

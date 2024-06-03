@@ -87,6 +87,51 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e85851f2ee105844855ee9fd2feac59
+    m_Address: Assets/Art/2D/GUI-Maps/bow.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a07471a6788b2b4093a886ff26fd45b
+    m_Address: Assets/Art/2D/GUI-Maps/hammer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68fe57a3d74e95b4ea9f3eced6b1e6f5
+    m_Address: Assets/Art/2D/GUI-Maps/hammer 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e546fcda7127c964f93b0e4de803d097
+    m_Address: Assets/Art/2D/GUI-Maps/hammer 2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9628272bb8771e49ab5b02cc0d99bff
+    m_Address: Assets/Art/2D/GUI-Maps/katana.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6eaecc3a6bb74dd4ab6f0d99e6e15155
+    m_Address: Assets/Art/2D/GUI-Maps/naginata.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1345f0a57f5dec44c9ea494f84ac7663
+    m_Address: Assets/Art/2D/GUI-Maps/shuriken.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72ccea07451a8524bb423f5d537b391a
+    m_Address: Assets/Art/2D/GUI-Maps/3.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b31691c75d5a36469cf5fa35fd73132
+    m_Address: Assets/Art/2D/GUI-Maps/cherry-blossom 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f09f78c0cc6a4304e994adfab4308c06, type: 2}
   m_SchemaSet:

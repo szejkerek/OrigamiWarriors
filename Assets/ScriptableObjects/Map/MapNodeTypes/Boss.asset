@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd504f5534e06e4995447a940815a0b, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 2c55c6cf827eb8543873f687c8e7f669, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: dd1e9f8889b4ca3428b1dcd0214ce8c5, type: 3}
   <MapNodeType>k__BackingField: 6

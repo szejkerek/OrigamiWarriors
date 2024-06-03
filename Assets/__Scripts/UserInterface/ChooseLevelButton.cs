@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
-[RequireComponent(typeof(Button))]
 public class ChooseLevelButton : MonoBehaviour
 {
     const int k_startLevelIndex = SceneConstants.Level_1;
