@@ -404,6 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1a6938197c4364fa58a9be2229d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  voiceCommands:
+  - {fileID: 11400000, guid: 696a87a594cca764284c984357009116, type: 2}
+  - {fileID: 11400000, guid: 5e6fb38b94c1ef14fbe56228fc52cb4b, type: 2}
 --- !u!1 &2930521883978726328
 GameObject:
   m_ObjectHideFlags: 0
