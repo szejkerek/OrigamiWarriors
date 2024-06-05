@@ -369,6 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5457092428541633604}
+  - component: {fileID: 9060225510877789547}
   m_Layer: 0
   m_Name: VoiceListener
   m_TagString: Untagged
@@ -391,6 +392,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1160992609404156044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9060225510877789547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618439794970368535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1a6938197c4364fa58a9be2229d3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2930521883978726328
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,26 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  spawnRadius: 3.51
-  team:
-    General:
-      IconGUID: 
-      Name: 
-      BaseStats:
-        Damage: 0
-        Health: 0
-        Speed: 0
-        CritChance: 0
-      SamuraiVisuals:
-        helmetBIndex: 0
-        helmetFIndex: 0
-        faceIndex: 0
-        headIndex: 0
-        pantsIndex: 0
-      CharacterPrefab: {fileID: 0}
-      Items: []
-      characterGuid: 
-    TeamMembers: []
+  spawnRadius: 2.83
 --- !u!1 &5364219831280076284
 GameObject:
   m_ObjectHideFlags: 0

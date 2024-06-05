@@ -11681,18 +11681,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5701023085686559861, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6433872340823212356, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1471872517}
-    - target: {fileID: 6433872340823212356, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
-      propertyPath: spawnRadius
-      value: 2.83
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
