@@ -129,8 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22ad97f4c841bb4b9eea832743b8a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Renderers>k__BackingField: {fileID: 8515238591741812865}
-  cam: {fileID: 0}
 --- !u!1 &2581271540194730318
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 4377019615022809814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -377,8 +375,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 4.19
+  m_Radius: 0.81
+  m_Height: 5.17
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4502478581943204522

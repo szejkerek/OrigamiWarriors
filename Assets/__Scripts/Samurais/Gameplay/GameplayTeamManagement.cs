@@ -9,7 +9,7 @@ public class GameplayTeamManagement : MonoBehaviour
     float minDistanceBetween;
     List<Vector3> spawnPoints = new List<Vector3>();
 
-    public Team team;
+    Team team;
 
     private void Awake()
     {
@@ -21,9 +21,9 @@ public class GameplayTeamManagement : MonoBehaviour
 
     private void SpawnTeam()
     {
-        SpawnCharacter(team.General, Vector3.zero);
+        SpawnCharacter(team.General, spawnPoint.position);
 
-        foreach (Character objectToSpawn in team.TeamMembers)
+        foreach (Character characterToSpawn in team.TeamMembers)
         {
             int attempts = 0;
             bool spawned = false;
@@ -34,7 +34,7 @@ public class GameplayTeamManagement : MonoBehaviour
 
                 if (IsFarEnoughFromOthers(newSpawnPoint))
                 {
-                    SpawnCharacter(objectToSpawn, newSpawnPoint);
+                    SpawnCharacter(characterToSpawn, newSpawnPoint);
                     spawned = true;
                 }
 
@@ -43,8 +43,8 @@ public class GameplayTeamManagement : MonoBehaviour
 
             if (!spawned)
             {
-                Debug.LogWarning($"Could not place {objectToSpawn.CharacterPrefab.name} with the required minimum distance.");
-                SpawnCharacter(objectToSpawn, Vector3.zero);
+                Debug.LogWarning($"Could not place {characterToSpawn.CharacterPrefab.name} with the required minimum distance.");
+                SpawnCharacter(characterToSpawn, Vector3.zero);
             }
 
         }
@@ -52,7 +52,7 @@ public class GameplayTeamManagement : MonoBehaviour
 
     private void SpawnCharacter(Character objectToSpawn, Vector3 offsetFromSpawnPoint)
     {
-        Vector3 spawnPosition = (offsetFromSpawnPoint.With(y: 0) + spawnPoint.position);
+        Vector3 spawnPosition = offsetFromSpawnPoint;
         spawnPoints.Add(spawnPosition);
         var spawned = Instantiate(objectToSpawn.CharacterPrefab, spawnPosition, Quaternion.identity);
         if(spawned.TryGetComponent(out Samurai samurai))
