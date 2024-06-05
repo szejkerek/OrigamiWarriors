@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class SamuraiStylizer : MonoBehaviour
 {
-    [field: SerializeField] public SamuraiRenderers Renderers { get; private set; }
+    public SamuraiRenderers Renderers { get; private set; }
 
-    public CinemachineVirtualCamera cam;
+    public CinemachineVirtualCamera cam { get; private set; }
+
+    private void Awake()
+    {
+        Renderers = GetComponentInChildren<SamuraiRenderers>();
+        cam = FindObjectOfType<CinemachineVirtualCamera>();
+    }
 
     private void Update()
     {

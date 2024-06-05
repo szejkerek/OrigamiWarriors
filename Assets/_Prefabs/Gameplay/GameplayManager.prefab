@@ -569,7 +569,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2068aca583f534291edcd1dbbc1727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  spawnRadius: 3.51
   team:
+    General:
+      IconGUID: 
+      Name: 
+      BaseStats:
+        Damage: 0
+        Health: 0
+        Speed: 0
+        CritChance: 0
+      SamuraiVisuals:
+        helmetBIndex: 0
+        helmetFIndex: 0
+        faceIndex: 0
+        headIndex: 0
+        pantsIndex: 0
+      CharacterPrefab: {fileID: 0}
+      Items: []
+      characterGuid: 
     TeamMembers: []
 --- !u!1 &5364219831280076284
 GameObject:
@@ -626,6 +645,7 @@ MonoBehaviour:
     moneyOnWin: 0
     moneyOnLose: 0
     deadCharacters: []
+    newCharacters: []
 --- !u!1 &5701023085686559861
 GameObject:
   m_ObjectHideFlags: 0

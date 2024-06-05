@@ -5,14 +5,10 @@ public abstract class Samurai : MonoBehaviour
     public Character Character { get; private set; }
     SamuraiStylizer samuraiStylizer;
 
-    private void Awake()
-    {
-        samuraiStylizer = GetComponent<SamuraiStylizer>();
-    }
-
     public void SetCharacterData(Character character)
     {
-        this.Character = character; 
+        this.Character = character;
+        samuraiStylizer = GetComponent<SamuraiStylizer>();
         character.SamuraiVisuals.Apply(samuraiStylizer.Renderers, character);
     }
 }
