@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSamuraiVisuals", menuName = "SamuraiVisuals")]
+[CreateAssetMenu(fileName = "NewSamuraiVisuals", menuName = "Character/SamuraiVisuals")]
 public class SamuraiVisualsSO : ScriptableObject
 {
     [field: SerializeField] public List<Sprite> Helmet_B { private set; get; }

@@ -7,7 +7,7 @@ using System;
 using System.Text;
 
 
-public class VoiceControll : MonoBehaviour
+public class VoiceControl : MonoBehaviour
 {
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> commands = new Dictionary<string, Action>();
