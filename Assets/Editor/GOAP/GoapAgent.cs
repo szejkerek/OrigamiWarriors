@@ -21,7 +21,7 @@ public class GoapAgent : MonoBehaviour
 
   // References to the components of this particular agent
   NavMeshAgent navMeshAgent;
-  AnimationController animations;
+  //AnimationController animations;
   Rigidbody rb;
 
   // Stats degradee over time so the agent has to reevaluate the plan
@@ -49,7 +49,7 @@ public class GoapAgent : MonoBehaviour
   void Awake()
   {
     navMeshAgent = GetComponent<NavMeshAgent>();
-    animations = GetComponent<AnimationController>();
+    //animations = GetComponent<AnimationController>();
     rb = GetComponent<Rigidbody>();
     rb.freezeRotation = true;
 
@@ -162,7 +162,7 @@ public class GoapAgent : MonoBehaviour
         .Build());
 
     actions.Add(new AgentAction.Builder("AttackPlayer")
-        .WithStrategy(new AttackStrategy(animations))
+        //.WithStrategy(new AttackStrategy(animations))
         .AddPrecondition(beliefs["PlayerInAttackRange"])
         .AddEffect(beliefs["AttackingPlayer"])
         .Build());
@@ -238,7 +238,7 @@ public class GoapAgent : MonoBehaviour
   void Update()
   {
     statsTimer.Tick(Time.deltaTime);
-    animations.SetSpeed(navMeshAgent.velocity.magnitude);
+    //animations.SetSpeed(navMeshAgent.velocity.magnitude);
 
     // Update the plan and current action if there is one
     if (currentAction == null)
