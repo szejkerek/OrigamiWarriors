@@ -9,14 +9,14 @@ public class SamuraiAlly : Samurai
         AttackCommand.OnAttackRecognized += Attack;
     }
 
+    private void Attack(AttackCommand command)
+    {
+        StartCoroutine(MoveUpDownFast());
+    }
+
     private void OnDestroy()
     {
         AttackCommand.OnAttackRecognized -= Attack;
-    }
-
-    private void Attack()
-    {
-        StartCoroutine(MoveUpDownFast());
     }
 
     private IEnumerator MoveUpDownFast()

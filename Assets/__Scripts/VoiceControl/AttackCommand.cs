@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Voice Commands/Attack Command")]
 public class AttackCommand : VoiceCommand
 {
-    public static Action OnAttackRecognized;
+    public static Action<AttackCommand> OnAttackRecognized;
     public override void Execute()
     {
-        OnAttackRecognized?.Invoke();
+        OnAttackRecognized?.Invoke(this);
     }
 }
