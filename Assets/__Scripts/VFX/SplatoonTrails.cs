@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SplatoonTrails : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // OnStart is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    // OnUpdate is called once per frame
     void Update()
     {
         

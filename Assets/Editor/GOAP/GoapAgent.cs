@@ -240,7 +240,7 @@ public class GoapAgent : MonoBehaviour
     statsTimer.Tick(Time.deltaTime);
     //animations.SetSpeed(navMeshAgent.velocity.magnitude);
 
-    // Update the plan and current action if there is one
+    // OnUpdate the plan and current action if there is one
     if (currentAction == null)
     {
       Debug.Log("Calculating any potential new plan");

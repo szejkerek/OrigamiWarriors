@@ -31,13 +31,19 @@ public class ItemView : MonoBehaviour
             Character currentCharacter = TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter;
             if(currentCharacter != null)
             {
-                for (int i = 0; i < 3; i++)
+                if (currentCharacter.Weapon == currentItem)
                 {
-                    if (currentCharacter.Items[i] == currentItem)
-                    {
-                        currentCharacter.Items[i] = item;
-                    }
+                    currentCharacter.Weapon = item;
                 }
+                if (currentCharacter.Armor == currentItem)
+                {
+                    currentCharacter.Armor = item;
+                }
+                if (currentCharacter.Skill == currentItem)
+                {
+                    currentCharacter.Skill = item;
+                }
+
                 Init(item);
             }
         }

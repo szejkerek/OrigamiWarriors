@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public abstract class ItemSO : ScriptableObject
+public abstract class ItemSO : ScriptableObject, IPassiveEffect
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public AssetReferenceSprite Icon { get; private set; }
@@ -19,4 +19,7 @@ public abstract class ItemSO : ScriptableObject
 
     public abstract void Execute();
 
+    public virtual void OnStart(SamuraiEffectsManager context) { }
+
+    public virtual void OnUpdate(SamuraiEffectsManager context, float deltaTime) { }
 }
