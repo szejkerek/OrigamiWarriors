@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +13,13 @@ public class HealthBar : MonoBehaviour
     public int health;
     public float lerpSpeed = 0.05f;
     public Character currCharacter;
+    public TMP_Text nameText;
 
     // Start is called before the first frame update
     public void Init(Character character)
     {
         currCharacter = character;
+        nameText.text = character.Name;
         maxHealth = currCharacter.GetStats().Health;
         health = maxHealth - currCharacter.LostHealth;
         healthSlider.maxValue = maxHealth;
@@ -37,16 +40,6 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            currCharacter.Damage(10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            currCharacter.Heal(10);
-        }
-
         if (healthSlider.value != easeHealthSlider.value)
         {
             easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, lerpSpeed);
