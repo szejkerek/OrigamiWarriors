@@ -206,3 +206,4 @@ MonoBehaviour:
   mapManager: {fileID: 2837546399791382084}
   view: {fileID: 92761192886802277}
   locked: 0
+  events: {fileID: 11400000, guid: 35457ae58c79846479db892b6642662a, type: 2}

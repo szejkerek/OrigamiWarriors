@@ -67,19 +67,21 @@ public class PopupWindowPanel : MonoBehaviour
         SetupButtons(confirmAction, declineAction, alternateAction);
     }
 
-    public void ShowAsEvent(string title, Sprite image, string massage, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    public void ShowAsEvent(PopupEventSO eventData, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
-        Show(title, horizontal: true);
-        horizontalLayoutText.text = massage;
-        horizontalLayoutImage.sprite = image;
+        Show(eventData.Header, horizontal: true);
+        horizontalLayoutText.text = eventData.Content;
+        horizontalLayoutImage.sprite = eventData.DisplayImage;
 
         confirmAction += () =>
         {
+            eventData.OnAccept.Apply();
             Close();
         };
 
         declineAction += () =>
         {
+            eventData.OnDecline.Apply();
             Close();
         };
 
@@ -118,7 +120,8 @@ public class PopupWindowPanel : MonoBehaviour
         horizontalLayoutArea.gameObject.SetActive(horizontal);
         verticalLayoutArea.gameObject.SetActive(!horizontal);
 
-        headerArea.gameObject.SetActive(string.IsNullOrEmpty(title));
+
+        headerArea.gameObject.SetActive(title != "");
         headerText.text = title;
 
 

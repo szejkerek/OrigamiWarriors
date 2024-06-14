@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -9,6 +9,8 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public MapManager mapManager;
     public MapDrawerUI view;
     public bool locked;
+
+    public PopupAllEventsSO events;
 
     private List<IDisplayable> choices = new List<IDisplayable>();
 
@@ -36,21 +38,25 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         switch (mapNode.mapNode.type)
         {
             case MapNodeType.Arena:
-                SceneLoader.Instance.LoadScene(SceneConstants.Level_1);
+                SceneLoader.Instance.LoadScene(SceneConstants.Level_1); //TODO: Losowanie poziomu pomiędzy dostępnymi
                 break;
             case MapNodeType.Armory:
                 PopupController.Instance.PopupPanel.ChooseModal(choices, TryAddNewCharacter, "Choose new ally", "opis");
                 break;
             case MapNodeType.Boss:
+                PopupController.Instance.PopupPanel.ShowAsEvent(events.BossEvents.SelectRandomElement());
                 break;
             case MapNodeType.Experience:
+                PopupController.Instance.PopupPanel.ShowAsEvent(events.ExperienceEvents.SelectRandomElement());
                 break;
             case MapNodeType.Forge:
-                PopupController.Instance.PopupPanel.ShowAsEvent("EVENT uuuu", new AssetReference(a.DisplayIconGuid).LoadAssetAsync<Sprite>().WaitForCompletion(), "DAWNO DAWNO TEM ZA LASAMI I GLAZAMI", null, null, null);
+                PopupController.Instance.PopupPanel.ShowAsEvent(events.ForgeEvents.SelectRandomElement());
                 break;
             case MapNodeType.Temple:
+                PopupController.Instance.PopupPanel.ShowAsEvent(events.TempleEvents.SelectRandomElement());
                 break;
             case MapNodeType.WeaponReroll:
+                PopupController.Instance.PopupPanel.ShowAsEvent(events.TempleEvents.SelectRandomElement());
                 break;
             default:
                 throw new NotImplementedException();

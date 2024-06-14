@@ -16,6 +16,7 @@ public class ResourcesHolder
 
     public bool TryRemoveMoney(int money)
     {
+        money = Math.Abs(money);
         if (Money - money < 0) 
             return false; 
 

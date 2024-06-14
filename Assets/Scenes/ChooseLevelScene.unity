@@ -1959,6 +1959,10 @@ PrefabInstance:
       propertyPath: allMapConfigs.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 703ea5291ea5d7248a09893265f73b51, type: 2}
+    - target: {fileID: 3135054307488565937, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
+      propertyPath: testEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
     - target: {fileID: 5436305153162521916, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
