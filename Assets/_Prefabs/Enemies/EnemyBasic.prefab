@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 5914245531855884858}
   m_Layer: 0
   m_Name: ChaseSensor
-  m_TagString: Untagged
+  m_TagString: Blob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,6 +798,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 8
   timerInterval: 1
+  targetTags:
+  - Player
+  - Samurai
 --- !u!1 &1932369863466657939
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +978,7 @@ GameObject:
   - component: {fileID: 1330108259210340318}
   m_Layer: 0
   m_Name: EnemyBasic
-  m_TagString: Untagged
+  m_TagString: Blob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1141,7 +1144,7 @@ GameObject:
   - component: {fileID: 1436876188780242964}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Blob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1892,7 +1895,7 @@ GameObject:
   - component: {fileID: 7450158866763468338}
   m_Layer: 0
   m_Name: AttackSesor
-  m_TagString: Untagged
+  m_TagString: Blob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1997,6 +2000,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 2
   timerInterval: 1
+  targetTags:
+  - Player
+  - Samurai
 --- !u!1 &4707723564709643857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2788,7 @@ GameObject:
   - component: {fileID: 7897699025246710486}
   m_Layer: 0
   m_Name: RenderArea
-  m_TagString: Untagged
+  m_TagString: Blob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3098,6 +3104,10 @@ PrefabInstance:
     - target: {fileID: 7194712984007070602, guid: 8fb64140d685a7f4c870040ebb7eda77, type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194712984007070602, guid: 8fb64140d685a7f4c870040ebb7eda77, type: 3}
+      propertyPath: m_TagString
+      value: Blob
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

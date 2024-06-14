@@ -12,7 +12,7 @@ public class PassiveHealingEffect : PassiveEffect
         {
             if(Vector3.Distance(context.transform.position, team.transform.position) <= range)
             {
-                Debug.Log($"{team.name} was healed for {healthPerTick}");
+                //Debug.Log($"{team.name} was healed for {healthPerTick}");
             }
         }
     }

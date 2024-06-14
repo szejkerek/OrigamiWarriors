@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 422845242973765854, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1211213585549471888, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.b
       value: 0.28773582
@@ -182,10 +186,36 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8866659677878723973}
-    - targetCorrespondingSourceObject: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8378252706644492334, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1251229624233108966}
+      addedObject: {fileID: 2361505272062891464}
   m_SourcePrefab: {fileID: 100100000, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+--- !u!1 &1645199380115978266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8378252706644492334, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+  m_PrefabInstance: {fileID: 7102568506629126196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2361505272062891464
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645199380115978266}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d356672610a2db04788faa1f742c9356, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9086736370756655516 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
@@ -217,30 +247,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6.82
   gravityFactor: 250
---- !u!54 &1251229624233108966
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9086736370756655516}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0

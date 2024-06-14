@@ -51,7 +51,7 @@ public class AttackStrategy : IActionStrategy
   {
     timer.Tick(deltaTime);
     //UnityEngine.Debug.LogError($"ATTACK!!! Progress: {Math.Round(timer.Progress * 100, 2)}% of {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
-    UnityEngine.Debug.LogError($"ATTACK!!! Attacking the Player for {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
+    //UnityEngine.Debug.LogError($"ATTACK!!! Attacking the Player for {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
   }
 }
 

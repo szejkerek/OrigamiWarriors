@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Ally
+      value: Samurai
       objectReference: {fileID: 0}
     - target: {fileID: 2581271540194730318, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4377019615022809814, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Ally
+      value: Samurai
       objectReference: {fileID: 0}
     - target: {fileID: 4502478581943204522, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString

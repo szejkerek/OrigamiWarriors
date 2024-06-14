@@ -5,20 +5,20 @@ using UnityEngine.UI;
 //
 public class ChoiceUI : MonoBehaviour
 {
-    public static Action<IDisplayable> OnChoiceSelected;
+    public static Action<Character> OnCharacterSelected;
     [SerializeField] Button choiceBtn;
     [SerializeField] GameObject selectedBorder;
-    [SerializeField] Image image;
+    [SerializeField] CharacterUIDisplay characterDisplay;
 
-    IDisplayable choiceItem;
+    Character choiceItem;
 
-    public void Init(IDisplayable choiceItem)
+    public void Init(Character character)
     {
         selectedBorder.SetActive(false);
-        this.choiceItem = choiceItem;
-        new AssetReference(choiceItem.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { image.sprite = handle.Result; };
+        this.choiceItem = character;
+        characterDisplay.Init(character);
         choiceBtn.onClick.AddListener(SelectChoice);
-        OnChoiceSelected += DisableBorder;
+        OnCharacterSelected += DisableBorder;
     }
 
     public void EnableBorder()
@@ -26,21 +26,21 @@ public class ChoiceUI : MonoBehaviour
         selectedBorder.SetActive(true);
     }
 
-    void DisableBorder(IDisplayable _)
+    void DisableBorder(Character _)
     {
         selectedBorder.SetActive(false);
     }
 
     private void SelectChoice()
     {
-        OnChoiceSelected?.Invoke(choiceItem);
+        OnCharacterSelected?.Invoke(choiceItem);
         selectedBorder.SetActive(true);
     }
 
     private void OnDisable()
     {
-        image.sprite = null;
-        OnChoiceSelected -= DisableBorder;
+        characterDisplay.Clear();
+        OnCharacterSelected -= DisableBorder;
     }
 
 }

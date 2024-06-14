@@ -9,11 +9,8 @@ public class CharacterView : MonoBehaviour
     public static Action<Character> OnCharacterSelected;
     [SerializeField] Button characterBtn;
     [SerializeField] Button returnBtn;
-    [SerializeField] SamuraiImages viusals;
-    [SerializeField] TMP_Text characterName;
-
-    [SerializeField] GameObject textDisplay;
     [SerializeField] GameObject selectedBorder;
+    [SerializeField] CharacterUIDisplay characterUIDisplay;
 
     Character character;
 
@@ -23,7 +20,6 @@ public class CharacterView : MonoBehaviour
         selectedBorder.SetActive(false);
         characterBtn.onClick.AddListener(SelectCharacter);
         OnCharacterSelected += DisableBorder;
-
         returnBtn.onClick.AddListener(ResetView);
     }
     public void EnableBorder()
@@ -50,22 +46,16 @@ public class CharacterView : MonoBehaviour
     void ResetView()
     {
         TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter = null;
-        character = null;
         returnBtn.gameObject.SetActive(false);
-        viusals.SetActive(false);
-        textDisplay.gameObject.SetActive(false);
+        character = null;
+        characterUIDisplay.Clear();
     }
-
-    
 
     public void SetCharacter(Character character)
     {
         this.character = character;
-        viusals.SetActive(true);
-        character.SamuraiVisuals.Apply(viusals, character);
+        characterUIDisplay.Init(character);
         returnBtn.gameObject.SetActive(true);
-        textDisplay.gameObject.SetActive(true);
-        characterName.text = character.DisplayName;
     }
 
 

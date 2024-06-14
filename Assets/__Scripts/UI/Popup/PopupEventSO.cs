@@ -4,7 +4,7 @@
 public class PopupEventSO : ScriptableObject
 {
     public string Header;
-    public string Content;
+    [TextAreaAttribute] public string Content;
     public Sprite DisplayImage;
     public PopupEventEffect OnAccept;
     public PopupEventEffect OnDecline;
