@@ -162,10 +162,11 @@ public class GoapAgent : MonoBehaviour
         .Build());
 
     actions.Add(new AgentAction.Builder("AttackPlayer")
-        //.WithStrategy(new AttackStrategy(animations))
+        .WithStrategy(new AttackStrategy(1))
         .AddPrecondition(beliefs["PlayerInAttackRange"])
         .AddEffect(beliefs["AttackingPlayer"])
         .Build());
+        //.WithStrategy(new AttackStrategy(animations))
   }
 
   void SetupGoals()
@@ -259,7 +260,7 @@ public class GoapAgent : MonoBehaviour
         if (currentAction.Preconditions.All(b => b.Evaluate()))
         {
           currentAction.Start();
-          Debug.LogError("ATTACK!!!");
+          //Debug.LogError("ATTACK!!!");
         }
         else
         {
