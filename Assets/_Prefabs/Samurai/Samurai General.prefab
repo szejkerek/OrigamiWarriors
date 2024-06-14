@@ -32,9 +32,33 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1499006136807606513, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Name
       value: Samurai General
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581271540194730318, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842501090944149441, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377019615022809814, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502478581943204522, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5746216813206886600, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.b
@@ -100,6 +124,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6297579365237155888, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6730405952943694867, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.b
       value: 0.28773582
@@ -135,6 +163,14 @@ PrefabInstance:
     - target: {fileID: 7420289443603704243, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033393588830924705, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928247870028266631, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
