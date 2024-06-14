@@ -14,10 +14,15 @@ public static class GameObjectExtensions
 [RequireComponent(typeof(SphereCollider))] // every sensor has to have a collider of some sort
 public class Sensor : MonoBehaviour
 {
+    enum TargetingMode { Normal, StrongestBlob, WeakestBlob, StrongestSamurai, WeakestSamurai};
+
+
     [SerializeField] float detectionRadius = 5.0f; // radius of the sensor
     [SerializeField] float timerInterval = 1.0f; // how often to check the sensor (instead of every frame)
     [SerializeField] List<string> targetTags;
     private List<GameObject> targetsInRange;
+    [SerializeField] TargetingMode targetingMode = TargetingMode.Normal;
+
 
     SphereCollider detectionRange;
 
@@ -57,24 +62,42 @@ public class Sensor : MonoBehaviour
 
     void UpdateTargetPosition()
     {
-        Debug.Log(targetsInRange.Count);
         if (targetsInRange.Count == 0) target = null;
         else
         {
-            GameObject closestTarget = targetsInRange[0];
+            GameObject currentTarget = targetsInRange[0];
             float minDistance = 0;
 
-            foreach (GameObject t in targetsInRange)
+            switch (targetingMode)
             {
-                float currDistance = Vector3.Distance(transform.position, t.transform.position);
-                if (currDistance < minDistance)
-                {
-                    minDistance = currDistance;
-                    closestTarget = t;
-                }
+                case TargetingMode.StrongestBlob:
+                    Debug.Log("Here");
+                    currentTarget = GetStrongestBlob();
+                    break;
+                case TargetingMode.WeakestBlob:
+                    currentTarget = GetStrongestBlob(false);
+                    break;
+                case TargetingMode.StrongestSamurai:
+                    currentTarget = GetStrongestSamurai();
+                    break;
+                case TargetingMode.WeakestSamurai:
+                    currentTarget = GetStrongestSamurai(false);
+                    break;
+                default:
+                    foreach (GameObject t in targetsInRange)
+                    {
+                        float currDistance = Vector3.Distance(transform.position, t.transform.position);
+                        if (currDistance < minDistance)
+                        {
+                            minDistance = currDistance;
+                            currentTarget = t;
+                        }
+                    }
+                    break;
+
             }
 
-            target = closestTarget;
+            target = currentTarget;
         }
 
     if (IsTargetInRange && (lastKnownPosition != TargetPosition || lastKnownPosition != Vector3.zero))
@@ -115,4 +138,51 @@ public class Sensor : MonoBehaviour
     Gizmos.color = IsTargetInRange ? Color.red : Color.green;
     Gizmos.DrawWireSphere(transform.position, detectionRadius);
   }
+
+
+
+    private GameObject GetStrongestBlob(bool getWeakestInstead = false)
+    {
+        float currentMaxHp = 0;
+        GameObject currentStrongest = null;
+
+        foreach (GameObject g in targetsInRange)
+        {
+            EnemyController b = null;
+            if (!g.transform.parent.TryGetComponent<EnemyController>(out b))
+            {
+                continue;
+            }
+            if (b.maxHp > currentMaxHp || (getWeakestInstead && b.maxHp < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
+            {
+                currentStrongest = b.gameObject;
+                currentMaxHp = b.maxHp;
+            }
+        }
+
+        return currentStrongest;
+    }
+
+    private GameObject GetStrongestSamurai(bool getWeakestInstead = false)
+    {
+        float currentMaxHp = 0;
+        GameObject currentStrongest = null;
+
+        foreach (GameObject g in targetsInRange)
+        {
+            Samurai s = null;
+            if (!g.TryGetComponent<Samurai>(out s))
+            {
+                continue;
+            }
+            int hp = s.Character.GetStats().Health;
+            if (hp > currentMaxHp || (getWeakestInstead && hp < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
+            {
+                currentStrongest = s.gameObject;
+                currentMaxHp = hp;
+            }
+        }
+
+        return currentStrongest;
+    }
 }

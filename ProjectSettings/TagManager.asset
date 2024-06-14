@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Ally
+  - Blob
+  - Samurai
   layers:
   - Default
   - TransparentFX
