@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Character : IDisplayable , IHealth
+public class Character : IHealth
 {
     public Action OnHealthChange;
-    public string DisplayIconGuid => IconGUID;
     public string DisplayName => Name;
 
-    public string IconGUID;
     public string Name;
     public CharacterStats BaseStats;
     public int LostHealth;
@@ -33,7 +31,6 @@ public class Character : IDisplayable , IHealth
 
         PassiveEffects = characterData.PassiveEffects;
 
-        this.IconGUID = characterData.Icon.AssetGUID;
         this.Name = characterData.Name;
         this.CharacterPrefab = characterData.CharacterGameObject;
         Weapon = new Item(characterData.Weapon.AssetGUID);

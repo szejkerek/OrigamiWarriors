@@ -9,9 +9,6 @@ using UnityEngine.UI;
 
 public class PopupWindowPanel : MonoBehaviour
 {
-    public readonly int PopupShowHash = Animator.StringToHash("PopupShow");
-    public readonly int PopupCloseHash = Animator.StringToHash("PopupClose");
-
     [Header("Header")]
     [SerializeField] private Transform choicesParent;
     [SerializeField] private ChoiceUI choiceUIPrefab;
@@ -34,7 +31,7 @@ public class PopupWindowPanel : MonoBehaviour
     [SerializeField] private PopupButton alternateButton;
 
     CanvasGroup canvasGroup;
-    IDisplayable choiceItem;
+    Character choiceItem;
     List<ChoiceUI> listOfChoices;
 
     private void Awake()
@@ -44,7 +41,7 @@ public class PopupWindowPanel : MonoBehaviour
         Close();    
     }
 
-    public void ChooseModal(List<Character> elements, Action<IDisplayable> OnItemChoose, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    public void ChooseModal(List<Character> elements, Action<Character> OnCharacterSelected, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
         Show(title, horizontal: false);
         verticalLayoutText.text = content;
@@ -54,7 +51,7 @@ public class PopupWindowPanel : MonoBehaviour
         {
             if (choiceItem != null)
             {
-                OnItemChoose?.Invoke(choiceItem);
+                OnCharacterSelected?.Invoke(choiceItem);
             }
             Close();
         };
@@ -92,7 +89,7 @@ public class PopupWindowPanel : MonoBehaviour
     private void FillChoices(List<Character> elements)
     {
         listOfChoices = new List<ChoiceUI>();
-        ChoiceUI.OnChoiceSelected += SetChoice;
+        ChoiceUI.OnCharacterSelected += SetChoice;
         for (int i = 0; i < elements.Count; i++)
         {
             var choice = Instantiate(choiceUIPrefab, choicesParent);
@@ -135,7 +132,7 @@ public class PopupWindowPanel : MonoBehaviour
 
     private void Close()
     {      
-        ChoiceUI.OnChoiceSelected -= SetChoice;
+        ChoiceUI.OnCharacterSelected -= SetChoice;
 
         DOTween.Sequence()
         .Append(canvasGroup.DOFade(0, 0.5f))
@@ -159,7 +156,7 @@ public class PopupWindowPanel : MonoBehaviour
         }
     }
 
-    private void SetChoice(IDisplayable choice)
+    private void SetChoice(Character choice)
     {
         choiceItem = choice;
     }

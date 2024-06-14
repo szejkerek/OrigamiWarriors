@@ -5,12 +5,12 @@ using UnityEngine.UI;
 //
 public class ChoiceUI : MonoBehaviour
 {
-    public static Action<IDisplayable> OnChoiceSelected;
+    public static Action<Character> OnCharacterSelected;
     [SerializeField] Button choiceBtn;
     [SerializeField] GameObject selectedBorder;
     [SerializeField] CharacterUIDisplay characterDisplay;
 
-    IDisplayable choiceItem;
+    Character choiceItem;
 
     public void Init(Character character)
     {
@@ -18,7 +18,7 @@ public class ChoiceUI : MonoBehaviour
         this.choiceItem = character;
         characterDisplay.Init(character);
         choiceBtn.onClick.AddListener(SelectChoice);
-        OnChoiceSelected += DisableBorder;
+        OnCharacterSelected += DisableBorder;
     }
 
     public void EnableBorder()
@@ -26,21 +26,21 @@ public class ChoiceUI : MonoBehaviour
         selectedBorder.SetActive(true);
     }
 
-    void DisableBorder(IDisplayable _)
+    void DisableBorder(Character _)
     {
         selectedBorder.SetActive(false);
     }
 
     private void SelectChoice()
     {
-        OnChoiceSelected?.Invoke(choiceItem);
+        OnCharacterSelected?.Invoke(choiceItem);
         selectedBorder.SetActive(true);
     }
 
     private void OnDisable()
     {
         characterDisplay.Clear();
-        OnChoiceSelected -= DisableBorder;
+        OnCharacterSelected -= DisableBorder;
     }
 
 }

@@ -59,9 +59,8 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         }
     }
 
-    private void TryAddNewCharacter(IDisplayable displayable)
+    private void TryAddNewCharacter(Character character)
     {
-        Character character = displayable as Character;
         if (character == null)
         {
             Debug.Log("Couldnt get Character from modal.");
