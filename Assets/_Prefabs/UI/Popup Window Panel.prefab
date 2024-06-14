@@ -2825,8 +2825,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -600, y: -400}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.000015258789}
+  m_SizeDelta: {x: 0, y: -0.000061035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6608357762627662911
 CanvasRenderer:
@@ -2860,7 +2860,6 @@ MonoBehaviour:
   confirmButton: {fileID: 6838182205058228064}
   declineButton: {fileID: 5137688903534402429}
   alternateButton: {fileID: 2592276024213051855}
-  animator: {fileID: 0}
 --- !u!225 &3645085684563890126
 CanvasGroup:
   m_ObjectHideFlags: 0
