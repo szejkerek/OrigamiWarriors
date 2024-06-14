@@ -44,7 +44,7 @@ public class PopupWindowPanel : MonoBehaviour
         Close();    
     }
 
-    public void ChooseModal(List<IDisplayable> elements, Action<IDisplayable> OnItemChoose, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    public void ChooseModal(List<Character> elements, Action<IDisplayable> OnItemChoose, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
         Show(title, horizontal: false);
         verticalLayoutText.text = content;
@@ -89,8 +89,9 @@ public class PopupWindowPanel : MonoBehaviour
     }
 
 
-    private void FillChoices(List<IDisplayable> elements)
+    private void FillChoices(List<Character> elements)
     {
+        listOfChoices = new List<ChoiceUI>();
         ChoiceUI.OnChoiceSelected += SetChoice;
         for (int i = 0; i < elements.Count; i++)
         {

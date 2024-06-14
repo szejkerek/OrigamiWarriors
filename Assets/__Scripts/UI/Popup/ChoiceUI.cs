@@ -8,15 +8,15 @@ public class ChoiceUI : MonoBehaviour
     public static Action<IDisplayable> OnChoiceSelected;
     [SerializeField] Button choiceBtn;
     [SerializeField] GameObject selectedBorder;
-    [SerializeField] Image image;
+    [SerializeField] CharacterUIDisplay characterDisplay;
 
     IDisplayable choiceItem;
 
-    public void Init(IDisplayable choiceItem)
+    public void Init(Character character)
     {
         selectedBorder.SetActive(false);
-        this.choiceItem = choiceItem;
-        new AssetReference(choiceItem.DisplayIconGuid).LoadAssetAsync<Sprite>().Completed += handle => { image.sprite = handle.Result; };
+        this.choiceItem = character;
+        characterDisplay.Init(character);
         choiceBtn.onClick.AddListener(SelectChoice);
         OnChoiceSelected += DisableBorder;
     }
@@ -39,7 +39,7 @@ public class ChoiceUI : MonoBehaviour
 
     private void OnDisable()
     {
-        image.sprite = null;
+        characterDisplay.Clear();
         OnChoiceSelected -= DisableBorder;
     }
 

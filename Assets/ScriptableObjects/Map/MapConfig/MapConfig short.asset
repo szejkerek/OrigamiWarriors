@@ -26,7 +26,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c670f1448d9daa4fbec99360f6c6495, type: 2}
   mapLayers:
   - mapNodeTypesProbability:
-    - mapNodeType: 2
+    - mapNodeType: 3
       probability: 1
   - mapNodeTypesProbability:
     - mapNodeType: 0

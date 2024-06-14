@@ -9,10 +9,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public MapManager mapManager;
     public MapDrawerUI view;
     public bool locked;
-
     public PopupAllEventsSO events;
-
-    private List<IDisplayable> choices = new List<IDisplayable>();
 
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
@@ -23,17 +20,16 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
 
         locked = lockAfterSelecting;
         mapManager.currentMap.path.Add(mapNode.mapNode.locationOnMap);
-        //TODO: SAVE MAP
         SavableDataManager.Instance.data.map = mapManager.currentMap;
         SavableDataManager.Instance.Save();
         view.SetAttainableNodes();
         view.SetLineColors();
 
-        choices.Clear();    
-        IDisplayable a = SavableDataManager.Instance.data.team.General;
-        IDisplayable b = SavableDataManager.Instance.data.team.TeamMembers[0];
-        IDisplayable c = SavableDataManager.Instance.data.team.TeamMembers[1];
-        choices = new List<IDisplayable> { a, b, c };
+        List<Character> choices = new List<Character> { 
+            SavableDataManager.Instance.data.team.General, 
+            SavableDataManager.Instance.data.team.TeamMembers[0], 
+            SavableDataManager.Instance.data.team.TeamMembers[1] };
+
 
         switch (mapNode.mapNode.type)
         {
