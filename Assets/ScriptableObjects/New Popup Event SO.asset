@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c5a6d9108fd6c449073f7e410adb09, type: 3}
   m_Name: New Popup Event SO
   m_EditorClassIdentifier: 
-  Header: XD
-  Content: Dodanie kasy
-  DisplayImage: {fileID: 21300000, guid: 6a4f9c0aa1cb1aa4c8e3f3e917ab6fa5, type: 3}
+  Header: "Z\u0142odziej z dwubiegunuwk\u0105"
+  Content: "Uuuuuu jak klikniesz akcept to dam ci kase w innym przypadku ci jom odejme
+    uuuuu - Sebastian Enrique Sentino Tatua\u017Cyk"
+  DisplayImage: {fileID: 21300000, guid: 53a3b1f2cfc8c384cb9691701e7bbcef, type: 3}
   OnAccept:
-    Money: 13
+    Money: 420
   OnDecline:
-    Money: -14
+    Money: -69
