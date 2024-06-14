@@ -144,11 +144,15 @@ public class PopupWindowPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        foreach (var item in listOfChoices)
+        if(listOfChoices != null)
         {
-            Destroy(item.gameObject);
+            foreach (var item in listOfChoices)
+            {
+                Destroy(item.gameObject);
+            }
+            listOfChoices.Clear();
+            listOfChoices = null;
         }
-        listOfChoices.Clear();
     }
 
     private void SetChoice(IDisplayable choice)

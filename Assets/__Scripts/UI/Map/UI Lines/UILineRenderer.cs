@@ -286,7 +286,7 @@ namespace UnityEngine.UI.Extensions
 				return CreateLineSegment(end, capEnd, SegmentType.End);
 			}
 
-			Debug.LogError("Bad SegmentType passed in to CreateLineCap. Must be SegmentType.Start or SegmentType.End");
+			Debug.LogError("Bad SegmentType passed in to CreateLineCap. Must be SegmentType.OnStart or SegmentType.End");
 			return null;
 		}
 

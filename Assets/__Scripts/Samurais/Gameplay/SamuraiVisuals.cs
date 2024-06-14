@@ -23,8 +23,8 @@ public class SamuraiVisuals
         renderer.Helmet_F.sprite = visualsSO.Helmet_F[helmetFIndex];
         renderer.Face_F.sprite = visualsSO.Face_F[faceIndex];
         renderer.Head.sprite = visualsSO.Head[headIndex];
-        renderer.Weapon.sprite = new AssetReferenceSprite(character.Items[0].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
-        renderer.Chestplate.sprite = new AssetReferenceSprite(character.Items[1].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
+        renderer.Weapon.sprite = new AssetReferenceSprite(character.Weapon.SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
+        renderer.Chestplate.sprite = new AssetReferenceSprite(character.Armor.SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
         renderer.Pants.sprite = visualsSO.Pants[pantsIndex];
     }
 
@@ -34,8 +34,8 @@ public class SamuraiVisuals
         images.Helmet_F.sprite = visualsSO.Helmet_F[helmetFIndex];
         images.Face_F.sprite = visualsSO.Face_F[faceIndex];
         images.Head.sprite = visualsSO.Head[headIndex];
-        images.Weapon.sprite = new AssetReferenceSprite(character.Items[0].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
-        images.Chestplate.sprite = new AssetReferenceSprite(character.Items[1].SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
+        images.Weapon.sprite = new AssetReferenceSprite(character.Weapon.SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
+        images.Chestplate.sprite = new AssetReferenceSprite(character.Armor.SpriteGuid).LoadAssetAsync<Sprite>().WaitForCompletion();
         images.Pants.sprite = visualsSO.Pants[pantsIndex];
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,20 +35,24 @@ public class AttackStrategy : IActionStrategy
   //readonly AnimationController animations;
 
   //public AttackStrategy(AnimationController animations)
-  //{
-  //  this.animations = animations;
-  //  timer = new CountdownTimer(animations.GetAnimationLength(animations.attackClip));
-  //  timer.OnTimerStart += () => Complete = false;
-  //  timer.OnTimerStop += () => Complete = true;
-  //}
-
-  public void Start()
+  public AttackStrategy(float duration)
   {
-    timer.Start();
-    //animations.Attack();
+    //  this.animations = animations;
+    //timer = new CountdownTimer(animations.GetAnimationLength(animations.attackClip));
+    timer = new CountdownTimer(duration);
+    timer.OnTimerStart += () => Complete = false;
+    timer.OnTimerStop += () => Complete = true;
   }
 
-  public void Update(float deltaTime) => timer.Tick(deltaTime);
+  public void Start() => timer.Start();
+
+  //public void Update(float deltaTime) => timer.Tick(deltaTime);
+  public void Update(float deltaTime)
+  {
+    timer.Tick(deltaTime);
+    //UnityEngine.Debug.LogError($"ATTACK!!! Progress: {Math.Round(timer.Progress * 100, 2)}% of {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
+    UnityEngine.Debug.LogError($"ATTACK!!! Attacking the Player for {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
+  }
 }
 
 public class MoveStrategy : IActionStrategy

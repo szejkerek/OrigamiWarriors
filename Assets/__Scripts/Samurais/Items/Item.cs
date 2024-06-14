@@ -13,7 +13,8 @@ public class Item : IDisplayable
     public int Cost;
     public string itemDataGuid;
 
-    ItemSO itemData;
+    public ItemSO itemData;
+
     public Item(string itemDataGuid)
     {
         this.itemDataGuid = itemDataGuid;

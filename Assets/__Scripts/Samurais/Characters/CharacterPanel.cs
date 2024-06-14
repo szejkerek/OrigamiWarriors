@@ -30,10 +30,9 @@ public class CharacterPanel : MonoBehaviour
         characterName.text = character.Name;
         statsPanel.Init(character);
 
-        for (int i = 0; i < 3; i++)
-        {
-            itemSlot[i].Init(character.Items[i]);
+        itemSlot[0].Init(character.Weapon);
+        itemSlot[1].Init(character.Armor);
+        itemSlot[2].Init(character.Skill);
 
-        }
     }
 }

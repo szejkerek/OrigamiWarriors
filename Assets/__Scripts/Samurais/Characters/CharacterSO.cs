@@ -11,6 +11,7 @@ public class CharacterSO : ScriptableObject
     [field: SerializeField] public SamuraiVisualsSO SamuraiVisuals { private set; get; }
     [field: SerializeField] public GameObject CharacterGameObject { private set; get; }
     [field: SerializeField] public CharacterStats BaseStats { private set; get; }
+    [field: SerializeField] public List<PassiveEffect> PassiveEffects { private set; get; }
     [field: SerializeField] public AssetReferenceItemSO Weapon { private set; get; }
     [field: SerializeField] public AssetReferenceItemSO Armor { private set; get; }
     [field: SerializeField] public AssetReferenceItemSO Skill { private set; get; }

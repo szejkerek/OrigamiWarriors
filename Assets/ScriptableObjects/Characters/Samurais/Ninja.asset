@@ -25,6 +25,8 @@ MonoBehaviour:
     Health: 102
     Speed: 28
     CritChance: 0.22
+  <PassiveEffects>k__BackingField:
+  - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}
   <Weapon>k__BackingField:
     m_AssetGUID: 6d920f1a3248cd246acaf6184d614241
     m_SubObjectName: 

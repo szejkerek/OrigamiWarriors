@@ -162,10 +162,11 @@ public class GoapAgent : MonoBehaviour
         .Build());
 
     actions.Add(new AgentAction.Builder("AttackPlayer")
-        //.WithStrategy(new AttackStrategy(animations))
+        .WithStrategy(new AttackStrategy(1))
         .AddPrecondition(beliefs["PlayerInAttackRange"])
         .AddEffect(beliefs["AttackingPlayer"])
         .Build());
+        //.WithStrategy(new AttackStrategy(animations))
   }
 
   void SetupGoals()
@@ -240,7 +241,7 @@ public class GoapAgent : MonoBehaviour
     statsTimer.Tick(Time.deltaTime);
     //animations.SetSpeed(navMeshAgent.velocity.magnitude);
 
-    // Update the plan and current action if there is one
+    // OnUpdate the plan and current action if there is one
     if (currentAction == null)
     {
       Debug.Log("Calculating any potential new plan");
@@ -259,7 +260,7 @@ public class GoapAgent : MonoBehaviour
         if (currentAction.Preconditions.All(b => b.Evaluate()))
         {
           currentAction.Start();
-          Debug.LogError("ATTACK!!!");
+          //Debug.LogError("ATTACK!!!");
         }
         else
         {
