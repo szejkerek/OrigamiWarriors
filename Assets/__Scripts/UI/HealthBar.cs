@@ -8,18 +8,17 @@ public class HealthBar : MonoBehaviour
 {
     public Slider healthSlider;
     public Slider easeHealthSlider;
-    public Image Icon;
     public int maxHealth = 100;
     public int health;
     public float lerpSpeed = 0.05f;
     public Character currCharacter;
-    public TMP_Text nameText;
+    public CharacterUIDisplay characterUIDisplay;
 
     // Start is called before the first frame update
     public void Init(Character character)
     {
-        currCharacter = character;
-        nameText.text = character.Name;
+        currCharacter= character;
+        characterUIDisplay.Init(currCharacter);
         maxHealth = currCharacter.GetStats().Health;
         health = maxHealth - currCharacter.LostHealth;
         healthSlider.maxValue = maxHealth;
