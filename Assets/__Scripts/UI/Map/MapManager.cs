@@ -14,7 +14,7 @@ public class MapManager : MonoBehaviour
         currentMap = SavableDataManager.Instance.data.map;
 
 
-        if (currentMap== null)
+        if (currentMap.mapNodes.Count == 0)
         {
             GenerateNewMap();
         }
