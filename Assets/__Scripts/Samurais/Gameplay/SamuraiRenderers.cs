@@ -15,15 +15,16 @@ public class SamuraiRenderers : MonoBehaviour
 
     private void Awake()
     {
-        renderers = new List<SpriteRenderer>();
-
-        renderers.Add(Helmet_B);
-        renderers.Add(Helmet_F);
-        renderers.Add(Face_F);
-        renderers.Add(Head);
-        renderers.Add(Weapon);
-        renderers.Add(Chestplate);
-        renderers.Add(Pants);
+        renderers = new List<SpriteRenderer>
+        {
+            Helmet_B,
+            Helmet_F,
+            Face_F,
+            Head,
+            Weapon,
+            Chestplate,
+            Pants
+        };
 
         float f = 0;
         float u = Random.Range(0f, 1f);

@@ -25,10 +25,6 @@ public class VoiceControl : MonoBehaviour
         {
             action?.Invoke();
         }
-        else
-        {
-            //Debug.LogWarning($"Command '{speech.text}' not found in the commandsDictionary.");
-        }
     }
 
     void Awake()
