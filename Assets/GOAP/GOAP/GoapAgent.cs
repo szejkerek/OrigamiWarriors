@@ -110,6 +110,11 @@ public class GoapAgent : MonoBehaviour
             .AddEffect(beliefs["EnemyInAttackRange"])
             .Build());
 
+        actions.Add(new AgentAction.Builder("Wander Around")
+            .WithStrategy(new WanderStrategy(navMeshAgent, 10))
+            .AddEffect(beliefs["AgentMoving"])
+            .Build());
+
         // HEAL
         //actions.Add(new AgentAction.Builder("MoveToEatingPosition")
         //    .WithStrategy(new MoveStrategy(navMeshAgent, () => foodShack.position))
@@ -160,8 +165,6 @@ public class GoapAgent : MonoBehaviour
     protected virtual void SetupGoals()
   {
         goals = new HashSet<AgentGoal>();
-
-        
 
         goals.Add(new AgentGoal.Builder("Wander")
             .WithPriority(1)

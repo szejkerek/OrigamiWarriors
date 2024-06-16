@@ -34,7 +34,8 @@ public class AllyAgent : GoapAgent
         base.SetupActions();
         
         actions.Add(new AgentAction.Builder("MoveToPlayer")
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => playerPosition.position))
+        .WithStrategy(new MoveStrategy(navMeshAgent, () => 
+        playerPosition != null ? playerPosition.transform.position : GameObject.FindGameObjectWithTag("Player").transform.position))
         .AddEffect(beliefs["NearPlayer"])
         .Build());
 
@@ -50,19 +51,23 @@ public class AllyAgent : GoapAgent
             .AddPrecondition(beliefs["AttackLoaded"])
             .AddEffect(beliefs["AttackingEnemy"])
             .Build());
+
+        
     }
 
     protected override void SetupGoals()
     {
         base.SetupGoals();
 
+        goals.Add(new AgentGoal.Builder("GroupUp")
+            .WithPriority(3)
+            .WithDesiredEffect(beliefs["NearPlayer"])
+            .Build());
+
         //goals.Add(new AgentGoal.Builder("Keep Watch")
         //    .WithPriority(2)
         //    .WithDesiredEffect(beliefs["Nothing"])
         //    .Build());
-        actions.Add(new AgentAction.Builder("Wander Around")
-            .WithStrategy(new WanderStrategy(navMeshAgent, 10))
-            .AddEffect(beliefs["AgentMoving"])
-            .Build());
+
     }
 }

@@ -31,9 +31,6 @@ public class BaseEnemyAgent : GoapAgent
     {
         base.SetupGoals();
 
-        actions.Add(new AgentAction.Builder("Wander Around")
-            .WithStrategy(new WanderStrategy(navMeshAgent, 10))
-            .AddEffect(beliefs["AgentMoving"])
-            .Build());
+        
     }
 }
