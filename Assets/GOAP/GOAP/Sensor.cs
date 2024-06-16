@@ -20,7 +20,7 @@ public class Sensor : MonoBehaviour
     [SerializeField] float detectionRadius = 5.0f; // radius of the sensor
     [SerializeField] float timerInterval = 1.0f; // how often to check the sensor (instead of every frame)
     [SerializeField] List<string> targetTags;
-    private List<GameObject> targetsInRange;
+    [SerializeField] List<GameObject> targetsInRange;
     [SerializeField] TargetingMode targetingMode = TargetingMode.Normal;
 
 
