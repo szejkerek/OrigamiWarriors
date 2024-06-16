@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllyAnimationControl : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class AllyAnimationControl : BaseAnimationControl
 {
     Rigidbody rb;
-    Animator animator;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override Vector3 GetVelocity()
     {
-        animator.SetBool("isMoving", rb.velocity.magnitude > 0.05f);
+        
+            return rb.velocity;
+        
     }
 }

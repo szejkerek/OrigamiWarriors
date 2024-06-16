@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 269637770349054642}
   - component: {fileID: 6707021495300335386}
   - component: {fileID: 1123130169203953760}
-  - component: {fileID: 8733680192960838132}
   - component: {fileID: 6975927937595369746}
   m_Layer: 0
   m_Name: Samurai
@@ -159,33 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c16eee341f1db40917cbc5d9919f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &8733680192960838132
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057009204468900264}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &6975927937595369746
 MonoBehaviour:
   m_ObjectHideFlags: 0
