@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IUnit
 {
     public bool IsAlly => false;
+    public int health = 100; 
 
     public void TakeDamage(int valueHP)
     {
@@ -23,6 +24,6 @@ public class Enemy : MonoBehaviour, IUnit
 
     public int GetMaxHealth()
     {
-        return 100;
+        return health;
     }
 }

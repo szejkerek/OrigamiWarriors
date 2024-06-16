@@ -25,7 +25,6 @@ public class AllyAgent : GoapAgent
         base.SetupBeliefs();
         
         BeliefFactory factory = new BeliefFactory(this, beliefs);
-        Debug.Log(FindAnyObjectByType<GameplayTeamManagement>().general.name);
         factory.AddLocationBelief("NearPlayer", 3f, FindAnyObjectByType<GameplayTeamManagement>().general.transform);
     }
 
@@ -39,16 +38,10 @@ public class AllyAgent : GoapAgent
         .AddEffect(beliefs["NearPlayer"])
         .Build());
 
-        actions.Add(new AgentAction.Builder("LoadAttack")
-            .WithStrategy(new LoadAttackStrategy(1))
-            .AddPrecondition(beliefs["EnemyInAttackRange"])
-            .AddEffect(beliefs["AttackLoaded"])
-            .Build());
 
         actions.Add(new AgentAction.Builder("AttackEnemy")
-            .WithStrategy(new AttackStrategy(1))
+            .WithStrategy(new AttackStrategy(1, attackSensor, 10))
             .AddPrecondition(beliefs["EnemyInAttackRange"])
-            .AddPrecondition(beliefs["AttackLoaded"])
             .AddEffect(beliefs["AttackingEnemy"])
             .Build());
 

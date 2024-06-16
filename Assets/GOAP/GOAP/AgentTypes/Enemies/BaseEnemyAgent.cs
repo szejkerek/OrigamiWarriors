@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BaseEnemyAgent : GoapAgent
 {
+
+
     protected override void SetupBeliefs()
     {
         base.SetupBeliefs();
@@ -13,16 +15,9 @@ public class BaseEnemyAgent : GoapAgent
     {
         base.SetupActions();
 
-        actions.Add(new AgentAction.Builder("LoadAttack")
-            .WithStrategy(new LoadAttackStrategy(1))
-            .AddPrecondition(beliefs["EnemyInAttackRange"])
-            .AddEffect(beliefs["AttackLoaded"])
-            .Build());
-
         actions.Add(new AgentAction.Builder("AttackEnemy")
-            .WithStrategy(new AttackStrategy(1))
+            .WithStrategy(new AttackStrategy(1, attackSensor, 10))
             .AddPrecondition(beliefs["EnemyInAttackRange"])
-            .AddPrecondition(beliefs["AttackLoaded"])
             .AddEffect(beliefs["AttackingEnemy"])
             .Build());
     }

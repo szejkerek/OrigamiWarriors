@@ -7,6 +7,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public Character Character { get; private set; }
 
     SamuraiStylizer samuraiStylizer;
+    SamuraiRenderers samuraiRenderer;
     SamuraiEffectsManager samuraiEffectsManager;
 
     public void SetCharacterData(Character character)
@@ -17,6 +18,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
     private void Start()
     {
         samuraiStylizer = GetComponent<SamuraiStylizer>();
+        samuraiRenderer = GetComponentInChildren<SamuraiRenderers>();
         samuraiEffectsManager = GetComponent<SamuraiEffectsManager>();
         Character.SamuraiVisuals.Apply(samuraiStylizer.Renderers, Character);
         samuraiEffectsManager.Initialize(Character);
@@ -39,9 +41,12 @@ public abstract class Samurai : MonoBehaviour, IUnit
         if (stats.Health <= Character.LostHealth)
         {
             Character.LostHealth = stats.Health;
-            Debug.Log("I'm dead");
         }
+
+        samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.Health);
+
         Character.OnHealthChange?.Invoke();
+
     }
 
     public void HealUnit(int valueHP)

@@ -71,7 +71,8 @@ MonoBehaviour:
   targetTags:
   - Blob
   targetsInRange: []
-  targetingMode: 0
+  targetingMode: 1
+  target: {fileID: 0}
 --- !u!1 &8636402648157206809
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +196,8 @@ MonoBehaviour:
   targetTags:
   - Blob
   targetsInRange: []
-  targetingMode: 0
+  targetingMode: 1
+  target: {fileID: 0}
 --- !u!1001 &1710254046404140401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,7 +434,7 @@ NavMeshAgent:
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 0.2
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

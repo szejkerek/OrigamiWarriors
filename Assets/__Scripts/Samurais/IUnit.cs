@@ -5,6 +5,8 @@ using UnityEngine;
 
 public interface IUnit
 {
+    GameObject gameObject { get; }
+
     bool IsAlly { get; }
     void TakeDamage(int valueHP);
     void HealUnit(int valueHP);

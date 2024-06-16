@@ -57,7 +57,7 @@ public class GoapAgent : MonoBehaviour
     SetupGoals();
   }
 
-  protected virtual void SetupBeliefs()
+    protected virtual void SetupBeliefs()
   {
     beliefs = new Dictionary<string, AgentBeliefs>();
     BeliefFactory factory = new BeliefFactory(this, beliefs);

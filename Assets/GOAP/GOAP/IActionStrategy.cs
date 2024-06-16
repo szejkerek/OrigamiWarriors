@@ -49,17 +49,23 @@ public class AttackStrategy : IActionStrategy
   public bool CanPerform => true; // Agent can always attack
   public bool Complete { get; private set; }
 
+  public Sensor sensor;
+    public int damage;
+
   readonly CountdownTimer timer;
   //readonly AnimationController animations;
 
   //public AttackStrategy(AnimationController animations)
-  public AttackStrategy(float duration)
+  public AttackStrategy(float duration, Sensor attackSensor, int attackDamage)
   {
+    sensor = attackSensor;
+    damage = attackDamage;
     //  this.animations = animations;
     //timer = new CountdownTimer(animations.GetAnimationLength(animations.attackClip));
     timer = new CountdownTimer(duration);
     timer.OnTimerStart += () => Complete = false;
     timer.OnTimerStop += () => Complete = true;
+    timer.OnTimerStop += () => DealDamage();
   }
 
   public void Start() => timer.Start();
@@ -68,9 +74,19 @@ public class AttackStrategy : IActionStrategy
   public void Update(float deltaTime)
   {
     timer.Tick(deltaTime);
-    //UnityEngine.Debug.LogError($"ATTACK!!! Progress: {Math.Round(timer.Progress * 100, 2)}% of {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
-    //UnityEngine.Debug.LogError($"ATTACK!!! Attacking the Player for {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
-  }
+        //UnityEngine.Debug.LogError($"ATTACK!!! Progress: {Math.Round(timer.Progress * 100, 2)}% of {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
+        //UnityEngine.Debug.LogError($"ATTACK!!! Attacking the Player for {Mathf.Pow(timer.Progress / timer.Time, -1)}s");
+    }
+
+    public void DealDamage()
+    {
+        if (sensor == null) return;
+        if (sensor.target == null) return;
+        if (sensor.target.TryGetComponent(out IUnit unit))
+        {
+            unit.TakeDamage(damage);
+        }
+    }
 }
 
 public class MoveStrategy : IActionStrategy
@@ -79,7 +95,7 @@ public class MoveStrategy : IActionStrategy
   readonly Func<Vector3> destination;
 
   public bool CanPerform => !Complete;
-  public bool Complete => agent.remainingDistance <= 2f && !agent.pathPending;
+  public bool Complete => agent.remainingDistance <= 3f && !agent.pathPending;
 
   public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination)
   {
