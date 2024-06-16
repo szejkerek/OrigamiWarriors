@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IUnit
 {
-    void Damage(int valueHP);
-    void Heal(int valueHP);
-    void HealToFull();
+    void TakeDamage(int valueHP);
+    void HealUnit(int valueHP);
+    void HealToMax();
 }

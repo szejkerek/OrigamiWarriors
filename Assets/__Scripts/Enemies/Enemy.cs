@@ -5,17 +5,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IUnit
 {
   
-    public void Damage(int valueHP)
+    public void TakeDamage(int valueHP)
     {
         Debug.Log("Damaged");
     }
 
-    public void Heal(int valueHP)
+    public void HealUnit(int valueHP)
     {
         throw new System.NotImplementedException();
     }
 
-    public void HealToFull()
+    public void HealToMax()
     {
         throw new System.NotImplementedException();
     }

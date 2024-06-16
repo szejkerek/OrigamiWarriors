@@ -30,7 +30,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.Skill.itemData.Execute(target);
     }
 
-    public void Damage(int valueHP)
+    public void TakeDamage(int valueHP)
     {
         Character.LostHealth += valueHP;
         CharacterStats stats = Character.GetStats();
@@ -42,7 +42,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.OnHealthChange?.Invoke();
     }
 
-    public void Heal(int valueHP)
+    public void HealUnit(int valueHP)
     {
         Character.LostHealth -= valueHP;
         if (Character.LostHealth < 0)
@@ -53,7 +53,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.OnHealthChange?.Invoke();
     }
 
-    public void HealToFull()
+    public void HealToMax()
     {
         Character.LostHealth = 0;
         Character.OnHealthChange?.Invoke();
