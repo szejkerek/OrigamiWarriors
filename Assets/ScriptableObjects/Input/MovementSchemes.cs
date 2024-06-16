@@ -35,15 +35,6 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""f228af6c-52f1-4f92-8626-17bcdbbc5860"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -244,28 +235,6 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1d34f767-9bee-4421-8984-bcbe1160a9c4"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""debe7d2d-a024-43d5-92fe-0ed3bd390317"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -308,7 +277,6 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
         // Player3D
         m_Player3D = asset.FindActionMap("Player3D", throwIfNotFound: true);
         m_Player3D_Movement = m_Player3D.FindAction("Movement", throwIfNotFound: true);
-        m_Player3D_Jump = m_Player3D.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -371,13 +339,11 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player3D;
     private List<IPlayer3DActions> m_Player3DActionsCallbackInterfaces = new List<IPlayer3DActions>();
     private readonly InputAction m_Player3D_Movement;
-    private readonly InputAction m_Player3D_Jump;
     public struct Player3DActions
     {
         private @MovementSchemes m_Wrapper;
         public Player3DActions(@MovementSchemes wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player3D_Movement;
-        public InputAction @Jump => m_Wrapper.m_Player3D_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player3D; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -390,9 +356,6 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IPlayer3DActions instance)
@@ -400,9 +363,6 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IPlayer3DActions instance)
@@ -441,6 +401,5 @@ public partial class @MovementSchemes: IInputActionCollection2, IDisposable
     public interface IPlayer3DActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
     }
 }

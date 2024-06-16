@@ -2,90 +2,89 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
+using System;
 
 public class PlayerMovementTutorial : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
-    public float groundDrag;
-    public float airMultiplier;
-    bool readyToJump;
-    [HideInInspector] public float walkSpeed;
-    [HideInInspector] public float sprintSpeed;
+    const float gravity = -9.81f;
+    public Vector3 MovementInputs { get; private set; }
+    CharacterController characterController;
 
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded;
+    [SerializeField]
+    float speed = 5f;
 
-    public Transform orientation;
-    float horizontalInput;
-    float verticalInput;
 
-    Vector3 moveDirection;
+    [SerializeField] LayerMask groundMask;
 
-    Rigidbody rb;
+    bool isGrounded;
+    float groundCheckDistance = 0.4f;
+    Transform groundCheck;
 
-    private void Start()
+    Vector3 velocity;
+
+    MovementSchemes input = null;
+
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-
-        readyToJump = true;
-    }
-
-    private void Update()
-    {
-        // ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
-
-        MyInput();
-        SpeedControl();
-
-        // handle drag
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
-    }
-
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
-
-    private void MyInput()
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-    }
-
-    private void MovePlayer()
-    {
-        // calculate movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        // on ground
-        if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
-        // in air
-        else if (!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-    }
-
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        // limit velocity if needed
-        if (flatVel.magnitude > moveSpeed)
+        input = new MovementSchemes();
+        characterController = GetComponent<CharacterController>();
+        groundCheck = transform.Find("GroundCheck");
+        if (groundCheck == null)
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            groundCheck = new GameObject("GroundCheck").transform;
+            groundCheck.SetParent(transform);
+            groundCheck.localPosition = Vector3.zero;
         }
     }
 
+    void OnEnable()
+    {
+        input.Player3D.Enable();
+        input.Player3D.Movement.performed += OnMovementPerformed;
+        input.Player3D.Movement.canceled += OnMovementCancelled;
+    }
+    void OnDisable()
+    {
+        input.Player3D.Disable();
+        input.Player3D.Movement.performed -= OnMovementPerformed;
+        input.Player3D.Movement.canceled -= OnMovementCancelled;
+    }
 
+    void OnMovementCancelled(InputAction.CallbackContext context) => MovementInputs = Vector3.zero;
+    void OnMovementPerformed(InputAction.CallbackContext context) => MovementInputs = context.ReadValue<Vector3>();
+
+
+
+    private void Update()
+    {
+        HandleMovement();
+    }
+
+    private void HandleMovement()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        MovementInputs.Normalize();
+
+        characterController.Move(MovementInputs * speed * Time.deltaTime);
+
+        velocity.y += gravity * Time.deltaTime;
+        characterController.Move(velocity * Time.deltaTime);
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
 }

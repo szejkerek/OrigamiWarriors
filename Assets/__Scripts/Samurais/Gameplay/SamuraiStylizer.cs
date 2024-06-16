@@ -16,6 +16,5 @@ public class SamuraiStylizer : MonoBehaviour
     private void Update()
     {
         Renderers.transform.rotation = Quaternion.LookRotation(Renderers.transform.position - cam.transform.position);
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Voice Commands/Defense Command")]
+[CreateAssetMenu(menuName = "Voice VoicePhrases/Defense Command")]
 public class DefenseCommand : VoiceCommand
 {
     public static Action OnDefenseRecognized;
@@ -9,8 +9,7 @@ public class DefenseCommand : VoiceCommand
     {
         if(IsCommandOffCooldown())
         {
-
+            OnDefenseRecognized?.Invoke();
         }
-        OnDefenseRecognized?.Invoke();
     }
 }

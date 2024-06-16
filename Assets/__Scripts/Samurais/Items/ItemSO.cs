@@ -17,7 +17,7 @@ public abstract class ItemSO : ScriptableObject, IPassiveEffect
         return BaseStats + (StatsModifiersPerLevel * level);
     }
 
-    public abstract void Execute();
+    public abstract void Execute(IUnit target);
 
     public virtual void OnStart(SamuraiEffectsManager context) { }
 

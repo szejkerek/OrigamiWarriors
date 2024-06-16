@@ -10,24 +10,16 @@ using DependencyInjection; // https://github.com/adammyhre/Unity-Dependency-Inje
 public class GoapAgent : MonoBehaviour
 {
   [Header("Sensors")]
-  [SerializeField] Sensor chaseSensor; // wide range => can chase
-  [SerializeField] Sensor attackSensor; // small range => close enough to attack
+  [SerializeField] protected Sensor chaseSensor; // wide range => can chase
+  [SerializeField] protected Sensor attackSensor; // small range => close enough to attack
 
-  [Header("Known Locations")]
-  [SerializeField] Transform restingPosition;
-  [SerializeField] Transform foodShack;
-  [SerializeField] Transform doorOnePosition;
-  [SerializeField] Transform doorTwoPosition;
+
+  protected BeliefFactory beliefFactory;
 
   // References to the components of this particular agent
-  NavMeshAgent navMeshAgent;
+  protected NavMeshAgent navMeshAgent;
   //AnimationController animations;
   Rigidbody rb;
-
-  // Stats degradee over time so the agent has to reevaluate the plan
-  [Header("Stats")]
-  public float health = 100;
-  public float stamina = 100;
 
   CountdownTimer statsTimer;
 
@@ -57,169 +49,167 @@ public class GoapAgent : MonoBehaviour
     //gPlanner = gFactory.CreatePlanner();
   }
 
-  void Start()
+  protected virtual void Start()
   {
-    SetupTimers();
+    beliefFactory = new BeliefFactory(this, beliefs);
     SetupBeliefs();
     SetupActions();
     SetupGoals();
   }
 
-  void SetupBeliefs()
+    protected virtual void SetupBeliefs()
   {
     beliefs = new Dictionary<string, AgentBeliefs>();
     BeliefFactory factory = new BeliefFactory(this, beliefs);
 
-    factory.AddBelief("Nothing", () => false);
+        factory.AddBelief("Nothing", () => false);
+        factory.AddBelief("AgentIdle", () => !navMeshAgent.hasPath);
+        factory.AddBelief("AgentMoving", () => navMeshAgent.hasPath);
 
-    factory.AddBelief("AgentIdle", () => !navMeshAgent.hasPath);
-    factory.AddBelief("AgentMoving", () => navMeshAgent.hasPath);
-    
-    // HEALTH
-    factory.AddBelief("AgentHealthLow", () => health < 30);
-    factory.AddBelief("AgentIsHealthy", () => health >= 50);
-    
-    // STAMINA
-    factory.AddBelief("AgentStaminaLow", () => stamina < 10);
-    factory.AddBelief("AgentIsRested", () => stamina >= 60);
+        factory.AddSensorBelief("EnemyInChaseRange", chaseSensor);
+        factory.AddSensorBelief("EnemyInAttackRange", attackSensor);
 
-    // CHECK IF WE ARE AT THE DESIRED LOCATION
-    factory.AddLocationBelief("AgentAtDoorOne", 3f, doorOnePosition);
-    factory.AddLocationBelief("AgentAtDoorTwo", 3f, doorTwoPosition);
-    factory.AddLocationBelief("AgentAtRestingPosition", 3f, restingPosition);
-    factory.AddLocationBelief("AgentAtFoodShack", 3f, foodShack);
+        factory.AddBelief("AttackLoaded", () => false);
+        factory.AddBelief("AttackingEnemy", () => false);
 
-    // SENSOR RANGE
-    factory.AddSensorBelief("PlayerInChaseRange", chaseSensor);
-    factory.AddSensorBelief("PlayerInAttackRange", attackSensor);
-    
-    // ATTACK
-    factory.AddBelief("AttackingPlayer", () => false); // Player can always be attacked, this will never become true
-  }
+        // HEALTH
+        //factory.AddBelief("AgentHealthLow", () => health < 30);
+        //factory.AddBelief("AgentIsHealthy", () => health >= 50);
 
-  void SetupActions()
+        // STAMINA
+        //factory.AddBelief("AgentStaminaLow", () => stamina < 10);
+        //factory.AddBelief("AgentIsRested", () => stamina >= 60);
+
+        // CHECK IF WE ARE AT THE DESIRED LOCATION
+        //factory.AddLocationBelief("AgentAtDoorOne", 3f, doorOnePosition);
+        //factory.AddLocationBelief("AgentAtDoorTwo", 3f, doorTwoPosition);
+        //factory.AddLocationBelief("AgentAtRestingPosition", 3f, restingPosition);
+        //factory.AddLocationBelief("AgentAtFoodShack", 3f, foodShack);
+
+
+    }
+
+  protected virtual void SetupActions()
   {
-    actions = new HashSet<AgentAction>();
+        actions = new HashSet<AgentAction>();
 
-    actions.Add(new AgentAction.Builder("Relax")
-        .WithStrategy(new IdleStrategy(5))
-        .AddEffect(beliefs["Nothing"])
-        .Build());
+        //actions.Add(new AgentAction.Builder("Relax")
+        //    .WithStrategy(new IdleStrategy(5))
+        //    .AddEffect(beliefs["Nothing"])
+        //    .Build());
 
-    actions.Add(new AgentAction.Builder("Wander Around")
-        .WithStrategy(new WanderStrategy(navMeshAgent, 10))
-        .AddEffect(beliefs["AgentMoving"])
-        .Build());
+        //actions.Add(new AgentAction.Builder("Wander Around")
+        //    .WithStrategy(new WanderStrategy(navMeshAgent, 10))
+        //    .AddEffect(beliefs["AgentMoving"])
+        //    .Build());
 
-    // HEAL
-    actions.Add(new AgentAction.Builder("MoveToEatingPosition")
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => foodShack.position))
-        .AddEffect(beliefs["AgentAtFoodShack"])
-        .Build());
 
-    actions.Add(new AgentAction.Builder("Eat") // Assume that we are healthy after 8 seconds
-        .WithStrategy(new IdleStrategy(8))  // Later replace with a Command
-        .AddPrecondition(beliefs["AgentAtFoodShack"])
-        .AddEffect(beliefs["AgentIsHealthy"])
-        .Build());
+        actions.Add(new AgentAction.Builder("ChaseEnemy")
+            .WithStrategy(new MoveStrategy(navMeshAgent, () => beliefs["EnemyInChaseRange"].Location))
+            .AddPrecondition(beliefs["EnemyInChaseRange"])
+            .AddEffect(beliefs["EnemyInAttackRange"])
+            .Build());
 
-    // Go through doors
-    actions.Add(new AgentAction.Builder("MoveToDoorOne")
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => doorOnePosition.position))
-        .AddEffect(beliefs["AgentAtDoorOne"])
-        .Build());
+        actions.Add(new AgentAction.Builder("Wander Around")
+            .WithStrategy(new WanderStrategy(navMeshAgent, 10))
+            .AddEffect(beliefs["AgentMoving"])
+            .Build());
 
-    actions.Add(new AgentAction.Builder("MoveToDoorTwo")
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => doorTwoPosition.position))
-        .AddEffect(beliefs["AgentAtDoorTwo"])
-        .Build());
+        // HEAL
+        //actions.Add(new AgentAction.Builder("MoveToEatingPosition")
+        //    .WithStrategy(new MoveStrategy(navMeshAgent, () => foodShack.position))
+        //    .AddEffect(beliefs["AgentAtFoodShack"])
+        //    .Build());
 
-    // REST 
-    actions.Add(new AgentAction.Builder("MoveFromDoorOneToRestArea")
-        .WithCost(2)
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => restingPosition.position))
-        .AddPrecondition(beliefs["AgentAtDoorOne"])
-        .AddEffect(beliefs["AgentAtRestingPosition"])
-        .Build());
+        //actions.Add(new AgentAction.Builder("Eat") // Assume that we are healthy after 8 seconds
+        //    .WithStrategy(new IdleStrategy(8))  // Later replace with a Command
+        //    .AddPrecondition(beliefs["AgentAtFoodShack"])
+        //    .AddEffect(beliefs["AgentIsHealthy"])
+        //    .Build());
 
-    actions.Add(new AgentAction.Builder("MoveFromDoorTwoRestArea")
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => restingPosition.position))
-        .AddPrecondition(beliefs["AgentAtDoorTwo"])
-        .AddEffect(beliefs["AgentAtRestingPosition"])
-        .Build());
+        // Go through doors
+        //actions.Add(new AgentAction.Builder("MoveToDoorOne")
+        //    .WithStrategy(new MoveStrategy(navMeshAgent, () => doorOnePosition.position))
+        //    .AddEffect(beliefs["AgentAtDoorOne"])
+        //    .Build());
 
-    actions.Add(new AgentAction.Builder("Rest")
-        .WithStrategy(new IdleStrategy(8))
-        .AddPrecondition(beliefs["AgentAtRestingPosition"])
-        .AddEffect(beliefs["AgentIsRested"])
-        .Build());
+        //actions.Add(new AgentAction.Builder("MoveToDoorTwo")
+        //    .WithStrategy(new MoveStrategy(navMeshAgent, () => doorTwoPosition.position))
+        //    .AddEffect(beliefs["AgentAtDoorTwo"])
+        //    .Build());
 
-    // CHASE / ATTACK 
-    actions.Add(new AgentAction.Builder("ChasePlayer")
-        .WithStrategy(new MoveStrategy(navMeshAgent, () => beliefs["PlayerInChaseRange"].Location))
-        .AddPrecondition(beliefs["PlayerInChaseRange"])
-        .AddEffect(beliefs["PlayerInAttackRange"])
-        .Build());
+        // REST 
+        //actions.Add(new AgentAction.Builder("MoveFromDoorOneToRestArea")
+        //    .WithCost(2)
+        //    .WithStrategy(new MoveStrategy(navMeshAgent, () => restingPosition.position))
+        //    .AddPrecondition(beliefs["AgentAtDoorOne"])
+        //    .AddEffect(beliefs["AgentAtRestingPosition"])
+        //    .Build());
 
-    actions.Add(new AgentAction.Builder("AttackPlayer")
-        .WithStrategy(new AttackStrategy(1))
-        .AddPrecondition(beliefs["PlayerInAttackRange"])
-        .AddEffect(beliefs["AttackingPlayer"])
-        .Build());
+        //actions.Add(new AgentAction.Builder("MoveFromDoorTwoRestArea")
+        //    .WithStrategy(new MoveStrategy(navMeshAgent, () => restingPosition.position))
+        //    .AddPrecondition(beliefs["AgentAtDoorTwo"])
+        //    .AddEffect(beliefs["AgentAtRestingPosition"])
+        //    .Build());
+
+        //actions.Add(new AgentAction.Builder("Rest")
+        //    .WithStrategy(new IdleStrategy(8))
+        //    .AddPrecondition(beliefs["AgentAtRestingPosition"])
+        //    .AddEffect(beliefs["AgentIsRested"])
+        //    .Build());
+
+        // CHASE / ATTACK 
         //.WithStrategy(new AttackStrategy(animations))
-  }
+    }
 
-  void SetupGoals()
+    protected virtual void SetupGoals()
   {
-    goals = new HashSet<AgentGoal>();
+        goals = new HashSet<AgentGoal>();
 
-    goals.Add(new AgentGoal.Builder("Chill Out")
-        .WithPriority(1)
-        .WithDesiredEffect(beliefs["Nothing"])
-        .Build());
+        goals.Add(new AgentGoal.Builder("Wander")
+            .WithPriority(1)
+            .WithDesiredEffect(beliefs["AgentMoving"])
+            .Build());
 
-    goals.Add(new AgentGoal.Builder("Wander")
-        .WithPriority(1)
-        .WithDesiredEffect(beliefs["AgentMoving"])
-        .Build());
+        goals.Add(new AgentGoal.Builder("SeekAndDestroy")
+            .WithPriority(4)
+            .WithDesiredEffect(beliefs["AttackingEnemy"])
+            .Build());
 
-    // HEAL
-    goals.Add(new AgentGoal.Builder("KeepHealthUp")
-        .WithPriority(3)
-        .WithDesiredEffect(beliefs["AgentIsHealthy"])
-        .Build());
 
-    // REST
-    goals.Add(new AgentGoal.Builder("KeepStaminaUp")
-        .WithPriority(2)
-        .WithDesiredEffect(beliefs["AgentIsRested"])
-        .Build());
+        //// HEAL
+        //goals.Add(new AgentGoal.Builder("KeepHealthUp")
+        //    .WithPriority(3)
+        //    .WithDesiredEffect(beliefs["AgentIsHealthy"])
+        //    .Build());
 
-    // ATTACK
-    goals.Add(new AgentGoal.Builder("SeekAndDestroy")
-        .WithPriority(4)
-        .WithDesiredEffect(beliefs["AttackingPlayer"])
-        .Build());
-  }
+        // REST
+        //goals.Add(new AgentGoal.Builder("KeepStaminaUp")
+        //    .WithPriority(2)
+        //    .WithDesiredEffect(beliefs["AgentIsRested"])
+        //    .Build());
 
-  void SetupTimers()
-  { // update the upgradableStats every 2s
-    statsTimer = new CountdownTimer(2f);
-    statsTimer.OnTimerStop += () => {
-      UpdateStats();
-      statsTimer.Start();
-    };
-    statsTimer.Start();
-  }
+        // ATTACK
+    }
 
-  // TODO move to upgradableStats system
-  void UpdateStats()
-  {
-    stamina += InRangeOf(restingPosition.position, 3f) ? 20 : -10;
-    health += InRangeOf(foodShack.position, 3f) ? 20 : -5;
-    stamina = Mathf.Clamp(stamina, 0, 100);
-    health = Mathf.Clamp(health, 0, 100);
-  }
+  //void SetupTimers()
+  //{ // update the upgradableStats every 2s
+  //  statsTimer = new CountdownTimer(2f);
+  //  statsTimer.OnTimerStop += () => {
+  //    UpdateStats();
+  //    statsTimer.Start();
+  //  };
+  //  statsTimer.Start();
+  //}
+
+  //// TODO move to upgradableStats system
+  //void UpdateStats()
+  //{
+  //  //stamina += InRangeOf(restingPosition.position, 3f) ? 20 : -10;
+  //  //health += InRangeOf(foodShack.position, 3f) ? 20 : -5;
+  //  //stamina = Mathf.Clamp(stamina, 0, 100);
+  //  //health = Mathf.Clamp(health, 0, 100);
+  //}
 
   // heal only in range of a certain location
   bool InRangeOf(Vector3 pos, float range) => Vector3.Distance(transform.position, pos) < range;
@@ -230,7 +220,7 @@ public class GoapAgent : MonoBehaviour
 
   void HandleTargetChanged()
   { // with no action and no goal the planner will start creating a new plan
-    Debug.Log("Target changed, clearing current action and goal");
+    //Debug.Log("Target changed, clearing current action and goal");
     // Force the planner to re-evaluate the plan
     currentAction = null;
     currentGoal = null;
@@ -238,13 +228,13 @@ public class GoapAgent : MonoBehaviour
 
   void Update()
   {
-    statsTimer.Tick(Time.deltaTime);
+    //statsTimer.Tick(Time.deltaTime);
     //animations.SetSpeed(navMeshAgent.velocity.magnitude);
 
     // OnUpdate the plan and current action if there is one
     if (currentAction == null)
     {
-      Debug.Log("Calculating any potential new plan");
+      //Debug.Log("Calculating any potential new plan");
       CalculatePlan();
 
       if (actionPlan != null && actionPlan.Actions.Count > 0) // we have a plan and actions to perform
@@ -252,9 +242,9 @@ public class GoapAgent : MonoBehaviour
         navMeshAgent.ResetPath();
 
         currentGoal = actionPlan.AgentGoal;
-        Debug.Log($"Goal: {currentGoal.Name} with {actionPlan.Actions.Count} actions in plan");
+        //Debug.Log(gameObject.name + $" goal: {currentGoal.Name} with {actionPlan.Actions.Count} actions in plan");
         currentAction = actionPlan.Actions.Pop();
-        Debug.Log($"Popped action: {currentAction.Name}");
+        //Debug.Log($"Popped action: {currentAction.Name}");
 
         // Verify all precondition effects are true
         if (currentAction.Preconditions.All(b => b.Evaluate()))
@@ -264,7 +254,7 @@ public class GoapAgent : MonoBehaviour
         }
         else
         {
-          Debug.Log("Preconditions not met, clearing current action and goal");
+          //Debug.Log("Preconditions not met, clearing current action and goal");
           currentAction = null;
           currentGoal = null;
         }
@@ -278,13 +268,13 @@ public class GoapAgent : MonoBehaviour
 
       if (currentAction.Complete)
       {
-        Debug.Log($"{currentAction.Name} complete");
+        //Debug.Log($"{currentAction.Name} complete");
         currentAction.Stop();
         currentAction = null;
 
         if (actionPlan.Actions.Count == 0)
         {
-          Debug.Log("Plan complete");
+          //Debug.Log("Plan complete");
           lastGoal = currentGoal;
           currentGoal = null;
         }
@@ -301,7 +291,7 @@ public class GoapAgent : MonoBehaviour
     // we have a current goal, so we only want to check goals with higher priority
     if (currentGoal != null)
     {
-      Debug.Log("Current goal exists, checking goals with higher priority");
+      //Debug.Log("Current goal exists, checking goals with higher priority");
       goalsToCheck = new HashSet<AgentGoal>(goals.Where(g => g.Priority > priorityLevel));
     }
 

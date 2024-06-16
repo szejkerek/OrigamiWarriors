@@ -24,7 +24,7 @@ public class StatsPanel : MonoBehaviour
     string DisplayText()
     {
         CharacterStats stats = currentCharacter.GetStats();
-        return $"Damage: {stats.Damage}\n" +
+        return $"TakeDamage: {stats.Damage}\n" +
                $"Health: {stats.Health - currentCharacter.LostHealth} / {stats.Health} \n" +
                $"Crit Chance: {stats.CritChance * 100}%\n" +
                $"Speed: {stats.Speed}\n";

@@ -14,13 +14,13 @@ public static class GameObjectExtensions
 [RequireComponent(typeof(SphereCollider))] // every sensor has to have a collider of some sort
 public class Sensor : MonoBehaviour
 {
-    enum TargetingMode { Normal, StrongestBlob, WeakestBlob, StrongestSamurai, WeakestSamurai};
+    enum TargetingMode { Normal, Strongest, Weakest};
 
 
     [SerializeField] float detectionRadius = 5.0f; // radius of the sensor
     [SerializeField] float timerInterval = 1.0f; // how often to check the sensor (instead of every frame)
     [SerializeField] List<string> targetTags;
-    private List<GameObject> targetsInRange;
+    [SerializeField] List<GameObject> targetsInRange;
     [SerializeField] TargetingMode targetingMode = TargetingMode.Normal;
 
 
@@ -31,7 +31,7 @@ public class Sensor : MonoBehaviour
     public Vector3 TargetPosition => target ? target.transform.position : Vector3.zero;
     public bool IsTargetInRange => TargetPosition != Vector3.zero;
 
-    GameObject target;
+    public GameObject target;
     Vector3 lastKnownPosition;
     CountdownTimer timer;
 
@@ -70,18 +70,11 @@ public class Sensor : MonoBehaviour
 
             switch (targetingMode)
             {
-                case TargetingMode.StrongestBlob:
-                    Debug.Log("Here");
-                    currentTarget = GetStrongestBlob();
+                case TargetingMode.Strongest:
+                    currentTarget = GetStrongest();
                     break;
-                case TargetingMode.WeakestBlob:
-                    currentTarget = GetStrongestBlob(false);
-                    break;
-                case TargetingMode.StrongestSamurai:
-                    currentTarget = GetStrongestSamurai();
-                    break;
-                case TargetingMode.WeakestSamurai:
-                    currentTarget = GetStrongestSamurai(false);
+                case TargetingMode.Weakest:
+                    currentTarget = GetStrongest(false);
                     break;
                 default:
                     foreach (GameObject t in targetsInRange)
@@ -141,46 +134,33 @@ public class Sensor : MonoBehaviour
 
 
 
-    private GameObject GetStrongestBlob(bool getWeakestInstead = false)
+    private GameObject GetStrongest(bool getWeakestInstead = false)
     {
         float currentMaxHp = 0;
         GameObject currentStrongest = null;
 
         foreach (GameObject g in targetsInRange)
         {
-            EnemyController b = null;
-            if (!g.transform.parent.TryGetComponent<EnemyController>(out b))
+            if (g.TryGetComponent(out IUnit b))
             {
-                continue;
+                if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
+                {
+                    currentStrongest = b.gameObject; //TODO: Chyba g
+                    currentMaxHp = b.GetMaxHealth();
+                }
             }
-            if (b.maxHp > currentMaxHp || (getWeakestInstead && b.maxHp < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
-            {
-                currentStrongest = b.gameObject;
-                currentMaxHp = b.maxHp;
-            }
-        }
 
-        return currentStrongest;
-    }
-
-    private GameObject GetStrongestSamurai(bool getWeakestInstead = false)
-    {
-        float currentMaxHp = 0;
-        GameObject currentStrongest = null;
-
-        foreach (GameObject g in targetsInRange)
-        {
-            Samurai s = null;
-            if (!g.TryGetComponent<Samurai>(out s))
+            else if (g.transform.parent.TryGetComponent(out IUnit c))
             {
-                continue;
+                b = c;
+                if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
+                {
+                    currentStrongest = b.gameObject;
+                    currentMaxHp = b.GetMaxHealth();
+                }
             }
-            int hp = s.Character.GetStats().Health;
-            if (hp > currentMaxHp || (getWeakestInstead && hp < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
-            {
-                currentStrongest = s.gameObject;
-                currentMaxHp = hp;
-            }
+
+            else continue;
         }
 
         return currentStrongest;

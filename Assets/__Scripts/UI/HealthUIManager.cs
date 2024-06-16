@@ -7,7 +7,7 @@ public class HealthUIManager : MonoBehaviour
 {
     [SerializeField] GameObject healthBarPrefab;
     [SerializeField] Canvas canvas;
-    float yOffset = 70f;
+    float yOffset = 140f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class HealthUIManager : MonoBehaviour
     void SpawnHealthBar(Character character,int position)
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        Vector3 startPosition = new Vector3(canvasRect.rect.xMin + 170, canvasRect.rect.yMax -60, 0);
+        Vector3 startPosition = new Vector3(canvasRect.rect.xMin + 220, canvasRect.rect.yMax -60, 0);
 
 
         Vector3 spawnPosition = startPosition - new Vector3(0, yOffset * position, 0);

@@ -6,7 +6,7 @@ public class SwordItemSO : ItemSO
     [field: Header("Sword")]
     [field: SerializeField] public float Range { get; private set; }
 
-    public override void Execute()
+    public override void Execute(IUnit target)
     {
         Debug.Log("Execute");
     }
