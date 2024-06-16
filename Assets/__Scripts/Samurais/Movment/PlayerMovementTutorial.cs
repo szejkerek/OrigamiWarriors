@@ -8,6 +8,7 @@ using System;
 public class PlayerMovementTutorial : MonoBehaviour
 {
     const float gravity = -9.81f;
+    public Vector3 MovementInputs { get; private set; }
     CharacterController characterController;
 
     [SerializeField]
@@ -21,7 +22,6 @@ public class PlayerMovementTutorial : MonoBehaviour
     Transform groundCheck;
 
     Vector3 velocity;
-    Vector3 movementInputs;
 
     MovementSchemes input = null;
 
@@ -51,8 +51,8 @@ public class PlayerMovementTutorial : MonoBehaviour
         input.Player3D.Movement.canceled -= OnMovementCancelled;
     }
 
-    void OnMovementCancelled(InputAction.CallbackContext context) => movementInputs = Vector3.zero;
-    void OnMovementPerformed(InputAction.CallbackContext context) => movementInputs = context.ReadValue<Vector3>();
+    void OnMovementCancelled(InputAction.CallbackContext context) => MovementInputs = Vector3.zero;
+    void OnMovementPerformed(InputAction.CallbackContext context) => MovementInputs = context.ReadValue<Vector3>();
 
 
 
@@ -70,9 +70,9 @@ public class PlayerMovementTutorial : MonoBehaviour
             velocity.y = -2f;
         }
 
-        movementInputs.Normalize();
+        MovementInputs.Normalize();
 
-        characterController.Move(movementInputs * speed * Time.deltaTime);
+        characterController.Move(MovementInputs * speed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);

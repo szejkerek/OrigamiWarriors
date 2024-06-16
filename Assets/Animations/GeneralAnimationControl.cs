@@ -3,17 +3,16 @@
 [RequireComponent(typeof(CharacterController))]
 public class GeneralAnimationControl : BaseAnimationControl
 {
-    CharacterController cc;
+    PlayerMovementTutorial movement;
 
     protected override void Start()
     {
         base.Start();
-        cc = GetComponent<CharacterController>();
+        movement = GetComponent<PlayerMovementTutorial>();
     }
 
     protected override Vector3 GetVelocity()
     {
-        Debug.Log(cc.velocity);
-        return cc.velocity;       
+        return movement.MovementInputs;       
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7143106571139231375}
   - component: {fileID: 6730405952943694867}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -97,7 +97,8 @@ GameObject:
   - component: {fileID: 6707021495300335386}
   - component: {fileID: 1123130169203953760}
   - component: {fileID: 6975927937595369746}
-  m_Layer: 0
+  - component: {fileID: 5180515572314616198}
+  m_Layer: 11
   m_Name: Samurai
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c16eee341f1db40917cbc5d9919f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMovingThreshold: 0.05
 --- !u!114 &6975927937595369746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +176,33 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!54 &5180515572314616198
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057009204468900264}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2581271540194730318
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8625289004646673577}
   - component: {fileID: 1211213585549471888}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Helmet_F
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -268,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6855086868057935865}
   - component: {fileID: 7207633679973589770}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pants
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -353,7 +382,7 @@ GameObject:
   - component: {fileID: 2777379717304871318}
   - component: {fileID: 8515238591741812865}
   - component: {fileID: 8038784840922422159}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SamuraiRenderers
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -428,7 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8252167523642876086}
   - component: {fileID: 5746216813206886600}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chestplate
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -511,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6779396384401408179}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8732426863025236338}
   - component: {fileID: 5896274188957302720}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Face_F
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -628,7 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4135233726153004630}
   - component: {fileID: 1379850208873382998}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -712,7 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422845242973765854}
   - component: {fileID: 8308615459972367339}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Body
   m_TagString: Samurai
   m_Icon: {fileID: 0}
@@ -772,7 +801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2561338418660071782}
   - component: {fileID: 7420289443603704243}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Helmet_B
   m_TagString: Samurai
   m_Icon: {fileID: 0}
