@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class AllyAnimationControl : BaseAnimationControl
+public class RigidbodyAnimationControl : BaseAnimationControl
 {
     Rigidbody rb;
 

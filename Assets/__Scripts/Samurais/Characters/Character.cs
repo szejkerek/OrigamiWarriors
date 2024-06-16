@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Character : IHealth
+public class Character
 {
     public Action OnHealthChange;
     public string DisplayName => Name;
@@ -53,32 +53,5 @@ public class Character : IHealth
         return BaseStats + stats;
     }
 
-    public void Damage(int valueHP)
-    {
-        LostHealth += valueHP;
-        CharacterStats stats = GetStats();
-        if (stats.Health <= LostHealth)
-        {
-            LostHealth = stats.Health;
-            Debug.Log("I'm dead");
-        }
-        OnHealthChange?.Invoke();
-    }
 
-    public void Heal(int valueHP)
-    {
-        LostHealth -= valueHP;
-        if (LostHealth < 0)
-        {
-            LostHealth = 0;
-            Debug.Log("I'm full healed");
-        }
-        OnHealthChange?.Invoke();
-    }
-
-    public void HealToFull()
-    {
-        LostHealth = 0;
-        OnHealthChange?.Invoke();
-    }
 }
