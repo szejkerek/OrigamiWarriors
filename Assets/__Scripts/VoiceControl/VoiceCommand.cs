@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class VoiceCommand : ScriptableObject
@@ -35,7 +32,6 @@ public abstract class VoiceCommand : ScriptableObject
     {      
         float timeSinceLastCommand = Time.time - lastCommand;
         float ratio = Mathf.Clamp01(timeSinceLastCommand / Cooldown);
-        Debug.Log(ratio);
         return ratio;
     }
 }

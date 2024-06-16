@@ -145,7 +145,7 @@ public class Sensor : MonoBehaviour
             {
                 if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
                 {
-                    currentStrongest = b.gameObject;
+                    currentStrongest = b.gameObject; //TODO: Chyba g
                     currentMaxHp = b.GetMaxHealth();
                 }
             }

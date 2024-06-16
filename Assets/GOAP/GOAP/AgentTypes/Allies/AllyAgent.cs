@@ -23,7 +23,6 @@ public class AllyAgent : GoapAgent
     protected override void SetupBeliefs()
     {
         base.SetupBeliefs();
-        
         BeliefFactory factory = new BeliefFactory(this, beliefs);
         factory.AddLocationBelief("NearPlayer", 3f, FindAnyObjectByType<GameplayTeamManagement>().general.transform);
     }
