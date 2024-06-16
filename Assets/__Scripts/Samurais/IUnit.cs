@@ -5,6 +5,7 @@ using UnityEngine;
 
 public interface IUnit
 {
+    bool IsAlly { get; }
     void TakeDamage(int valueHP);
     void HealUnit(int valueHP);
     void HealToMax();

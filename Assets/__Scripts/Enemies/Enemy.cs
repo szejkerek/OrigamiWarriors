@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IUnit
 {
-  
+    public bool IsAlly => false;
+
     public void TakeDamage(int valueHP)
     {
         Debug.Log("Damaged");

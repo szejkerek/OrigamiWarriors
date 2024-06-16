@@ -3,7 +3,9 @@ using UnityEngine.TextCore.Text;
 
 public abstract class Samurai : MonoBehaviour, IUnit
 {
+    public bool IsAlly => true;
     public Character Character { get; private set; }
+
     SamuraiStylizer samuraiStylizer;
     SamuraiEffectsManager samuraiEffectsManager;
 
