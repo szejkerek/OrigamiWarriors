@@ -60,4 +60,9 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.LostHealth = 0;
         Character.OnHealthChange?.Invoke();
     }
+
+    public int GetMaxHealth()
+    {
+        return Character.GetStats().Health;
+    }
 }

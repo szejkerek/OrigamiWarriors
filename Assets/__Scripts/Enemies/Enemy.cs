@@ -20,4 +20,9 @@ public class Enemy : MonoBehaviour, IUnit
     {
         throw new System.NotImplementedException();
     }
+
+    public int GetMaxHealth()
+    {
+        return 100;
+    }
 }
