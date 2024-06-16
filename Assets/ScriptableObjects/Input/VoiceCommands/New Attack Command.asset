@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b09d3efe26fe24f98fad8ef5adc276, type: 3}
   m_Name: New Attack Command
   m_EditorClassIdentifier: 
-  <Commands>k__BackingField:
+  <DisplayPhrase>k__BackingField: Attakujj
+  <VoicePhrases>k__BackingField:
+  - Atak
   - At
-  - Atta
-  - Attacking
-  <Cooldown>k__BackingField: 0
+  <Cooldown>k__BackingField: 10

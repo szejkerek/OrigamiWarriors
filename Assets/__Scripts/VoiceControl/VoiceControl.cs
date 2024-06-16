@@ -9,22 +9,31 @@ using System.Text;
 
 public class VoiceControl : MonoBehaviour
 {
+    public bool debugPhrases = true;
+    public Transform phraseParent;
+    public VoicePhraseView phrasePrefab;
+
     public List<VoiceCommand> voiceCommands;
 
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> commandsDictionary = new Dictionary<string, Action>();
     private void OnVoiceRecognized(PhraseRecognizedEventArgs speech)
     {
-        StringBuilder builder = new StringBuilder();
-        builder.AppendFormat("{0} ({1}){2}", speech.text, speech.confidence, Environment.NewLine);
-        builder.AppendFormat("\tTimestamp: {0}{1}", speech.phraseStartTime, Environment.NewLine);
-        builder.AppendFormat("\tDuration: {0} seconds{1}", speech.phraseDuration.TotalSeconds, Environment.NewLine);
-        Debug.Log(builder.ToString());
+        if(debugPhrases) PrintPhrase(speech);
 
         if (commandsDictionary.TryGetValue(speech.text, out Action action))
         {
             action?.Invoke();
         }
+    }
+
+    private static void PrintPhrase(PhraseRecognizedEventArgs speech)
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.AppendFormat("{0} ({1}){2}", speech.text, speech.confidence, Environment.NewLine);
+        builder.AppendFormat("\tTimestamp: {0}{1}", speech.phraseStartTime, Environment.NewLine);
+        builder.AppendFormat("\tDuration: {0} seconds{1}", speech.phraseDuration.TotalSeconds, Environment.NewLine);
+        Debug.Log(builder.ToString());
     }
 
     void Awake()
@@ -40,9 +49,12 @@ public class VoiceControl : MonoBehaviour
     {
         foreach (var command in voiceCommands)
         {
-            foreach(var cmd in command.Commands)
+            var phraseUI = Instantiate(phrasePrefab, phraseParent);
+            phraseUI.Init(command);
+
+            foreach(var phrase in command.VoicePhrases)
             {
-                commandsDictionary.Add(cmd, command.Execute);
+                commandsDictionary.Add(phrase, command.Execute);
             }
         }
     }
