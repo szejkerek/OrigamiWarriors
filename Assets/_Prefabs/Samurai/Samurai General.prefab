@@ -89,16 +89,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33618402
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9695835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6153777992778404448, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -263,11 +275,6 @@ CapsuleCollider:
   m_Height: 4.68
   m_Direction: 1
   m_Center: {x: 0, y: -2.6, z: 0}
---- !u!54 &9032298824845284243 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 2290167829990058919, guid: b1f859028b8180742ac7200031f026dd, type: 3}
-  m_PrefabInstance: {fileID: 7102568506629126196}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9086736370756655516 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
@@ -313,7 +320,7 @@ MonoBehaviour:
   orientation: {fileID: 0}
   player: {fileID: 4032964764852103764}
   playerObj: {fileID: 4032964764852103764}
-  rb: {fileID: 9032298824845284243}
+  rb: {fileID: 0}
   moveSpeed: 5
   groundDrag: 1
   airMultiplier: 0.5

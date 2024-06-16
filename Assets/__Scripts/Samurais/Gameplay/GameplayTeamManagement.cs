@@ -8,6 +8,9 @@ public class GameplayTeamManagement : MonoBehaviour
     int maxAttempts = 100;
     float minDistanceBetween;
     List<Vector3> spawnPoints = new List<Vector3>();
+    public GameObject general;
+
+    public Transform playerTransform => (general != null) ? general.transform : transform;
 
     Team team;
 
@@ -21,7 +24,7 @@ public class GameplayTeamManagement : MonoBehaviour
 
     private void SpawnTeam()
     {
-        SpawnCharacter(team.General, spawnPoint.position);
+        general = SpawnCharacter(team.General, spawnPoint.position);
 
         foreach (Character characterToSpawn in team.TeamMembers)
         {
@@ -50,7 +53,7 @@ public class GameplayTeamManagement : MonoBehaviour
         }
     }
 
-    private void SpawnCharacter(Character objectToSpawn, Vector3 offsetFromSpawnPoint)
+    private GameObject SpawnCharacter(Character objectToSpawn, Vector3 offsetFromSpawnPoint)
     {
         Vector3 spawnPosition = offsetFromSpawnPoint;
         spawnPoints.Add(spawnPosition);
@@ -63,6 +66,7 @@ public class GameplayTeamManagement : MonoBehaviour
         {
             Debug.LogWarning("Could not assign Character data to samurai");
         }
+        return spawned;
     }
 
     Vector3 GetRandomPointInCircle(Vector3 center, float radius)

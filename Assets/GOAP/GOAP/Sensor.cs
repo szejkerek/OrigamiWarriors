@@ -71,7 +71,6 @@ public class Sensor : MonoBehaviour
             switch (targetingMode)
             {
                 case TargetingMode.StrongestBlob:
-                    Debug.Log("Here");
                     currentTarget = GetStrongestBlob();
                     break;
                 case TargetingMode.WeakestBlob:
