@@ -49,6 +49,8 @@ public class AttackStrategy : IActionStrategy
   public bool CanPerform => true; // Agent can always attack
   public bool Complete { get; private set; }
 
+    public Animator animator;
+
   public Sensor sensor;
     public int damage;
 
@@ -56,10 +58,13 @@ public class AttackStrategy : IActionStrategy
   //readonly AnimationController animations;
 
   //public AttackStrategy(AnimationController animations)
-  public AttackStrategy(float duration, Sensor attackSensor, int attackDamage)
+  public AttackStrategy(float duration, Sensor attackSensor, int attackDamage, Animator animator)
   {
     sensor = attackSensor;
     damage = attackDamage;
+
+    this.animator = animator;
+
     //  this.animations = animations;
     //timer = new CountdownTimer(animations.GetAnimationLength(animations.attackClip));
     timer = new CountdownTimer(duration);
@@ -68,7 +73,13 @@ public class AttackStrategy : IActionStrategy
     timer.OnTimerStop += () => DealDamage();
   }
 
-  public void Start() => timer.Start();
+    public void Start()
+    {
+        animator.SetBool("isMoving", false);
+        animator.SetBool("isAttacking", true);
+        timer.Start();
+    }
+
 
   //public void Update(float deltaTime) => timer.Tick(deltaTime);
   public void Update(float deltaTime)
@@ -86,6 +97,7 @@ public class AttackStrategy : IActionStrategy
         {
             unit.TakeDamage(damage);
         }
+        animator.SetBool("isAttacking", false);
     }
 }
 
@@ -93,37 +105,52 @@ public class MoveStrategy : IActionStrategy
 {
   readonly NavMeshAgent agent;
   readonly Func<Vector3> destination;
+    readonly Animator animator;
 
   public bool CanPerform => !Complete;
   public bool Complete => agent.remainingDistance <= 3f && !agent.pathPending;
 
-  public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination)
+  public MoveStrategy(NavMeshAgent agent, Func<Vector3> destination, Animator animator)
   {
     this.agent = agent;
     this.destination = destination;
+        this.animator = animator;
   }
 
-  public void Start() => agent.SetDestination(destination());
-  public void Stop() => agent.ResetPath();
+    public void Start()
+    {
+        animator.SetBool("isMoving", true);
+        animator.SetBool("isAttacking", false);
+        agent.SetDestination(destination());
+    }
+  public void Stop()
+    {
+        agent.ResetPath();
+        animator.SetBool("isMoving", false);
+    }
 }
 
 public class WanderStrategy : IActionStrategy
 {
   readonly NavMeshAgent agent;
   readonly float wanderRadius;
+    readonly Animator animator;
 
-  public bool CanPerform => !Complete;
+    public bool CanPerform => !Complete;
   public bool Complete => agent.remainingDistance <= 2f && !agent.pathPending;
 
-  public WanderStrategy(NavMeshAgent agent, float wanderRadius)
+  public WanderStrategy(NavMeshAgent agent, float wanderRadius, Animator animator)
   {
     this.agent = agent;
     this.wanderRadius = wanderRadius;
+        this.animator = animator;
   }
 
   public void Start()
   {
-    for (int i = 0; i < 5; i++)
+    animator.SetBool("isMoving", true);
+        animator.SetBool("isAttacking", false);
+        for (int i = 0; i < 5; i++)
     {
       Vector3 randomDirection = (UnityEngine.Random.insideUnitSphere * wanderRadius).With(y: 0);
       NavMeshHit hit;

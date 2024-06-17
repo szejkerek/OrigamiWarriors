@@ -33,13 +33,13 @@ public class AllyAgent : GoapAgent
         
         actions.Add(new AgentAction.Builder("MoveToPlayer")
         .WithStrategy(new MoveStrategy(navMeshAgent, () => 
-        playerPosition != null ? playerPosition.transform.position : GameObject.FindGameObjectWithTag("Player").transform.position))
+        playerPosition != null ? playerPosition.transform.position : GameObject.FindGameObjectWithTag("Player").transform.position, animator))
         .AddEffect(beliefs["NearPlayer"])
         .Build());
 
 
         actions.Add(new AgentAction.Builder("AttackEnemy")
-            .WithStrategy(new AttackStrategy(1, attackSensor, 10))
+            .WithStrategy(new AttackStrategy(1, attackSensor, 10, animator))
             .AddPrecondition(beliefs["EnemyInAttackRange"])
             .AddEffect(beliefs["AttackingEnemy"])
             .Build());
