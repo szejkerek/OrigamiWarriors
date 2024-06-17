@@ -40,12 +40,12 @@ public abstract class Samurai : MonoBehaviour, IUnit
     {
         Character.LostHealth += valueHP;
         CharacterStats stats = Character.GetStats();
-        if (stats.Health <= Character.LostHealth)
+        if (stats.MaxHealth <= Character.LostHealth)
         {
-            Character.LostHealth = stats.Health;
+            Character.LostHealth = stats.MaxHealth;
         }
 
-        samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.Health);
+        samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.MaxHealth);
 
         Character.OnHealthChange?.Invoke();
 
@@ -68,8 +68,8 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.OnHealthChange?.Invoke();
     }
 
-    public int GetMaxHealth()
+    public CharacterStats GetStats()
     {
-        return Character.GetStats().Health;
+        return Character.GetStats();
     }
 }

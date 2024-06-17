@@ -12,7 +12,8 @@ public class SwordItemSO : ItemSO
     {
         if(UnitInRange(target, origin, Range))
         {
-            Debug.Log("Execute sword damage!");
+            target.TakeDamage(origin.GetStats().Damage);
+            Debug.Log($"Execute sword damage! {origin.GetStats().Damage}");
         }
     }
 }

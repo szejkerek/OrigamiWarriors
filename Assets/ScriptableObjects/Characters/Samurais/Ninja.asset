@@ -23,7 +23,7 @@ MonoBehaviour:
   <PassiveEffects>k__BackingField:
   - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}
   <Weapon>k__BackingField:
-    m_AssetGUID: cebc740e04da77945821a447d8a8d689
+    m_AssetGUID: 91b1ee949c80d4d44ad3e8c5da173e6f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

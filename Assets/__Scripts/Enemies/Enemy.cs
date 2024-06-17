@@ -5,28 +5,39 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IUnit
 {
     public bool IsAlly => false;
+    public CharacterStats CharacterStats;
 
     public Transform attackPoint => throw new System.NotImplementedException();
 
-    public int health = 100; 
+    private int health;
+
+    private void Awake()
+    {
+        health = GetStats().MaxHealth;
+    }
 
     public void TakeDamage(int valueHP)
     {
+        health -= valueHP;
+        if(health < 0)
+        {
+            Destroy(gameObject);
+        }
         Debug.Log("Damaged");
     }
 
     public void HealUnit(int valueHP)
     {
-        throw new System.NotImplementedException();
+        health = Mathf.Min(health + valueHP, GetStats().MaxHealth);
     }
 
     public void HealToMax()
     {
-        throw new System.NotImplementedException();
+        health = GetStats().MaxHealth;
     }
 
-    public int GetMaxHealth()
+    public CharacterStats GetStats()
     {
-        return health;
+        return CharacterStats;
     }
 }

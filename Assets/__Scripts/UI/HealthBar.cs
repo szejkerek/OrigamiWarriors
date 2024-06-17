@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
     {
         currCharacter= character;
         characterUIDisplay.Init(currCharacter);
-        maxHealth = currCharacter.GetStats().Health;
+        maxHealth = currCharacter.GetStats().MaxHealth;
         health = maxHealth - currCharacter.LostHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;

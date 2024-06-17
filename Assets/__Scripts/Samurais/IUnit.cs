@@ -11,5 +11,5 @@ public interface IUnit
     void TakeDamage(int valueHP);
     void HealUnit(int valueHP);
     void HealToMax();
-    int GetMaxHealth();
+    CharacterStats GetStats();
 }
