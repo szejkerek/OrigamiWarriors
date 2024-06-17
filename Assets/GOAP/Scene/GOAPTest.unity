@@ -526,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6497439536198715751, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
       propertyPath: CharacterStats.MaxHealth
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 364661492493990381, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
