@@ -51,10 +51,7 @@ public class AllyAgent : GoapAgent
     {
         base.SetupGoals();
 
-        goals.Add(new AgentGoal.Builder("GroupUp")
-            .WithPriority(3)
-            .WithDesiredEffect(beliefs["NearPlayer"])
-            .Build());
+        
 
         //goals.Add(new AgentGoal.Builder("Keep Watch")
         //    .WithPriority(2)
@@ -62,4 +59,94 @@ public class AllyAgent : GoapAgent
         //    .Build());
 
     }
+
+    public void AggressiveStanceCommand()
+    {
+
+    }
+
+    public void DefensiveStanceCommand()
+    {
+
+    }
+    public void NormalStanceCommand()
+    {
+
+    }
+    public void AttackWeakCommand()
+    {
+        attackSensor.targetingMode = Sensor.TargetingMode.Weakest;
+        chaseSensor.targetingMode = Sensor.TargetingMode.Weakest;
+    }
+    public void AttackStrongCommand()
+    {
+        attackSensor.targetingMode = Sensor.TargetingMode.Strongest;
+        chaseSensor.targetingMode = Sensor.TargetingMode.Strongest;
+    }
+    public void AttackNormalCommand()
+    {
+        attackSensor.targetingMode = Sensor.TargetingMode.Normal;
+        chaseSensor.targetingMode = Sensor.TargetingMode.Normal;
+    }
+
+    public void WanderCommand()
+    {
+        if (CommadExists("Wander")) return;
+
+
+        goals.Add(new AgentGoal.Builder("Wander")
+            .WithPriority(1)
+            .WithDesiredEffect(beliefs["AgentMoving"])
+            .Build());
+    }
+    public void StayCommand()
+    {
+        if(CommadExists("GroupUp"))
+        {
+            goals.Remove(GetGoal("GroupUp"));
+        }
+        if (CommadExists("Wander"))
+        {
+            goals.Remove(GetGoal("Wander"));
+        }
+    }
+    public void FollowCommand()
+    {
+        if (CommadExists("GroupUp")) return;
+
+
+        goals.Add(new AgentGoal.Builder("GroupUp")
+            .WithPriority(3)
+            .WithDesiredEffect(beliefs["NearPlayer"])
+            .Build());
+    }
+
+    private bool CommadExists(string name)
+    {
+        bool exists = false;
+        foreach (AgentGoal g in goals)
+        {
+            if (g.Name == name)
+            {
+                exists = true;
+                break;
+            }
+        }
+
+        return exists;
+    }
+
+    private AgentGoal GetGoal(string name)
+    {
+        foreach (AgentGoal g in goals)
+        {
+            if (g.Name == name)
+            {
+                return g;
+            }
+        }
+
+        return null;
+    }
+
 }

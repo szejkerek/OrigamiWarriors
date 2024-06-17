@@ -8,14 +8,14 @@ using System.Linq;
 [RequireComponent(typeof(SphereCollider))] // every sensor has to have a collider of some sort
 public class Sensor : MonoBehaviour
 {
-    enum TargetingMode { Normal, Strongest, Weakest};
+    public enum TargetingMode { Normal, Strongest, Weakest};
 
 
     [SerializeField] float detectionRadius = 5.0f; // radius of the sensor
     [SerializeField] float timerInterval = 1.0f; // how often to check the sensor (instead of every frame)
     [SerializeField] List<string> targetTags;
     [SerializeField] List<GameObject> targetsInRange;
-    [SerializeField] TargetingMode targetingMode = TargetingMode.Normal;
+    [SerializeField] public TargetingMode targetingMode = TargetingMode.Normal;
 
 
     SphereCollider detectionRange;
