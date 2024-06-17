@@ -6,7 +6,7 @@ using UnityEngine;
 public interface IUnit
 {
     GameObject gameObject { get; }
-    Transform attackPoint { get; }
+    Transform AttackPoint { get; }
     bool IsAlly { get; }
     void TakeDamage(int valueHP);
     void HealUnit(int valueHP);

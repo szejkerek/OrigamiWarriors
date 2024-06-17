@@ -6,7 +6,8 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public bool IsAlly => true;
     public Character Character { get; private set; }
 
-    public Transform attackPoint => throw new System.NotImplementedException();
+    public Transform AttackPoint => attackPoint;
+    [SerializeField] Transform attackPoint;
 
     SamuraiStylizer samuraiStylizer;
     SamuraiRenderers samuraiRenderer;

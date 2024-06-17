@@ -12,8 +12,15 @@ public class SwordItemSO : ItemSO
     {
         if(UnitInRange(target, origin, Range))
         {
+            SpawnParticle(origin.AttackPoint.position);
             target.TakeDamage(origin.GetStats().Damage);
             Debug.Log($"Execute sword damage! {origin.GetStats().Damage}");
         }
+    }
+
+    private void SpawnParticle(Vector3 position)
+    {
+        var particle = Instantiate(HitParticle, position, Quaternion.identity);
+        Destroy(particle, 0.3f);
     }
 }

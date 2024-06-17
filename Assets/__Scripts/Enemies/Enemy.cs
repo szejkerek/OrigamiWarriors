@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IUnit
     public bool IsAlly => false;
     public CharacterStats CharacterStats;
 
-    public Transform attackPoint => throw new System.NotImplementedException();
+    public Transform AttackPoint => throw new System.NotImplementedException();
 
     private int health;
 
