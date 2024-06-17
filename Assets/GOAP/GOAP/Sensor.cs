@@ -126,37 +126,33 @@ public class Sensor : MonoBehaviour
     Gizmos.DrawWireSphere(transform.position, detectionRadius);
   }
 
-
-
     private GameObject GetStrongest(bool getWeakestInstead = false)
     {
-        float currentMaxHp = 0;
-        GameObject currentStrongest = null;
+        float targetHealth = getWeakestInstead ? float.MaxValue : 0;
+        GameObject targetGameObject = null;
 
         foreach (GameObject g in targetsInRange)
         {
-            if (g.TryGetComponent(out IUnit b))
+            if (g == null) continue;
+
+            if (g.TryGetComponent(out IUnit unit) || (g.transform.parent != null && g.transform.parent.TryGetComponent(out unit)))
             {
-                if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
+                float unitHealth = unit.GetStats().MaxHealth;
+
+                bool shouldUpdateTarget = getWeakestInstead
+                    ? unitHealth < targetHealth || targetHealth == float.MaxValue
+                    : unitHealth > targetHealth;
+
+                if (shouldUpdateTarget)
                 {
-                    currentStrongest = g;
-                    currentMaxHp = b.GetMaxHealth();
+                    targetGameObject = g;
+                    targetHealth = unitHealth;
                 }
             }
-
-            else if (g.transform.parent.TryGetComponent(out IUnit c))
-            {
-                b = c;
-                if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
-                {
-                    currentStrongest = g;
-                    currentMaxHp = b.GetMaxHealth();
-                }
-            }
-
-            else continue;
         }
 
-        return currentStrongest;
+        return targetGameObject;
     }
+
+
 }
