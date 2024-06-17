@@ -26,12 +26,12 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void UseWeapon(IUnit target)
     {
-        Character.Weapon.itemData.Execute(target);
+        Character.Weapon.itemData.Execute(target, this);
     }
 
     public void UseSkill(IUnit target)
     {
-        Character.Skill.itemData.Execute(target);
+        Character.Skill.itemData.Execute(target, this);
     }
 
     public void TakeDamage(int valueHP)

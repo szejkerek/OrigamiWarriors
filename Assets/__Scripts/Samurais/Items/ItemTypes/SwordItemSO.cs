@@ -5,9 +5,14 @@ public class SwordItemSO : ItemSO
 {
     [field: Header("Sword")]
     [field: SerializeField] public float Range { get; private set; }
+    [field: SerializeField] public GameObject HitParticle { get; private set; }
+    [field: SerializeField] public AnimationClip swordAnimation { get; private set; }
 
-    public override void Execute(IUnit target)
+    public override void Execute(IUnit target, IUnit origin)
     {
-        Debug.Log("Execute");
+        if(UnitInRange(target, origin, Range))
+        {
+            Debug.Log("Execute sword damage!");
+        }
     }
 }

@@ -5,12 +5,6 @@ using System.Threading;
 using UnityEngine;
 using System.Linq;
 
-public static class GameObjectExtensions
-{
-  /// Returns the object itself if it exists, null otherwise.
-  public static T OrNull<T>(this T obj) where T : UnityEngine.Object => obj ? obj : null;
-}
-
 [RequireComponent(typeof(SphereCollider))] // every sensor has to have a collider of some sort
 public class Sensor : MonoBehaviour
 {
@@ -145,7 +139,7 @@ public class Sensor : MonoBehaviour
             {
                 if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
                 {
-                    currentStrongest = b.gameObject; //TODO: Chyba g
+                    currentStrongest = g;
                     currentMaxHp = b.GetMaxHealth();
                 }
             }
@@ -155,7 +149,7 @@ public class Sensor : MonoBehaviour
                 b = c;
                 if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
                 {
-                    currentStrongest = b.gameObject;
+                    currentStrongest = g;
                     currentMaxHp = b.GetMaxHealth();
                 }
             }
