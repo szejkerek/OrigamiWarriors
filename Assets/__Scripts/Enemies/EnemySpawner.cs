@@ -34,4 +34,16 @@ public class EnemySpawner : MonoBehaviour
     {
         return FindObjectsOfType<Enemy>().ToList().Count(); 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // Set the color of the Gizmos
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            if (spawnPoint != null)
+            {
+                Gizmos.DrawSphere(spawnPoint.position, 1f);
+            }
+        }
+    }
 }
