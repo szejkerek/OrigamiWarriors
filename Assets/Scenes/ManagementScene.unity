@@ -300,7 +300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2, y: 7.6608276}
+  m_AnchoredPosition: {x: 2, y: 7.6608887}
   m_SizeDelta: {x: -47.3657, y: -15.322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89655750
@@ -909,8 +909,37 @@ MonoBehaviour:
       headIndex: 0
       pantsIndex: 0
     CharacterPrefab: {fileID: 0}
-    Items: []
+    Weapon:
+      IconGuid: 
+      SpriteGuid: 
+      Name: 
+      MaxLevel: 0
+      Level: 0
+      Cost: 0
+      itemDataGuid: 
+      itemData: {fileID: 0}
+    Armor:
+      IconGuid: 
+      SpriteGuid: 
+      Name: 
+      MaxLevel: 0
+      Level: 0
+      Cost: 0
+      itemDataGuid: 
+      itemData: {fileID: 0}
+    Skill:
+      IconGuid: 
+      SpriteGuid: 
+      Name: 
+      MaxLevel: 0
+      Level: 0
+      Cost: 0
+      itemDataGuid: 
+      itemData: {fileID: 0}
     characterGuid: 
+    passiveEffectsGuids: []
+    PassiveEffects: []
+    characterData: {fileID: 0}
   characterName: {fileID: 1951232399}
   statsPanel: {fileID: 1891372875}
   itemSlot:
@@ -1124,7 +1153,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

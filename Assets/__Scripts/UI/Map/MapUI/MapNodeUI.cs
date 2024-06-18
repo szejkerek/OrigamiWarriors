@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
+using Unity.VisualScripting;
 
 public enum MapNodeUIStates
 {
@@ -15,10 +16,12 @@ public class MapNodeUI : MonoBehaviour
     const int k_startLevelIndex = SceneConstants.Level_1;
     [Header("Level Loader")]
     [SerializeField] int levelIndex;
+    [SerializeField] Sprite[] islands;
     Button button;
 
     public SpriteRenderer sr;
-    public Image image;
+    public Image icon;
+    public Image islandImage;
     public MapNode mapNode { get; private set; }
     public MapNodeTypeSO mapNodeType { get; private set; }
 
@@ -35,11 +38,11 @@ public class MapNodeUI : MonoBehaviour
         mapNode = node;
         this.mapNodeType = mapNodeType;
         if (sr != null) sr.sprite = mapNodeType.Icon;
-        if (image != null) image.sprite = mapNodeType.Icon;
-        if (node.type == MapNodeType.Boss) transform.localScale *= 1.5f;
+        if (icon != null) icon.sprite = mapNodeType.IslandImage;
+        if (icon != null) islandImage.sprite = islands[UnityEngine.Random.Range(0, islands.Length)];//mapNodeType.IslandImage;
+        if (node.type == MapNodeType.Boss) { transform.localScale *= 1.5f; }//GetComponent<Renderer>().enabled !visual.enabled = null; }
         levelIndex = index;
         SetState(MapNodeUIStates.Locked);
-        
     }
 
     public void SetState(MapNodeUIStates state)
@@ -53,9 +56,10 @@ public class MapNodeUI : MonoBehaviour
                     sr.color = MapDrawerUI.Instance.lockedColor;
                 }
 
-                if (image != null)
+                if (islandImage != null)
                 {
-                    image.color = MapDrawerUI.Instance.lockedColor;
+                    islandImage.color = MapDrawerUI.Instance.lockedColor;
+                    icon.color = Color.gray;
                 }
 
                 break;
@@ -65,9 +69,10 @@ public class MapNodeUI : MonoBehaviour
                     sr.color = MapDrawerUI.Instance.visitedColor;
                 }
 
-                if (image != null)
+                if (islandImage != null)
                 {
-                    image.color = MapDrawerUI.Instance.visitedColor;
+                    islandImage.color = MapDrawerUI.Instance.visitedColor;
+                    icon.gameObject.SetActive(false);
                 }
                 break;
             case MapNodeUIStates.Attainable:
@@ -77,9 +82,10 @@ public class MapNodeUI : MonoBehaviour
                     sr.color = MapDrawerUI.Instance.attainableColor;
                 }
 
-                if (image != null)
+                if (islandImage != null)
                 {
-                    image.color = MapDrawerUI.Instance.attainableColor;
+                    islandImage.color = MapDrawerUI.Instance.attainableColor;
+                    icon.color = Color.black;//MapDrawerUI.Instance.visitedColor;
                 }
 
                 break;

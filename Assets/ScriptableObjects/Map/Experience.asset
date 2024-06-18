@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Experience
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 7849ae64f71b5864aa49ec09999a5ce0, type: 3}
+  <IslandImage>k__BackingField: {fileID: 21300000, guid: cfe7906ba61189540870a0e34634c50f, type: 3}
   <MapNodeType>k__BackingField: 4
