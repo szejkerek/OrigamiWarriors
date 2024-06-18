@@ -21,6 +21,8 @@ public class GoapAgent : MonoBehaviour
   //AnimationController animations;
   Rigidbody rb;
 
+
+  protected Animator animator;
   CountdownTimer statsTimer;
 
   GameObject target;
@@ -41,6 +43,7 @@ public class GoapAgent : MonoBehaviour
   void Awake()
   {
     navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
     //animations = GetComponent<AnimationController>();
     rb = GetComponent<Rigidbody>();
     rb.freezeRotation = true;
@@ -105,13 +108,13 @@ public class GoapAgent : MonoBehaviour
 
 
         actions.Add(new AgentAction.Builder("ChaseEnemy")
-            .WithStrategy(new MoveStrategy(navMeshAgent, () => beliefs["EnemyInChaseRange"].Location))
+            .WithStrategy(new MoveStrategy(navMeshAgent, () => beliefs["EnemyInChaseRange"].Location, animator))
             .AddPrecondition(beliefs["EnemyInChaseRange"])
             .AddEffect(beliefs["EnemyInAttackRange"])
             .Build());
 
         actions.Add(new AgentAction.Builder("Wander Around")
-            .WithStrategy(new WanderStrategy(navMeshAgent, 10))
+            .WithStrategy(new WanderStrategy(navMeshAgent, 10, animator))
             .AddEffect(beliefs["AgentMoving"])
             .Build());
 
@@ -172,7 +175,7 @@ public class GoapAgent : MonoBehaviour
             .Build());
 
         goals.Add(new AgentGoal.Builder("SeekAndDestroy")
-            .WithPriority(4)
+            .WithPriority(5)
             .WithDesiredEffect(beliefs["AttackingEnemy"])
             .Build());
 

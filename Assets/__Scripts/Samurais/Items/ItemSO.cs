@@ -17,9 +17,19 @@ public abstract class ItemSO : ScriptableObject, IPassiveEffect
         return BaseStats + (StatsModifiersPerLevel * level);
     }
 
-    public abstract void Execute(IUnit target);
+    public abstract void Use(IUnit target, IUnit origin);
 
     public virtual void OnStart(SamuraiEffectsManager context) { }
 
     public virtual void OnUpdate(SamuraiEffectsManager context, float deltaTime) { }
+
+    public static bool UnitInRange(IUnit target, IUnit origin, float range)
+    {
+        if (range <= 0)
+        {
+            Debug.Log($"Range set to infinity. Unit is in range");
+            return true;
+        }
+        return Vector3.Distance(target.gameObject.transform.position, origin.gameObject.transform.position) <= range;
+    }
 }

@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3a70df53c5bda45bd72016e1f00157, type: 3}
   m_Name: Ninja
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ninja 1
+  <Name>k__BackingField: {fileID: 11400000, guid: 12a3bf52806d8084a90176b4efb6d608, type: 2}
   <SamuraiVisuals>k__BackingField: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
   <CharacterGameObject>k__BackingField: {fileID: 9086736370756655516, guid: 40d9967e2c24c4c4e98f9ebd61c2e570, type: 3}
   <BaseStats>k__BackingField:
     Damage: 40
-    Health: 102
+    MaxHealth: 115
     Speed: 28
     CritChance: 0.22
   <PassiveEffects>k__BackingField:
   - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}
   <Weapon>k__BackingField:
-    m_AssetGUID: cebc740e04da77945821a447d8a8d689
+    m_AssetGUID: 91b1ee949c80d4d44ad3e8c5da173e6f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

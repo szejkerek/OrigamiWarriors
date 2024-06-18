@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 [CreateAssetMenu(fileName = "NewCharacter", menuName = "Character/Character", order = 0)]
 public class CharacterSO : ScriptableObject
 {
-    [field: SerializeField] public string Name { private set; get; }
+    [field: SerializeField] public SamuraiNames Name { private set; get; }
     [field: SerializeField] public SamuraiVisualsSO SamuraiVisuals { private set; get; }
     [field: SerializeField] public GameObject CharacterGameObject { private set; get; }
     [field: SerializeField] public CharacterStats BaseStats { private set; get; }

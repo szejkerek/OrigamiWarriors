@@ -31,7 +31,7 @@ public class Character
 
         PassiveEffects = characterData.PassiveEffects;
 
-        this.Name = characterData.Name;
+        this.Name = characterData.Name.GetRandomName();
         this.CharacterPrefab = characterData.CharacterGameObject;
         Weapon = new Item(characterData.Weapon.AssetGUID);
         Armor = new Item(characterData.Armor.AssetGUID);

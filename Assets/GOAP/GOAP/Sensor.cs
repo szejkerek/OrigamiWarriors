@@ -5,23 +5,17 @@ using System.Threading;
 using UnityEngine;
 using System.Linq;
 
-public static class GameObjectExtensions
-{
-  /// Returns the object itself if it exists, null otherwise.
-  public static T OrNull<T>(this T obj) where T : UnityEngine.Object => obj ? obj : null;
-}
-
 [RequireComponent(typeof(SphereCollider))] // every sensor has to have a collider of some sort
 public class Sensor : MonoBehaviour
 {
-    enum TargetingMode { Normal, Strongest, Weakest};
+    public enum TargetingMode { Normal, Strongest, Weakest};
 
 
     [SerializeField] float detectionRadius = 5.0f; // radius of the sensor
     [SerializeField] float timerInterval = 1.0f; // how often to check the sensor (instead of every frame)
     [SerializeField] List<string> targetTags;
     [SerializeField] List<GameObject> targetsInRange;
-    [SerializeField] TargetingMode targetingMode = TargetingMode.Normal;
+    [SerializeField] public TargetingMode targetingMode = TargetingMode.Normal;
 
 
     SphereCollider detectionRange;
@@ -132,37 +126,33 @@ public class Sensor : MonoBehaviour
     Gizmos.DrawWireSphere(transform.position, detectionRadius);
   }
 
-
-
     private GameObject GetStrongest(bool getWeakestInstead = false)
     {
-        float currentMaxHp = 0;
-        GameObject currentStrongest = null;
+        float targetHealth = getWeakestInstead ? float.MaxValue : 0;
+        GameObject targetGameObject = null;
 
         foreach (GameObject g in targetsInRange)
         {
-            if (g.TryGetComponent(out IUnit b))
+            if (g == null) continue;
+
+            if (g.TryGetComponent(out IUnit unit) || (g.transform.parent != null && g.transform.parent.TryGetComponent(out unit)))
             {
-                if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
+                float unitHealth = unit.GetStats().MaxHealth;
+
+                bool shouldUpdateTarget = getWeakestInstead
+                    ? unitHealth < targetHealth || targetHealth == float.MaxValue
+                    : unitHealth > targetHealth;
+
+                if (shouldUpdateTarget)
                 {
-                    currentStrongest = b.gameObject; //TODO: Chyba g
-                    currentMaxHp = b.GetMaxHealth();
+                    targetGameObject = g;
+                    targetHealth = unitHealth;
                 }
             }
-
-            else if (g.transform.parent.TryGetComponent(out IUnit c))
-            {
-                b = c;
-                if (b.GetMaxHealth() > currentMaxHp || (getWeakestInstead && b.GetMaxHealth() < currentMaxHp) || (getWeakestInstead && currentMaxHp == 0))
-                {
-                    currentStrongest = b.gameObject;
-                    currentMaxHp = b.GetMaxHealth();
-                }
-            }
-
-            else continue;
         }
 
-        return currentStrongest;
+        return targetGameObject;
     }
+
+
 }
