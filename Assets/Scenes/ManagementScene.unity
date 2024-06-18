@@ -895,13 +895,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCharacter:
-    IconGUID: 
     Name: 
     BaseStats:
       Damage: 0
-      Health: 0
+      MaxHealth: 0
       Speed: 0
       CritChance: 0
+    LostHealth: 0
     SamuraiVisuals:
       helmetBIndex: 0
       helmetFIndex: 0
@@ -909,8 +909,37 @@ MonoBehaviour:
       headIndex: 0
       pantsIndex: 0
     CharacterPrefab: {fileID: 0}
-    Items: []
+    Weapon:
+      IconGuid: 
+      SpriteGuid: 
+      Name: 
+      MaxLevel: 0
+      Level: 0
+      Cost: 0
+      itemDataGuid: 
+      itemData: {fileID: 0}
+    Armor:
+      IconGuid: 
+      SpriteGuid: 
+      Name: 
+      MaxLevel: 0
+      Level: 0
+      Cost: 0
+      itemDataGuid: 
+      itemData: {fileID: 0}
+    Skill:
+      IconGuid: 
+      SpriteGuid: 
+      Name: 
+      MaxLevel: 0
+      Level: 0
+      Cost: 0
+      itemDataGuid: 
+      itemData: {fileID: 0}
     characterGuid: 
+    passiveEffectsGuids: []
+    PassiveEffects: []
+    characterData: {fileID: 0}
   characterName: {fileID: 1951232399}
   statsPanel: {fileID: 1891372875}
   itemSlot:
@@ -1986,7 +2015,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterPanel: {fileID: 115509887}
   money: {fileID: 326541663}
-  moneyButton: {fileID: 1136990526}
   returnBtn: {fileID: 1281290844}
   CharacterViewPrefab: {fileID: 6219490859832916753, guid: 436bf401f0cfe8d428e1e06b27478406, type: 3}
   charactersPartent: {fileID: 2044115220}
@@ -2325,25 +2353,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: Return
   content: Goes back to map.
---- !u!1 &1505139207 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4379618133176627871, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
-  m_PrefabInstance: {fileID: 1794884330}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1505139211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505139207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f80a5cde8849241b752b7bed4871b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  header: 
-  content: 
 --- !u!1 &1556240772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,10 +3046,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4379618133176627871, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1505139211}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82510b733f53c054fad5c0266eaaf5d0, type: 3}
 --- !u!224 &1794884331 stripped
 RectTransform:
