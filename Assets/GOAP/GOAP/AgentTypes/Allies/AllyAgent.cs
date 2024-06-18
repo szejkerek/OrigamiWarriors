@@ -13,7 +13,6 @@ public class AllyAgent : GoapAgent
 
     private Transform playerPosition;
 
-    private bool isWandering = false;
     //private enum  = false;
 
     protected override void Start()
