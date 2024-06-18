@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,13 +52,24 @@ public class AllyAgent : GoapAgent
     {
         base.SetupGoals();
 
-        
+        AttackCommand.OnAttackRecognized += OnAttack;
+        AttackCommand.OnAttackRecognized += OnDefense;
 
         //goals.Add(new AgentGoal.Builder("Keep Watch")
         //    .WithPriority(2)
         //    .WithDesiredEffect(beliefs["Nothing"])
         //    .Build());
 
+    }
+
+    private void OnDefense(AttackCommand command)
+    {
+        DefensiveStanceCommand();
+    }
+
+    private void OnAttack(AttackCommand command)
+    {
+        AttackNormalCommand();
     }
 
     public void AggressiveStanceCommand()
@@ -75,18 +87,21 @@ public class AllyAgent : GoapAgent
     }
     public void AttackWeakCommand()
     {
-        attackSensor.targetingMode = Sensor.TargetingMode.Weakest;
-        chaseSensor.targetingMode = Sensor.TargetingMode.Weakest;
+        SetupSensors(Sensor.TargetingMode.Weakest);
     }
     public void AttackStrongCommand()
     {
-        attackSensor.targetingMode = Sensor.TargetingMode.Strongest;
-        chaseSensor.targetingMode = Sensor.TargetingMode.Strongest;
+        SetupSensors(Sensor.TargetingMode.Strongest);
     }
     public void AttackNormalCommand()
     {
-        attackSensor.targetingMode = Sensor.TargetingMode.Normal;
-        chaseSensor.targetingMode = Sensor.TargetingMode.Normal;
+        SetupSensors(Sensor.TargetingMode.Normal);
+    }
+
+    private void SetupSensors(Sensor.TargetingMode mode)
+    {
+        attackSensor.targetingMode = mode;
+        chaseSensor.targetingMode = mode;
     }
 
     public void WanderCommand()
