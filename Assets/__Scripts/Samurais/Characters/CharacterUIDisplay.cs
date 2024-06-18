@@ -18,4 +18,8 @@ public class CharacterUIDisplay : MonoBehaviour
         viusals.SetActive(false);
         textDisplay.gameObject.SetActive(false);
     }
+    public void SetColor(Color color)
+    {
+        viusals.SetColor(color);
+    }
 }
