@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b09d3efe26fe24f98fad8ef5adc276, type: 3}
-  m_Name: New Attack Command
+  m_Script: {fileID: 11500000, guid: 15c3a8eb955010c4ca25fffc8674525a, type: 3}
+  m_Name: New Attack Big Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: "K\u014Dgeki - Attack"
+  <DisplayPhrase>k__BackingField: Bigu - Attack Big / Strong
   <VoicePhrases>k__BackingField:
-  - kogeki
-  - kougeki
-  - koge
-  - kageki
-  - kage
+  - big
+  - bigu
+  - biga
   <Cooldown>k__BackingField: 1.5

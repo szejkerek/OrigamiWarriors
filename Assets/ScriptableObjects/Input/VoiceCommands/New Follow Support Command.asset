@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b09d3efe26fe24f98fad8ef5adc276, type: 3}
-  m_Name: New Attack Command
+  m_Script: {fileID: 11500000, guid: d6e54edddde32104d84824c679500ac0, type: 3}
+  m_Name: New Follow Support Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: "K\u014Dgeki - Attack"
+  <DisplayPhrase>k__BackingField: "Hoj\u014D - Support"
   <VoicePhrases>k__BackingField:
-  - kogeki
-  - kougeki
-  - koge
-  - kageki
-  - kage
+  - hajou
+  - hey
+  - heyo
+  - hayo
+  - hajo
+  - hujo
   <Cooldown>k__BackingField: 1.5
