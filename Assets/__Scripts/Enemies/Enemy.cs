@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour, IUnit
     public void TakeDamage(int valueHP)
     {
         health -= valueHP;
+        Debug.Log($"{name} took {valueHP} damage");
         if(health < 0)
         {
             Destroy(gameObject);

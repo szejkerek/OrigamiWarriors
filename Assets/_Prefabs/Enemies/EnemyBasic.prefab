@@ -1150,8 +1150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterStats:
-    Damage: 23
-    MaxHealth: 174
+    Damage: 41
+    MaxHealth: 162
     Speed: 16
     CritChance: 0.63
 --- !u!1 &2404290122388093653

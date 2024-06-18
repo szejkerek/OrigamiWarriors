@@ -49,7 +49,6 @@ public class AttackStrategy : IActionStrategy
     public Animator animator;
 
   public Sensor sensor;
-    public int damage;
 
   readonly CountdownTimer timer;
   //readonly AnimationController animations;
@@ -58,8 +57,6 @@ public class AttackStrategy : IActionStrategy
   public AttackStrategy(float duration, Sensor attackSensor, int attackDamage, Animator animator)
   {
     sensor = attackSensor;
-    damage = attackDamage;
-
     this.animator = animator;
 
     //  this.animations = animations;
@@ -92,7 +89,7 @@ public class AttackStrategy : IActionStrategy
         if (sensor.target == null) return;
         if (sensor.target.TryGetComponent(out IUnit unit))
         {
-            unit.TakeDamage(damage);
+            unit.TakeDamage(unit.GetStats().Damage);
         }
         animator.SetBool("isAttacking", false); 
     }
