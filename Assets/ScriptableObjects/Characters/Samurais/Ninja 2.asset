@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3a70df53c5bda45bd72016e1f00157, type: 3}
   m_Name: Ninja 2
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Ninja 2
+  <Name>k__BackingField: {fileID: 11400000, guid: 12a3bf52806d8084a90176b4efb6d608, type: 2}
   <SamuraiVisuals>k__BackingField: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
   <CharacterGameObject>k__BackingField: {fileID: 808391767203527897, guid: ec5d570119cc01546b152a9815310d07, type: 3}
   <BaseStats>k__BackingField:
