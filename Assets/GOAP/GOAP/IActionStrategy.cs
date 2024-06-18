@@ -71,6 +71,9 @@ public class AttackStrategy : IActionStrategy
     {
         animator.SetBool("isMoving", false);
         animator.SetBool("isAttacking", true);
+
+        animator.gameObject.transform.parent.transform.LookAt(sensor.target.transform);
+
         timer.Start();
     }
 
@@ -163,15 +166,26 @@ public class IdleStrategy : IActionStrategy
   public bool CanPerform => true; // Agent can always Idle, nothing is gointt to stop us from doing that 
   public bool Complete { get; private set; }
 
+    private Animator animator;
+
   readonly CountdownTimer timer;
 
-  public IdleStrategy(float duration)
+  public IdleStrategy(float duration, Animator animator)
   {
     timer = new CountdownTimer(duration);
     timer.OnTimerStart += () => Complete = false;
     timer.OnTimerStop += () => Complete = true;
+
+        this.animator = animator;
   }
 
-  public void Start() => timer.Start();
+    public void Start()
+    {
+        timer.Start();
+
+        animator.SetBool("isMoving", false);
+        animator.SetBool("isAttacking", false);
+    }
+
   public void Update(float deltaTime) => timer.Tick(deltaTime);
 }

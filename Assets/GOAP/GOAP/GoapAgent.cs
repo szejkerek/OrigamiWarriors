@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using DependencyInjection; // https://github.com/adammyhre/Unity-Dependency-Injection-Lite
@@ -11,10 +12,12 @@ public class GoapAgent : MonoBehaviour
 {
   [Header("Sensors")]
   [SerializeField] protected Sensor chaseSensor; // wide range => can chase
-  [SerializeField] protected Sensor attackSensor; // small range => close enough to attack
+    [SerializeField] protected Sensor attackSensor; // small range => close enough to attack
+
+    [SerializeField] TMP_Text text;
 
 
-  protected BeliefFactory beliefFactory;
+    protected BeliefFactory beliefFactory;
 
   // References to the components of this particular agent
   protected NavMeshAgent navMeshAgent;
@@ -118,6 +121,12 @@ public class GoapAgent : MonoBehaviour
             .AddEffect(beliefs["AgentMoving"])
             .Build());
 
+        actions.Add(new AgentAction.Builder("Relax")
+            .WithStrategy(new IdleStrategy(3, animator))
+            .AddEffect(beliefs["Nothing"])
+            .Build());
+
+
         // HEAL
         //actions.Add(new AgentAction.Builder("MoveToEatingPosition")
         //    .WithStrategy(new MoveStrategy(navMeshAgent, () => foodShack.position))
@@ -169,15 +178,21 @@ public class GoapAgent : MonoBehaviour
   {
         goals = new HashSet<AgentGoal>();
 
+        goals.Add(new AgentGoal.Builder("SeekAndDestroy")
+            .WithPriority(5)
+            .WithDesiredEffect(beliefs["AttackingEnemy"])
+            .Build());
+
+        goals.Add(new AgentGoal.Builder("Chill Out")
+            .WithPriority(1)
+            .WithDesiredEffect(beliefs["Nothing"])
+            .Build());
+
         goals.Add(new AgentGoal.Builder("Wander")
             .WithPriority(1)
             .WithDesiredEffect(beliefs["AgentMoving"])
             .Build());
 
-        goals.Add(new AgentGoal.Builder("SeekAndDestroy")
-            .WithPriority(5)
-            .WithDesiredEffect(beliefs["AttackingEnemy"])
-            .Build());
 
 
         //// HEAL
@@ -231,6 +246,10 @@ public class GoapAgent : MonoBehaviour
 
   void Update()
   {
+        if(text != null && currentGoal != null && currentAction != null)
+        {
+            text.text = currentGoal.Name + ", " + currentAction.Name;
+        }
     //statsTimer.Tick(Time.deltaTime);
     //animations.SetSpeed(navMeshAgent.velocity.magnitude);
 
