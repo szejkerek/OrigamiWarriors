@@ -89,7 +89,7 @@ public class AttackStrategy : IActionStrategy
         if (sensor.target == null) return;
         if (sensor.target.TryGetComponent(out IUnit unit))
         {
-            unit.TakeDamage(unit.GetStats().Damage);
+            unit.TakeDamage(unit.CalculateDamage());
         }
         animator.SetBool("isAttacking", false); 
     }

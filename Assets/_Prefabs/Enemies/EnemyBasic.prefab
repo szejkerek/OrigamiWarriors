@@ -1152,7 +1152,7 @@ MonoBehaviour:
   CharacterStats:
     Damage: 41
     MaxHealth: 162
-    Speed: 16
+    Armor: 19
     CritChance: 0.63
 --- !u!1 &2404290122388093653
 GameObject:
