@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Weapon Reroll
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 9c122c79a6c689e4aa6f2c5922357c47, type: 3}
+  <IslandImage>k__BackingField: {fileID: 21300000, guid: 275e59aab10495c458af1d9163c60d0c, type: 3}
   <MapNodeType>k__BackingField: 1

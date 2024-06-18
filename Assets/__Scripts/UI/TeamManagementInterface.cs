@@ -9,7 +9,6 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
     public CharacterPanel CharacterPanel;
 
     [SerializeField] TMP_Text money;
-    [SerializeField] Button moneyButton;
     [SerializeField] Button returnBtn;
 
     [SerializeField] CharacterView CharacterViewPrefab;
@@ -28,8 +27,6 @@ public class TeamManagementInterface : Singleton<TeamManagementInterface>
 
         UpdateResourcesDisplay(SavableDataManager.Instance.data.playerResources);
         FillCharacterSlots();
-
-        moneyButton.onClick.AddListener(() => SavableDataManager.Instance.data.playerResources.AddMoney(500));
     }
 
     private void OnDisable()

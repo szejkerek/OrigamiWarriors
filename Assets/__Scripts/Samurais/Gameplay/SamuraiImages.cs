@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class SamuraiImages
@@ -20,5 +21,15 @@ public class SamuraiImages
        Weapon.gameObject.SetActive(active);
        Chestplate.gameObject.SetActive(active);
        Pants.gameObject.SetActive(active);
+    }
+    public void SetColor(Color color)
+    {
+        Helmet_B.color = color;
+        Helmet_F.color = color;
+        Face_F.color = color;
+        Head.color = color;
+        Weapon.color = color;
+        Chestplate.color = color;
+        Pants.color = color;
     }
 }
