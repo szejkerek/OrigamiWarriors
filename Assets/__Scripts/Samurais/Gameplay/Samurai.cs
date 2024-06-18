@@ -39,13 +39,15 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void TakeDamage(int valueHP)
     {
-        Character.LostHealth += valueHP;
         CharacterStats stats = Character.GetStats();
+        int damageReducedByArmor = Mathf.Max(0, valueHP - stats.Armor);
+        Character.LostHealth += damageReducedByArmor;
+
         if (stats.MaxHealth <= Character.LostHealth)
         {
             Character.LostHealth = stats.MaxHealth;
         }
-        Debug.Log($"Samurai {Character.Name} took {valueHP} dmg");
+        Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {stats.Armor})");
 
         samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.MaxHealth);
 
