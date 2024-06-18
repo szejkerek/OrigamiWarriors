@@ -8,13 +8,13 @@ public class SwordItemSO : ItemSO
     [field: SerializeField] public GameObject HitParticle { get; private set; }
     [field: SerializeField] public AnimationClip swordAnimation { get; private set; }
 
-    public override void Execute(IUnit target, IUnit origin)
+    public override void Use(IUnit target, IUnit origin)
     {
         if(UnitInRange(target, origin, Range))
         {
             SpawnParticle(origin.AttackPoint.position);
             target.TakeDamage(origin.GetStats().Damage);
-            Debug.Log($"Execute sword damage! {origin.GetStats().Damage}");
+            Debug.Log($"Use sword damage! {origin.GetStats().Damage}");
         }
     }
 

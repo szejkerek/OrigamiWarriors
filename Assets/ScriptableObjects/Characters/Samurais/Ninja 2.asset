@@ -12,17 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3a70df53c5bda45bd72016e1f00157, type: 3}
   m_Name: Ninja 2
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField:
-    m_AssetGUID: 92a1d2ad1dd802d45a44cb28b8032954
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
   <Name>k__BackingField: Ninja 2
   <SamuraiVisuals>k__BackingField: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
   <CharacterGameObject>k__BackingField: {fileID: 808391767203527897, guid: ec5d570119cc01546b152a9815310d07, type: 3}
   <BaseStats>k__BackingField:
     Damage: 25
-    Health: 14
+    MaxHealth: 12
     Speed: 12
     CritChance: 0.09
   <PassiveEffects>k__BackingField:
@@ -42,3 +37,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  <GOAPConfig>k__BackingField:
+    AttackStyle: 0
+    PriorityTarget: 0
+    IdleBehaviour: 0
+    Mobilne: 0

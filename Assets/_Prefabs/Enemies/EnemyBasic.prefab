@@ -982,8 +982,6 @@ GameObject:
   - component: {fileID: 2444512754381589411}
   - component: {fileID: 679197450434521578}
   - component: {fileID: 6497439536198715751}
-  - component: {fileID: 1498063125175182571}
-  - component: {fileID: 364661492493990381}
   m_Layer: 11
   m_Name: EnemyBasic
   m_TagString: Blob
@@ -1151,33 +1149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f38451b6fdcd4e81def255589a7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
---- !u!114 &1498063125175182571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2355622456719026271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d91e0d317b17534ea796f98f051ecfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
---- !u!114 &364661492493990381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2355622456719026271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d91e0d317b17534ea796f98f051ecfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
+  CharacterStats:
+    Damage: 23
+    MaxHealth: 174
+    Speed: 16
+    CritChance: 0.63
 --- !u!1 &2404290122388093653
 GameObject:
   m_ObjectHideFlags: 0

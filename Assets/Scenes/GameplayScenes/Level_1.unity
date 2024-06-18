@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4514299, g: 0.500722, b: 0.5712463, a: 1}
+  m_IndirectSpecularColor: {r: 0.45142984, g: 0.50072175, b: 0.57124585, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1892,22 +1892,6 @@ PrefabInstance:
     - target: {fileID: 4552435963891901332, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6497439536198715751, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
-      propertyPath: CharacterStats.Speed
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 6497439536198715751, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
-      propertyPath: CharacterStats.Damage
-      value: 23
-      objectReference: {fileID: 0}
-    - target: {fileID: 6497439536198715751, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
-      propertyPath: CharacterStats.MaxHealth
-      value: 174
-      objectReference: {fileID: 0}
-    - target: {fileID: 6497439536198715751, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
-      propertyPath: CharacterStats.CritChance
-      value: 0.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

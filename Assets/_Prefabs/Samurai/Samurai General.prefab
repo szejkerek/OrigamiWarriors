@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1499006136807606513, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Name
@@ -50,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057009204468900264, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2581271540194730318, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2777379717304871318, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -70,15 +70,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3842501090944149441, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4377019615022809814, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4502478581943204522, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5746216813206886600, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.b
@@ -158,7 +158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6297579365237155888, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6730405952943694867, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.b
@@ -198,18 +198,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033393588830924705, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8038784840922422159, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Center.y
       value: -2.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8378252706644492334, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8928247870028266631, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8038784840922422159, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

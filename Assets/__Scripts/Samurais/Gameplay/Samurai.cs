@@ -29,12 +29,12 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void UseWeapon(IUnit target)
     {
-        Character.Weapon.itemData.Execute(target, this);
+        Character.Weapon.itemData.Use(target, this);
     }
 
     public void UseSkill(IUnit target)
     {
-        Character.Skill.itemData.Execute(target, this);
+        Character.Skill.itemData.Use(target, this);
     }
 
     public void TakeDamage(int valueHP)
@@ -45,6 +45,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
         {
             Character.LostHealth = stats.MaxHealth;
         }
+        Debug.Log($"Samurai {Character.Name} took {valueHP} dmg");
 
         samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.MaxHealth);
 

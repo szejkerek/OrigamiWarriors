@@ -370,7 +370,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2777379717304871318}
   - component: {fileID: 8515238591741812865}
-  - component: {fileID: 8038784840922422159}
   m_Layer: 11
   m_Name: SamuraiRenderers
   m_TagString: Samurai
@@ -413,29 +412,6 @@ MonoBehaviour:
   Weapon: {fileID: 6730405952943694867}
   Chestplate: {fileID: 5746216813206886600}
   Pants: {fileID: 7207633679973589770}
---- !u!136 &8038784840922422159
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4377019615022809814}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Height: 2.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4502478581943204522
 GameObject:
   m_ObjectHideFlags: 0

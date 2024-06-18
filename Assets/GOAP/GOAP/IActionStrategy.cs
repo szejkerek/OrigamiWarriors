@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -97,7 +94,7 @@ public class AttackStrategy : IActionStrategy
         {
             unit.TakeDamage(damage);
         }
-        animator.SetBool("isAttacking", false);
+        animator.SetBool("isAttacking", false); 
     }
 }
 

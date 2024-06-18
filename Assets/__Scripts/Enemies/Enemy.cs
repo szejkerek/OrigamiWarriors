@@ -23,7 +23,6 @@ public class Enemy : MonoBehaviour, IUnit
         {
             Destroy(gameObject);
         }
-        Debug.Log("Damaged");
     }
 
     public void HealUnit(int valueHP)
