@@ -73,7 +73,6 @@ public class AttackStrategy : IActionStrategy
     {
         animator.SetBool("isMoving", false);
         animator.SetBool("isAttacking", true);
-        agent.SpawnParticle(sensor.target.transform.position);
         Transform T = animator.gameObject.transform.parent.transform;
 
         T.LookAt(sensor.target.transform);
@@ -96,7 +95,7 @@ public class AttackStrategy : IActionStrategy
         if (sensor.target == null) return;
         if (sensor.target.TryGetComponent(out IUnit unit))
         {
-            unit.TakeDamage(unit.CalculateDamage());
+            agent.GetComponent<IUnit>().AttackTarget(unit);
         }
         animator.SetBool("isAttacking", false); 
     }

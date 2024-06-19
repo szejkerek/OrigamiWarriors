@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class GameplayManager : Singleton<GameplayManager>
+public class GameplayManager : MonoBehaviour
 {
     public LevelResults LevelResults = new();
 
@@ -14,13 +15,37 @@ public class GameplayManager : Singleton<GameplayManager>
     public EnemySpawner EnemySpawner;
     [SerializeField] int maxEnemiesOverall;
     [SerializeField] int maxEnemiesAtOnce;
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
         LevelResults.colectedMoney = 69;
         EnemySpawner.Init(maxEnemiesOverall, maxEnemiesAtOnce);
         blobCounter.Init(maxEnemiesOverall);
+    }
+
+    private void OnEnable()
+    {
+        killedEnemies = 0;
         Enemy.OnEnemyKilled += OnEnemyKilled;
+        SamuraiAlly.OnDeath += OnAllyDeath;
+        SamuraiGeneral.OnDeath += OnGeneralDeath;
+    }
+
+    private void OnGeneralDeath(Samurai samurai)
+    {
+        LevelCompleted(isWin: false);
+    }
+
+    private void OnAllyDeath(Samurai samurai)
+    {
+        Destroy(samurai.gameObject);
+        SavableDataManager.Instance.data.team.KillCharacter(samurai.Character);
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnEnemyKilled -= OnEnemyKilled;
+        SamuraiAlly.OnDeath -= OnAllyDeath;
+        SamuraiGeneral.OnDeath -= OnGeneralDeath;
     }
 
     private void OnEnemyKilled(Enemy context)

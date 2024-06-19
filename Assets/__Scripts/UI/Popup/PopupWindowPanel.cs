@@ -82,7 +82,7 @@ public class PopupWindowPanel : MonoBehaviour
             Close();
         };
 
-        SetupButtons(confirmAction, declineAction, alternateAction);
+        SetupButtons(confirmAction, declineAction, alternateAction, eventData.answerOne, eventData.answerTwo);
     }
 
 
@@ -98,11 +98,13 @@ public class PopupWindowPanel : MonoBehaviour
         }
     }
 
-    private void SetupButtons(Action confirmAction, Action declineAction, Action alternateAction)
+    private void SetupButtons(Action confirmAction, Action declineAction, Action alternateAction, string sConfirm = "Confirm", string sDecline = "Decline")
     {
         InitializeButton(confirmButton, "Confirm", confirmAction);
+        confirmButton.GetComponentInChildren<TMP_Text>().text = sConfirm == "" ? "Confirm" : sConfirm;
         InitializeButton(alternateButton, "Alternate", alternateAction);
         InitializeButton(declineButton, "Decline", declineAction);
+        declineButton.GetComponentInChildren<TMP_Text>().text = sDecline == "" ? "Decline" : sDecline;
     }
 
     private void InitializeButton(PopupButton button, string label, Action action)

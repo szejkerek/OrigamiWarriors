@@ -20,5 +20,6 @@ public interface IUnit
     }
     void HealUnit(int valueHP);
     void HealToMax();
+    void AttackTarget(IUnit target);
     CharacterStats GetStats();
 }

@@ -10,6 +10,9 @@ public class PassiveHealingEffect : PassiveEffect
     {
         foreach (var team in context.Team)
         {
+            if (team == null)
+                return;
+
             if(Vector3.Distance(context.transform.position, team.transform.position) <= range)
             {
                 //Debug.Log($"{team.name} was healed for {healthPerTick}");

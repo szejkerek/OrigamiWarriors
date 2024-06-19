@@ -26,7 +26,7 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 7
   <Cost>k__BackingField: 27
   <NextItem>k__BackingField:
-    m_AssetGUID: 1363dc464d9c50b4fb66a0e0dc420ff8
+    m_AssetGUID: 3a6d39939b6465d4db702d02ad27df6e
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     Speed: 0
     CritChance: 0.18
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 10
+    Damage: 5
     MaxHealth: 0
     Armor: 0
     Speed: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9bf785ab147b6469e0388d2df76d17, type: 3}
   m_Name: New Stay Idle Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[7] Tom - stay'
+  <DisplayPhrase>k__BackingField: '[2] Tom - stay'
   <VoicePhrases>k__BackingField:
   - tame
   - tome

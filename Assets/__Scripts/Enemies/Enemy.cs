@@ -6,20 +6,25 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IUnit
 {
+    public AssetReferenceItemSO Weapon;
+    private Item weaponItem;
+
+
     public static Action<Enemy> OnEnemyKilled;
     public bool IsAlly => false;
     public CharacterStats CharacterStats;
     public int moneyOnKill = 50;
 
-    public Transform AttackPoint => throw new System.NotImplementedException();
+    public Transform AttackPoint => attackPoint;
+    [SerializeField] Transform attackPoint;
 
     private int health;
 
     private void Awake()
     {
-        health = GetStats().MaxHealth;
         GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
-
+        weaponItem = new Item(Weapon.AssetGUID);
+        health = GetStats().MaxHealth;
     }
 
     public void TakeDamage(int valueHP)
@@ -34,6 +39,8 @@ public class Enemy : MonoBehaviour, IUnit
         }
     }
 
+
+
     public void HealUnit(int valueHP)
     {
         health = Mathf.Min(health + valueHP, GetStats().MaxHealth);
@@ -46,6 +53,11 @@ public class Enemy : MonoBehaviour, IUnit
 
     public CharacterStats GetStats()
     {
-        return CharacterStats;
+        return CharacterStats + weaponItem.GetStats();
+    }
+
+    public void AttackTarget(IUnit target)
+    {
+        weaponItem.itemData.Use(target, this);
     }
 }

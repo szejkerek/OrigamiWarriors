@@ -20,9 +20,19 @@ public class SamuraiEffectsManager : MonoBehaviour
         effectsList.ForEach(e => e.OnStart(this));
     }
 
-    private void GatherMapUnits()
+    private void OnEnable()
+    {
+        SamuraiAlly.OnDeath += GatherMapUnits;
+    }
+
+    private void GatherMapUnits(Samurai samurai = null)
     {
         Team = FindObjectsOfType<Samurai>().ToList();
+    }
+
+    private void OnDisable()
+    {
+        SamuraiAlly.OnDeath -= GatherMapUnits;
     }
 
     private void GatherPassives(Character character)
