@@ -122,7 +122,7 @@ public class GoapAgent : MonoBehaviour
             .Build());
 
         actions.Add(new AgentAction.Builder("Relax")
-            .WithStrategy(new IdleStrategy(3, animator))
+            .WithStrategy(new IdleStrategy(1, animator))
             .AddEffect(beliefs["Nothing"])
             .Build());
 
@@ -183,7 +183,7 @@ public class GoapAgent : MonoBehaviour
             .WithDesiredEffect(beliefs["AttackingEnemy"])
             .Build());
 
-        goals.Add(new AgentGoal.Builder("Chill Out")
+        goals.Add(new AgentGoal.Builder("ChillOut")
             .WithPriority(1)
             .WithDesiredEffect(beliefs["Nothing"])
             .Build());
@@ -244,7 +244,7 @@ public class GoapAgent : MonoBehaviour
     currentGoal = null;
   }
 
-  void Update()
+  protected virtual void Update()
   {
         if(text != null && currentGoal != null && currentAction != null)
         {

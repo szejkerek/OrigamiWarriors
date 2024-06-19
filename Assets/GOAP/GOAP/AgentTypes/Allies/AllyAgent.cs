@@ -19,39 +19,41 @@ public class AllyAgent : GoapAgent
     {
         base.Start();
     }
-    public void Update()
+    protected override void Update()
     {
-      if (Input.GetKey("1")){
+
+        base.Update();
+      if (Input.GetKeyUp("1")){
         //AttackCommand
         OnAttack(null);
       //Debug.Log("AttackCommand");
       }
-      if (Input.GetKey("2")){
+      if (Input.GetKeyUp("2")){
         //DefenseCommand
         OnDefense(null);
       //Debug.Log("DefenseCommand");
       }
-      if (Input.GetKey("3")){
+      if (Input.GetKeyUp("3")){
         //AttackBigCommand
         AttackStrongCommand(null);
       //Debug.Log("AttackBigCommand");
       }
-      if (Input.GetKey("4")){
+      if (Input.GetKeyUp("4")){
         //AttackSmallCommand
         AttackWeakCommand(null);
       //Debug.Log("AttackSmallCommand");
       }
-      if (Input.GetKey("5")){
+      if (Input.GetKeyUp("5")){
         //MarchWanderCommand
         WanderCommand(null);
       //Debug.Log("MarchWanderCommand");
       }
-      if (Input.GetKey("6")){
+      if (Input.GetKeyUp("6")){
         //FollowSupportCommand
         FollowCommand(null);
       //Debug.Log("FollowSupportCommand");
       }
-      if (Input.GetKey("7")){
+      if (Input.GetKeyUp("7")){
         //StayIdleCommand
         StayCommand(null);
       //Debug.Log("StayIdleCommand");
@@ -144,16 +146,26 @@ public class AllyAgent : GoapAgent
     }
   public void WanderCommand(MarchWanderCommand command) // Gyoko (Gyoukou) - March
   {
-        if (CommadExists("Wander")) return;
+        Debug.Log("SCOUT!");
+        if (CommadExists("GroupUp"))
+        {
+            goals.Remove(GetGoal("GroupUp"));
+        }
 
 
-        goals.Add(new AgentGoal.Builder("Wander")
+        if (!CommadExists("Wander"))
+        {
+            goals.Add(new AgentGoal.Builder("Wander")
             .WithPriority(1)
             .WithDesiredEffect(beliefs["AgentMoving"])
             .Build());
+
+        }
     }
     public void StayCommand(StayIdleCommand command) // Tome - Stop
   {
+
+        Debug.Log("STAY!");
         if(CommadExists("GroupUp"))
         {
             goals.Remove(GetGoal("GroupUp"));
@@ -165,6 +177,12 @@ public class AllyAgent : GoapAgent
     }
     public void FollowCommand(FollowSupportCommand command) // Hojo (Hojou) - Support
     {
+        Debug.Log("FOLLOW!");
+        if (CommadExists("Wander"))
+        {
+            goals.Remove(GetGoal("Wander"));
+        }
+
         if (CommadExists("GroupUp")) return;
 
 
