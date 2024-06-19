@@ -1125,6 +1125,7 @@ MonoBehaviour:
   chaseSensor: {fileID: 5914245531855884858}
   attackSensor: {fileID: 7450158866763468338}
   text: {fileID: 3872558566106570176}
+  particle: {fileID: 0}
 --- !u!114 &6497439536198715751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,7 +1142,9 @@ MonoBehaviour:
     Damage: 41
     MaxHealth: 50
     Armor: 19
+    Speed: 3
     CritChance: 0.63
+  moneyOnKill: 50
 --- !u!1 &2404290122388093653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1203,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6, y: 1.2, z: 1.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7271418290439132383}
@@ -2694,7 +2697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 178.644, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.7}
+  m_AnchoredPosition: {x: 0, y: 0.5}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5890506962923835824
@@ -2786,8 +2789,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 3
+  m_fontSizeBase: 3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -25,7 +25,8 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         view.SetAttainableNodes();
         view.SetLineColors();
 
-        List<Character> choices = new List<Character> { 
+        List<Character> choices = new()
+        { 
             SavableDataManager.Instance.data.team.General, 
             SavableDataManager.Instance.data.team.TeamMembers[0], 
             SavableDataManager.Instance.data.team.TeamMembers[1] };
@@ -66,5 +67,6 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             Debug.Log("Couldnt get Character from modal.");
             return;
         }
+        SavableDataManager.Instance.data.team.AddCharacter(character);
     }
 }

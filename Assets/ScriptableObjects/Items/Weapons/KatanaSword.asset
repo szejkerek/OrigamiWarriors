@@ -33,13 +33,15 @@ MonoBehaviour:
   <BaseStats>k__BackingField:
     Damage: 12
     MaxHealth: 0
-    Speed: 3
+    Armor: 0
+    Speed: 0
     CritChance: 0.18
   <StatsModifiersPerLevel>k__BackingField:
     Damage: 10
     MaxHealth: 0
-    Speed: 4
+    Armor: 0
+    Speed: 0
     CritChance: 0.03
   <Range>k__BackingField: 6.45
-  <HitParticle>k__BackingField: {fileID: 7554120595504148465, guid: 7d62a182fc6d21345a64320b8a2f7ed9, type: 3}
+  <HitParticle>k__BackingField: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   <swordAnimation>k__BackingField: {fileID: 0}

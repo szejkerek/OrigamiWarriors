@@ -10,7 +10,8 @@ public class LevelResults
     public int moneyOnWin;
     public int moneyOnLose;
 
-    public List<Character> deadCharacters = new List<Character>();
+    public List<Character> deadCharacters = new();
+    public List<Character> newCharacters = new();
 
     public void Apply()
     {
@@ -19,6 +20,11 @@ public class LevelResults
         foreach (Character character in deadCharacters)
         {
             SavableDataManager.Instance.data.team.KillCharacter(character);
+        }
+
+        foreach (Character character in newCharacters)
+        {
+            SavableDataManager.Instance.data.team.AddCharacter(character);
         }
 
         ClearData();

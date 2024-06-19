@@ -8,7 +8,7 @@ public class CharacterView : MonoBehaviour
 {
     public static Action<Character> OnCharacterSelected;
     [SerializeField] Button characterBtn;
-    [SerializeField] Button returnBtn;
+    //[SerializeField] Button returnBtn;
     [SerializeField] GameObject selectedBorder;
     [SerializeField] CharacterUIDisplay characterUIDisplay;
 
@@ -20,7 +20,7 @@ public class CharacterView : MonoBehaviour
         selectedBorder.SetActive(false);
         characterBtn.onClick.AddListener(SelectCharacter);
         OnCharacterSelected += DisableBorder;
-        returnBtn.onClick.AddListener(ResetView);
+        //returnBtn.onClick.AddListener(ResetView);
     }
     public void EnableBorder()
     {
@@ -46,7 +46,7 @@ public class CharacterView : MonoBehaviour
     void ResetView()
     {
         TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter = null;
-        returnBtn.gameObject.SetActive(false);
+        //returnBtn.gameObject.SetActive(false);
         character = null;
         characterUIDisplay.Clear();
     }
@@ -55,7 +55,7 @@ public class CharacterView : MonoBehaviour
     {
         this.character = character;
         characterUIDisplay.Init(character);
-        returnBtn.gameObject.SetActive(true);
+        //returnBtn.gameObject.SetActive(true);
     }
 
 

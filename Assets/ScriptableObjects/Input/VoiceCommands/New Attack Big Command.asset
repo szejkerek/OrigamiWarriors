@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c3a8eb955010c4ca25fffc8674525a, type: 3}
   m_Name: New Attack Big Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: Bigu - Attack Big / Strong
+  <DisplayPhrase>k__BackingField: '[1] Bigu - target strong'
   <VoicePhrases>k__BackingField:
   - big
   - bigu

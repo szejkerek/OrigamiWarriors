@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public class EnemyChance
+{
+    public GameObject EnemyPrefab;
+    [Range(0f,1f)] public float chanceToSpawn;
+}
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<Transform> spawnPoints;
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int maxEnemies;
+    [SerializeField] List<EnemyChance> enemyPrefabs;
 
-    private void Start()
+    int spawnedEnemies;
+
+    public void Init(int maxEnemies, int atOnceLimit)
     {
-        StartCoroutine(SpawnEnemyRoutine());
+        StartCoroutine(SpawnEnemyRoutine(maxEnemies, atOnceLimit));
     }
 
-    private IEnumerator SpawnEnemyRoutine()
+    private IEnumerator SpawnEnemyRoutine(int maxEnemies, int atOnceLimit)
     {
         while (true)
         {
@@ -23,9 +31,15 @@ public class EnemySpawner : MonoBehaviour
 
             int spawnIndex = Random.Range(0, spawnPoints.Count);
             Transform spawnPoint = spawnPoints[spawnIndex];
-            if(ActiveEnemyCount() < maxEnemies)
+            if(ActiveEnemyCount() < atOnceLimit)
             {
-                Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+                Instantiate(PickEnemy(), spawnPoint.position, spawnPoint.rotation);
+                spawnedEnemies++;
+                if(spawnedEnemies >= maxEnemies)
+                {
+                    break;
+                }
+
             }
         }
     }
@@ -45,5 +59,19 @@ public class EnemySpawner : MonoBehaviour
                 Gizmos.DrawSphere(spawnPoint.position, 1f);
             }
         }
+    }
+
+    GameObject PickEnemy()
+    {
+        List<EnemyChance> enemies = new();
+        foreach (var item in enemyPrefabs)
+        {
+            if(Random.Range(0f,1f) <= item.chanceToSpawn)
+            {
+                enemies.Add(item);
+            }
+        }
+
+        return enemies.SelectRandomElement().EnemyPrefab;
     }
 }

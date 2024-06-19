@@ -15,6 +15,7 @@ public class GoapAgent : MonoBehaviour
     [SerializeField] protected Sensor attackSensor; // small range => close enough to attack
 
     [SerializeField] TMP_Text text;
+    [SerializeField] public GameObject particle;
 
 
     protected BeliefFactory beliefFactory;
@@ -62,6 +63,14 @@ public class GoapAgent : MonoBehaviour
     SetupActions();
     SetupGoals();
   }
+
+    public void SpawnParticle(Vector3 position)
+    {
+        if (particle == null) return;
+        var p = Instantiate(particle, position, Quaternion.identity);
+        Destroy(particle, 0.3f);
+    }
+
 
     protected virtual void SetupBeliefs()
   {
@@ -122,7 +131,7 @@ public class GoapAgent : MonoBehaviour
             .Build());
 
         actions.Add(new AgentAction.Builder("Relax")
-            .WithStrategy(new IdleStrategy(3, animator))
+            .WithStrategy(new IdleStrategy(1, animator))
             .AddEffect(beliefs["Nothing"])
             .Build());
 
@@ -183,7 +192,7 @@ public class GoapAgent : MonoBehaviour
             .WithDesiredEffect(beliefs["AttackingEnemy"])
             .Build());
 
-        goals.Add(new AgentGoal.Builder("Chill Out")
+        goals.Add(new AgentGoal.Builder("ChillOut")
             .WithPriority(1)
             .WithDesiredEffect(beliefs["Nothing"])
             .Build());
@@ -244,7 +253,7 @@ public class GoapAgent : MonoBehaviour
     currentGoal = null;
   }
 
-  void Update()
+  protected virtual void Update()
   {
         if(text != null && currentGoal != null && currentAction != null)
         {

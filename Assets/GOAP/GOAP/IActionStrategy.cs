@@ -49,15 +49,17 @@ public class AttackStrategy : IActionStrategy
     public Animator animator;
 
   public Sensor sensor;
+    public GoapAgent agent;
 
   readonly CountdownTimer timer;
   //readonly AnimationController animations;
 
   //public AttackStrategy(AnimationController animations)
-  public AttackStrategy(float duration, Sensor attackSensor, int attackDamage, Animator animator)
+  public AttackStrategy(float duration, Sensor attackSensor, int attackDamage, Animator animator, GoapAgent agent)
   {
     sensor = attackSensor;
     this.animator = animator;
+        this.agent = agent;
 
     //  this.animations = animations;
     //timer = new CountdownTimer(animations.GetAnimationLength(animations.attackClip));
@@ -71,7 +73,7 @@ public class AttackStrategy : IActionStrategy
     {
         animator.SetBool("isMoving", false);
         animator.SetBool("isAttacking", true);
-
+        agent.SpawnParticle(sensor.target.transform.position);
         Transform T = animator.gameObject.transform.parent.transform;
 
         T.LookAt(sensor.target.transform);
@@ -98,6 +100,8 @@ public class AttackStrategy : IActionStrategy
         }
         animator.SetBool("isAttacking", false); 
     }
+
+
 }
 
 public class MoveStrategy : IActionStrategy

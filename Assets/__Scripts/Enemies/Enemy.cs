@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IUnit
 {
-    public static Action OnEnemyKilled;
+    public static Action<Enemy> OnEnemyKilled;
     public bool IsAlly => false;
     public CharacterStats CharacterStats;
+    public int moneyOnKill = 50;
 
     public Transform AttackPoint => throw new System.NotImplementedException();
 
@@ -16,6 +18,8 @@ public class Enemy : MonoBehaviour, IUnit
     private void Awake()
     {
         health = GetStats().MaxHealth;
+        GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
+
     }
 
     public void TakeDamage(int valueHP)
@@ -25,7 +29,7 @@ public class Enemy : MonoBehaviour, IUnit
         Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {CharacterStats.Armor})");
         if(health < 0)
         {
-            OnEnemyKilled?.Invoke();
+            OnEnemyKilled?.Invoke(this);
             Destroy(gameObject);
         }
     }

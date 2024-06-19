@@ -17,7 +17,7 @@ public class BaseEnemyAgent : GoapAgent
         base.SetupActions();
 
         actions.Add(new AgentAction.Builder("AttackEnemy")
-            .WithStrategy(new AttackStrategy(1, attackSensor, 10, animator))
+            .WithStrategy(new AttackStrategy(1, attackSensor, 10, animator, this))
             .AddPrecondition(beliefs["EnemyInAttackRange"])
             .AddEffect(beliefs["AttackingEnemy"])
             .Build());
