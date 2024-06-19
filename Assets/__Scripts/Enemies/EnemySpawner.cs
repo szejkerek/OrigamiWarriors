@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public class EnemyChance
+{
+    public GameObject EnemyPrefab;
+    [Range(0f,1f)] public float chanceToSpawn;
+}
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<Transform> spawnPoints;
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] List<EnemyChance> enemyPrefabs;
     [SerializeField] int maxEnemies;
 
     private void Start()
@@ -25,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             Transform spawnPoint = spawnPoints[spawnIndex];
             if(ActiveEnemyCount() < maxEnemies)
             {
-                Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+                Instantiate(PickEnemy(), spawnPoint.position, spawnPoint.rotation);
             }
         }
     }
@@ -45,5 +52,19 @@ public class EnemySpawner : MonoBehaviour
                 Gizmos.DrawSphere(spawnPoint.position, 1f);
             }
         }
+    }
+
+    GameObject PickEnemy()
+    {
+        List<EnemyChance> enemies = new List<EnemyChance>();
+        foreach (var item in enemyPrefabs)
+        {
+            if(Random.Range(0f,1f) <= item.chanceToSpawn)
+            {
+                enemies.Add(item);
+            }
+        }
+
+        return enemies.SelectRandomElement().EnemyPrefab;
     }
 }

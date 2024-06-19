@@ -523,7 +523,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  enemyPrefab: {fileID: 2355622456719026271, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
+  enemyPrefabs:
+  - EnemyPrefab: {fileID: 2355622456719026271, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
+    chanceToSpawn: 1
   maxEnemies: 3
 --- !u!1 &5701023085686559861
 GameObject:
