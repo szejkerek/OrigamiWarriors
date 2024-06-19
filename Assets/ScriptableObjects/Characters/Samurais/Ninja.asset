@@ -18,7 +18,8 @@ MonoBehaviour:
   <BaseStats>k__BackingField:
     Damage: 40
     MaxHealth: 115
-    Speed: 28
+    Armor: 15
+    Speed: 4
     CritChance: 0.22
   <PassiveEffects>k__BackingField:
   - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}
