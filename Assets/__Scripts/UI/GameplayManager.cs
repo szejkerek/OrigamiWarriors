@@ -17,6 +17,7 @@ public class GameplayManager : Singleton<GameplayManager>
     protected override void Awake()
     {
         base.Awake();
+        killedEnemies = 0;
         LevelResults.colectedMoney = 69;
         EnemySpawner.Init(maxEnemiesOverall, maxEnemiesAtOnce);
         blobCounter.Init(maxEnemiesOverall);

@@ -24,10 +24,10 @@ EditorBuildSettings:
     path: Assets/Scenes/GameplayScenes/Level_1.unity
     guid: d30f92e879010b54882656c511318bbb
   - enabled: 1
-    path: Assets/Scenes/GameplayScenes/Level_2.unity
-    guid: 6ee5fd38296fb3a448f19e01269b77fe
+    path: Assets/Scenes/GameplayScenes/Level_1_2.unity
+    guid: b5a057aca40827044acd176f6155567d
   - enabled: 1
-    path: Assets/Scenes/GameplayScenes/Level_3.unity
-    guid: fe39a631a74f2bb4ab067c088cce4693
+    path: Assets/Scenes/GameplayScenes/Level_1_3.unity
+    guid: 9986b7a40dd485748af6107f0439c30d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 68e2504ea47a1094ba1985882163f5cd, type: 2}
