@@ -73,6 +73,7 @@ public class Sensor : MonoBehaviour
                 default:
                     foreach (GameObject t in targetsInRange)
                     {
+                        if (t == null) return;
                         float currDistance = Vector3.Distance(transform.position, t.transform.position);
                         if (currDistance < minDistance)
                         {
