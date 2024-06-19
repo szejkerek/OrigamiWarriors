@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
@@ -12,6 +13,8 @@ public abstract class Samurai : MonoBehaviour, IUnit
     SamuraiStylizer samuraiStylizer;
     SamuraiRenderers samuraiRenderer;
     SamuraiEffectsManager samuraiEffectsManager;
+
+    protected abstract void OnSamuraiDeath();
 
     public void SetCharacterData(Character character)
     {
@@ -39,7 +42,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
         if (stats.MaxHealth <= Character.LostHealth)
         {
-            Character.LostHealth = stats.MaxHealth;
+            OnSamuraiDeath();
         }
         Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {stats.Armor})");
 
@@ -48,6 +51,8 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.OnHealthChange?.Invoke();
 
     }
+
+
 
     public void HealUnit(int valueHP)
     {

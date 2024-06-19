@@ -31,7 +31,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 10
+    Damage: 457
     MaxHealth: 0
     Armor: 0
     Speed: 0

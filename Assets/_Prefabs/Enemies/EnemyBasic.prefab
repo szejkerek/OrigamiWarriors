@@ -1124,7 +1124,6 @@ MonoBehaviour:
   chaseSensor: {fileID: 5914245531855884858}
   attackSensor: {fileID: 7450158866763468338}
   text: {fileID: 0}
-  particle: {fileID: 0}
 --- !u!114 &6497439536198715751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,7 +1136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f38451b6fdcd4e81def255589a7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 36b65e7a2f37eac4e8f5310b7e833dd5, type: 2}
+  Weapon:
+    m_AssetGUID: 36b65e7a2f37eac4e8f5310b7e833dd5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   CharacterStats:
     Damage: 10
     MaxHealth: 400
