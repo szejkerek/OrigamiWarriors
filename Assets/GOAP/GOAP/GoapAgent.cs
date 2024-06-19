@@ -15,6 +15,7 @@ public class GoapAgent : MonoBehaviour
     [SerializeField] protected Sensor attackSensor; // small range => close enough to attack
 
     [SerializeField] TMP_Text text;
+    [SerializeField] public GameObject particle;
 
 
     protected BeliefFactory beliefFactory;
@@ -62,6 +63,14 @@ public class GoapAgent : MonoBehaviour
     SetupActions();
     SetupGoals();
   }
+
+    public void SpawnParticle(Vector3 position)
+    {
+        if (particle == null) return;
+        var p = Instantiate(particle, position, Quaternion.identity);
+        Destroy(particle, 0.3f);
+    }
+
 
     protected virtual void SetupBeliefs()
   {
