@@ -583,7 +583,7 @@ MonoBehaviour:
     moneyOnLose: 250
     deadCharacters: []
     newCharacters: []
-  EnemySpawner: {fileID: 0}
+  EnemySpawner: {fileID: 3839364399925804333}
   maxEnemiesOverall: 10
   maxEnemiesAtOnce: 2
 --- !u!1001 &3164445903044499822
