@@ -296,13 +296,10 @@ MonoBehaviour:
   phraseParent: {fileID: 6191576655196292265}
   phrasePrefab: {fileID: 876127820102394267, guid: 4642227f6a7417540bab1d4178471adf, type: 3}
   voiceCommands:
-  - {fileID: 11400000, guid: 8168311c1983c3c4a958b81a7143b6e1, type: 2}
   - {fileID: 11400000, guid: 696a87a594cca764284c984357009116, type: 2}
-  - {fileID: 11400000, guid: 2a9f868d7e5ae56458828e36c8dff975, type: 2}
-  - {fileID: 11400000, guid: 5e6fb38b94c1ef14fbe56228fc52cb4b, type: 2}
+  - {fileID: 11400000, guid: 06dcccb6bad9a2d42b75979d8ca73912, type: 2}
   - {fileID: 11400000, guid: 6c66b78820d9ee647862d7befd834dc2, type: 2}
   - {fileID: 11400000, guid: 26a291f91bbeac44795b143d06fea885, type: 2}
-  - {fileID: 11400000, guid: 06dcccb6bad9a2d42b75979d8ca73912, type: 2}
 --- !u!1 &3230638179526545831
 GameObject:
   m_ObjectHideFlags: 0
