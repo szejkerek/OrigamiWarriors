@@ -68,7 +68,7 @@ public class GoapAgent : MonoBehaviour
     {
         if (particle == null) return;
         var p = Instantiate(particle, position, Quaternion.identity);
-        Destroy(particle, 0.3f);
+        Destroy(p, 0.3f);
     }
 
 
