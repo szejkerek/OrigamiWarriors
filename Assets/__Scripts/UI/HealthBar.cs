@@ -22,9 +22,9 @@ public class HealthBar : MonoBehaviour
         maxHealth = currCharacter.GetStats().MaxHealth;
         health = maxHealth - currCharacter.LostHealth;
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = maxHealth;
+        healthSlider.value = health;
         easeHealthSlider.maxValue = maxHealth;
-        easeHealthSlider.value = maxHealth;
+        easeHealthSlider.value = health;
         currCharacter.OnHealthChange += UpdateHealthBar;
     }
 
