@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fac7236016a80439eb85a71f5be0f4, type: 3}
   m_Name: New March Wander Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[6] Gyoko - scout'
+  <DisplayPhrase>k__BackingField: '[5] Gyoko - scout'
   <VoicePhrases>k__BackingField:
   - gyoko
   - gyoukou
