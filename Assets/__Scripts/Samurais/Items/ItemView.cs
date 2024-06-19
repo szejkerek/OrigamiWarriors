@@ -10,17 +10,20 @@ public class ItemView : MonoBehaviour
 {
     [SerializeField] Image icon;
     [SerializeField] TMP_Text displayName;
+    [SerializeField] TMP_Text costText;
     UpgradeableComponent UpgradeableComponent;
     Item currentItem;
     private void Awake()
     {
         UpgradeableComponent = GetComponentInChildren<UpgradeableComponent>();
         UpgradeableComponent.OnMaxedLevel += TryEvolve;
+        UpgradeableComponent.OnUpgrade += SetupCost;
     }
 
     private void OnDestroy()
     {
         UpgradeableComponent.OnMaxedLevel -= TryEvolve;
+        UpgradeableComponent.OnUpgrade += SetupCost;
     }
 
     private void TryEvolve()
@@ -58,6 +61,12 @@ public class ItemView : MonoBehaviour
         currentItem = item;
         SetupDisplay(item);
         SetupUpgradable(item);
+        SetupCost();
+    }
+
+    private void SetupCost()
+    {
+        costText.text = currentItem.CostFunction().ToString();
     }
 
     void SetupUpgradable(Item upgradebleItem)
