@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c707a2fc6001a4995d3abd2d1c13f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 4507293502378498354}
 --- !u!195 &7752466805305420343
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -512,6 +512,11 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.1, z: 0}
+--- !u!4 &4507293502378498354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2968177205095793731, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+  m_PrefabInstance: {fileID: 1710254046404140401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5307857102822677954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6779396384401408179, guid: b1f859028b8180742ac7200031f026dd, type: 3}

@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour, IUnit
     public CharacterStats CharacterStats;
     public int moneyOnKill = 50;
 
-    public Transform AttackPoint => throw new System.NotImplementedException();
+    public Transform AttackPoint => attackPoint;
+    [SerializeField] Transform attackPoint;
 
     private int health;
 
