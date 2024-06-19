@@ -1492,7 +1492,7 @@ GameObject:
   - component: {fileID: 902192147}
   - component: {fileID: 902192146}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ButtonImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2164,10 +2164,12 @@ MonoBehaviour:
   lorePart2Text: {fileID: 333725242}
   lorePart3Img: {fileID: 333701180}
   lorePart3Text: {fileID: 1242716078}
-  startupDelay: 1
+  startButtonImg: {fileID: 902192147}
+  startButtonText: {fileID: 1904439168}
+  startupDelay: 0.75
   imageAnimationTime: 0.5
   textAnimationTime: 1
-  segmentDelay: 2
+  segmentDelay: 1.5
 --- !u!1 &1360945690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,7 +2786,7 @@ GameObject:
   - component: {fileID: 1904439169}
   - component: {fileID: 1904439168}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2838,8 +2840,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281874488
-  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+    rgba: 3684408
+  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

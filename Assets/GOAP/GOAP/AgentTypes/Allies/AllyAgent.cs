@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AllyAgent : GoapAgent
@@ -21,39 +22,39 @@ public class AllyAgent : GoapAgent
     }
     protected override void Update()
     {
-
-        base.Update();
+      // ONLY DISPLAY COMMANDS: attack stay follow scout
+      base.Update();
       if (Input.GetKeyUp("1")){
         //AttackCommand
         OnAttack(null);
       //Debug.Log("AttackCommand");
       }
-      if (Input.GetKeyUp("2")){
-        //DefenseCommand
-        OnDefense(null);
-      //Debug.Log("DefenseCommand");
-      }
-      if (Input.GetKeyUp("3")){
-        //AttackBigCommand
-        AttackStrongCommand(null);
-      //Debug.Log("AttackBigCommand");
-      }
+      //if (Input.GetKeyUp("2")){
+      //  //DefenseCommand
+      //  OnDefense(null);
+      ////Debug.Log("DefenseCommand");
+      //}
+      //if (Input.GetKeyUp("3")){
+      //  //AttackBigCommand
+      //  AttackStrongCommand(null);
+      ////Debug.Log("AttackBigCommand");
+      //}
+      //if (Input.GetKeyUp("4")){
+      //  //AttackSmallCommand
+      //  AttackWeakCommand(null);
+      ////Debug.Log("AttackSmallCommand");
+      //}
       if (Input.GetKeyUp("4")){
-        //AttackSmallCommand
-        AttackWeakCommand(null);
-      //Debug.Log("AttackSmallCommand");
-      }
-      if (Input.GetKeyUp("5")){
         //MarchWanderCommand
         WanderCommand(null);
       //Debug.Log("MarchWanderCommand");
       }
-      if (Input.GetKeyUp("6")){
+      if (Input.GetKeyUp("3")){
         //FollowSupportCommand
         FollowCommand(null);
       //Debug.Log("FollowSupportCommand");
       }
-      if (Input.GetKeyUp("7")){
+      if (Input.GetKeyUp("2")){
         //StayIdleCommand
         StayCommand(null);
       //Debug.Log("StayIdleCommand");
@@ -91,9 +92,9 @@ public class AllyAgent : GoapAgent
         base.SetupGoals();
 
         AttackCommand.OnAttackRecognized += OnAttack; // Kogeki (Kougeki) - Attack
-        DefenseCommand.OnDefenseRecognized += OnDefense; // Mamoru - Defend
-        AttackBigCommand.OnAttackBigRecognized += AttackStrongCommand; // bigu -> attack big (max health enemy)
-        AttackSmallCommand.OnAttackSmallRecognized += AttackWeakCommand; // smalu -> attack small (min health enemy)
+        //DefenseCommand.OnDefenseRecognized += OnDefense; // Mamoru - Defend
+        //AttackBigCommand.OnAttackBigRecognized += AttackStrongCommand; // bigu -> attack big (max health enemy)
+        //AttackSmallCommand.OnAttackSmallRecognized += AttackWeakCommand; // smalu -> attack small (min health enemy)
         MarchWanderCommand.onWanderRecognized += WanderCommand; // Gyoko (Gyoukou) - March
         FollowSupportCommand.onFollowRecognized += FollowCommand; // Hojo - Support
         StayIdleCommand.OnIdleBigRecognized += StayCommand; // Tome - Stop
