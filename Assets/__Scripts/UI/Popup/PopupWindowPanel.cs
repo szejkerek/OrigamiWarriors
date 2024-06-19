@@ -133,6 +133,7 @@ public class PopupWindowPanel : MonoBehaviour
     private void Close()
     {      
         ChoiceUI.OnCharacterSelected -= SetChoice;
+        if(MapPlayerTracker.Instance != null) MapPlayerTracker.Instance.locked = false;
 
         DOTween.Sequence()
         .Append(canvasGroup.DOFade(0, 0.5f))

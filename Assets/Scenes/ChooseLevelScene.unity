@@ -663,7 +663,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamManagementBtn: {fileID: 1423785657}
   returnBtn: {fileID: 1884513952}
-  infoBtn: {fileID: 0}
 --- !u!1 &949510904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,6 +1979,10 @@ PrefabInstance:
       propertyPath: testEvent
       value: 
       objectReference: {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
+    - target: {fileID: 3135054307488565937, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
+      propertyPath: lockAfterSelecting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5436305153162521916, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
