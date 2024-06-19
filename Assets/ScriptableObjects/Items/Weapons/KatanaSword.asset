@@ -37,7 +37,7 @@ MonoBehaviour:
     Speed: 0
     CritChance: 0.18
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 10
+    Damage: 5
     MaxHealth: 0
     Armor: 0
     Speed: 0
