@@ -33,6 +33,7 @@ public class GameplayManager : MonoBehaviour
     private void OnGeneralDeath(Samurai samurai)
     {
         LevelCompleted(isWin: false);
+        Application.Quit();
     }
 
     private void OnAllyDeath(Samurai samurai)
