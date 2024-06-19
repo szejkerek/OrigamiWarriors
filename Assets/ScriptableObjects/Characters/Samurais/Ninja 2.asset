@@ -19,7 +19,7 @@ MonoBehaviour:
     Damage: 25
     MaxHealth: 82
     Armor: 12
-    Speed: 2
+    Speed: 1
     CritChance: 0.09
   <PassiveEffects>k__BackingField:
   - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}
