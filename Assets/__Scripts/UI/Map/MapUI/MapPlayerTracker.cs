@@ -45,7 +45,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 SceneLoader.Instance.LoadScene(sceneIndex); //TODO: Losowanie poziomu pomiędzy dostępnymi
                 break;
             case MapNodeType.Armory:
-                PopupController.Instance.PopupPanel.ChooseModal(choices, TryAddNewCharacter, "Choose new ally", "opis");
+                PopupController.Instance.PopupPanel.ChooseModal(choices, TryAddNewCharacter, "Choose new ally", "Our elite squad has the opportunity to recruit a new, exceptional ally. Each candidate brings unique skills and experience that can change the course of our missions. Carefully consider their abilities and stats to choose the warrior who will best complement our team.");
                 break;
             case MapNodeType.Boss:
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.BossEvents.SelectRandomElement());
