@@ -8,7 +8,7 @@ public class SamuraiAlly : Samurai
     protected override void Start()
     {
         base.Start();
-        //GetComponent<NavMeshAgent>().speed = Character.BaseStats.
+        GetComponent<NavMeshAgent>().speed = Character.GetStats().Speed;
     }
 
 }

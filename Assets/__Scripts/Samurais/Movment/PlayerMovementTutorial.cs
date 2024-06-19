@@ -11,8 +11,7 @@ public class PlayerMovementTutorial : MonoBehaviour
     public Vector3 MovementInputs { get; private set; }
     CharacterController characterController;
 
-    [SerializeField]
-    float speed = 5f;
+    float speed;
 
 
     [SerializeField] LayerMask groundMask;
@@ -36,6 +35,11 @@ public class PlayerMovementTutorial : MonoBehaviour
             groundCheck.SetParent(transform);
             groundCheck.localPosition = Vector3.zero;
         }
+    }
+
+    private void Start()
+    {
+        speed = GetComponent<Samurai>().Character.GetStats().Speed;
     }
 
     void OnEnable()

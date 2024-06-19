@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IUnit
 {
@@ -17,6 +18,8 @@ public class Enemy : MonoBehaviour, IUnit
     private void Awake()
     {
         health = GetStats().MaxHealth;
+        GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
+
     }
 
     public void TakeDamage(int valueHP)
