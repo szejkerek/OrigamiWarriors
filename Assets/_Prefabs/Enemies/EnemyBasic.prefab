@@ -1145,6 +1145,7 @@ MonoBehaviour:
     Speed: 3
     CritChance: 0.63
   moneyOnKill: 50
+  attackPoint: {fileID: 3928831106593320040}
 --- !u!1 &2404290122388093653
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,26 +56,18 @@ public class GoapAgent : MonoBehaviour
     //gPlanner = gFactory.CreatePlanner();
   }
 
-  protected virtual void Start()
-  {
-    beliefFactory = new BeliefFactory(this, beliefs);
-    SetupBeliefs();
-    SetupActions();
-    SetupGoals();
-  }
-
-    public void SpawnParticle(Vector3 position)
-    {
-        if (particle == null) return;
-        var p = Instantiate(particle, position, Quaternion.identity);
-        Destroy(p, 0.3f);
-    }
-
+      protected virtual void Start()
+      {
+        beliefFactory = new BeliefFactory(this, beliefs);
+        SetupBeliefs();
+        SetupActions();
+        SetupGoals();
+      }
 
     protected virtual void SetupBeliefs()
-  {
-    beliefs = new Dictionary<string, AgentBeliefs>();
-    BeliefFactory factory = new BeliefFactory(this, beliefs);
+    {
+        beliefs = new Dictionary<string, AgentBeliefs>();
+        BeliefFactory factory = new BeliefFactory(this, beliefs);
 
         factory.AddBelief("Nothing", () => false);
         factory.AddBelief("AgentIdle", () => !navMeshAgent.hasPath);

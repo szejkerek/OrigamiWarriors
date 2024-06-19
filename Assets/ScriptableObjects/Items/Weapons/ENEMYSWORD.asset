@@ -42,6 +42,6 @@ MonoBehaviour:
     Armor: 0
     Speed: 0
     CritChance: 0
-  <Range>k__BackingField: 2
+  <Range>k__BackingField: 999
   <HitParticle>k__BackingField: {fileID: 7554120595504148465, guid: 7d62a182fc6d21345a64320b8a2f7ed9, type: 3}
   <swordAnimation>k__BackingField: {fileID: 0}

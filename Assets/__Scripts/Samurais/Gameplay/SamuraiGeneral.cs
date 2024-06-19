@@ -40,9 +40,9 @@ public class SamuraiGeneral : Samurai
         foreach (RaycastHit hit in hits)
         {
             IUnit unit = hit.collider.GetComponent<IUnit>();
-            if (unit != null)
+            if (unit != null && !unit.IsAlly)
             {
-                UseWeapon(unit);
+                AttackTarget(unit);
             }
         }
     }

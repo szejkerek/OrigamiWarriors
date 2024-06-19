@@ -26,12 +26,6 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.SamuraiVisuals.Apply(samuraiStylizer.Renderers, Character);
         samuraiEffectsManager.Initialize(Character);
     }
-
-    public void UseWeapon(IUnit target)
-    {
-        Character.Weapon.itemData.Use(target, this);
-    }
-
     public void UseSkill(IUnit target)
     {
         Character.Skill.itemData.Use(target, this);
@@ -75,5 +69,10 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public CharacterStats GetStats()
     {
         return Character.GetStats();
+    }
+
+    public void AttackTarget(IUnit target)
+    {
+        Character.Weapon.itemData.Use(target, this);
     }
 }

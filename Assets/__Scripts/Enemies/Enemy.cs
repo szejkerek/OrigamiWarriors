@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour, IUnit
     public CharacterStats CharacterStats;
     public int moneyOnKill = 50;
 
-    public Transform AttackPoint => throw new System.NotImplementedException();
+    public Transform AttackPoint => attackPoint;
+    [SerializeField] Transform attackPoint;
 
     private int health;
 
@@ -35,6 +36,8 @@ public class Enemy : MonoBehaviour, IUnit
         }
     }
 
+
+
     public void HealUnit(int valueHP)
     {
         health = Mathf.Min(health + valueHP, GetStats().MaxHealth);
@@ -48,5 +51,10 @@ public class Enemy : MonoBehaviour, IUnit
     public CharacterStats GetStats()
     {
         return CharacterStats;
+    }
+
+    public void AttackTarget(IUnit target)
+    {
+        Weapon.Use(target, this);
     }
 }
