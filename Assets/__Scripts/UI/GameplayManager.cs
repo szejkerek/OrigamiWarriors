@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameplayManager : Singleton<GameplayManager>
+public class GameplayManager : MonoBehaviour
 {
     public LevelResults LevelResults = new();
 
@@ -14,14 +14,22 @@ public class GameplayManager : Singleton<GameplayManager>
     public EnemySpawner EnemySpawner;
     [SerializeField] int maxEnemiesOverall;
     [SerializeField] int maxEnemiesAtOnce;
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
-        killedEnemies = 0;
         LevelResults.colectedMoney = 69;
         EnemySpawner.Init(maxEnemiesOverall, maxEnemiesAtOnce);
         blobCounter.Init(maxEnemiesOverall);
+    }
+
+    private void OnEnable()
+    {
+        killedEnemies = 0;
         Enemy.OnEnemyKilled += OnEnemyKilled;
+    }
+
+    private void OnDisable()
+    {
+        Enemy.OnEnemyKilled -= OnEnemyKilled;
     }
 
     private void OnEnemyKilled(Enemy context)
