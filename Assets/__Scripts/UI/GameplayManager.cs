@@ -6,6 +6,8 @@ public class GameplayManager : Singleton<GameplayManager>
 {
     public LevelResults LevelResults = new();
 
+    [SerializeField] BlobCounter blobCounter;
+
     int killedEnemies;
 
     [Header("Enemy Spawner settings")]
@@ -17,6 +19,7 @@ public class GameplayManager : Singleton<GameplayManager>
         base.Awake();
         LevelResults.colectedMoney = 69;
         EnemySpawner.Init(maxEnemiesOverall, maxEnemiesAtOnce);
+        blobCounter.Init(maxEnemiesOverall);
         Enemy.OnEnemyKilled += OnEnemyKilled;
     }
 
