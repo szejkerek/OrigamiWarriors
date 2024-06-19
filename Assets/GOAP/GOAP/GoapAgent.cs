@@ -15,7 +15,6 @@ public class GoapAgent : MonoBehaviour
     [SerializeField] protected Sensor attackSensor; // small range => close enough to attack
 
     [SerializeField] TMP_Text text;
-    [SerializeField] public GameObject particle;
 
 
     protected BeliefFactory beliefFactory;
