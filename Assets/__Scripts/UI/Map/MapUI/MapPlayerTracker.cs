@@ -66,14 +66,6 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             Debug.Log("Couldnt get Character from modal.");
             return;
         }
-
-        LevelResults levelResults = new LevelResults();
-        levelResults.newCharacters = new List<Character>
-        {
-            character
-        };
-
-        levelResults.Apply();
-
+        SavableDataManager.Instance.data.team.AddCharacter(character);
     }
 }
