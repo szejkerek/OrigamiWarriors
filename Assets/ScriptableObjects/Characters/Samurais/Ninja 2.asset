@@ -17,9 +17,9 @@ MonoBehaviour:
   <CharacterGameObject>k__BackingField: {fileID: 808391767203527897, guid: ec5d570119cc01546b152a9815310d07, type: 3}
   <BaseStats>k__BackingField:
     Damage: 8
-    MaxHealth: 800
-    Armor: 12
-    Speed: 1
+    MaxHealth: 500
+    Armor: 5
+    Speed: 4
     CritChance: 0.09
   <PassiveEffects>k__BackingField:
   - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}

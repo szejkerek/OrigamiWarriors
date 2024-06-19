@@ -30,4 +30,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         TooltipSystem.Show(content, header);
     }
 
+    public void SetContent(string header,string content)
+    {
+        this.content = content;
+        this.header = header;
+    }
+
 }
