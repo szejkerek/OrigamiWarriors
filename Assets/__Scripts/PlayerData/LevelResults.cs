@@ -10,8 +10,8 @@ public class LevelResults
     public int moneyOnWin;
     public int moneyOnLose;
 
-    public List<Character> deadCharacters = new List<Character>();
-    public List<Character> newCharacters = new List<Character>();
+    public List<Character> deadCharacters = new();
+    public List<Character> newCharacters = new();
 
     public void Apply()
     {
