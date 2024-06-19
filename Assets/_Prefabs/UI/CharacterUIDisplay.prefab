@@ -653,7 +653,6 @@ MonoBehaviour:
     Chestplate: {fileID: 5167630832018513681}
     Pants: {fileID: 1618478720820713505}
   characterName: {fileID: 4164335980033415527}
-  characterUIDisplay: {fileID: 0}
   textDisplay: {fileID: 6181911104997357070}
 --- !u!1 &5168100816372960147
 GameObject:
@@ -837,11 +836,11 @@ RectTransform:
   m_LocalScale: {x: 1.6276, y: 1.6276, z: 1.6276}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3977843211187756782}
   - {fileID: 4686229141835684787}
   - {fileID: 2645475232340535331}
   - {fileID: 6130916859989711922}
   - {fileID: 8078056718504166518}
-  - {fileID: 3977843211187756782}
   - {fileID: 5634023167391345795}
   - {fileID: 5733579637593306013}
   m_Father: {fileID: 4889324771823650476}
