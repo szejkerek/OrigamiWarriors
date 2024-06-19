@@ -1,20 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameplayUI : MonoBehaviour
+public class GameplayManager : MonoBehaviour
 {
-    [SerializeField] Button winBtn;
-    [SerializeField] Button loseBtn;
-
-    public LevelResults LevelResults = new LevelResults(); 
-
+    public LevelResults LevelResults = new LevelResults();
     private void Awake()
     {
-        winBtn.onClick.AddListener(() => LevelCompleted(true));
-        loseBtn.onClick.AddListener(() => LevelCompleted(false));
-
         LevelResults.colectedMoney = 69;
     }
+
     public void LevelCompleted(bool isWin)
     {
         LevelResults.isWin = isWin;
@@ -23,4 +17,5 @@ public class GameplayUI : MonoBehaviour
 
         SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
     }
+
 }

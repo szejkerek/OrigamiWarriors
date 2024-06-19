@@ -451,7 +451,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221933893962001820}
-  - component: {fileID: 5685504955246687591}
   m_Layer: 0
   m_Name: GameplayUI
   m_TagString: Untagged
@@ -475,26 +474,6 @@ Transform:
   - {fileID: 1856760031504732091}
   m_Father: {fileID: 1160992609404156044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5685504955246687591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5364219831280076284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbf7e0784e2f9f499fa61a281e15f57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  winBtn: {fileID: 0}
-  loseBtn: {fileID: 0}
-  LevelResults:
-    isWin: 0
-    colectedMoney: 0
-    moneyOnWin: 0
-    moneyOnLose: 0
-    deadCharacters: []
 --- !u!1 &5455474201535234128
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +524,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyPrefab: {fileID: 2355622456719026271, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
-  maxEnemies: 2
+  maxEnemies: 3
 --- !u!1 &5701023085686559861
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1160992609404156044}
+  - component: {fileID: 2915213199148667229}
   m_Layer: 0
   m_Name: GameplayManager
   m_TagString: Untagged
@@ -583,6 +563,25 @@ Transform:
   - {fileID: 1301864273839707582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2915213199148667229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701023085686559861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbf7e0784e2f9f499fa61a281e15f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelResults:
+    isWin: 0
+    colectedMoney: 0
+    moneyOnWin: 0
+    moneyOnLose: 0
+    deadCharacters: []
+    newCharacters: []
 --- !u!1001 &3164445903044499822
 PrefabInstance:
   m_ObjectHideFlags: 0
