@@ -31,11 +31,18 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             SavableDataManager.Instance.data.team.TeamMembers[0], 
             SavableDataManager.Instance.data.team.TeamMembers[1] };
 
+        
 
         switch (mapNode.mapNode.type)
         {
             case MapNodeType.Arena:
-                SceneLoader.Instance.LoadScene(SceneConstants.Level_1); //TODO: Losowanie poziomu pomiędzy dostępnymi
+                int sceneIndex = SceneConstants.Level_1;
+                if(mapManager.currentMap.path.Count > 1)
+                {
+                    sceneIndex = UnityEngine.Random.Range(SceneConstants.Level_1_2, SceneConstants.Level_1_3 + 1);
+                }
+
+                SceneLoader.Instance.LoadScene(sceneIndex); //TODO: Losowanie poziomu pomiędzy dostępnymi
                 break;
             case MapNodeType.Armory:
                 PopupController.Instance.PopupPanel.ChooseModal(choices, TryAddNewCharacter, "Choose new ally", "opis");
