@@ -71,6 +71,11 @@ public class AttackStrategy : IActionStrategy
     {
         animator.SetBool("isMoving", false);
         animator.SetBool("isAttacking", true);
+
+        Transform T = animator.gameObject.transform.parent.transform;
+
+        T.LookAt(sensor.target.transform);
+        //T.rotation = Quaternion.Euler(0, T.rotation.y, 0);
         timer.Start();
     }
 
@@ -89,7 +94,7 @@ public class AttackStrategy : IActionStrategy
         if (sensor.target == null) return;
         if (sensor.target.TryGetComponent(out IUnit unit))
         {
-            unit.TakeDamage(unit.GetStats().Damage);
+            unit.TakeDamage(unit.CalculateDamage());
         }
         animator.SetBool("isAttacking", false); 
     }
@@ -163,15 +168,26 @@ public class IdleStrategy : IActionStrategy
   public bool CanPerform => true; // Agent can always Idle, nothing is gointt to stop us from doing that 
   public bool Complete { get; private set; }
 
+    private Animator animator;
+
   readonly CountdownTimer timer;
 
-  public IdleStrategy(float duration)
+  public IdleStrategy(float duration, Animator animator)
   {
     timer = new CountdownTimer(duration);
     timer.OnTimerStart += () => Complete = false;
     timer.OnTimerStop += () => Complete = true;
+
+        this.animator = animator;
   }
 
-  public void Start() => timer.Start();
+    public void Start()
+    {
+        timer.Start();
+
+        animator.SetBool("isMoving", false);
+        animator.SetBool("isAttacking", false);
+    }
+
   public void Update(float deltaTime) => timer.Tick(deltaTime);
 }

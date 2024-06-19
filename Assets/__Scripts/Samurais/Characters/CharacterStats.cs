@@ -3,16 +3,16 @@ public class CharacterStats
 {
     public int Damage;
     public int MaxHealth;
-    public int Speed;
+    public int Armor;
     public float CritChance;
 
     public CharacterStats() { }
 
-    public CharacterStats(int damage, int maxHealth, int speed, float critChance)
+    public CharacterStats(int damage, int maxHealth, int armor, float critChance)
     {
         Damage = damage;
         MaxHealth = maxHealth;
-        Speed = speed;
+        Armor = armor;
         CritChance = critChance;
     }
 
@@ -20,17 +20,25 @@ public class CharacterStats
     {
         Damage = other.Damage;
         MaxHealth = other.MaxHealth;
-        Speed = other.Speed;
+        Armor = other.Armor;
         CritChance = other.CritChance;
     }  
 
     public static CharacterStats operator +(CharacterStats a, CharacterStats b)
     {
-        return new CharacterStats(a.Damage + b.Damage, a.MaxHealth + b.MaxHealth, a.Speed + b.Speed, a.CritChance + b.CritChance);
+        return new CharacterStats(
+            a.Damage + b.Damage, 
+            a.MaxHealth + b.MaxHealth, 
+            a.Armor + b.Armor, 
+            a.CritChance + b.CritChance);
     }
 
     public static CharacterStats operator *(CharacterStats a, int level)
     {
-        return new CharacterStats(a.Damage * level, a.MaxHealth * level, a.Speed * level, a.CritChance * level);
+        return new CharacterStats(
+            a.Damage * level, 
+            a.MaxHealth * level, 
+            a.Armor * level, 
+            a.CritChance * level);
     }
 }

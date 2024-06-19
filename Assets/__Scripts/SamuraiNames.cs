@@ -13,6 +13,6 @@ public class SamuraiNames : ScriptableObject
         string randomName = names.SelectRandomElement();
         string randomSurname = surnames.SelectRandomElement();
 
-        return randomName + randomSurname;
+        return randomName + " " + randomSurname;
     }
 }

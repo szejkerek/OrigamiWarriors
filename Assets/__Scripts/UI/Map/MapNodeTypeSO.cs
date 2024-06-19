@@ -18,5 +18,6 @@ public enum MapNodeType
 public class MapNodeTypeSO : ScriptableObject
 {
     [field: SerializeField] public Sprite Icon { private set; get; }
+    [field: SerializeField] public Sprite IslandImage { private set; get; }
     [field: SerializeField] public MapNodeType MapNodeType { private set; get; }
 }

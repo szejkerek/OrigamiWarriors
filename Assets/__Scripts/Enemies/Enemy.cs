@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IUnit
 {
+    public static Action OnEnemyKilled;
     public bool IsAlly => false;
     public CharacterStats CharacterStats;
 
@@ -18,10 +20,12 @@ public class Enemy : MonoBehaviour, IUnit
 
     public void TakeDamage(int valueHP)
     {
-        health -= valueHP;
-        Debug.Log($"{name} took {valueHP} damage");
+        int damageReducedByArmor = Mathf.Max(0, valueHP - CharacterStats.Armor);
+        health -= damageReducedByArmor;
+        Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {CharacterStats.Armor})");
         if(health < 0)
         {
+            OnEnemyKilled?.Invoke();
             Destroy(gameObject);
         }
     }

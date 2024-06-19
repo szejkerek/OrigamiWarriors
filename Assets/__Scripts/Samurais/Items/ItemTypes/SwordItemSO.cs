@@ -13,8 +13,7 @@ public class SwordItemSO : ItemSO
         if(UnitInRange(target, origin, Range))
         {
             SpawnParticle(origin.AttackPoint.position);
-            target.TakeDamage(origin.GetStats().Damage);
-            Debug.Log($"Use sword damage! {origin.GetStats().Damage}");
+            target.TakeDamage(origin.CalculateDamage());
         }
     }
 

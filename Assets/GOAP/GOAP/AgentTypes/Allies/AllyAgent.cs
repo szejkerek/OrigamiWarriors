@@ -13,15 +13,51 @@ public class AllyAgent : GoapAgent
 
     private Transform playerPosition;
 
-    private bool isWandering = false;
     //private enum  = false;
 
     protected override void Start()
     {
         base.Start();
     }
-
-    protected override void SetupBeliefs()
+    public void Update()
+    {
+      if (Input.GetKey("1")){
+        //AttackCommand
+        OnAttack(null);
+      //Debug.Log("AttackCommand");
+      }
+      if (Input.GetKey("2")){
+        //DefenseCommand
+        OnDefense(null);
+      //Debug.Log("DefenseCommand");
+      }
+      if (Input.GetKey("3")){
+        //AttackBigCommand
+        AttackStrongCommand(null);
+      //Debug.Log("AttackBigCommand");
+      }
+      if (Input.GetKey("4")){
+        //AttackSmallCommand
+        AttackWeakCommand(null);
+      //Debug.Log("AttackSmallCommand");
+      }
+      if (Input.GetKey("5")){
+        //MarchWanderCommand
+        WanderCommand(null);
+      //Debug.Log("MarchWanderCommand");
+      }
+      if (Input.GetKey("6")){
+        //FollowSupportCommand
+        FollowCommand(null);
+      //Debug.Log("FollowSupportCommand");
+      }
+      if (Input.GetKey("7")){
+        //StayIdleCommand
+        StayCommand(null);
+      //Debug.Log("StayIdleCommand");
+      }
+    }
+  protected override void SetupBeliefs()
     {
         base.SetupBeliefs();
         BeliefFactory factory = new BeliefFactory(this, beliefs);
@@ -52,23 +88,27 @@ public class AllyAgent : GoapAgent
     {
         base.SetupGoals();
 
-        AttackCommand.OnAttackRecognized += OnAttack;
-        AttackCommand.OnAttackRecognized += OnDefense;
+        AttackCommand.OnAttackRecognized += OnAttack; // Kogeki (Kougeki) - Attack
+        DefenseCommand.OnDefenseRecognized += OnDefense; // Mamoru - Defend
+        AttackBigCommand.OnAttackBigRecognized += AttackStrongCommand; // bigu -> attack big (max health enemy)
+        AttackSmallCommand.OnAttackSmallRecognized += AttackWeakCommand; // smalu -> attack small (min health enemy)
+        MarchWanderCommand.onWanderRecognized += WanderCommand; // Gyoko (Gyoukou) - March
+        FollowSupportCommand.onFollowRecognized += FollowCommand; // Hojo - Support
+        StayIdleCommand.OnIdleBigRecognized += StayCommand; // Tome - Stop
 
-        //goals.Add(new AgentGoal.Builder("Keep Watch")
-        //    .WithPriority(2)
-        //    .WithDesiredEffect(beliefs["Nothing"])
-        //    .Build());
+    //goals.Add(new AgentGoal.Builder("Keep Watch")
+    //    .WithPriority(2)
+    //    .WithDesiredEffect(beliefs["Nothing"])
+    //    .Build());
 
-    }
-
-    private void OnDefense(AttackCommand command)
+  }
+    private void OnDefense(DefenseCommand command) // Mamoru - Defend
     {
         DefensiveStanceCommand();
     }
 
-    private void OnAttack(AttackCommand command)
-    {
+    private void OnAttack(AttackCommand command) // Kogeki (Kougeki) - Attack
+  {
         AttackNormalCommand();
     }
 
@@ -85,27 +125,25 @@ public class AllyAgent : GoapAgent
     {
 
     }
-    public void AttackWeakCommand()
-    {
-        SetupSensors(Sensor.TargetingMode.Weakest);
+    private void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min health enemy)
+  {
+      SetupSensors(Sensor.TargetingMode.Weakest);
     }
-    public void AttackStrongCommand()
-    {
-        SetupSensors(Sensor.TargetingMode.Strongest);
+    private void AttackStrongCommand(AttackBigCommand command) // Kogeki Oki (Kougeki ookii) / Kogeki biggu -> attack big (max health enemy)
+  {
+      SetupSensors(Sensor.TargetingMode.Strongest);
     }
     public void AttackNormalCommand()
     {
         SetupSensors(Sensor.TargetingMode.Normal);
     }
-
     private void SetupSensors(Sensor.TargetingMode mode)
     {
         attackSensor.targetingMode = mode;
         chaseSensor.targetingMode = mode;
     }
-
-    public void WanderCommand()
-    {
+  public void WanderCommand(MarchWanderCommand command) // Gyoko (Gyoukou) - March
+  {
         if (CommadExists("Wander")) return;
 
 
@@ -114,8 +152,8 @@ public class AllyAgent : GoapAgent
             .WithDesiredEffect(beliefs["AgentMoving"])
             .Build());
     }
-    public void StayCommand()
-    {
+    public void StayCommand(StayIdleCommand command) // Tome - Stop
+  {
         if(CommadExists("GroupUp"))
         {
             goals.Remove(GetGoal("GroupUp"));
@@ -125,7 +163,7 @@ public class AllyAgent : GoapAgent
             goals.Remove(GetGoal("Wander"));
         }
     }
-    public void FollowCommand()
+    public void FollowCommand(FollowSupportCommand command) // Hojo (Hojou) - Support
     {
         if (CommadExists("GroupUp")) return;
 

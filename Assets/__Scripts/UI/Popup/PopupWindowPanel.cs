@@ -126,7 +126,7 @@ public class PopupWindowPanel : MonoBehaviour
         gameObject.SetActive(true);
         DOTween.Sequence()
         .Append(canvasGroup.DOFade(1, 0.75f))
-        .Join(transform.DOScale(Vector3.one, 0.75f).SetEase(Ease.OutBounce))
+        .Join(transform.DOScale(new Vector3(0.5f,0.45f,1.0f), 0.75f).SetEase(Ease.OutBounce))
         .Play();
     }
 

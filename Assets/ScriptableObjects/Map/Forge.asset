@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Forge
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 4b08d1985b567a340b86439fcea1aeed, type: 3}
+  <IslandImage>k__BackingField: {fileID: 21300000, guid: 23c11cd9e67b35040942523fef94f301, type: 3}
   <MapNodeType>k__BackingField: 2

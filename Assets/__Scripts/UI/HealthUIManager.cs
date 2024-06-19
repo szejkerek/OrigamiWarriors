@@ -11,17 +11,17 @@ public class HealthUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
 
-        SpawnHealthBar( SavableDataManager.Instance.data.team.General,0);
+
+        SpawnHealthBar(SavableDataManager.Instance.data.team.General, 0, new Color(255f / 255, 73f / 255, 73f / 255, 255f / 255));
 
         for (int i = 1;i <= SavableDataManager.Instance.data.team.TeamMembers.Count; i++)
         {
-            SpawnHealthBar(SavableDataManager.Instance.data.team.TeamMembers[i-1], i);
+            SpawnHealthBar(SavableDataManager.Instance.data.team.TeamMembers[i-1], i, new Color(1f, 1f, 1f,1f));
         }
     }
 
-    void SpawnHealthBar(Character character,int position)
+    void SpawnHealthBar(Character character,int position, Color colorC)
     {
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
         Vector3 startPosition = new Vector3(canvasRect.rect.xMin + 220, canvasRect.rect.yMax -60, 0);
@@ -31,8 +31,9 @@ public class HealthUIManager : MonoBehaviour
 
         
         GameObject spawnedPrefab = Instantiate(healthBarPrefab, spawnPosition, Quaternion.identity, canvas.transform);
-        spawnedPrefab.GetComponent<HealthBar>().Init(character);
-
+        HealthBar hb = spawnedPrefab.GetComponent<HealthBar>();
+        hb.Init(character);
+        hb.characterUIDisplay.SetColor(colorC);
         RectTransform spawnedRect = spawnedPrefab.GetComponent<RectTransform>();
         if (spawnedRect != null)
         {
