@@ -8,7 +8,7 @@ public class MenuInterface : MonoBehaviour
 
     private void Awake()
     {
-        startBtn.onClick.AddListener(() => SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene));
+        startBtn.onClick.AddListener(() => SceneLoader.Instance.LoadScene(SceneConstants.LoreIntro));
         quitBtn.onClick.AddListener(() => Application.Quit());
     }
 }
