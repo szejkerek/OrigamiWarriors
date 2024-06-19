@@ -16,8 +16,8 @@ MonoBehaviour:
   <SamuraiVisuals>k__BackingField: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
   <CharacterGameObject>k__BackingField: {fileID: 808391767203527897, guid: ec5d570119cc01546b152a9815310d07, type: 3}
   <BaseStats>k__BackingField:
-    Damage: 25
-    MaxHealth: 82
+    Damage: 8
+    MaxHealth: 800
     Armor: 12
     Speed: 1
     CritChance: 0.09
