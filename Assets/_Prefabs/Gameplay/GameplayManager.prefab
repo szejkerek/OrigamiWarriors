@@ -526,7 +526,6 @@ MonoBehaviour:
   enemyPrefabs:
   - EnemyPrefab: {fileID: 2355622456719026271, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
     chanceToSpawn: 1
-  maxEnemies: 3
 --- !u!1 &5701023085686559861
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,10 +579,13 @@ MonoBehaviour:
   LevelResults:
     isWin: 0
     colectedMoney: 0
-    moneyOnWin: 0
-    moneyOnLose: 0
+    moneyOnWin: 1000
+    moneyOnLose: 250
     deadCharacters: []
     newCharacters: []
+  EnemySpawner: {fileID: 0}
+  maxEnemiesOverall: 10
+  maxEnemiesAtOnce: 2
 --- !u!1001 &3164445903044499822
 PrefabInstance:
   m_ObjectHideFlags: 0

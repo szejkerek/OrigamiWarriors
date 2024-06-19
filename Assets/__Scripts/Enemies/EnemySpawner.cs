@@ -14,14 +14,15 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<Transform> spawnPoints;
     [SerializeField] List<EnemyChance> enemyPrefabs;
-    [SerializeField] int maxEnemies;
 
-    private void Start()
+    int spawnedEnemies;
+
+    public void Init(int maxEnemies, int atOnceLimit)
     {
-        StartCoroutine(SpawnEnemyRoutine());
+        StartCoroutine(SpawnEnemyRoutine(maxEnemies, atOnceLimit));
     }
 
-    private IEnumerator SpawnEnemyRoutine()
+    private IEnumerator SpawnEnemyRoutine(int maxEnemies, int atOnceLimit)
     {
         while (true)
         {
@@ -30,9 +31,15 @@ public class EnemySpawner : MonoBehaviour
 
             int spawnIndex = Random.Range(0, spawnPoints.Count);
             Transform spawnPoint = spawnPoints[spawnIndex];
-            if(ActiveEnemyCount() < maxEnemies)
+            if(ActiveEnemyCount() < atOnceLimit)
             {
                 Instantiate(PickEnemy(), spawnPoint.position, spawnPoint.rotation);
+                spawnedEnemies++;
+                if(spawnedEnemies >= maxEnemies)
+                {
+                    break;
+                }
+
             }
         }
     }
