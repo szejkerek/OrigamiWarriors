@@ -18,7 +18,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
         this.Character = character;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         samuraiStylizer = GetComponent<SamuraiStylizer>();
         samuraiRenderer = GetComponentInChildren<SamuraiRenderers>();
