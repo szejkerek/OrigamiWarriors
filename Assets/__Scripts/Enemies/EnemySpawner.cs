@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject PickEnemy()
     {
-        List<EnemyChance> enemies = new List<EnemyChance>();
+        List<EnemyChance> enemies = new();
         foreach (var item in enemyPrefabs)
         {
             if(Random.Range(0f,1f) <= item.chanceToSpawn)

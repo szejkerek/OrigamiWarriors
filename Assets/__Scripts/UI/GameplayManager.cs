@@ -2,16 +2,19 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameplayManager : MonoBehaviour
+public class GameplayManager : Singleton<GameplayManager>
 {
-    public LevelResults LevelResults = new LevelResults();
+    public LevelResults LevelResults = new();
+
+    int killedEnemies;
 
     [Header("Enemy Spawner settings")]
     public EnemySpawner EnemySpawner;
     [SerializeField] int maxEnemiesOverall;
     [SerializeField] int maxEnemiesAtOnce;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         LevelResults.colectedMoney = 69;
         EnemySpawner.Init(maxEnemiesOverall, maxEnemiesAtOnce);
         Enemy.OnEnemyKilled += OnEnemyKilled;
@@ -20,6 +23,12 @@ public class GameplayManager : MonoBehaviour
     private void OnEnemyKilled(Enemy context)
     {
         LevelResults.moneyOnWin += context.moneyOnKill;
+        killedEnemies++;
+
+        if(killedEnemies >= maxEnemiesOverall)
+        {
+            LevelCompleted(isWin: true);
+        }
     }
 
     public void LevelCompleted(bool isWin)
