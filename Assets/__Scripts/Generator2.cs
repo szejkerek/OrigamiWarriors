@@ -5,6 +5,7 @@ using UnityEngine;
 public class Generator2 : MonoBehaviour
 {
     public Vector3 offset;
+    public Vector3 spawnRotation;
     public List<GameObject> liGoSpawn = new List<GameObject>();
     public GameObject floor;
     
@@ -37,8 +38,9 @@ public class Generator2 : MonoBehaviour
 
         Vector3 spawnPosition = new Vector3(randomX, 0, randomZ) + transform.position + offset;
 
+        Quaternion rotation = Quaternion.Euler(spawnRotation);
 
-        GameObject SpawnedObject = Instantiate(goToSpawn, spawnPosition, Quaternion.identity);
+        GameObject SpawnedObject = Instantiate(goToSpawn, spawnPosition, rotation);
 
         float high = SpawnedObject.GetComponent<Collider>().bounds.size.y;
         float newhight = 0;
