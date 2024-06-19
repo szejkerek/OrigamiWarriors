@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Generator2 : MonoBehaviour
 {
@@ -8,8 +10,9 @@ public class Generator2 : MonoBehaviour
     public Vector3 spawnRotation;
     public List<GameObject> liGoSpawn = new List<GameObject>();
     public GameObject floor;
-    
-    
+    public NavMeshSurface navSurface;
+
+
     void Start()
     {
         if (floor == null)
@@ -44,8 +47,14 @@ public class Generator2 : MonoBehaviour
 
         float high = SpawnedObject.GetComponent<Collider>().bounds.size.y;
         float newhight = 0;
-        newhight += high / 2 + floor.transform.position.y + floorSize.y/2;
+        newhight += high / 2 + floor.transform.position.y + floorSize.y / 2;
 
         SpawnedObject.transform.position = new Vector3(SpawnedObject.transform.position.x, newhight, SpawnedObject.transform.position.z);
+
+
+        navSurface.BuildNavMesh();
+
+
     }
+
 }
