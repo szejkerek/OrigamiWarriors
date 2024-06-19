@@ -6,7 +6,10 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IUnit
 {
-    public ItemSO Weapon;
+    public AssetReferenceItemSO Weapon;
+    private Item weaponItem;
+
+
     public static Action<Enemy> OnEnemyKilled;
     public bool IsAlly => false;
     public CharacterStats CharacterStats;
@@ -19,9 +22,9 @@ public class Enemy : MonoBehaviour, IUnit
 
     private void Awake()
     {
-        health = GetStats().MaxHealth;
         GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
-
+        weaponItem = new Item(Weapon.AssetGUID);
+        health = GetStats().MaxHealth;
     }
 
     public void TakeDamage(int valueHP)
@@ -50,11 +53,11 @@ public class Enemy : MonoBehaviour, IUnit
 
     public CharacterStats GetStats()
     {
-        return CharacterStats;
+        return CharacterStats + weaponItem.GetStats();
     }
 
     public void AttackTarget(IUnit target)
     {
-        Weapon.Use(target, this);
+        weaponItem.itemData.Use(target, this);
     }
 }

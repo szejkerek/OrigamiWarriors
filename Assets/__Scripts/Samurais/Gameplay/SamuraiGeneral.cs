@@ -1,8 +1,10 @@
 ﻿using Cinemachine;
+using System;
 using UnityEngine;
 
 public class SamuraiGeneral : Samurai
 {
+    public static Action<Samurai> OnDeath;
     [SerializeField] LayerMask m_Mask;
     private Camera mainCamera;
     private CinemachineVirtualCamera virtualCamera;
@@ -47,4 +49,8 @@ public class SamuraiGeneral : Samurai
         }
     }
 
+    protected override void OnSamuraiDeath()
+    {
+        OnDeath?.Invoke(this);
+    }
 }
