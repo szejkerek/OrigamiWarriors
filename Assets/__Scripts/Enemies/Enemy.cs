@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IUnit
 {
+    public ItemSO Weapon;
     public static Action<Enemy> OnEnemyKilled;
     public bool IsAlly => false;
     public CharacterStats CharacterStats;

@@ -1138,6 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f38451b6fdcd4e81def255589a7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Weapon: {fileID: 11400000, guid: 36b65e7a2f37eac4e8f5310b7e833dd5, type: 2}
   CharacterStats:
     Damage: 41
     MaxHealth: 50
