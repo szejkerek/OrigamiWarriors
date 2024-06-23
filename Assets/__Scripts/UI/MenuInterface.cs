@@ -16,7 +16,6 @@ public class MenuInterface : MonoBehaviour
 
     private void Awake()
     {
-        //MenuAmbient
         startBtn.onClick.AddListener(() => StartButtonOnClick());
         creditsBtn.onClick.AddListener(() => CreditsButtonOnClick());
         quitBtn.onClick.AddListener(() => QuitButtonOnClick());
@@ -42,6 +41,13 @@ public class MenuInterface : MonoBehaviour
         AudioManager.Instance.PlayGlobal(buttonPressed);
         Application.Quit();
     }
-    
+
+    public void ButtonOnHover()
+    {
+        AudioManager.Instance.PlayGlobal(buttonHover);
+
+    }
+
+
 
 }
