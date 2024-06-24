@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5d29afd9d5872c4f93f4886cfb57d66, type: 3}
-  m_Name: New Popup All Events SO
+  m_Name: AllEvents
   m_EditorClassIdentifier: 
   ForgeEvents:
   - {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}

@@ -5,33 +5,40 @@ public abstract class VoiceCommand : ScriptableObject
 {
     [field: SerializeField] public string DisplayPhrase { get; private set; }
     [field: SerializeField] public List<string> VoicePhrases { get; private set; }
-    [field: SerializeField] public float Cooldown { get; private set; }
+    public Cooldown Cooldown = new Cooldown();
     public abstract void Execute();
+}
 
-    float lastCommand;
+[System.Serializable]
+public class Cooldown
+{
+    public float cooldowTime;
+    float last = 0;
+
+    public Cooldown()
+    {
+        last = 0;
+    }
 
     public void ResetTimers()
     {
-        lastCommand = Time.time - Cooldown;
+        last = Time.time - cooldowTime;
     }
 
-    protected bool IsCommandOffCooldown()
+    public bool IsCommandOffCooldown()
     {
-        Debug.Log("Checking cooldown for command: " + DisplayPhrase);
-        if (ReadyToUseRatio() == 1)
+        if (ReadyToUseRatio() == 1 || last > Time.time)
         {
-            lastCommand = Time.time;
-            Debug.Log("Command off cooldown: " + DisplayPhrase);
+            last = Time.time;
             return true;
         }
-        Debug.Log("Command still on cooldown: " + DisplayPhrase);
         return false;
     }
 
     public float ReadyToUseRatio()
-    {      
-        float timeSinceLastCommand = Time.time - lastCommand;
-        float ratio = Mathf.Clamp01(timeSinceLastCommand / Cooldown);
+    {
+        float timeSinceLastCommand = Time.time - last;
+        float ratio = Mathf.Clamp01(timeSinceLastCommand / cooldowTime);
         return ratio;
     }
 }

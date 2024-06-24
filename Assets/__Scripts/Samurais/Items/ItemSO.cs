@@ -8,6 +8,7 @@ public abstract class ItemSO : ScriptableObject
     [field: SerializeField] public AssetReferenceSprite GameSprite { get; private set; }
     [field: SerializeField] public int MaxLevel {  get; private set; }
     [field: SerializeField] public int Cost { get; private set; }
+    public Cooldown Cooldown = new Cooldown();
     [field: SerializeField] public AssetReferenceItemSO NextItem { get; private set; }
     [field: SerializeField] public CharacterStats BaseStats { get; private set; }
     [field: SerializeField] public CharacterStats StatsModifiersPerLevel { get; private set; }

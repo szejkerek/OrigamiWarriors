@@ -8,7 +8,7 @@ public class FollowSupportCommand : VoiceCommand
   public static Action<FollowSupportCommand> onFollowRecognized;
   public override void Execute()
   {
-    if (IsCommandOffCooldown())
+    if (Cooldown.IsCommandOffCooldown())
     {
       onFollowRecognized?.Invoke(this);
     }

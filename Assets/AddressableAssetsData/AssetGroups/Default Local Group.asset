@@ -132,6 +132,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 995ddf3de65c52d48b8a23c1bdce909c
+    m_Address: Assets/Art/2D/GrzmotIcon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f09f78c0cc6a4304e994adfab4308c06, type: 2}
   m_SchemaSet:

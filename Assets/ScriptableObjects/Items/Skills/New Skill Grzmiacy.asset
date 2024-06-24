@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd2a430ff5faf4479d992ec78ba4753, type: 3}
-  m_Name: ENEMYSWORD
+  m_Script: {fileID: 11500000, guid: d04e2bc1de472cc4e8ba280b1c334fa9, type: 3}
+  m_Name: New Skill Grzmiacy
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: EnemySword
+  <Name>k__BackingField: Grzmot
   <Icon>k__BackingField:
-    m_AssetGUID: 
+    m_AssetGUID: 995ddf3de65c52d48b8a23c1bdce909c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -23,8 +23,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 0
-  <Cost>k__BackingField: 0
+  <MaxLevel>k__BackingField: 5
+  <Cost>k__BackingField: 200
   Cooldown:
     cooldowTime: 0
   <NextItem>k__BackingField:
@@ -33,17 +33,15 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 30
-    MaxHealth: 0
+    Damage: 10
+    MaxHealth: 10
     Armor: 0
     Speed: 0
-    CritChance: 0.25
+    CritChance: 0
   <StatsModifiersPerLevel>k__BackingField:
     Damage: 0
     MaxHealth: 0
     Armor: 0
     Speed: 0
     CritChance: 0
-  <Range>k__BackingField: 999
-  <HitParticle>k__BackingField: {fileID: 7554120595504148465, guid: 7d62a182fc6d21345a64320b8a2f7ed9, type: 3}
-  <swordAnimation>k__BackingField: {fileID: 0}
+  range: 10

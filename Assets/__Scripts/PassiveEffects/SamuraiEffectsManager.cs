@@ -17,19 +17,21 @@ public class SamuraiEffectsManager : MonoBehaviour
     {
         GatherPassives(character);
         GatherMapUnits();
+        Owner = GetComponent<Samurai>();
 
         effectsList.ForEach(e => e.OnStart(this));
     }
 
     private void OnEnable()
     {
+        EnemySpawner.OnEnemySpawned += () => GatherMapUnits();
         Enemy.OnEnemyKilled += (enemy) => GatherMapUnits();
         SamuraiAlly.OnDeath += (samurai) => GatherMapUnits();
     }
 
     private void GatherMapUnits()
     {
-        Owner = GetComponent<Samurai>();
+       
         Team = FindObjectsOfType<Samurai>().ToList();
         Team.Remove(Owner);
 
@@ -38,6 +40,7 @@ public class SamuraiEffectsManager : MonoBehaviour
 
     private void OnDisable()
     {
+        EnemySpawner.OnEnemySpawned -= () => GatherMapUnits();
         Enemy.OnEnemyKilled -= (enemy) => GatherMapUnits();
         SamuraiAlly.OnDeath -= (samurai) => GatherMapUnits();
     }

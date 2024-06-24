@@ -7,7 +7,7 @@ public class DefenseCommand : VoiceCommand
     public static Action<DefenseCommand> OnDefenseRecognized;
     public override void Execute()
     {
-        if(IsCommandOffCooldown())
+        if(Cooldown.IsCommandOffCooldown())
         {
             OnDefenseRecognized?.Invoke(this);
         }

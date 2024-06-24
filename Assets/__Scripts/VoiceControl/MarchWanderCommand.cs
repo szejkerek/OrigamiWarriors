@@ -8,7 +8,7 @@ public class MarchWanderCommand : VoiceCommand
   public static Action<MarchWanderCommand> onWanderRecognized;
   public override void Execute()
   {
-    if (IsCommandOffCooldown())
+    if (Cooldown.IsCommandOffCooldown())
     {
       onWanderRecognized?.Invoke(this);
     }

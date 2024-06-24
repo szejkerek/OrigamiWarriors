@@ -8,7 +8,7 @@ public class StayIdleCommand : VoiceCommand
   public static Action<StayIdleCommand> OnIdleBigRecognized;
   public override void Execute()
   {
-    if (IsCommandOffCooldown())
+    if (Cooldown.IsCommandOffCooldown())
     {
       OnIdleBigRecognized?.Invoke(this);
     }
