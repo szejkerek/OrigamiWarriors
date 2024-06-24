@@ -8,6 +8,7 @@ public class SamuraiEffectsManager : MonoBehaviour
 {
     List<IPassiveEffect> effectsList = new List<IPassiveEffect>();
 
+    public Samurai Owner;
     public List<Samurai> Team;
     public List<Enemy> Enemies;
 
@@ -28,7 +29,10 @@ public class SamuraiEffectsManager : MonoBehaviour
 
     private void GatherMapUnits()
     {
+        Owner = GetComponent<Samurai>();
         Team = FindObjectsOfType<Samurai>().ToList();
+        Team.Remove(Owner);
+
         Enemies = FindObjectsOfType<Enemy>().ToList();
     }
 

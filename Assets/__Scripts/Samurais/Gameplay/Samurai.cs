@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public abstract class Samurai : MonoBehaviour, IUnit
 {
+    public CharacterStats temporaryStats;
+
     public bool IsAlly => true;
     public Character Character { get; private set; }
 
@@ -38,7 +39,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void TakeDamage(int valueHP)
     {
-        CharacterStats stats = Character.GetStats();
+        CharacterStats stats = Character.GetStats() + temporaryStats;
         int damageReducedByArmor = Mathf.Max(0, valueHP - stats.Armor);
         Character.LostHealth += damageReducedByArmor;
 
