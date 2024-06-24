@@ -15,14 +15,33 @@ public class GameplayManager : MonoBehaviour
     public EnemySpawner EnemySpawner;
     [SerializeField] int maxEnemiesOverall;
     [SerializeField] int maxEnemiesAtOnce;
+
+    [SerializeField] GameObject tutorialCanvas;
+    private bool tutorialHidden = false;
+
     void Awake()
     {
         LevelResults.colectedMoney = 69;
         EnemySpawner.Init(maxEnemiesOverall, maxEnemiesAtOnce);
         blobCounter.Init(maxEnemiesOverall);
+
+        tutorialCanvas.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
-    private void OnEnable()
+    private void Update()
+    {
+      if (!tutorialHidden)
+      {
+        if (Input.anyKeyDown)
+        {
+          tutorialCanvas.SetActive(false);
+          Time.timeScale = 1.0f;
+          tutorialHidden = true;
+        }
+      }
+    }
+  private void OnEnable()
     {
         killedEnemies = 0;
         Enemy.OnEnemyKilled += OnEnemyKilled;

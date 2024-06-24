@@ -10557,10 +10557,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1165554728}
@@ -10576,10 +10572,6 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 598908198}
-    - target: {fileID: 5455474201535234128, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5701023085686559861, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: m_Name
       value: GameplayManager

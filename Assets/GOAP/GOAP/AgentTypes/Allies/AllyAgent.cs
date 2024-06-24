@@ -29,40 +29,40 @@ public class AllyAgent : GoapAgent
       base.Update();
         if (Input.GetKeyUp("1"))
         {
-            StayCommand(null);
-        }
+            StayCommand(null);// Tome - Stop
+    }
         else if (Input.GetKeyUp("2"))
         {
-            FollowCommand(null);
-        }
+            FollowCommand(null);// Hojo - Support
+    }
         else if(Input.GetKeyUp("3"))
         {
-            FleeCommand(null);
-        }
+            FleeCommand(null);// Gyoko (Gyoukou) - March
+    }
         if (Input.GetKeyUp("4"))
         {
-            NormalStanceCommand();
-        }
+            NormalStanceCommand(null);// Nomaru - Normal (stance)
+    }
         else if(Input.GetKeyUp("5"))
         {
-            AggressiveStanceCommand(null);
-        }
+            AggressiveStanceCommand(null);// Kogeki (Kougeki) - Attack
+    }
         else if(Input.GetKeyUp("6"))
         {
-            DefensiveStanceCommand(null);
-        }
+            DefensiveStanceCommand(null);// Mamoru - Defend
+    }
         if (Input.GetKeyUp("7"))
         {
-            AttackNormalCommand();
-        }
+            AttackNormalCommand(null);// Tatakau - Fight
+    }
         else if(Input.GetKeyUp("8"))
         {
-            AttackWeakCommand(null);
-        }
+            AttackWeakCommand(null);// smalu -> attack small (min health enemy)
+    }
         else if(Input.GetKeyUp("9"))
         {
-            AttackStrongCommand(null);
-        }
+            AttackStrongCommand(null);// bigu -> attack big (max health enemy)
+    }
     }
   protected override void SetupBeliefs()
     {
@@ -102,10 +102,12 @@ public class AllyAgent : GoapAgent
         MarchWanderCommand.onWanderRecognized += FleeCommand; // Gyoko (Gyoukou) - March
         FollowSupportCommand.onFollowRecognized += FollowCommand; // Hojo - Support
         StayIdleCommand.OnIdleBigRecognized += StayCommand; // Tome - Stop
+        StanceNormalCommand.OnNormalStanceRecognized += NormalStanceCommand;// Nomaru - Normal (stance)
+        NormalAttackCommand.OnAttackNormalRecognized += AttackNormalCommand;// Tatakau - Fight / Attack Normal
 
         StayCommand(null);
-        NormalStanceCommand();
-        AttackNormalCommand();
+        NormalStanceCommand(null);
+        AttackNormalCommand(null);
 
     //goals.Add(new AgentGoal.Builder("Keep Watch")
     //    .WithPriority(2)
@@ -126,7 +128,7 @@ public class AllyAgent : GoapAgent
     {
         iconFront.sprite = shield;
     }
-    public void NormalStanceCommand()
+    public void NormalStanceCommand(StanceNormalCommand command)
     {
         iconFront.sprite = null;
     }
@@ -141,7 +143,7 @@ public class AllyAgent : GoapAgent
         iconBack.color = strong;
         SetupSensors(Sensor.TargetingMode.Strongest);
     }
-    public void AttackNormalCommand()
+    public void AttackNormalCommand(NormalAttackCommand command)
     {
         iconBack.color = any;
         SetupSensors(Sensor.TargetingMode.Normal);

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c3a8eb955010c4ca25fffc8674525a, type: 3}
   m_Name: New Attack Big Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[1] Bigu - target strong'
+  <DisplayPhrase>k__BackingField: '[9] Bigu - Attack the strong'
   <VoicePhrases>k__BackingField:
   - big
   - bigu
   - biga
-  <Cooldown>k__BackingField: 1.5
+  Cooldown:
+    cooldowTime: 1

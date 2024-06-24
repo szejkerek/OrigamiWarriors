@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e54edddde32104d84824c679500ac0, type: 3}
-  m_Name: New Follow Support Command
+  m_Script: {fileID: 11500000, guid: 096d5c6df7fba4946877589526b294e0, type: 3}
+  m_Name: New Stance Normal Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[2] Hojo - Follow'
-  <VoicePhrases>k__BackingField:
-  - hajou
-  - hey
-  - heyo
-  - hayo
-  - hajo
-  - hujo
+  <DisplayPhrase>k__BackingField: '[4] Nomaru - Normal stance'
+  <VoicePhrases>k__BackingField: []
   Cooldown:
-    cooldowTime: 1
+    cooldowTime: 0

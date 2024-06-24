@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182d774879fff80419cd14832203ecc2, type: 3}
   m_Name: New Attack Small Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[3] Smalu - target weak'
+  <DisplayPhrase>k__BackingField: '[8] Smalu - Attack the weak'
   <VoicePhrases>k__BackingField:
   - small
   - summary
   - smol
   - smell
-  <Cooldown>k__BackingField: 1.5
+  Cooldown:
+    cooldowTime: 1
