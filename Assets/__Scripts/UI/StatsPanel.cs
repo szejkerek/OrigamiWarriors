@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -24,10 +25,22 @@ public class StatsPanel : MonoBehaviour
     string DisplayText()
     {
         CharacterStats stats = currentCharacter.GetStats();
-        return $"Damage: {stats.Damage:0}\n" +
-               $"Health: {stats.MaxHealth - currentCharacter.LostHealth:0}/{stats.MaxHealth:0} \n" +
-               $"Armor: {stats.Armor:0}\n" +
-               $"Movement Speed: {stats.Speed:0}\n" +
-               $"Crit Chance: {stats.CritChance * 100:0}%\n";
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendFormat("Damage: {0:0}\n", stats.Damage);
+        sb.AppendFormat("Health: {0:0}/{1:0} \n", stats.MaxHealth - currentCharacter.LostHealth, stats.MaxHealth);
+        sb.AppendFormat("Armor: {0:0}\n", stats.Armor);
+        sb.AppendFormat("Movement Speed: {0:0}\n", stats.Speed);
+        sb.AppendFormat("Crit Chance: {0:P0}\n", stats.CritChance);
+
+        if(currentCharacter.PassiveEffects.Count > 0)
+            sb.Append("\nPassive effects\n");
+
+        foreach(PassiveEffectSO effectSO in currentCharacter.PassiveEffects)
+        {
+            sb.Append($"{effectSO.GetName()}: {effectSO.GetDesctiption()}\n");
+        }
+
+        return sb.ToString();
     }
 }

@@ -6,52 +6,52 @@ using UnityEngine;
 
 public class SamuraiEffectsManager : MonoBehaviour
 {
-    List<IPassiveEffect> effectsList = new List<IPassiveEffect>();
+    List<IPassiveEffect> passives = new List<IPassiveEffect>();
 
+    public Samurai Owner;
     public List<Samurai> Team;
-    public List<GameObject> Enemies;
-
+    public List<Enemy> Enemies;
 
     public void Initialize(Character character)
     {
         GatherPassives(character);
         GatherMapUnits();
+        Owner = GetComponent<Samurai>();
 
-        effectsList.ForEach(e => e.OnStart(this));
+        passives.ForEach(e => e.OnStart(this));
     }
 
     private void OnEnable()
     {
-        SamuraiAlly.OnDeath += GatherMapUnits;
+        EnemySpawner.OnEnemySpawned += () => GatherMapUnits();
+        Enemy.OnEnemyKilled += (enemy) => GatherMapUnits();
+        SamuraiAlly.OnDeath += (samurai) => GatherMapUnits();
     }
 
-    private void GatherMapUnits(Samurai samurai = null)
+    private void GatherMapUnits()
     {
+       
         Team = FindObjectsOfType<Samurai>().ToList();
+        Team.Remove(Owner);
+
+        Enemies = FindObjectsOfType<Enemy>().ToList();
     }
 
     private void OnDisable()
     {
-        SamuraiAlly.OnDeath -= GatherMapUnits;
+        EnemySpawner.OnEnemySpawned -= () => GatherMapUnits();
+        Enemy.OnEnemyKilled -= (enemy) => GatherMapUnits();
+        SamuraiAlly.OnDeath -= (samurai) => GatherMapUnits();
     }
 
     private void GatherPassives(Character character)
     {
-        effectsList.Add(character.Weapon.itemData);
-        effectsList.Add(character.Armor.itemData);
-        effectsList.Add(character.Skill.itemData);
-        character.PassiveEffects.ForEach(e => effectsList.Add(e));
+        character.PassiveEffects.ForEach(e => passives.Add(e));
+        GetComponent<IUnit>().OnAttack += () => { passives.ForEach(e => e.OnAttack(this)); };
     }
 
     private void Update()
     {
-        effectsList.ForEach(e => e.OnUpdate(this, Time.deltaTime));
+        passives.ForEach(e => e.OnUpdate(this, Time.deltaTime));
     }
-}
-
-
-public interface IPassiveEffect
-{
-    public void OnStart(SamuraiEffectsManager context);
-    public void OnUpdate(SamuraiEffectsManager context, float deltaTime);
 }

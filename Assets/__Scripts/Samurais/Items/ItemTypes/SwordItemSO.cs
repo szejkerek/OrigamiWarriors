@@ -10,11 +10,16 @@ public class SwordItemSO : ItemSO
 
     public override void Use(IUnit target, IUnit origin)
     {
-        if(UnitInRange(target, origin, Range))
-        {
-            SpawnParticle(origin.AttackPoint.position);
-            target.TakeDamage(origin.CalculateDamage());
-        }
+        if (!Cooldown.IsOffCooldown())
+            return;
+
+        if (!UnitInRange(target, origin, Range))
+            return;
+
+        SpawnParticle(origin.AttackPoint.position);
+        target.TakeDamage(origin.CalculateDamage());
+        Cooldown.ResetTimers();
+
     }
 
     private void SpawnParticle(Vector3 position)

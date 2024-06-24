@@ -25,6 +25,8 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   <MaxLevel>k__BackingField: 0
   <Cost>k__BackingField: 0
+  Cooldown:
+    cooldowTime: 0
   <NextItem>k__BackingField:
     m_AssetGUID: 
     m_SubObjectName: 

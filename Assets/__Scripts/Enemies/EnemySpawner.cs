@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ public class EnemyChance
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static Action OnEnemySpawned;
     [SerializeField] List<Transform> spawnPoints;
     [SerializeField] List<EnemyChance> enemyPrefabs;
 
@@ -26,14 +28,15 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = Random.Range(5f, 10f);
+            float waitTime = UnityEngine.Random.Range(5f, 10f);
             yield return new WaitForSeconds(waitTime);
 
-            int spawnIndex = Random.Range(0, spawnPoints.Count);
+            int spawnIndex = UnityEngine.Random.Range(0, spawnPoints.Count);
             Transform spawnPoint = spawnPoints[spawnIndex];
             if(ActiveEnemyCount() < atOnceLimit)
             {
                 Instantiate(PickEnemy(), spawnPoint.position, spawnPoint.rotation);
+                OnEnemySpawned?.Invoke();
                 spawnedEnemies++;
                 if(spawnedEnemies >= maxEnemies)
                 {
@@ -66,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
         List<EnemyChance> enemies = new();
         foreach (var item in enemyPrefabs)
         {
-            if(Random.Range(0f,1f) <= item.chanceToSpawn)
+            if (UnityEngine.Random.Range(0f,1f) <= item.chanceToSpawn)
             {
                 enemies.Add(item);
             }

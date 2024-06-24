@@ -8,9 +8,10 @@ public class AttackSmallCommand : VoiceCommand
   public static Action<AttackSmallCommand> OnAttackSmallRecognized;
   public override void Execute()
   {
-    if (IsCommandOffCooldown())
+    if (Cooldown.IsOffCooldown())
     {
       OnAttackSmallRecognized?.Invoke(this);
-    }
+            Cooldown.ResetTimers();
+        }
   }
 }

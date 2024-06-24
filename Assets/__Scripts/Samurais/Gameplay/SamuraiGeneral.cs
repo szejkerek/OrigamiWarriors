@@ -20,6 +20,10 @@ public class SamuraiGeneral : Samurai
         {
             CastRayAndAttack();
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            UseSkill();
+        }
     }
 
     private void SetupCamera()

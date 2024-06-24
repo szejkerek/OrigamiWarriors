@@ -1,13 +1,16 @@
 using System;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public abstract class Samurai : MonoBehaviour, IUnit
 {
+    public CharacterStats temporaryStats;
+
     public bool IsAlly => true;
     public Character Character { get; private set; }
 
     public Transform AttackPoint => attackPoint;
+    public Action OnAttack { get; set; }
+
     [SerializeField] Transform attackPoint;
 
     SamuraiStylizer samuraiStylizer;
@@ -29,14 +32,14 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.SamuraiVisuals.Apply(samuraiStylizer.Renderers, Character);
         samuraiEffectsManager.Initialize(Character);
     }
-    public void UseSkill(IUnit target)
+    public void UseSkill()
     {
-        Character.Skill.itemData.Use(target, this);
+        Character.Skill.itemData.Use(null, this);
     }
 
     public void TakeDamage(int valueHP)
     {
-        CharacterStats stats = Character.GetStats();
+        CharacterStats stats = Character.GetStats() + temporaryStats;
         int damageReducedByArmor = Mathf.Max(0, valueHP - stats.Armor);
         Character.LostHealth += damageReducedByArmor;
 
@@ -52,8 +55,6 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     }
 
-
-
     public void HealUnit(int valueHP)
     {
         Character.LostHealth -= valueHP;
@@ -61,6 +62,10 @@ public abstract class Samurai : MonoBehaviour, IUnit
         {
             Character.LostHealth = 0;
             Debug.Log("I'm full healed");
+        }
+        else
+        {
+            Debug.Log($"{name} was healed for {valueHP}");
         }
         Character.OnHealthChange?.Invoke();
     }
@@ -78,6 +83,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void AttackTarget(IUnit target)
     {
+        OnAttack?.Invoke();
         Character.Weapon.itemData.Use(target, this);
     }
 }

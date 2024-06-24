@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MapConfig short
   m_EditorClassIdentifier: 
   mapGridWidth: 5
-  extraPaths: 1
-  numOfStartingNodes: 1
-  numOfPreBossNodes: 5
+  extraPaths: 2
+  numOfStartingNodes: 4
+  numOfPreBossNodes: 4
   mapNodeTypes:
   - {fileID: 11400000, guid: dbbcf0334dd1f9b47be1fc9c68e37918, type: 2}
   - {fileID: 11400000, guid: a8f33092612e0e940980ac8d5c50e03d, type: 2}
@@ -30,39 +30,32 @@ MonoBehaviour:
       probability: 1
   - mapNodeTypesProbability:
     - mapNodeType: 0
-      probability: 0.1
-    - mapNodeType: 2
-      probability: 0.3
+      probability: 1
+    - mapNodeType: 5
+      probability: 0.5
+  - mapNodeTypesProbability:
     - mapNodeType: 3
-      probability: 0.3
-    - mapNodeType: 5
-      probability: 0.3
+      probability: 1
   - mapNodeTypesProbability:
     - mapNodeType: 0
-      probability: 0.7
-    - mapNodeType: 1
-      probability: 0.1
-    - mapNodeType: 2
-      probability: 0.1
+      probability: 1
     - mapNodeType: 5
-      probability: 0.1
-  - mapNodeTypesProbability:
-    - mapNodeType: 0
-      probability: 0.1
-    - mapNodeType: 5
-      probability: 0.4
+      probability: 0.33
     - mapNodeType: 4
-      probability: 0.4
+      probability: 0.33
     - mapNodeType: 2
-      probability: 0.4
+      probability: 0.33
   - mapNodeTypesProbability:
+    - mapNodeType: 0
+      probability: 1
     - mapNodeType: 2
-      probability: 1
-    - mapNodeType: 1
-      probability: 1
+      probability: 0.5
+    - mapNodeType: 5
+      probability: 0.5
+  - mapNodeTypesProbability:
     - mapNodeType: 3
       probability: 1
-    - mapNodeType: 5
+    - mapNodeType: 0
       probability: 1
   - mapNodeTypesProbability:
     - mapNodeType: 6

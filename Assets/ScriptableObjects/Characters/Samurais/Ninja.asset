@@ -22,7 +22,8 @@ MonoBehaviour:
     Speed: 4
     CritChance: 0.22
   <PassiveEffects>k__BackingField:
-  - {fileID: 11400000, guid: dca306c4231bdc741851aec8c1858d3c, type: 2}
+  - {fileID: 11400000, guid: e1c79e4c851260744b3dc976fb9745ed, type: 2}
+  - {fileID: 11400000, guid: 23e250c1f0bd0d1428f6586e2a45acab, type: 2}
   <Weapon>k__BackingField:
     m_AssetGUID: 91b1ee949c80d4d44ad3e8c5da173e6f
     m_SubObjectName: 
@@ -34,7 +35,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <Skill>k__BackingField:
-    m_AssetGUID: 4bf51785950e18442ae6a12f6ddd27d6
+    m_AssetGUID: 25af5ff5476f5c64696bb95f886912e1
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

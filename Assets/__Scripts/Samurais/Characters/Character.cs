@@ -20,7 +20,7 @@ public class Character
     public string characterGuid;
     public List<string> passiveEffectsGuids = new List<string>(); //naprawiæ zapisywanie
 
-    public List<PassiveEffect> PassiveEffects = new List<PassiveEffect>();
+    public List<PassiveEffectSO> PassiveEffects = new List<PassiveEffectSO>();
     public CharacterSO characterData;
 
 
@@ -29,7 +29,7 @@ public class Character
         this.characterGuid = characterGuid;
         characterData = new AssetReferenceItemSO(characterGuid).LoadAssetAsync<CharacterSO>().WaitForCompletion();
 
-        PassiveEffects = characterData.PassiveEffects;
+        PassiveEffects = new List<PassiveEffectSO>(characterData.PassiveEffects);
 
         this.Name = characterData.Name.GetRandomName();
         this.CharacterPrefab = characterData.CharacterGameObject;
