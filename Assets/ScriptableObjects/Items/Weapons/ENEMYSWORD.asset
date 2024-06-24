@@ -47,3 +47,4 @@ MonoBehaviour:
   <Range>k__BackingField: 999
   <HitParticle>k__BackingField: {fileID: 7554120595504148465, guid: 7d62a182fc6d21345a64320b8a2f7ed9, type: 3}
   <swordAnimation>k__BackingField: {fileID: 0}
+  <damageDisplay>k__BackingField: {fileID: 2699983239325264821, guid: fda1534cb80dfac448c1dfed8d1ccc82, type: 3}

@@ -30,6 +30,12 @@ public class PopupWindowPanel : MonoBehaviour
     [SerializeField] private PopupButton declineButton;
     [SerializeField] private PopupButton alternateButton;
 
+    [Header("Sounds")]
+    [SerializeField] Sound buttonPressed = null;
+    [SerializeField] Sound buttonHover = null;
+    [SerializeField] Sound eventAmbient = null;
+    [SerializeField] Sound paperEffect = null;
+
     CanvasGroup canvasGroup;
     Character choiceItem;
     List<ChoiceUI> listOfChoices;
@@ -39,6 +45,11 @@ public class PopupWindowPanel : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         Deinit();
         Close();    
+    }
+    private void Start()
+    {
+        AudioManager.Instance.PlayGlobal(paperEffect);
+        AudioManager.Instance.PlayGlobal(eventAmbient, SoundType.Music);
     }
 
     public void ChooseModal(List<Character> elements, Action<Character> OnCharacterSelected, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
@@ -189,5 +200,16 @@ public class PopupWindowPanel : MonoBehaviour
     private void SetChoice(Character choice)
     {
         choiceItem = choice;
+    }
+
+    public void ButtonOnClick()
+    {
+        AudioManager.Instance.PlayGlobal(buttonPressed);
+    }
+
+    public void ButtonOnHover()
+    {
+        AudioManager.Instance.PlayGlobal(buttonHover);
+
     }
 }

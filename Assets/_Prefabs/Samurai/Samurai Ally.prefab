@@ -649,6 +649,13 @@ MonoBehaviour:
   weak: {r: 0.3777062, g: 0.7283019, b: 0, a: 1}
   any: {r: 1, g: 0.8071395, b: 0, a: 1}
   strong: {r: 0.93962264, g: 0.21367048, b: 0, a: 1}
+  soundVariations:
+  - {fileID: 11400000, guid: a96e1ddfa8c250f4bb27b48f931f96be, type: 2}
+  - {fileID: 11400000, guid: 2374ddd9d35ecaa46bab173a9333ca26, type: 2}
+  - {fileID: 11400000, guid: 822620e9c1b469a4daaa8873e3d5958f, type: 2}
+  - {fileID: 11400000, guid: 7c584944de8c8c14eb7d68d5a8550083, type: 2}
+  - {fileID: 11400000, guid: e16de076fd0208a479ae8a9d034e8bf4, type: 2}
+  - {fileID: 11400000, guid: 7f288b4047ab8bc4ab91fb7344b79d0c, type: 2}
 --- !u!54 &4230977203057089914
 Rigidbody:
   m_ObjectHideFlags: 0
