@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
-[CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
-public class SkillGrzmiacy : ItemSO
+[CreateAssetMenu(menuName = "Character/Skill/Oczyszczający")]
+public class SkillOczyszczajacy : ItemSO
 {
-    public float howLongItLast;
     public float range;
     public override void Use(IUnit target, IUnit origin)
     {
@@ -15,13 +13,13 @@ public class SkillGrzmiacy : ItemSO
         if (!Cooldown.IsOffCooldown())
             return;
 
-        foreach (Enemy enemy in manager.Enemies)
+        foreach (Samurai enemy in manager.Team)
         {
             if (!UnitInRange(origin, enemy, range))
                 continue;
 
             StatusManager statusManager = enemy.GetComponent<StatusManager>();
-            statusManager.ApplyStun(howLongItLast);
+            statusManager.ApplyCleanse();
         }
         Cooldown.ResetTimers();
     }

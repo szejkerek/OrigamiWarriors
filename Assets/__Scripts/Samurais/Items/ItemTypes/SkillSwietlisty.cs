@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
-[CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
-public class SkillGrzmiacy : ItemSO
+[CreateAssetMenu(menuName = "Character/Skill/Swietlisty")]
+public class SkillSwietlisty : ItemSO
 {
-    public float howLongItLast;
+    public int damage;
     public float range;
     public override void Use(IUnit target, IUnit origin)
     {
@@ -20,8 +19,7 @@ public class SkillGrzmiacy : ItemSO
             if (!UnitInRange(origin, enemy, range))
                 continue;
 
-            StatusManager statusManager = enemy.GetComponent<StatusManager>();
-            statusManager.ApplyStun(howLongItLast);
+            enemy.TakeDamage(damage);
         }
         Cooldown.ResetTimers();
     }

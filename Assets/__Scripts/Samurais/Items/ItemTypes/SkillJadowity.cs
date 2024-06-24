@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
-[CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
-public class SkillGrzmiacy : ItemSO
+[CreateAssetMenu(menuName = "Character/Skill/Jadowity")]
+public class SkillJadowity : ItemSO
 {
-    public float howLongItLast;
+    public int dmgPerTick;
+    public int ticks;
     public float range;
     public override void Use(IUnit target, IUnit origin)
     {
@@ -21,7 +21,7 @@ public class SkillGrzmiacy : ItemSO
                 continue;
 
             StatusManager statusManager = enemy.GetComponent<StatusManager>();
-            statusManager.ApplyStun(howLongItLast);
+            statusManager.ApplyPoison(dmgPerTick, ticks);
         }
         Cooldown.ResetTimers();
     }

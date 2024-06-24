@@ -1,10 +1,11 @@
-﻿using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
+﻿using System;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
-public class SkillGrzmiacy : ItemSO
+[CreateAssetMenu(menuName = "Character/Skill/Lodowy")]
+public class SkillLodowy : ItemSO
 {
-    public float howLongItLast;
+    [Range(0f,1f)] public float strenght;
+    public float timer;
     public float range;
     public override void Use(IUnit target, IUnit origin)
     {
@@ -21,7 +22,7 @@ public class SkillGrzmiacy : ItemSO
                 continue;
 
             StatusManager statusManager = enemy.GetComponent<StatusManager>();
-            statusManager.ApplyStun(howLongItLast);
+            statusManager.ApplyWeakness(timer, strenght);
         }
         Cooldown.ResetTimers();
     }

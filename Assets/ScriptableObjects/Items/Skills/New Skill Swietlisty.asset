@@ -9,34 +9,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd203dcf3b818f4cbcd2a4cdd2cb4b7, type: 3}
-  m_Name: Skill
+  m_Script: {fileID: 11500000, guid: 054442d4e76482f4585402a2c9c036ae, type: 3}
+  m_Name: New Skill Swietlisty
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Wind
+  <Name>k__BackingField: Swietlisty
   <Icon>k__BackingField:
-    m_AssetGUID: 6b31691c75d5a36469cf5fa35fd73132
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <GameSprite>k__BackingField:
-    m_AssetGUID: 6b31691c75d5a36469cf5fa35fd73132
+    m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 1
-  <Cost>k__BackingField: 15
+  <MaxLevel>k__BackingField: 15
+  <Cost>k__BackingField: 20
+  Cooldown:
+    cooldowTime: 5
   <NextItem>k__BackingField:
     m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 30
-    Health: 0
+    Damage: 0
+    MaxHealth: 0
+    Armor: 0
     Speed: 0
     CritChance: 0
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 30
-    Health: 0
+    Damage: 0
+    MaxHealth: 0
+    Armor: 0
     Speed: 0
     CritChance: 0
+  damage: 100
+  range: 10

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04e2bc1de472cc4e8ba280b1c334fa9, type: 3}
-  m_Name: New Skill Grzmiacy
+  m_Script: {fileID: 11500000, guid: d4997d6513382d442b4f9f1563e9bd21, type: 3}
+  m_Name: New Skill Lodowy
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Grzmot
+  <Name>k__BackingField: Lodowy
   <Icon>k__BackingField:
     m_AssetGUID: 995ddf3de65c52d48b8a23c1bdce909c
     m_SubObjectName: 
@@ -23,8 +23,8 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 5
-  <Cost>k__BackingField: 200
+  <MaxLevel>k__BackingField: 22
+  <Cost>k__BackingField: 15
   Cooldown:
     cooldowTime: 5
   <NextItem>k__BackingField:
@@ -33,8 +33,8 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 10
-    MaxHealth: 10
+    Damage: 0
+    MaxHealth: 0
     Armor: 0
     Speed: 0
     CritChance: 0
@@ -44,5 +44,6 @@ MonoBehaviour:
     Armor: 0
     Speed: 0
     CritChance: 0
-  howLongItLast: 0.5
+  strenght: 0.459
+  timer: 5
   range: 10
