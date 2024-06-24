@@ -2145,6 +2145,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
     - target: {fileID: 3135054307488565937, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
+      propertyPath: passiveEffect
+      value: 
+      objectReference: {fileID: 11400000, guid: e1c79e4c851260744b3dc976fb9745ed, type: 2}
+    - target: {fileID: 3135054307488565937, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
+      propertyPath: passiveEffects
+      value: 
+      objectReference: {fileID: 11400000, guid: d59abd4bb513e214dacc726711bb181e, type: 2}
+    - target: {fileID: 3135054307488565937, guid: 60f5e3da16f70ba4bb1ad24371e2bf95, type: 3}
       propertyPath: lockAfterSelecting
       value: 1
       objectReference: {fileID: 0}
