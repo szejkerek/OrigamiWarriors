@@ -3,6 +3,7 @@
 [CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
 public class SkillGrzmiacy : ItemSO
 {
+    public float howLongItLast;
     public float range;
     public override void Use(IUnit target, IUnit origin)
     {
@@ -18,7 +19,9 @@ public class SkillGrzmiacy : ItemSO
             if (!UnitInRange(origin, enemy, range))
                 continue;
 
-            Debug.Log($"{enemy} dostał w łeb z grzmotu");
+            StatusManager statusManager = enemy.GetComponent<StatusManager>();
+            statusManager.ApplyStun(howLongItLast);
+            Cooldown.ResetTimers();
         }
     }
 }

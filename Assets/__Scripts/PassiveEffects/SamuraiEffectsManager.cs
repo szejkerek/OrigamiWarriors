@@ -6,12 +6,11 @@ using UnityEngine;
 
 public class SamuraiEffectsManager : MonoBehaviour
 {
-    List<IPassiveEffect> effectsList = new List<IPassiveEffect>();
+    List<IPassiveEffect> passives = new List<IPassiveEffect>();
 
     public Samurai Owner;
     public List<Samurai> Team;
     public List<Enemy> Enemies;
-
 
     public void Initialize(Character character)
     {
@@ -19,7 +18,7 @@ public class SamuraiEffectsManager : MonoBehaviour
         GatherMapUnits();
         Owner = GetComponent<Samurai>();
 
-        effectsList.ForEach(e => e.OnStart(this));
+        passives.ForEach(e => e.OnStart(this));
     }
 
     private void OnEnable()
@@ -47,12 +46,12 @@ public class SamuraiEffectsManager : MonoBehaviour
 
     private void GatherPassives(Character character)
     {
-        character.PassiveEffects.ForEach(e => effectsList.Add(e));
-        GetComponent<IUnit>().OnAttack += () => { effectsList.ForEach(e => e.OnAttack(this)); };
+        character.PassiveEffects.ForEach(e => passives.Add(e));
+        GetComponent<IUnit>().OnAttack += () => { passives.ForEach(e => e.OnAttack(this)); };
     }
 
     private void Update()
     {
-        effectsList.ForEach(e => e.OnUpdate(this, Time.deltaTime));
+        passives.ForEach(e => e.OnUpdate(this, Time.deltaTime));
     }
 }

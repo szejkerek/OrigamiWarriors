@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 269637770349054642}
   - component: {fileID: 6707021495300335386}
   - component: {fileID: 6975927937595369746}
+  - component: {fileID: 1035471988247897767}
   m_Layer: 11
   m_Name: Samurai
   m_TagString: Samurai
@@ -140,9 +141,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2057009204468900264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b20b5d58861ba4428add8d43cd23df4, type: 3}
+  m_Script: {fileID: 11500000, guid: a3b8be2dc0cf03c4488732c6697b96e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
   Team: []
   Enemies: []
 --- !u!114 &6975927937595369746
@@ -160,6 +162,18 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &1035471988247897767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057009204468900264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3b8327c38ed0e48b6fa930569e2f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2342510042152886145
 GameObject:
   m_ObjectHideFlags: 0
