@@ -74,6 +74,12 @@ using UnityEngine.Audio;
 
         public void PlayGlobal(Sound sound, SoundType type = SoundType.SFX)//, bool force)
         {
+        if(sound == null || sound.Clip == null)
+        {
+            Debug.LogWarning("No sound");
+            return;
+        }
+
         if (type == SoundType.Event)
         {
             PlayOnTarget(gameObject, sound);

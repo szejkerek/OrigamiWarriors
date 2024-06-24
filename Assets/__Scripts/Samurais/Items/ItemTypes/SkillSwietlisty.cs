@@ -19,7 +19,7 @@ public class SkillSwietlisty : ItemSO
             if (!UnitInRange(origin, enemy, range))
                 continue;
 
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(origin.GetStats().Damage + damage);
         }
         Cooldown.ResetTimers();
     }

@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     playerResources:
-      Money: 0
+      Money: 10000
     levelResults:
       isWin: 0
       colectedMoney: 0

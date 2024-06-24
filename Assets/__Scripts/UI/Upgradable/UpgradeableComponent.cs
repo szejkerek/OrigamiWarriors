@@ -33,13 +33,6 @@ public class UpgradeableComponent : MonoBehaviour
         {
             segments[i].Activate();
         }
-
-        //if (!SavableDataManager.Instance.data.playerResources.TryRemoveMoney(upgradable.CostFunction()))
-        //{
-        //    upgradeButton.enabled = false;
-        //}
-        //else
-        //    upgradeButton.enabled = true;
     }
 
     private void OnDestroy()

@@ -45,7 +45,6 @@ public class CharacterView : MonoBehaviour
 
     void ResetView()
     {
-        TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter = null;
         //returnBtn.gameObject.SetActive(false);
         character = null;
         characterUIDisplay.Clear();
