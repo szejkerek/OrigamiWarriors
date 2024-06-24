@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27070caed7f7c654aa047eb619f8cc8e, type: 3}
   m_Name: New Passive Healing Effect
   m_EditorClassIdentifier: 
-  displayName: Healing
+  <DisplayName>k__BackingField: Lekarz
   healthPerTick: 8.43
   range: 3.28

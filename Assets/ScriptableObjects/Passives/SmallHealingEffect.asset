@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27070caed7f7c654aa047eb619f8cc8e, type: 3}
   m_Name: SmallHealingEffect
   m_EditorClassIdentifier: 
-  healthPerTick: 0.31
-  range: 2.86
+  <DisplayName>k__BackingField: Lekarz
+  healthPerTick: 8.98
+  range: 5.49

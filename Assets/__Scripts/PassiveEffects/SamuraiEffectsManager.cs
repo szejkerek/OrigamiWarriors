@@ -40,12 +40,8 @@ public class SamuraiEffectsManager : MonoBehaviour
 
     private void GatherPassives(Character character)
     {
-        GetComponent<IUnit>().OnAttack += () => { effectsList.ForEach(e => e.OnAttack(this)); };
-
-        effectsList.Add(character.Weapon.itemData);
-        effectsList.Add(character.Armor.itemData);
-        effectsList.Add(character.Skill.itemData);
         character.PassiveEffects.ForEach(e => effectsList.Add(e));
+        GetComponent<IUnit>().OnAttack += () => { effectsList.ForEach(e => e.OnAttack(this)); };
     }
 
     private void Update()

@@ -1,11 +1,21 @@
 ﻿using Tayx.Graphy.Utils.NumString;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class PassiveHealingEffect : PassiveEffectSO
+[CreateAssetMenu(menuName = "Character/Passsives/HealingOvertime")]
+public class PassiveHealingOvertime : PassiveEffectSO
 {
     public float healthPerTick;
     public float range;
+
+    public override string GetDesctiption()
+    {
+        return $"leczy pobliskie jednostki o {healthPerTick}";
+    }
+
+    public override string GetName()
+    {
+        return "Lekarz";
+    }
 
     public override void OnUpdate(SamuraiEffectsManager context, float deltaTime)
     {
