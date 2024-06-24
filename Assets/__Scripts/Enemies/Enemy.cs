@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour, IUnit
 
     private int health;
 
+    public GameObject particles;
+
     private void Awake()
     {
         GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
@@ -59,5 +61,11 @@ public class Enemy : MonoBehaviour, IUnit
     public void AttackTarget(IUnit target)
     {
         weaponItem.itemData.Use(target, this);
+    }
+
+    private void OnDestroy()
+    {
+        particles.GetComponent<ParticleSystem>().emissionRate = 0;
+        Destroy(particles, 15);
     }
 }

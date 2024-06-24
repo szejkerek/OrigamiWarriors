@@ -15,7 +15,7 @@ using UnityEngine.Audio;
         protected override void Awake()
         {
             base.Awake();
-            musicSource = FindObjectOfType<AudioSource>();
+            musicSource = GetComponentInChildren<AudioSource>();
             SetMixer(musicSource, SoundType.Music);
         }
 

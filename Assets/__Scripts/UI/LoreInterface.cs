@@ -3,14 +3,28 @@ using UnityEngine.UI;
 
 public class LoreInterface : MonoBehaviour
 {
-  [SerializeField] Button startBtn = null;
-  //[SerializeField] Button skipBtn = null;
-  [SerializeField] Button quitBtn = null;
+    [SerializeField] Button startBtn = null;
+    //[SerializeField] Button skipBtn = null;
+    [SerializeField] Button quitBtn = null;
 
-  private void Awake()
-  {
-    startBtn.onClick.AddListener(() => SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene));
+    [SerializeField] Sound buttonPressed = null;
+
+    private void Awake()
+    {
+    startBtn.onClick.AddListener(() => LevelSceneButtonOnClick());
     //skipBtn.onClick.AddListener(() => SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene));
-    quitBtn.onClick.AddListener(() => SceneLoader.Instance.LoadScene(SceneConstants.MenuScene));
-  }
+    quitBtn.onClick.AddListener(() => MenuSceneButtonOnClick());
+    }
+
+    void LevelSceneButtonOnClick()
+    {
+        AudioManager.Instance.PlayGlobal(buttonPressed);
+        SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
+    }
+
+    void MenuSceneButtonOnClick()
+    {
+        AudioManager.Instance.PlayGlobal(buttonPressed);
+        SceneLoader.Instance.LoadScene(SceneConstants.MenuScene);
+    }
 }
