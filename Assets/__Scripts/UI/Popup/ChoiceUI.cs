@@ -29,6 +29,12 @@ public class ChoiceUI : MonoBehaviour
         $"Armor: {stats.Armor:0}\n" +
                $"Movement Speed: {stats.Speed:0}\n" +
                $"Crit Chance: {stats.CritChance * 100:0}%\n";
+        if (character.PassiveEffects.Count > 0)
+            content += "\nPassive effects\n";
+        foreach (PassiveEffectSO effectSO in character.PassiveEffects)
+        {
+            content += $"{effectSO.GetName()}: {effectSO.GetDesctiption()}\n";
+        }
 
         tooltipTrigger.SetContent(character.Name, content);
     }
