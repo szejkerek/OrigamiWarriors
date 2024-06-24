@@ -7,6 +7,7 @@ public class SwordItemSO : ItemSO
     [field: SerializeField] public float Range { get; private set; }
     [field: SerializeField] public GameObject HitParticle { get; private set; }
     [field: SerializeField] public AnimationClip swordAnimation { get; private set; }
+    [field: SerializeField] public DamageDisplay damageDisplay { get; private set; }
 
     public override void Use(IUnit target, IUnit origin)
     {
@@ -15,9 +16,10 @@ public class SwordItemSO : ItemSO
 
         if (!UnitInRange(target, origin, Range))
             return;
-
+        int dmg = origin.CalculateDamage();
         SpawnParticle(origin.AttackPoint.position);
-        target.TakeDamage(origin.CalculateDamage());
+        target.TakeDamage(dmg);
+        SpawnDamageDisplay(dmg, target, origin);
         Cooldown.ResetTimers();
 
     }
@@ -26,5 +28,12 @@ public class SwordItemSO : ItemSO
     {
         var particle = Instantiate(HitParticle, position, Quaternion.identity);
         Destroy(particle, 0.3f);
+    }
+
+    private void SpawnDamageDisplay(int dmg, IUnit target, IUnit origin)
+    {
+        var display = Instantiate(damageDisplay);
+        display.Init(dmg, origin.AttackPoint.transform.position, target.AttackPoint.transform.position);
+        //Destroy(display.gameObject, 3f);
     }
 }
