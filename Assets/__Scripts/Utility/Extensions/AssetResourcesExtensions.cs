@@ -19,7 +19,7 @@ public class AssetReferenceSamuraiVisuals : AssetReferenceT<SamuraiVisualsSO>
 }
 
 [System.Serializable]
-public class AssetReferencePassiveEffect : AssetReferenceT<PassiveEffect>
+public class AssetReferencePassiveEffect : AssetReferenceT<PassiveEffectSO>
 {
     public AssetReferencePassiveEffect(string guid) : base(guid) { }
 }

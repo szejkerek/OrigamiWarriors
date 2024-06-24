@@ -9,7 +9,7 @@ public class SamuraiEffectsManager : MonoBehaviour
     List<IPassiveEffect> effectsList = new List<IPassiveEffect>();
 
     public List<Samurai> Team;
-    public List<GameObject> Enemies;
+    public List<Enemy> Enemies;
 
 
     public void Initialize(Character character)
@@ -22,21 +22,26 @@ public class SamuraiEffectsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SamuraiAlly.OnDeath += GatherMapUnits;
+        Enemy.OnEnemyKilled += (enemy) => GatherMapUnits();
+        SamuraiAlly.OnDeath += (samurai) => GatherMapUnits();
     }
 
-    private void GatherMapUnits(Samurai samurai = null)
+    private void GatherMapUnits()
     {
         Team = FindObjectsOfType<Samurai>().ToList();
+        Enemies = FindObjectsOfType<Enemy>().ToList();
     }
 
     private void OnDisable()
     {
-        SamuraiAlly.OnDeath -= GatherMapUnits;
+        Enemy.OnEnemyKilled -= (enemy) => GatherMapUnits();
+        SamuraiAlly.OnDeath -= (samurai) => GatherMapUnits();
     }
 
     private void GatherPassives(Character character)
     {
+        GetComponent<IUnit>().OnAttack += () => { effectsList.ForEach(e => e.OnAttack(this)); };
+
         effectsList.Add(character.Weapon.itemData);
         effectsList.Add(character.Armor.itemData);
         effectsList.Add(character.Skill.itemData);
@@ -47,11 +52,4 @@ public class SamuraiEffectsManager : MonoBehaviour
     {
         effectsList.ForEach(e => e.OnUpdate(this, Time.deltaTime));
     }
-}
-
-
-public interface IPassiveEffect
-{
-    public void OnStart(SamuraiEffectsManager context);
-    public void OnUpdate(SamuraiEffectsManager context, float deltaTime);
 }

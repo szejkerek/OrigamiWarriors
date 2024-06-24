@@ -8,6 +8,8 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public Character Character { get; private set; }
 
     public Transform AttackPoint => attackPoint;
+    public Action OnAttack { get; set; }
+
     [SerializeField] Transform attackPoint;
 
     SamuraiStylizer samuraiStylizer;
@@ -52,8 +54,6 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     }
 
-
-
     public void HealUnit(int valueHP)
     {
         Character.LostHealth -= valueHP;
@@ -61,6 +61,10 @@ public abstract class Samurai : MonoBehaviour, IUnit
         {
             Character.LostHealth = 0;
             Debug.Log("I'm full healed");
+        }
+        else
+        {
+            Debug.Log($"{name} was healed for {valueHP}");
         }
         Character.OnHealthChange?.Invoke();
     }
@@ -78,6 +82,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void AttackTarget(IUnit target)
     {
+        OnAttack?.Invoke();
         Character.Weapon.itemData.Use(target, this);
     }
 }

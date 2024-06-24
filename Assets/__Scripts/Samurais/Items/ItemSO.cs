@@ -20,6 +20,7 @@ public abstract class ItemSO : ScriptableObject, IPassiveEffect
     public abstract void Use(IUnit target, IUnit origin);
 
     public virtual void OnStart(SamuraiEffectsManager context) { }
+    public virtual void OnAttack(SamuraiEffectsManager context) { }
 
     public virtual void OnUpdate(SamuraiEffectsManager context, float deltaTime) { }
 
@@ -32,4 +33,5 @@ public abstract class ItemSO : ScriptableObject, IPassiveEffect
         }
         return Vector3.Distance(target.gameObject.transform.position, origin.gameObject.transform.position) <= range;
     }
+
 }

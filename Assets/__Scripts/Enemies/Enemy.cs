@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour, IUnit
     public int moneyOnKill = 50;
 
     public Transform AttackPoint => attackPoint;
+
+    public Action OnAttack { get; set; }
+
     [SerializeField] Transform attackPoint;
 
     private int health;
@@ -40,9 +43,6 @@ public class Enemy : MonoBehaviour, IUnit
             Destroy(gameObject);
         }
     }
-
-
-
     public void HealUnit(int valueHP)
     {
         health = Mathf.Min(health + valueHP, GetStats().MaxHealth);
@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     public void AttackTarget(IUnit target)
     {
+        OnAttack?.Invoke();
         weaponItem.itemData.Use(target, this);
     }
 
