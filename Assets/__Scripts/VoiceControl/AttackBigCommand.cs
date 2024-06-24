@@ -8,9 +8,10 @@ public class AttackBigCommand : VoiceCommand
   public static Action<AttackBigCommand> OnAttackBigRecognized;
   public override void Execute()
   {
-    if (Cooldown.IsCommandOffCooldown())
+    if (Cooldown.IsOffCooldown())
     {
-      OnAttackBigRecognized?.Invoke(this);
+        OnAttackBigRecognized?.Invoke(this);
+            Cooldown.ResetTimers();
     }
   }
 }

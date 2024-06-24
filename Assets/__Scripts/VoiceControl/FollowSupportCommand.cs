@@ -8,9 +8,10 @@ public class FollowSupportCommand : VoiceCommand
   public static Action<FollowSupportCommand> onFollowRecognized;
   public override void Execute()
   {
-    if (Cooldown.IsCommandOffCooldown())
+    if (Cooldown.IsOffCooldown())
     {
       onFollowRecognized?.Invoke(this);
-    }
+            Cooldown.ResetTimers();
+        }
   }
 }

@@ -10,7 +10,7 @@ public class SwordItemSO : ItemSO
 
     public override void Use(IUnit target, IUnit origin)
     {
-        if (!Cooldown.IsCommandOffCooldown())
+        if (!Cooldown.IsOffCooldown())
             return;
 
         if (!UnitInRange(target, origin, Range))
@@ -18,6 +18,7 @@ public class SwordItemSO : ItemSO
 
         SpawnParticle(origin.AttackPoint.position);
         target.TakeDamage(origin.CalculateDamage());
+        Cooldown.ResetTimers();
 
     }
 

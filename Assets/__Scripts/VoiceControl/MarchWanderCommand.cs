@@ -8,9 +8,10 @@ public class MarchWanderCommand : VoiceCommand
   public static Action<MarchWanderCommand> onWanderRecognized;
   public override void Execute()
   {
-    if (Cooldown.IsCommandOffCooldown())
+    if (Cooldown.IsOffCooldown())
     {
       onWanderRecognized?.Invoke(this);
-    }
+            Cooldown.ResetTimers();
+        }
   }
 }

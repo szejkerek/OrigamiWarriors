@@ -10,7 +10,7 @@ public class SkillGrzmiacy : ItemSO
         if (manager == null)
             return;
 
-        if (!Cooldown.IsCommandOffCooldown())
+        if (!Cooldown.IsOffCooldown())
             return;
 
         foreach (Enemy enemy in manager.Enemies)

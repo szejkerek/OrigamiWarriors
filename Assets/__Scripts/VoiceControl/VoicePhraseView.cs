@@ -15,7 +15,7 @@ public class VoicePhraseView : MonoBehaviour
     {
         this.command = command; 
         this.text.text = command.DisplayPhrase;
-        command.Cooldown.ResetTimers();
+        command.Cooldown.ResetTimers(setBehind: true);
         slider.value = 1;
         notreadyBackgorund.SetActive(false);
         readyBackgorund.SetActive(true);
@@ -25,7 +25,7 @@ public class VoicePhraseView : MonoBehaviour
     {
         float progressRatio = command.Cooldown.ReadyToUseRatio();
          
-        if(progressRatio == 1 )
+        if(progressRatio == 1)
         {
             notreadyBackgorund.SetActive(false);
             readyBackgorund.SetActive(true);
@@ -38,7 +38,6 @@ public class VoicePhraseView : MonoBehaviour
             slider.gameObject.SetActive(true);
 
         }
-
 
         slider.value = command.Cooldown.ReadyToUseRatio();
     }
