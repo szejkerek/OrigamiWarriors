@@ -32,9 +32,9 @@ public abstract class Samurai : MonoBehaviour, IUnit
         Character.SamuraiVisuals.Apply(samuraiStylizer.Renderers, Character);
         samuraiEffectsManager.Initialize(Character);
     }
-    public void UseSkill(IUnit target)
+    public void UseSkill()
     {
-        Character.Skill.itemData.Use(target, this);
+        Character.Skill.itemData.Use(null, this);
     }
 
     public void TakeDamage(int valueHP)
