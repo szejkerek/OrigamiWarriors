@@ -11,7 +11,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public bool locked;
     public PopupAllEventsSO events;
     public PassiveAllEffectSO passiveEffects;
-
+    public List<AssetReferenceCharacterSO> possibleCharacters;
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
         if (locked)
@@ -25,14 +25,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         SavableDataManager.Instance.Save();
         view.SetAttainableNodes();
         view.SetLineColors();
-
-        List<Character> choices = new()
-        { 
-            SavableDataManager.Instance.data.team.General, 
-            SavableDataManager.Instance.data.team.TeamMembers[0], 
-            SavableDataManager.Instance.data.team.TeamMembers[1] };
-
-        
+       
 
         switch (mapNode.mapNode.type)
         {
@@ -46,7 +39,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 SceneLoader.Instance.LoadScene(sceneIndex); //TODO: Losowanie poziomu pomiędzy dostępnymi
                 break;
             case MapNodeType.Armory:
-                PopupController.Instance.PopupPanel.ChooseModal(choices, TryAddNewCharacter, "Choose new ally", "Our elite squad has the opportunity to recruit a new, exceptional ally. Each candidate brings unique skills and experience that can change the course of our missions. Carefully consider their abilities and stats to choose the warrior who will best complement our team.");
+                PopupController.Instance.PopupPanel.ChooseModal(GetNewRandomCharacters(), TryAddNewCharacter, "Choose new ally", "Our elite squad has the opportunity to recruit a new, exceptional ally. Each candidate brings unique skills and experience that can change the course of our missions. Carefully consider their abilities and stats to choose the warrior who will best complement our team.");
                 break;
             case MapNodeType.Boss:
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.BossEvents.SelectRandomElement());
@@ -78,6 +71,17 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             default:
                 throw new NotImplementedException();
         }
+    }
+
+    private List<Character> GetNewRandomCharacters()
+    {
+        List<Character> characters = new();
+        for (int i = 0; i < 3; i++)
+        {
+            characters.Add(new Character(possibleCharacters.SelectRandomElement().AssetGUID));
+        }
+        return characters;
+       
     }
 
     private void TryAddNewCharacter(Character character)

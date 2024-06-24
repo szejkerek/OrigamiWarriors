@@ -202,8 +202,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f16b42bd8d1364baa652aa53dc7c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockAfterSelecting: 0
+  lockAfterSelecting: 1
   mapManager: {fileID: 2837546399791382084}
   view: {fileID: 92761192886802277}
   locked: 0
   events: {fileID: 11400000, guid: 35457ae58c79846479db892b6642662a, type: 2}
+  passiveEffects: {fileID: 11400000, guid: 9c17c1d5c453e794a881ba235e5e05b6, type: 2}
+  possibleCharacters:
+  - m_AssetGUID: 5f11a0d9c73033148a0baa4648eb580a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

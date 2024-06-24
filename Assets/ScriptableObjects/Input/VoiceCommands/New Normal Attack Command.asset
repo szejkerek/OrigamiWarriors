@@ -9,16 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e54edddde32104d84824c679500ac0, type: 3}
-  m_Name: New Follow Support Command
+  m_Script: {fileID: 11500000, guid: 7a1736b9ff150af49aea51fbc21b601f, type: 3}
+  m_Name: New Normal Attack Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[2] Hojo - Follow'
-  <VoicePhrases>k__BackingField:
-  - hajou
-  - hey
-  - heyo
-  - hayo
-  - hajo
-  - hujo
+  <DisplayPhrase>k__BackingField: '[7] Tatakau - Atack any'
+  <VoicePhrases>k__BackingField: []
   Cooldown:
-    cooldowTime: 1
+    cooldowTime: 0

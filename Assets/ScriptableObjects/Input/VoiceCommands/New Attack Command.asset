@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b09d3efe26fe24f98fad8ef5adc276, type: 3}
   m_Name: New Attack Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[1] Kogeki - target anyone'
+  <DisplayPhrase>k__BackingField: '[5] Kogeki - Aggressive stance'
   <VoicePhrases>k__BackingField:
   - kogeki
   - kougeki
   - koge
   - kageki
   - kage
-  <Cooldown>k__BackingField: 1.5
+  Cooldown:
+    cooldowTime: 1

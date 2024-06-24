@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour, IUnit
 
 
     public static Action<Enemy> OnEnemyKilled;
+
+    private EnemyGenerator generator;
     public bool IsAlly => false;
     public CharacterStats CharacterStats;
     public int moneyOnKill = 50;
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     private void Awake()
     {
+        generator = GetComponent<EnemyGenerator>();
         GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
         weaponItem = new Item(Weapon.AssetGUID);
         health = GetStats().MaxHealth;
@@ -41,6 +44,10 @@ public class Enemy : MonoBehaviour, IUnit
         {
             OnEnemyKilled?.Invoke(this);
             Destroy(gameObject);
+        }
+        else
+        {
+            generator.GetDamage((float)health/ (float)GetStats().MaxHealth);
         }
     }
     public void HealUnit(int valueHP)
@@ -69,8 +76,8 @@ public class Enemy : MonoBehaviour, IUnit
         if(particles != null)
         {
             particles.emissionRate = 0;
+            Destroy(particles.GetComponent<EnemyParticle>(), 5);
+            Destroy(particles, 15);
         }
-
-        Destroy(particles, 15);
     }
 }

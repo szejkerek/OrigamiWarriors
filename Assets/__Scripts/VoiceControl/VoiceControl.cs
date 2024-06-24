@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Windows.Speech;
 using System;
 using System.Text;
+using UnityEngine.InputSystem.iOS;
 
 
 public class VoiceControl : MonoBehaviour
@@ -15,19 +16,31 @@ public class VoiceControl : MonoBehaviour
 
     public List<VoiceCommand> voiceCommands;
 
+    private bool voiceEnabled = false;
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> commandsDictionary = new Dictionary<string, Action>();
     private void OnVoiceRecognized(PhraseRecognizedEventArgs speech)
     {
+      if (voiceEnabled)
+      {
         if(debugPhrases) PrintPhrase(speech);
 
         if (commandsDictionary.TryGetValue(speech.text, out Action action))
         {
-            action?.Invoke();
+          action?.Invoke();
         }
+      }
     }
 
-    private static void PrintPhrase(PhraseRecognizedEventArgs speech)
+  private void Update()
+  {
+    if (Input.GetKey(KeyCode.Space))
+    {
+      voiceEnabled = true;
+    }
+  }
+
+  private static void PrintPhrase(PhraseRecognizedEventArgs speech)
     {
         StringBuilder builder = new StringBuilder();
         builder.AppendFormat("{0} ({1}){2}", speech.text, speech.confidence, Environment.NewLine);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14764d502add4314d818523ef0eba2c5, type: 3}
   m_Name: New Defense Command
   m_EditorClassIdentifier: 
-  <DisplayPhrase>k__BackingField: '[4] Mamoru - defensive'
+  <DisplayPhrase>k__BackingField: '[6] Mamoru - Defensive stance'
   <VoicePhrases>k__BackingField:
   - mamoru
   - maumoru
@@ -20,4 +20,5 @@ MonoBehaviour:
   - memaru
   - maumorou
   - memory
-  <Cooldown>k__BackingField: 1.5
+  Cooldown:
+    cooldowTime: 1
