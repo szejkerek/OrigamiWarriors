@@ -472,6 +472,8 @@ MonoBehaviour:
   masterMixer: {fileID: 0}
   sfxMixer: {fileID: 0}
   musicMixer: {fileID: 0}
+  musicSource: {fileID: 4603635057976099389}
+  menuAmbient: {fileID: 11400000, guid: 30580f87930f211499f57d0036be117b, type: 2}
 --- !u!1 &7576199496666539626
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,11 +824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283671688124966479, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 888.23
+      value: 1195.66
       objectReference: {fileID: 0}
     - target: {fileID: 2283671688124966479, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 167.4
+      value: 110.49
       objectReference: {fileID: 0}
     - target: {fileID: 2283671688124966479, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -834,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2283671688124966479, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -88.7
+      value: -60.245
       objectReference: {fileID: 0}
     - target: {fileID: 2615354820221746410, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -882,7 +884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194642502544058335, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1433.4
+      value: -1376.49
       objectReference: {fileID: 0}
     - target: {fileID: 3252434528578304738, guid: a24613faa54d8a4488588689f45b992d, type: 3}
       propertyPath: m_AnchorMax.y

@@ -8,6 +8,7 @@ public class LoreInterface : MonoBehaviour
     [SerializeField] Button quitBtn = null;
 
     [SerializeField] Sound buttonPressed = null;
+    [SerializeField] Sound buttonHover = null;
 
     private void Awake()
     {
@@ -26,5 +27,11 @@ public class LoreInterface : MonoBehaviour
     {
         AudioManager.Instance.PlayGlobal(buttonPressed);
         SceneLoader.Instance.LoadScene(SceneConstants.MenuScene);
+    }
+
+    public void ButtonOnHover()
+    {
+        AudioManager.Instance.PlayGlobal(buttonHover);
+
     }
 }

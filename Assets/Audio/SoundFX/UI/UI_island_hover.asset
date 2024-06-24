@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd93b4b535de1f441b6204dddbbaa321, type: 3}
-  m_Name: "Zebranie_z\u0142ota"
+  m_Name: UI_island_hover
   m_EditorClassIdentifier: 
-  <Clip>k__BackingField: {fileID: 8300000, guid: c7353c025978881488a585e741bebe2a, type: 3}
+  <Clip>k__BackingField: {fileID: 8300000, guid: 0acc12919fc80ac4d9dbefaf37088838, type: 3}
   volume: 1
   pitchVariation: 0
   loop: 0

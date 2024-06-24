@@ -17,6 +17,10 @@ public class MapNodeUI : MonoBehaviour
     [Header("Level Loader")]
     [SerializeField] int levelIndex;
     [SerializeField] Sprite[] islands;
+
+    [SerializeField] Sound buttonIslandHover = null;
+    [SerializeField] Sound buttonIslandHoverUnactive = null;
+    [SerializeField] Sound buttonIslandPressed = null;
     Button button;
 
     public SpriteRenderer sr;
@@ -97,7 +101,8 @@ public class MapNodeUI : MonoBehaviour
     private void TryEnterNode()
     {
         if(mapNodeUIState == MapNodeUIStates.Attainable) 
-        {         
+        {
+            IslandButtonOnClick();
             MapPlayerTracker.Instance.SendPlayerToNode(this);
         }
         else
@@ -114,6 +119,21 @@ public class MapNodeUI : MonoBehaviour
         //SceneLoader.Instance.LoadScene(currentIndex);
 
 
+    }
+
+    void IslandButtonOnClick()
+    {
+        AudioManager.Instance.PlayGlobal(buttonIslandPressed);
+    }
+
+    public void ButtonOnHover()
+    {
+        if (mapNodeUIState == MapNodeUIStates.Attainable)
+        {
+            AudioManager.Instance.PlayGlobal(buttonIslandHover);
+        }
+        else
+            AudioManager.Instance.PlayGlobal(buttonIslandHoverUnactive);
     }
 
 }

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -182,6 +182,8 @@ MonoBehaviour:
   SegmentPrefab: {fileID: -5106679002739390666, guid: 04a022c220e1fc349baf94c3b414fb1c, type: 3}
   segmentsParent: {fileID: 7090477889113208003}
   upgradeButton: {fileID: 8158482503993101229}
+  buttonPressed: {fileID: 11400000, guid: 9d9db58481154ad4b915555a0e2a61a2, type: 2}
+  buttonHover: {fileID: 11400000, guid: b9e7605912d0c72469e0273095154ae0, type: 2}
 --- !u!1 &5070891451507113517
 GameObject:
   m_ObjectHideFlags: 0
