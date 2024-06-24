@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     private int health;
 
-    public GameObject particles;
+    public ParticleSystem particles;
 
     private void Awake()
     {
@@ -66,7 +66,11 @@ public class Enemy : MonoBehaviour, IUnit
 
     private void OnDestroy()
     {
-        particles.GetComponent<ParticleSystem>().emissionRate = 0;
+        if(particles != null)
+        {
+            particles.emissionRate = 0;
+        }
+
         Destroy(particles, 15);
     }
 }

@@ -23,6 +23,7 @@ MonoBehaviour:
     CritChance: 0.22
   <PassiveEffects>k__BackingField:
   - {fileID: 11400000, guid: e1c79e4c851260744b3dc976fb9745ed, type: 2}
+  - {fileID: 11400000, guid: 23e250c1f0bd0d1428f6586e2a45acab, type: 2}
   <Weapon>k__BackingField:
     m_AssetGUID: 91b1ee949c80d4d44ad3e8c5da173e6f
     m_SubObjectName: 
