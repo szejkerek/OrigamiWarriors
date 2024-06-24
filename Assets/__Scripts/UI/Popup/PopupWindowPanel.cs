@@ -64,6 +64,33 @@ public class PopupWindowPanel : MonoBehaviour
         SetupButtons(confirmAction, declineAction, alternateAction);
     }
 
+    public void ChooseModal(PassiveEffectSO passiveEffect, List<Character> elements, Action<Character,PassiveEffectSO> OnCharacterSelected, string title = null, string content = null, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
+    {
+        Show(title, horizontal: false);
+        verticalLayoutText.text = content;
+        FillChoices(elements);
+
+        confirmAction += () =>
+        {
+            if (choiceItem != null)
+            {
+                OnCharacterSelected?.Invoke(choiceItem, passiveEffect);
+            }
+            Close();
+        };
+
+        declineAction += () =>
+        {
+            Close();
+        };
+
+        SetupButtons(confirmAction, declineAction, alternateAction);
+    }
+
+
+
+
+
     public void ShowAsEvent(PopupEventSO eventData, Action confirmAction = null, Action declineAction = null, Action alternateAction = null)
     {
         Show(eventData.Header, horizontal: true);

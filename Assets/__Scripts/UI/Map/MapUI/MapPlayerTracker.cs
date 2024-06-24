@@ -10,6 +10,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public MapDrawerUI view;
     public bool locked;
     public PopupAllEventsSO events;
+    public PassiveAllEffectSO passiveEffects;
 
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
@@ -60,7 +61,19 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.TempleEvents.SelectRandomElement());
                 break;
             case MapNodeType.WeaponReroll:
-                PopupController.Instance.PopupPanel.ShowAsEvent(events.TempleEvents.SelectRandomElement());
+
+                List<Character> choices2 = new()
+                {
+                    SavableDataManager.Instance.data.team.TeamMembers[0],
+                    SavableDataManager.Instance.data.team.TeamMembers[1],
+                    SavableDataManager.Instance.data.team.TeamMembers[2] };
+
+                PassiveEffectSO passiveEffectRandom = passiveEffects.allPassiveEffectSO.SelectRandomElement();
+                string passiveName = passiveEffectRandom.GetName();
+                string header = String.Format("Choose ally to get <b>{0}</b> passive", passiveName);
+                string content = String.Format("Now we can give <b>{0}</b> passive to one of our party memebers", passiveName);
+
+                PopupController.Instance.PopupPanel.ChooseModal(passiveEffectRandom, choices2, TryAddPasiveToCharacter, header, content);
                 break;
             default:
                 throw new NotImplementedException();
@@ -76,4 +89,15 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         }
         SavableDataManager.Instance.data.team.AddCharacter(character);
     }
+
+    private void TryAddPasiveToCharacter(Character character, PassiveEffectSO newPasive)
+    {
+        if (character == null)
+        {
+            Debug.Log("Couldnt get Character from modal.");
+            return;
+        }
+        character.PassiveEffects.Add(newPasive);
+    }
+
 }
