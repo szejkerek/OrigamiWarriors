@@ -13,6 +13,9 @@ public class AllyAgent : GoapAgent
 
 
     private Transform playerPosition;
+    [SerializeField] SpriteRenderer iconBack, iconFront;
+    [SerializeField] Sprite neutral, go, flee, sword, shield;
+    [SerializeField] Color weak, any, strong;
 
     //private enum  = false;
 
@@ -117,27 +120,31 @@ public class AllyAgent : GoapAgent
 
     public void AggressiveStanceCommand()
     {
-
+        iconFront.sprite = sword;
     }
 
     public void DefensiveStanceCommand()
     {
-
+        iconFront.sprite = shield;
     }
     public void NormalStanceCommand()
     {
-
+        iconFront.sprite = null;
     }
-    private void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min health enemy)
+    public void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min health enemy)
   {
+        iconBack.color = weak;
       SetupSensors(Sensor.TargetingMode.Weakest);
+        
     }
-    private void AttackStrongCommand(AttackBigCommand command) // Kogeki Oki (Kougeki ookii) / Kogeki biggu -> attack big (max health enemy)
+    public void AttackStrongCommand(AttackBigCommand command) // Kogeki Oki (Kougeki ookii) / Kogeki biggu -> attack big (max health enemy)
   {
-      SetupSensors(Sensor.TargetingMode.Strongest);
+        iconBack.color = strong;
+        SetupSensors(Sensor.TargetingMode.Strongest);
     }
     public void AttackNormalCommand()
     {
+        iconBack.color = any;
         SetupSensors(Sensor.TargetingMode.Normal);
     }
     private void SetupSensors(Sensor.TargetingMode mode)
@@ -145,27 +152,34 @@ public class AllyAgent : GoapAgent
         attackSensor.targetingMode = mode;
         chaseSensor.targetingMode = mode;
     }
-  public void WanderCommand(MarchWanderCommand command) // Gyoko (Gyoukou) - March
+  public void WanderCommand(MarchWanderCommand command) // Gyoko (Gyoukou) - March FLEEEE
   {
-        Debug.Log("SCOUT!");
+        iconBack.sprite = flee;
+
+        Debug.Log("FLEE!");
         if (CommadExists("GroupUp"))
         {
             goals.Remove(GetGoal("GroupUp"));
         }
 
 
-        if (!CommadExists("Wander"))
+        if (!CommadExists("GroupUp"))
         {
             goals.Add(new AgentGoal.Builder("Wander")
-            .WithPriority(1)
+            .WithPriority(5)
             .WithDesiredEffect(beliefs["AgentMoving"])
+            .Build());
+
+            goals.Add(new AgentGoal.Builder("GroupUp")
+            .WithPriority(10)
+            .WithDesiredEffect(beliefs["NearPlayer"])
             .Build());
 
         }
     }
     public void StayCommand(StayIdleCommand command) // Tome - Stop
   {
-
+        iconBack.sprite = neutral;
         Debug.Log("STAY!");
         if(CommadExists("GroupUp"))
         {
@@ -178,7 +192,12 @@ public class AllyAgent : GoapAgent
     }
     public void FollowCommand(FollowSupportCommand command) // Hojo (Hojou) - Support
     {
+        iconBack.sprite = go;
         Debug.Log("FOLLOW!");
+        if (CommadExists("GroupUp"))
+        {
+            goals.Remove(GetGoal("GroupUp"));
+        }
         if (CommadExists("Wander"))
         {
             goals.Remove(GetGoal("Wander"));
