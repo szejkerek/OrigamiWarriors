@@ -9,6 +9,7 @@ public class EnemyParticle : MonoBehaviour
     [SerializeField] Enemy enemy;
 
     ParticleSystem particle;
+
     private void Start()
     {
         particle = GetComponent<ParticleSystem>();
