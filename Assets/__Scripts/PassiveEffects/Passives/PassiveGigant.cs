@@ -16,7 +16,7 @@ public class PassiveGigant : PassiveEffectSO
     public override void OnStart(SamuraiEffectsManager context)
     {
         context.transform.localScale *= 1.3f;
-        context.Owner.temporaryStats.MaxHealth *= 2;
-        context.Owner.HealToMax();
+        context.Owner.temporaryStats.Armor += context.Owner.GetStats().Armor;
+        context.Owner.temporaryStats.Damage += context.Owner.GetStats().Damage;
     }
 }

@@ -29,7 +29,7 @@ public class Character
         this.characterGuid = characterGuid;
         characterData = new AssetReferenceItemSO(characterGuid).LoadAssetAsync<CharacterSO>().WaitForCompletion();
 
-        PassiveEffects = characterData.PassiveEffects;
+        PassiveEffects = new List<PassiveEffectSO>(characterData.PassiveEffects);
 
         this.Name = characterData.Name.GetRandomName();
         this.CharacterPrefab = characterData.CharacterGameObject;
