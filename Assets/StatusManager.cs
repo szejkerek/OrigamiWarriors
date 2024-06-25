@@ -10,6 +10,9 @@ public class StatusManager : MonoBehaviour
 {
     bool isWeakenessApplied = false;
     int weaknessValue = 0;
+
+    bool isPoisonApplied = false;
+    float timeToTick = 0.5f;
     public void ApplyStun(float timer)
     {
         StartCoroutine(ApplyStunCorutine(timer));
@@ -49,17 +52,26 @@ public class StatusManager : MonoBehaviour
 
     public void ApplyPoison(float dmgPerTick, int ticks)
     {
-        StartCoroutine(ApplyWeaknessCorutine(dmgPerTick, ticks));
+        StartCoroutine(ApplyPoisonCorutine(dmgPerTick, ticks));
     }
     IEnumerator ApplyPoisonCorutine(float dmgPerTick, int ticks)
     {
+        isPoisonApplied = true;
+        int appliedTicks = 0;
         Debug.Log("Poisoned");
-        yield return null;
+        IUnit unit = GetComponent<IUnit>();
+        while (appliedTicks < ticks)
+        {
+            if(isPoisonApplied)unit.TakeDamage((int)dmgPerTick);
+            yield return new WaitForSeconds(timeToTick);
+            appliedTicks++;
+        }
+        isPoisonApplied = false;
     }
 
     public void RevertPoison()
     {
-
+        isPoisonApplied = false;
     }
 
     public void ApplyCleanse()

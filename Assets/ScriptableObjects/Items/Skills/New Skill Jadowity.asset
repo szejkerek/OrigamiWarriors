@@ -44,6 +44,6 @@ MonoBehaviour:
     Armor: 0
     Speed: 0
     CritChance: 0
-  dmgPerTick: 24
+  <Range>k__BackingField: 0
+  dmgPerTick: 22
   ticks: 8
-  range: 10
