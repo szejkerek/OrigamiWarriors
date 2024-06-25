@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Windows.Speech;
 using System;
 using System.Text;
-using UnityEngine.InputSystem.iOS;
 
 
 public class VoiceControl : MonoBehaviour

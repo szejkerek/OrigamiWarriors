@@ -27,13 +27,34 @@ public class Enemy : MonoBehaviour, IUnit
 
     public ParticleSystem particles;
 
+    SamuraiGeneral general;
+
     private void Awake()
     {
         generator = GetComponent<EnemyGenerator>();
         GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
         weaponItem = new Item(Weapon.AssetGUID);
         health = GetStats().MaxHealth;
+        general = FindObjectOfType<SamuraiGeneral>();
     }
+    //private void OnMouseOver()
+    //{
+    //    Debug.Log("Over");
+    //    if (Vector3.Distance(general.transform.position, transform.position) <= general.Character.Weapon.itemData.Range)
+    //    {
+    //        CursorManager.Instance.SetCursorState(CursorState.Attack);
+    //    }
+    //    else
+    //    {
+    //        CursorManager.Instance.SetCursorState(CursorState.Default);
+    //    }
+    //}
+
+    //private void OnMouseExit()
+    //{
+    //    Debug.Log("Exit");
+    //    CursorManager.Instance.SetCursorState(CursorState.Default);
+    //}
 
     public void TakeDamage(int valueHP)
     {

@@ -39,7 +39,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void TakeDamage(int valueHP)
     {
-        CharacterStats stats = Character.GetStats() + temporaryStats;
+        CharacterStats stats = GetStats();
         int damageReducedByArmor = Mathf.Max(0, valueHP - stats.Armor);
         Character.LostHealth += damageReducedByArmor;
 
@@ -78,7 +78,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public CharacterStats GetStats()
     {
-        return Character.GetStats();
+        return Character.GetStats() + temporaryStats;
     }
 
     public void AttackTarget(IUnit target)

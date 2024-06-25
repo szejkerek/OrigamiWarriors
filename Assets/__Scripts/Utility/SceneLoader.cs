@@ -38,6 +38,7 @@ public class SceneLoader : Singleton<SceneLoader>
             }
 
             OnSceneChanged?.Invoke();
+            CursorManager.Instance.SetCursorState(CursorState.Default);
             operation.allowSceneActivation = true;
             fadeScreen.FadeIn(SceneChangeTime);
         }

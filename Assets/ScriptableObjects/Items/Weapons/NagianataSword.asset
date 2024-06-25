@@ -25,6 +25,8 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   <MaxLevel>k__BackingField: 7
   <Cost>k__BackingField: 38
+  Cooldown:
+    cooldowTime: 1.02
   <NextItem>k__BackingField:
     m_AssetGUID: adeb505dd502c814fba4692cea87893c
     m_SubObjectName: 
@@ -45,3 +47,4 @@ MonoBehaviour:
   <Range>k__BackingField: 6.45
   <HitParticle>k__BackingField: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   <swordAnimation>k__BackingField: {fileID: 0}
+  <damageDisplay>k__BackingField: {fileID: 2699983239325264821, guid: fda1534cb80dfac448c1dfed8d1ccc82, type: 3}

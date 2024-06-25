@@ -16,12 +16,14 @@ public class AllyAgent : GoapAgent
     [SerializeField] SpriteRenderer iconBack, iconFront;
     [SerializeField] Sprite neutral, go, flee, sword, shield;
     [SerializeField] Color weak, any, strong;
+    [SerializeField] List<Sound> soundVariations;
 
     //private enum  = false;
 
     protected override void Start()
     {
         base.Start();
+        //soundVariations = new List<Sound>();
     }
     protected override void Update()
     {
@@ -29,41 +31,60 @@ public class AllyAgent : GoapAgent
       base.Update();
         if (Input.GetKeyUp("1"))
         {
+            PlayHaiSound();
             StayCommand(null);// Tome - Stop
     }
         else if (Input.GetKeyUp("2"))
         {
+            PlayHaiSound();
             FollowCommand(null);// Hojo - Support
     }
         else if(Input.GetKeyUp("3"))
         {
+            PlayHaiSound();
             FleeCommand(null);// Gyoko (Gyoukou) - March
     }
         if (Input.GetKeyUp("4"))
         {
+            PlayHaiSound();
             NormalStanceCommand(null);// Nomaru - Normal (stance)
     }
         else if(Input.GetKeyUp("5"))
         {
+            PlayHaiSound();
             AggressiveStanceCommand(null);// Kogeki (Kougeki) - Attack
     }
         else if(Input.GetKeyUp("6"))
         {
+            PlayHaiSound();
             DefensiveStanceCommand(null);// Mamoru - Defend
     }
         if (Input.GetKeyUp("7"))
         {
+            PlayHaiSound();
             AttackNormalCommand(null);// Tatakau - Fight
     }
         else if(Input.GetKeyUp("8"))
         {
+            PlayHaiSound();
             AttackWeakCommand(null);// smalu -> attack small (min health enemy)
     }
         else if(Input.GetKeyUp("9"))
         {
+            PlayHaiSound();
             AttackStrongCommand(null);// bigu -> attack big (max health enemy)
+        }
     }
+
+
+    private void PlayHaiSound()
+    {
+        if (soundVariations.Count == 0) return;
+        Debug.Log("HI");
+        AudioManager.Instance.PlayAtPosition(transform.position, soundVariations.SelectRandomElement());
     }
+
+
   protected override void SetupBeliefs()
     {
         base.SetupBeliefs();

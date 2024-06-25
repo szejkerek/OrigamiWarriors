@@ -18,10 +18,12 @@ public class SamuraiGeneral : Samurai
     {
         if (Input.GetMouseButtonDown(0))
         {
+            CursorManager.Instance.SetCooldownOnCursor(Character.Weapon.itemData.Cooldown.cooldowTime);
             CastRayAndAttack();
         }
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetMouseButtonDown(1))
         {
+            CursorManager.Instance.SetCooldownOnCursor(Character.Skill.itemData.Cooldown.cooldowTime);
             UseSkill();
         }
     }
@@ -47,7 +49,7 @@ public class SamuraiGeneral : Samurai
         {
             IUnit unit = hit.collider.GetComponent<IUnit>();
             if (unit != null && !unit.IsAlly)
-            {
+            {               
                 AttackTarget(unit);
             }
         }

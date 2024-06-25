@@ -12,6 +12,9 @@ public class UpgradeableComponent : MonoBehaviour
     [SerializeField] Transform segmentsParent;
     [SerializeField] Button upgradeButton;
 
+    [SerializeField] Sound buttonHover = null;
+    [SerializeField] Sound buttonUpgrade = null;
+
     Item upgradable;
     List<UpgradableSegment> segments = new List<UpgradableSegment>();
 
@@ -50,6 +53,7 @@ public class UpgradeableComponent : MonoBehaviour
         if (SavableDataManager.Instance.data.playerResources.TryRemoveMoney(cost))
         {
             upgradable.Level++;
+            UpgradeSound();
 
             if (upgradable.Level == upgradable.MaxLevel) 
             {
@@ -99,5 +103,16 @@ public class UpgradeableComponent : MonoBehaviour
             Destroy(t.gameObject);
         }
         segments.Clear();
+    }
+
+    public void UpgradeSound()
+    {
+        AudioManager.Instance.PlayGlobal(buttonUpgrade);
+    }
+
+    public void ButtonOnHover()
+    {
+        AudioManager.Instance.PlayGlobal(buttonHover);
+
     }
 }

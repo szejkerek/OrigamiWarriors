@@ -12,6 +12,7 @@ public abstract class ItemSO : ScriptableObject
     [field: SerializeField] public AssetReferenceItemSO NextItem { get; private set; }
     [field: SerializeField] public CharacterStats BaseStats { get; private set; }
     [field: SerializeField] public CharacterStats StatsModifiersPerLevel { get; private set; }
+    [field: SerializeField] public float Range { get; private set; }
 
     public CharacterStats CalculateLevelAdditions(int level)
     {      

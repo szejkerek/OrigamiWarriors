@@ -5,7 +5,6 @@ public class SkillJadowity : ItemSO
 {
     public int dmgPerTick;
     public int ticks;
-    public float range;
     public override void Use(IUnit target, IUnit origin)
     {
         SamuraiEffectsManager manager = origin.gameObject.GetComponent<SamuraiEffectsManager>();
@@ -17,7 +16,7 @@ public class SkillJadowity : ItemSO
 
         foreach (Enemy enemy in manager.Enemies)
         {
-            if (!UnitInRange(origin, enemy, range))
+            if (!UnitInRange(origin, enemy, Range))
                 continue;
 
             StatusManager statusManager = enemy.GetComponent<StatusManager>();

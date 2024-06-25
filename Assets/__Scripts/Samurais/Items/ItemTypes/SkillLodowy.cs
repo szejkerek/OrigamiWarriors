@@ -6,7 +6,6 @@ public class SkillLodowy : ItemSO
 {
     [Range(0f,1f)] public float strenght;
     public float timer;
-    public float range;
     public override void Use(IUnit target, IUnit origin)
     {
         SamuraiEffectsManager manager = origin.gameObject.GetComponent<SamuraiEffectsManager>();
@@ -18,7 +17,7 @@ public class SkillLodowy : ItemSO
 
         foreach (Enemy enemy in manager.Enemies)
         {
-            if (!UnitInRange(origin, enemy, range))
+            if (!UnitInRange(origin, enemy, Range))
                 continue;
 
             StatusManager statusManager = enemy.GetComponent<StatusManager>();

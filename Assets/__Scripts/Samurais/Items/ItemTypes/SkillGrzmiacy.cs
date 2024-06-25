@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 [CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
 public class SkillGrzmiacy : ItemSO
 {
     public float howLongItLast;
-    public float range;
     public override void Use(IUnit target, IUnit origin)
     {
         SamuraiEffectsManager manager = origin.gameObject.GetComponent<SamuraiEffectsManager>();
@@ -17,7 +15,7 @@ public class SkillGrzmiacy : ItemSO
 
         foreach (Enemy enemy in manager.Enemies)
         {
-            if (!UnitInRange(origin, enemy, range))
+            if (!UnitInRange(origin, enemy, Range))
                 continue;
 
             StatusManager statusManager = enemy.GetComponent<StatusManager>();

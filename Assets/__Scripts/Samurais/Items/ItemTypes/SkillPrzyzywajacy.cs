@@ -6,7 +6,6 @@ public class SkillPrzyzywajacy : ItemSO
 {
     public GameObject KamiGhost;
     public int count;
-    public float range;
     public override void Use(IUnit target, IUnit origin)
     {
         SamuraiEffectsManager manager = origin.gameObject.GetComponent<SamuraiEffectsManager>();

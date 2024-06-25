@@ -10,12 +10,12 @@ using UnityEngine.Audio;
         [SerializeField] AudioMixerGroup sfxMixer;
         [SerializeField] AudioMixerGroup musicMixer;
 
-        AudioSource musicSource;
+        [SerializeField] AudioSource musicSource;
+        [SerializeField] Sound menuAmbient;
 
         protected override void Awake()
         {
             base.Awake();
-            musicSource = GetComponentInChildren<AudioSource>();
             SetMixer(musicSource, SoundType.Music);
         }
 
@@ -34,6 +34,11 @@ using UnityEngine.Audio;
             Play(sourceObj, sound, SoundType.SFX);
 
             Destroy(soundObj, sound.Clip.length + 0.4f);
+        }
+
+        public void PlayMusic(Sound sound)
+        {
+            Play(musicSource, sound, SoundType.Music);
         }
 
         public void Play(AudioSource source, Sound sound, SoundType type)
@@ -67,14 +72,26 @@ using UnityEngine.Audio;
             source.Play();
         }
 
-        public void PlayGlobal(Sound sound, SoundType type = SoundType.SFX)
+        public void PlayGlobal(Sound sound, SoundType type = SoundType.SFX)//, bool force)
         {
-            if (type == SoundType.Music)
-            {
-                musicSource.Stop();
-                StartCoroutine(FadeInMusic(sound, 1f));
-            }
+        if(sound == null || sound.Clip == null)
+        {
+            Debug.LogWarning("No sound");
+            return;
+        }
 
+        if (type == SoundType.Event)
+        {
+            PlayOnTarget(gameObject, sound);
+            //musicSource.Stop();
+            //StartCoroutine(FadeInMusic(sound, 1f));
+        }
+        else if (type == SoundType.Music)
+        {
+            //if(musicSource.isPlaying)
+            PlayMusic(sound);
+        }
+        else
             PlayOnTarget(gameObject, sound);
         }
 

@@ -10,6 +10,14 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public MapDrawerUI view;
     public bool locked;
     public PopupAllEventsSO events;
+
+    [SerializeField] Sound armory = null;
+    [SerializeField] Sound boss = null;
+    [SerializeField] Sound exp = null;
+    [SerializeField] Sound forge = null;
+    [SerializeField] Sound temple = null;
+    [SerializeField] Sound rerol = null;
+
     public PassiveAllEffectSO passiveEffects;
     public List<AssetReferenceCharacterSO> possibleCharacters;
     public void SendPlayerToNode(MapNodeUI mapNode)
@@ -42,15 +50,19 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 PopupController.Instance.PopupPanel.ChooseModal(GetNewRandomCharacters(), TryAddNewCharacter, "Choose new ally", "Our elite squad has the opportunity to recruit a new, exceptional ally. Each candidate brings unique skills and experience that can change the course of our missions. Carefully consider their abilities and stats to choose the warrior who will best complement our team.");
                 break;
             case MapNodeType.Boss:
+                PlaySound(boss);
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.BossEvents.SelectRandomElement());
                 break;
             case MapNodeType.Experience:
+                PlaySound(exp);
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.ExperienceEvents.SelectRandomElement());
                 break;
             case MapNodeType.Forge:
+                PlaySound(forge);
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.ForgeEvents.SelectRandomElement());
                 break;
             case MapNodeType.Temple:
+                PlaySound(temple);
                 PopupController.Instance.PopupPanel.ShowAsEvent(events.TempleEvents.SelectRandomElement());
                 break;
             case MapNodeType.WeaponReroll:
@@ -104,4 +116,9 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         character.PassiveEffects.Add(newPasive);
     }
 
+
+    public void PlaySound(Sound sound)
+    {
+        AudioManager.Instance.PlayGlobal(sound, SoundType.Event);
+    }
 }

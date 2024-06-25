@@ -4,7 +4,6 @@
 public class SkillSwietlisty : ItemSO
 {
     public int damage;
-    public float range;
     public override void Use(IUnit target, IUnit origin)
     {
         SamuraiEffectsManager manager = origin.gameObject.GetComponent<SamuraiEffectsManager>();
@@ -16,10 +15,10 @@ public class SkillSwietlisty : ItemSO
 
         foreach (Enemy enemy in manager.Enemies)
         {
-            if (!UnitInRange(origin, enemy, range))
+            if (!UnitInRange(origin, enemy, Range))
                 continue;
 
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(origin.GetStats().Damage + damage);
         }
         Cooldown.ResetTimers();
     }
