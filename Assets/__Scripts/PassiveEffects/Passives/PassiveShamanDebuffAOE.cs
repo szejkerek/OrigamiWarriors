@@ -31,7 +31,7 @@ public class PassiveShamanDebuffAOE : PassiveEffectSO
         {
             foreach(Enemy enemy in affectedEnemies)
             {
-                enemy.GetComponent<StatusManager>().RevertWeakness();
+                if(enemy != null)enemy.GetComponent<StatusManager>().RevertWeakness();
             }
             affectedEnemies.Clear();
         }
