@@ -124,6 +124,12 @@ MonoBehaviour:
     _bottomBound: 0.75
     _upperBound: 1.5
   unitsAway: 2
+  damageSound:
+  - {fileID: 11400000, guid: 81abc58766a24584aad81761e25e5439, type: 2}
+  - {fileID: 11400000, guid: b5a01ffd085dde14d90f10b2adef8c25, type: 2}
+  - {fileID: 11400000, guid: 2b7a17070bd941f4b88da4842e0a0ec2, type: 2}
+  - {fileID: 11400000, guid: 1574f27a743ab164bbd76d9d910fb656, type: 2}
+  - {fileID: 11400000, guid: f45b00b903e68704db314362f6624b54, type: 2}
   moveSpeed: 1
   fadeDuration: 1
 --- !u!1 &8023179297109103019

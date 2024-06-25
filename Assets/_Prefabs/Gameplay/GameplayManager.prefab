@@ -3564,6 +3564,7 @@ MonoBehaviour:
     deadCharacters: []
     newCharacters: []
   blobCounter: {fileID: 6371728730421906349}
+  battleAmbient: {fileID: 11400000, guid: e9ad94798f45b8f489df04c4df6f149e, type: 2}
   EnemySpawner: {fileID: 3839364399925804333}
   maxEnemiesOverall: 10
   maxEnemiesAtOnce: 2
