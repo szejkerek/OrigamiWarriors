@@ -41,7 +41,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 int sceneIndex = SceneConstants.Level_1;
                 if(mapManager.currentMap.path.Count > 1)
                 {
-                    sceneIndex = UnityEngine.Random.Range(SceneConstants.Level_1_2, SceneConstants.Level_1_3 + 1);
+                    sceneIndex = UnityEngine.Random.Range(SceneConstants.Level_1, SceneConstants.Level_1_3 + 1);
                 }
 
                 SceneLoader.Instance.LoadScene(sceneIndex); //TODO: Losowanie poziomu pomiędzy dostępnymi
