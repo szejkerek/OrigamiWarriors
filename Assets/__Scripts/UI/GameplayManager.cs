@@ -16,8 +16,13 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] int maxEnemiesOverall;
     [SerializeField] int maxEnemiesAtOnce;
 
+    [Header("Tutorial canvas")]
     [SerializeField] GameObject tutorialCanvas;
     private bool tutorialHidden = false;
+
+    [Header("GOAP Tutorial canvas")]
+    [SerializeField] GameObject goapTutorialCanvas;
+    private bool goapTutorialHidden = true;
 
     void Awake()
     {
@@ -36,8 +41,21 @@ public class GameplayManager : MonoBehaviour
         if (Input.anyKeyDown)
         {
           tutorialCanvas.SetActive(false);
-          Time.timeScale = 1.0f;
+          //Time.timeScale = 1.0f;
           tutorialHidden = true;
+
+          goapTutorialCanvas.SetActive(true);
+          goapTutorialHidden = false;
+          //Time.timeScale = 0.0f;
+        }
+      }
+      else if (!goapTutorialHidden)
+      { 
+        if (Input.anyKeyDown)
+        {
+          goapTutorialCanvas.SetActive(false);
+          Time.timeScale = 1.0f;
+          goapTutorialHidden = true;
         }
       }
     }
