@@ -4,7 +4,7 @@
 public class SwordItemSO : ItemSO
 {
     [field: Header("Sword")]
-    [field: SerializeField] public float Range { get; private set; }
+    
     [field: SerializeField] public GameObject HitParticle { get; private set; }
     [field: SerializeField] public AnimationClip swordAnimation { get; private set; }
     [field: SerializeField] public DamageDisplay damageDisplay { get; private set; }
