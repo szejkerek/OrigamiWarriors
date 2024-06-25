@@ -9,6 +9,10 @@ public class SamuraiGeneral : Samurai
     private Camera mainCamera;
     private CinemachineVirtualCamera virtualCamera;
 
+    public Sound attack;
+    public Sound special;
+    public Sound death;
+
     private void Awake()
     {
         SetupCamera();
@@ -28,11 +32,11 @@ public class SamuraiGeneral : Samurai
 
         if (Input.GetMouseButtonDown(0))
         {
-            
             CastRayAndAttack();
         }
         if (Input.GetMouseButtonDown(1))
         {
+            AudioManager.Instance.PlayAtPosition(this.transform.position, special);
             UseSkill();
         }
     }
@@ -57,8 +61,9 @@ public class SamuraiGeneral : Samurai
         {
             IUnit unit = hit.collider.GetComponent<IUnit>();
             if (unit != null && !unit.IsAlly)
-            {               
+            {
                 //is not stunned, 
+                AudioManager.Instance.PlayAtPosition(this.transform.position, attack);
                 AttackTarget(unit);
                 CursorManager.Instance.SetCooldownOnCursor(Character.Weapon.itemData.Cooldown.cooldowTime);
                 CursorManager.Instance.SetCursorState(CursorState.Default);
@@ -95,6 +100,7 @@ public class SamuraiGeneral : Samurai
 
     protected override void OnSamuraiDeath()
     {
+        //AudioManager.Instance.PlayAtPosition(this.transform.position, death);
         OnDeath?.Invoke(this);
     }
 }

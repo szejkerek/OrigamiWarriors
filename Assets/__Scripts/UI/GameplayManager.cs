@@ -10,6 +10,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] BlobCounter blobCounter;
 
     int killedEnemies;
+    public Sound battleAmbient;
 
     [Header("Enemy Spawner settings")]
     public EnemySpawner EnemySpawner;
@@ -71,7 +72,12 @@ public class GameplayManager : MonoBehaviour
           }
       }
     }
-  private void OnEnable()
+    private void Start()
+    {
+        AudioManager.Instance.PlayGlobal(battleAmbient, SoundType.Music);
+    }
+
+    private void OnEnable()
     {
         killedEnemies = 0;
         Enemy.OnEnemyKilled += OnEnemyKilled;
