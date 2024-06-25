@@ -8,7 +8,7 @@ public class PassiveShamanDebuffAOE : PassiveEffectSO
 {
     public float damageDebuff;
     public float range;
-    public List<KeyValuePair<Enemy, int>> affectedEnemies = new List<KeyValuePair<Enemy, int>>();
+    public List<Enemy> affectedEnemies = new List<Enemy>();
 
     public override string GetDesctiption()
     {
@@ -20,28 +20,32 @@ public class PassiveShamanDebuffAOE : PassiveEffectSO
         return "Shaman";
     }
 
+    public override void OnStart(SamuraiEffectsManager context)
+    {
+        affectedEnemies.Clear();
+    }
+
     public override void OnUpdate(SamuraiEffectsManager context, float deltaTime)
     {
-        if (affectedEnemies != null)
+        if(affectedEnemies != null)
         {
-            foreach (KeyValuePair<Enemy, int> effet in affectedEnemies)
+            foreach(Enemy enemy in affectedEnemies)
             {
-                effet.Key.temporaryStats.Damage -= effet.Value;
+                enemy.GetComponent<StatusManager>().RevertWeakness();
             }
             affectedEnemies.Clear();
         }
-
+        
 
         foreach (Enemy enemy in context.Enemies)
         {
             if (enemy == null)
                 return;
-
+            
             if (Vector3.Distance(context.transform.position, enemy.transform.position) <= range)
             {
-                int debuffValue = -(int)math.ceil(enemy.GetStats().Damage * damageDebuff);
-                enemy.temporaryStats.Damage += debuffValue;
-                affectedEnemies.Add(new KeyValuePair<Enemy, int>(enemy, debuffValue));
+                affectedEnemies.Add(enemy);
+                enemy.GetComponent<StatusManager>().ApplyWeakness(damageDebuff);
             }
         }
     }
