@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: New Stance Normal Command
   m_EditorClassIdentifier: 
   <DisplayPhrase>k__BackingField: '[4] Nomaru - Normal stance'
-  <VoicePhrases>k__BackingField: []
+  <VoicePhrases>k__BackingField:
+  - normal
+  - normal you
+  - normal yu
+  - no more
+  - normalu
+  - nomaru
   Cooldown:
-    cooldowTime: 0
+    cooldowTime: 1
