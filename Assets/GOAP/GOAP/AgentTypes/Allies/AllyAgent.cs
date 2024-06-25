@@ -26,8 +26,11 @@ public class AllyAgent : GoapAgent
     private int currentDefendTemp = 0;
     private Samurai thisSamurai;
 
-    [SerializeField] int defensiveStanceAttack = -10, defensiveStanceDefense = 30,
-        offensiveStanceAttack = 30, offensiveStanceDefense = -5;
+    [SerializeField] int defensiveStanceDefense;
+    [SerializeField] int defensiveStanceAttack;
+    [Space]
+    [SerializeField] int offensiveStanceAttack;
+    [SerializeField] int offensiveStanceDefense;
 
     //private enum  = false;
 
@@ -143,6 +146,18 @@ public class AllyAgent : GoapAgent
 
  }
 
+    private void OnDestroy()
+    {
+        AttackCommand.OnAttackRecognized -= AggressiveStanceCommand; // Kogeki (Kougeki) - Attack
+        DefenseCommand.OnDefenseRecognized -= DefensiveStanceCommand; // Mamoru - Defend
+        AttackBigCommand.OnAttackBigRecognized -= AttackStrongCommand; // bigu -> attack big (max Health enemy)
+        AttackSmallCommand.OnAttackSmallRecognized -= AttackWeakCommand; // smalu -> attack small (min Health enemy)
+        MarchWanderCommand.onWanderRecognized -= FleeCommand; // Gyoko (Gyoukou) - March
+        FollowSupportCommand.onFollowRecognized -= FollowCommand; // Hojo - Support
+        StayIdleCommand.OnIdleBigRecognized -= StayCommand; // Tome - Stop
+        StanceNormalCommand.OnNormalStanceRecognized -= NormalStanceCommand;// Nomaru - Normal (stance)
+        NormalAttackCommand.OnAttackNormalRecognized -= AttackNormalCommand;// Tatakau - Fight / Attack Normal
+    }
 
     public void ResetStance()
     {
