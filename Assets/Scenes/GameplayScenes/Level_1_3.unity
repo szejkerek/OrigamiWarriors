@@ -8475,9 +8475,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2915213199148667229, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
+      propertyPath: maxEnemiesAtOnce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915213199148667229, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
+      propertyPath: maxEnemiesOverall
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: maxEnemies
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
+      propertyPath: spawnInterval._upperBound
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: spawnPoints.Array.data[0]
@@ -8495,6 +8507,10 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 60331848}
+    - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
+      propertyPath: spawnInterval._bottomBound
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5701023085686559861, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: m_Name
       value: GameplayManager
