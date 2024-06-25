@@ -44,5 +44,5 @@ MonoBehaviour:
     Armor: 0
     Speed: 0
     CritChance: 0
-  howLongItLast: 0.5
-  range: 10
+  <Range>k__BackingField: 0
+  howLongItLast: 1
