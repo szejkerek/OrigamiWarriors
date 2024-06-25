@@ -655,9 +655,9 @@ MonoBehaviour:
   flee: {fileID: 21300000, guid: 7cb20025b4bcd474cbe788185253d7a3, type: 3}
   sword: {fileID: 21300000, guid: bc6d8f2f1487cdd44b0a7b16fe507d00, type: 3}
   shield: {fileID: 21300000, guid: 696aa009ef845fb41b589ce790048149, type: 3}
-  weak: {r: 0.3777062, g: 0.7283019, b: 0, a: 1}
-  any: {r: 1, g: 0.8071395, b: 0, a: 1}
-  strong: {r: 0.93962264, g: 0.21367048, b: 0, a: 1}
+  weak: {r: 0.11764706, g: 0.53333336, b: 0.8980392, a: 1}
+  any: {r: 1, g: 0.75686276, b: 0.02745098, a: 1}
+  strong: {r: 0.84705883, g: 0.105882354, b: 0.3764706, a: 1}
   soundVariations:
   - {fileID: 11400000, guid: a96e1ddfa8c250f4bb27b48f931f96be, type: 2}
   - {fileID: 11400000, guid: 2374ddd9d35ecaa46bab173a9333ca26, type: 2}
