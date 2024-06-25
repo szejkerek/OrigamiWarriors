@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = UnityEngine.Random.Range(5f, 10f);
+            float waitTime = UnityEngine.Random.Range(1f, 2f);
             yield return new WaitForSeconds(waitTime);
 
             int spawnIndex = UnityEngine.Random.Range(0, spawnPoints.Count);

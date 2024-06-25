@@ -2084,7 +2084,6 @@ MonoBehaviour:
   spawnRotation: {x: -90, y: -77.5, z: 0}
   liGoSpawn:
   - {fileID: 864952610305906571, guid: 42c0382afcce3304eb296eaeffd4386d, type: 3}
-  - {fileID: 0}
   floor: {fileID: 507508819}
 --- !u!65 &507508821
 BoxCollider:

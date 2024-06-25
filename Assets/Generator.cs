@@ -11,6 +11,6 @@ public class Generator : MonoBehaviour
     private void Start()
     {
         FindObjectsOfType<Generator2>().ToList().ForEach(generator => { generator.Spawn();});
-        surface.BuildNavMesh();
+        //surface.BuildNavMesh();
     }
 }
