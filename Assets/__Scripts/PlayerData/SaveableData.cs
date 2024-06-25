@@ -9,6 +9,4 @@ public class SaveableData
     public LevelResults levelResults = null;
     public Team team;
     public Map map = null;
-
-
 }
