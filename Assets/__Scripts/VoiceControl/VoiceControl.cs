@@ -1,14 +1,16 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Windows.Speech;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using UnityEngine.Windows.Speech;
-using System;
 using System.Text;
-
+using DG.Tweening; // Add this for DoTween
 
 public class VoiceControl : MonoBehaviour
 {
+    public Image activeMicrophone;
     public bool debugPhrases = true;
     public Transform phraseParent;
     public VoicePhraseView phrasePrefab;
@@ -18,28 +20,60 @@ public class VoiceControl : MonoBehaviour
     private bool voiceEnabled = false;
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> commandsDictionary = new Dictionary<string, Action>();
+    private Coroutine disableVoiceCoroutine;
+
+    float delay = 1.25f;
+
+    private void Start()
+    {
+        activeMicrophone.gameObject.SetActive(false);
+    }
+
     private void OnVoiceRecognized(PhraseRecognizedEventArgs speech)
     {
-      if (voiceEnabled)
-      {
-        if(debugPhrases) PrintPhrase(speech);
-
-        if (commandsDictionary.TryGetValue(speech.text, out Action action))
+        if (voiceEnabled)
         {
-          action?.Invoke();
+            if (debugPhrases) PrintPhrase(speech);
+
+            if (commandsDictionary.TryGetValue(speech.text, out Action action))
+            {
+                action?.Invoke();
+            }
         }
-      }
     }
 
-  private void Update()
-  {
-    if (Input.GetKey(KeyCode.Space))
+    private void Update()
     {
-      voiceEnabled = true;
-    }
-  }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (disableVoiceCoroutine != null)
+            {
+                StopCoroutine(disableVoiceCoroutine);
+                disableVoiceCoroutine = null;
+            }
+            if (!voiceEnabled)
+            {
+                voiceEnabled = true;
+                activeMicrophone.gameObject.SetActive(true);
+            }
+        }
+        else if (voiceEnabled && disableVoiceCoroutine == null)
+        {
+            disableVoiceCoroutine = StartCoroutine(DisableVoiceAfterDelay());
+        }
 
-  private static void PrintPhrase(PhraseRecognizedEventArgs speech)
+        ;
+    }
+
+    private IEnumerator DisableVoiceAfterDelay()
+    {
+        yield return new WaitForSeconds(delay);
+        voiceEnabled = false;
+        activeMicrophone.gameObject.SetActive(false);
+        disableVoiceCoroutine = null;
+    }
+
+    private static void PrintPhrase(PhraseRecognizedEventArgs speech)
     {
         StringBuilder builder = new StringBuilder();
         builder.AppendFormat("{0} ({1}){2}", speech.text, speech.confidence, Environment.NewLine);
@@ -64,7 +98,7 @@ public class VoiceControl : MonoBehaviour
             var phraseUI = Instantiate(phrasePrefab, phraseParent);
             phraseUI.Init(command);
 
-            foreach(var phrase in command.VoicePhrases)
+            foreach (var phrase in command.VoicePhrases)
             {
                 commandsDictionary.Add(phrase, command.Execute);
             }
@@ -77,6 +111,3 @@ public class VoiceControl : MonoBehaviour
         keywordRecognizer.Stop();
     }
 }
-
-
-
