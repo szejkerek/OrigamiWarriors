@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: New Normal Attack Command
   m_EditorClassIdentifier: 
   <DisplayPhrase>k__BackingField: '[7] Tatakau - Atack any'
-  <VoicePhrases>k__BackingField: []
+  <VoicePhrases>k__BackingField:
+  - tatakau
+  - tata
+  - tatak
+  - takt
   Cooldown:
-    cooldowTime: 0
+    cooldowTime: 1
