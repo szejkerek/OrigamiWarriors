@@ -85,7 +85,6 @@ public class AllyAgent : GoapAgent
     private void PlayHaiSound()
     {
         if (soundVariations.Count == 0) return;
-        Debug.Log("HI");
         AudioManager.Instance.PlayAtPosition(transform.position, soundVariations.SelectRandomElement());
     }
 
