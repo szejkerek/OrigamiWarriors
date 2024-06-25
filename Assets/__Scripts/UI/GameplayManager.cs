@@ -40,6 +40,18 @@ public class GameplayManager : MonoBehaviour
           tutorialHidden = true;
         }
       }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.PageUp))
+            {
+                LevelCompleted(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.PageDown))
+            {
+                LevelCompleted(false);
+            }
+        }
     }
   private void OnEnable()
     {
