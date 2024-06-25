@@ -8,7 +8,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public Character Character { get; private set; }
 
     public Transform AttackPoint => attackPoint;
-    public Action OnAttack { get; set; }
+    public Action<IUnit> OnAttack { get; set; }
 
     [SerializeField] Transform attackPoint;
 
@@ -83,7 +83,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
 
     public void AttackTarget(IUnit target)
     {
-        OnAttack?.Invoke();
+        OnAttack?.Invoke(target);
         Character.Weapon.itemData.Use(target, this);
     }
 }

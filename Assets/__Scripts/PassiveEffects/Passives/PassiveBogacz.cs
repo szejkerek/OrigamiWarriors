@@ -21,7 +21,7 @@ public class PassiveBogacz : PassiveEffectSO
         context.Owner.temporaryStats.Damage += (int)((float)SavableDataManager.Instance.data.playerResources.Money * bonusDamagePerGold);
     }
 
-    public override void OnAttack(SamuraiEffectsManager context)
+    public override void OnAttack(SamuraiEffectsManager context, IUnit target)
     {
         //TODO: Particle of coins in attack animation
     }

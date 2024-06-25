@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     public Transform AttackPoint => attackPoint;
 
-    public Action OnAttack { get; set; }
+    public Action<IUnit> OnAttack { get; set; }
 
     [SerializeField] Transform attackPoint;
 
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     public void AttackTarget(IUnit target)
     {
-        OnAttack?.Invoke();
+        OnAttack?.Invoke(target);
         weaponItem.itemData.Use(target, this);
     }
 
