@@ -44,7 +44,8 @@ public class Enemy : MonoBehaviour, IUnit
     {
         int damageReducedByArmor = Mathf.Max(0, valueHP - CharacterStats.Armor);
         Health -= damageReducedByArmor;
-        Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {CharacterStats.Armor})");
+        InfoTextManager.Instance.AddInformation($"Inky took {damageReducedByArmor} damage.", InfoLenght.Short);
+
         if(Health < 0)
         {
             OnEnemyKilled?.Invoke(this);

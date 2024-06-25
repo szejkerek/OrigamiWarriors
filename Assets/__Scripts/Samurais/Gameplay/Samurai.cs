@@ -46,7 +46,8 @@ public abstract class Samurai : MonoBehaviour, IUnit
         {
             OnSamuraiDeath();
         }
-        Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {stats.Armor})");
+
+        InfoTextManager.Instance.AddInformation($"{Character.DisplayName} took {damageReducedByArmor} damage.", InfoLenght.Short);
 
         samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.MaxHealth);
 

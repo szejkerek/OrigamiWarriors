@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AllyAgent : GoapAgent
@@ -10,8 +7,16 @@ public class AllyAgent : GoapAgent
     {
         playerPosition = player;
     }
-
-
+    public VoiceCommand StayCommandSO;
+    public VoiceCommand FollowCommandSO;
+    public VoiceCommand FleeCommandSO;
+    public VoiceCommand NormalStanceCommandSO;
+    public VoiceCommand AggressiveStanceCommandSO;
+    public VoiceCommand DefensiveStanceCommandSO;
+    public VoiceCommand AttackNormalCommandSO;
+    public VoiceCommand AttackWeakCommandSO;
+    public VoiceCommand AttackStrongCommandSO;
+    [Space]
     private Transform playerPosition;
     [SerializeField] SpriteRenderer iconBack, iconFront;
     [SerializeField] Sprite neutral, go, flee, sword, shield;
@@ -32,47 +37,47 @@ public class AllyAgent : GoapAgent
         if (Input.GetKeyUp("1"))
         {
             PlayHaiSound();
-            StayCommand(null);// Tome - Stop
+            StayCommandSO.Execute();
     }
         else if (Input.GetKeyUp("2"))
         {
             PlayHaiSound();
-            FollowCommand(null);// Hojo - Support
-    }
+            FollowCommandSO.Execute();
+        }
         else if(Input.GetKeyUp("3"))
         {
             PlayHaiSound();
-            FleeCommand(null);// Gyoko (Gyoukou) - March
-    }
+            FleeCommandSO.Execute();
+        }
         if (Input.GetKeyUp("4"))
         {
             PlayHaiSound();
-            NormalStanceCommand(null);// Nomaru - Normal (stance)
-    }
+            NormalStanceCommandSO.Execute();
+        }
         else if(Input.GetKeyUp("5"))
         {
             PlayHaiSound();
-            AggressiveStanceCommand(null);// Kogeki (Kougeki) - Attack
-    }
+            AggressiveStanceCommandSO.Execute();
+        }
         else if(Input.GetKeyUp("6"))
         {
             PlayHaiSound();
-            DefensiveStanceCommand(null);// Mamoru - Defend
-    }
+            DefensiveStanceCommandSO.Execute();
+        }
         if (Input.GetKeyUp("7"))
         {
             PlayHaiSound();
-            AttackNormalCommand(null);// Tatakau - Fight
-    }
+            AttackNormalCommandSO.Execute();
+        }
         else if(Input.GetKeyUp("8"))
         {
             PlayHaiSound();
-            AttackWeakCommand(null);// smalu -> attack small (min Health enemy)
-    }
+            AttackWeakCommandSO.Execute();
+        }
         else if(Input.GetKeyUp("9"))
         {
             PlayHaiSound();
-            AttackStrongCommand(null);// bigu -> attack big (max Health enemy)
+            AttackStrongCommandSO.Execute();
         }
     }
 
@@ -130,12 +135,7 @@ public class AllyAgent : GoapAgent
         NormalStanceCommand(null);
         AttackNormalCommand(null);
 
-    //goals.Add(new AgentGoal.Builder("Keep Watch")
-    //    .WithPriority(2)
-    //    .WithDesiredEffect(beliefs["Nothing"])
-    //    .Build());
-
-  }
+ }
 
 
 

@@ -639,6 +639,15 @@ MonoBehaviour:
   chaseSensor: {fileID: 5134524799086221647}
   attackSensor: {fileID: 6107446805975728489}
   text: {fileID: 0}
+  StayCommandSO: {fileID: 11400000, guid: 06dcccb6bad9a2d42b75979d8ca73912, type: 2}
+  FollowCommandSO: {fileID: 11400000, guid: 6c66b78820d9ee647862d7befd834dc2, type: 2}
+  FleeCommandSO: {fileID: 0}
+  NormalStanceCommandSO: {fileID: 11400000, guid: 72acd119ce5d28347b17676c96258b4d, type: 2}
+  AggressiveStanceCommandSO: {fileID: 0}
+  DefensiveStanceCommandSO: {fileID: 11400000, guid: 5e6fb38b94c1ef14fbe56228fc52cb4b, type: 2}
+  AttackNormalCommandSO: {fileID: 11400000, guid: 85164c5e6e9eabc45be41b7901d2b360, type: 2}
+  AttackWeakCommandSO: {fileID: 11400000, guid: 2a9f868d7e5ae56458828e36c8dff975, type: 2}
+  AttackStrongCommandSO: {fileID: 11400000, guid: 8168311c1983c3c4a958b81a7143b6e1, type: 2}
   iconBack: {fileID: 4539630737772824743}
   iconFront: {fileID: 888623032089214817}
   neutral: {fileID: 21300000, guid: 19fe54a07c103f44bb92f557cb76ab99, type: 3}

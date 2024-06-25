@@ -35,7 +35,6 @@ public class StatusManager : MonoBehaviour
     }
     public void ApplyWeakness(float weaknessRatio)
     {
-        Debug.Log("Weakened");
         isWeakenessApplied = true;
         IUnit unit = GetComponent<IUnit>();
         weaknessValue = (int)((float)unit.GetStats().Damage * weaknessRatio);
