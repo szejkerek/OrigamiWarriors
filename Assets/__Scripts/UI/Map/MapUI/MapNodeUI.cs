@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using Unity.VisualScripting;
 
 public enum MapNodeUIStates
 {
@@ -102,14 +100,9 @@ public class MapNodeUI : MonoBehaviour
     {
         if(mapNodeUIState == MapNodeUIStates.Attainable) 
         {
-            IslandButtonOnClick();
+            AudioManager.Instance.PlayGlobal(buttonIslandPressed);
             MapPlayerTracker.Instance.SendPlayerToNode(this);
         }
-        else
-        {
-            Debug.Log("Selected node cannot be accessed");
-        }
-
     }
 
     public void LoadNodeLevel()
@@ -119,11 +112,6 @@ public class MapNodeUI : MonoBehaviour
         //SceneLoader.Instance.LoadScene(currentIndex);
 
 
-    }
-
-    void IslandButtonOnClick()
-    {
-        AudioManager.Instance.PlayGlobal(buttonIslandPressed);
     }
 
     public void ButtonOnHover()
