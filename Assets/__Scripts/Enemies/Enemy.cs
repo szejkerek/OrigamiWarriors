@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IUnit
 
 
     public static Action<Enemy> OnEnemyKilled;
+    public Action<Enemy> OnDamaged;
 
     private EnemyGenerator generator;
     public bool IsAlly => false;
@@ -23,62 +24,44 @@ public class Enemy : MonoBehaviour, IUnit
 
     [SerializeField] Transform attackPoint;
 
-    private int health;
+    public int Health { get; private set; }
 
     public ParticleSystem particles;
 
-    SamuraiGeneral general;
 
     private void Awake()
     {
         generator = GetComponent<EnemyGenerator>();
         GetComponent<NavMeshAgent>().speed = CharacterStats.Speed;
         weaponItem = new Item(Weapon.AssetGUID);
-        health = GetStats().MaxHealth;
-        general = FindObjectOfType<SamuraiGeneral>();
+        Health = GetStats().MaxHealth;
+        GetComponentInChildren<HealthBarEnemy>().Init(this);
     }
-    //private void OnMouseOver()
-    //{
-    //    Debug.Log("Over");
-    //    if (Vector3.Distance(general.transform.position, transform.position) <= general.Character.Weapon.itemData.Range)
-    //    {
-    //        CursorManager.Instance.SetCursorState(CursorState.Attack);
-    //    }
-    //    else
-    //    {
-    //        CursorManager.Instance.SetCursorState(CursorState.Default);
-    //    }
-    //}
-
-    //private void OnMouseExit()
-    //{
-    //    Debug.Log("Exit");
-    //    CursorManager.Instance.SetCursorState(CursorState.Default);
-    //}
 
     public void TakeDamage(int valueHP)
     {
         int damageReducedByArmor = Mathf.Max(0, valueHP - CharacterStats.Armor);
-        health -= damageReducedByArmor;
+        Health -= damageReducedByArmor;
         Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {CharacterStats.Armor})");
-        if(health < 0)
+        if(Health < 0)
         {
             OnEnemyKilled?.Invoke(this);
             Destroy(gameObject);
         }
         else
         {
-            generator.GetDamage((float)health/ (float)GetStats().MaxHealth);
+            generator.GetDamage((float)Health/ (float)GetStats().MaxHealth);
         }
+        OnDamaged?.Invoke(this);    
     }
     public void HealUnit(int valueHP)
     {
-        health = Mathf.Min(health + valueHP, GetStats().MaxHealth);
+        Health = Mathf.Min(Health + valueHP, GetStats().MaxHealth);
     }
 
     public void HealToMax()
     {
-        health = GetStats().MaxHealth;
+        Health = GetStats().MaxHealth;
     }
 
     public CharacterStats GetStats()

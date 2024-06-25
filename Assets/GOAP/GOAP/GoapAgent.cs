@@ -79,8 +79,8 @@ public class GoapAgent : MonoBehaviour
         factory.AddBelief("AttackingEnemy", () => false);
 
         // HEALTH
-        //factory.AddBelief("AgentHealthLow", () => health < 30);
-        //factory.AddBelief("AgentIsHealthy", () => health >= 50);
+        //factory.AddBelief("AgentHealthLow", () => Health < 30);
+        //factory.AddBelief("AgentIsHealthy", () => Health >= 50);
 
         // STAMINA
         //factory.AddBelief("AgentStaminaLow", () => stamina < 10);
@@ -224,9 +224,9 @@ public class GoapAgent : MonoBehaviour
   //void UpdateStats()
   //{
   //  //stamina += InRangeOf(restingPosition.position, 3f) ? 20 : -10;
-  //  //health += InRangeOf(foodShack.position, 3f) ? 20 : -5;
+  //  //Health += InRangeOf(foodShack.position, 3f) ? 20 : -5;
   //  //stamina = Mathf.Clamp(stamina, 0, 100);
-  //  //health = Mathf.Clamp(health, 0, 100);
+  //  //Health = Mathf.Clamp(Health, 0, 100);
   //}
 
   // heal only in range of a certain location
