@@ -72,6 +72,11 @@ public class Enemy : MonoBehaviour, IUnit
         return CharacterStats + weaponItem.GetStats() + temporaryStats;
     }
 
+    public int GetHealth()
+    {
+        return Health;
+    }
+
     public void AttackTarget(IUnit target)
     {
         OnAttack?.Invoke(target);

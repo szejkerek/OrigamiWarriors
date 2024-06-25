@@ -81,6 +81,11 @@ public abstract class Samurai : MonoBehaviour, IUnit
         return Character.GetStats() + temporaryStats;
     }
 
+    public int GetHealth()
+    {
+        return GetStats().MaxHealth - Character.LostHealth;
+    }
+
     public void AttackTarget(IUnit target)
     {
         OnAttack?.Invoke(target);

@@ -138,7 +138,7 @@ public class Sensor : MonoBehaviour
 
             if (g.TryGetComponent(out IUnit unit) || (g.transform.parent != null && g.transform.parent.TryGetComponent(out unit)))
             {
-                float unitHealth = unit.GetStats().MaxHealth;
+                float unitHealth = unit.GetHealth();
 
                 bool shouldUpdateTarget = getWeakestInstead
                     ? unitHealth < targetHealth || targetHealth == float.MaxValue

@@ -23,4 +23,5 @@ public interface IUnit
     void HealToMax();
     void AttackTarget(IUnit target);
     CharacterStats GetStats();
+    int GetHealth();
 }

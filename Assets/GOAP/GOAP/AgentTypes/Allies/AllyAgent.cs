@@ -22,12 +22,19 @@ public class AllyAgent : GoapAgent
     [SerializeField] Sprite neutral, go, flee, sword, shield;
     [SerializeField] Color weak, any, strong;
     [SerializeField] List<Sound> soundVariations;
+    private int currentAttackTemp = 0;
+    private int currentDefendTemp = 0;
+    private Samurai thisSamurai;
+
+    [SerializeField] int defensiveStanceAttack = -10, defensiveStanceDefense = 30,
+        offensiveStanceAttack = 30, offensiveStanceDefense = -5;
 
     //private enum  = false;
 
     protected override void Start()
     {
         base.Start();
+        thisSamurai = GetComponent<Samurai>();
         //soundVariations = new List<Sound>();
     }
     protected override void Update()
@@ -108,7 +115,7 @@ public class AllyAgent : GoapAgent
 
 
         actions.Add(new AgentAction.Builder("AttackEnemy")
-            .WithStrategy(new AttackStrategy(1, attackSensor, 10, animator, this))
+            .WithStrategy(new AttackStrategy(0.5f, attackSensor, 10, animator, this))
             .AddPrecondition(beliefs["EnemyInAttackRange"])
             .AddEffect(beliefs["AttackingEnemy"])
             .Build());
@@ -137,20 +144,45 @@ public class AllyAgent : GoapAgent
  }
 
 
+    public void ResetStance()
+    {
+        thisSamurai.temporaryStats.Damage -= currentAttackTemp;
+        thisSamurai.temporaryStats.Armor -= currentDefendTemp;
+        currentDefendTemp = 0;
+        currentAttackTemp = 0;
+    }
+
 
 
     public void AggressiveStanceCommand(AttackCommand command)
     {
         iconFront.sprite = sword;
+        if (thisSamurai == null) return;
+        ResetStance();
+        thisSamurai.temporaryStats.Damage += offensiveStanceAttack;
+        thisSamurai.temporaryStats.Armor += offensiveStanceDefense;
+
+        currentAttackTemp = offensiveStanceAttack;
+        currentDefendTemp = offensiveStanceDefense;
     }
 
     public void DefensiveStanceCommand(DefenseCommand command)
     {
         iconFront.sprite = shield;
+        if (thisSamurai == null) return;
+        ResetStance();
+        thisSamurai.temporaryStats.Damage += defensiveStanceAttack;
+        thisSamurai.temporaryStats.Armor += defensiveStanceDefense;
+
+        currentAttackTemp = defensiveStanceAttack;
+        currentDefendTemp = defensiveStanceDefense;
+
     }
     public void NormalStanceCommand(StanceNormalCommand command)
     {
         iconFront.sprite = null;
+        if (thisSamurai == null) return;
+        ResetStance();
     }
     public void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min Health enemy)
   {
