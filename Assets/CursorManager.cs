@@ -71,10 +71,6 @@ public class CursorManager : Singleton<CursorManager>
     {
         Vector2 cursorPosition = Input.mousePosition;  
         cursorSprite.transform.position = cursorPosition + cursorOffset;  
-        if(Input.GetMouseButtonDown(0))
-        {
-            SetCooldownOnCursor(1);
-        }
 
         if(shouldCountDown)
         {
