@@ -641,9 +641,9 @@ MonoBehaviour:
   text: {fileID: 0}
   StayCommandSO: {fileID: 11400000, guid: 06dcccb6bad9a2d42b75979d8ca73912, type: 2}
   FollowCommandSO: {fileID: 11400000, guid: 6c66b78820d9ee647862d7befd834dc2, type: 2}
-  FleeCommandSO: {fileID: 0}
+  FleeCommandSO: {fileID: 11400000, guid: 26a291f91bbeac44795b143d06fea885, type: 2}
   NormalStanceCommandSO: {fileID: 11400000, guid: 72acd119ce5d28347b17676c96258b4d, type: 2}
-  AggressiveStanceCommandSO: {fileID: 0}
+  AggressiveStanceCommandSO: {fileID: 11400000, guid: 696a87a594cca764284c984357009116, type: 2}
   DefensiveStanceCommandSO: {fileID: 11400000, guid: 5e6fb38b94c1ef14fbe56228fc52cb4b, type: 2}
   AttackNormalCommandSO: {fileID: 11400000, guid: 85164c5e6e9eabc45be41b7901d2b360, type: 2}
   AttackWeakCommandSO: {fileID: 11400000, guid: 2a9f868d7e5ae56458828e36c8dff975, type: 2}
