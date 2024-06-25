@@ -14,16 +14,25 @@ public class SamuraiGeneral : Samurai
         SetupCamera();
     }
 
+    float cursorChangeCooldown = 0.2f;
+    float cursorChangeTimer = 0f;
     private void Update()
     {
+        cursorChangeTimer += Time.deltaTime;
+        if (cursorChangeTimer >= cursorChangeCooldown)
+        {
+            TryToChangeCursor();
+            cursorChangeTimer = 0f; // Reset the timer
+        }
+
+
         if (Input.GetMouseButtonDown(0))
         {
-            CursorManager.Instance.SetCooldownOnCursor(Character.Weapon.itemData.Cooldown.cooldowTime);
+            
             CastRayAndAttack();
         }
         if (Input.GetMouseButtonDown(1))
         {
-            CursorManager.Instance.SetCooldownOnCursor(Character.Skill.itemData.Cooldown.cooldowTime);
             UseSkill();
         }
     }
@@ -35,7 +44,6 @@ public class SamuraiGeneral : Samurai
         {
             virtualCamera.Follow = transform;
             virtualCamera.LookAt = transform;
-            // Assuming the Main Camera is the one used by Cinemachine
             mainCamera = Camera.main;
         }
     }
@@ -50,9 +58,39 @@ public class SamuraiGeneral : Samurai
             IUnit unit = hit.collider.GetComponent<IUnit>();
             if (unit != null && !unit.IsAlly)
             {               
+                //is not stunned, 
                 AttackTarget(unit);
+                CursorManager.Instance.SetCooldownOnCursor(Character.Weapon.itemData.Cooldown.cooldowTime);
+                CursorManager.Instance.SetCursorState(CursorState.Default);
+                return;
             }
         }
+    }
+
+    private void TryToChangeCursor()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray, 1500f, m_Mask);
+
+        foreach (RaycastHit hit in hits)
+        {
+            IUnit unit = hit.collider.GetComponent<IUnit>();
+            if (unit != null && !unit.IsAlly)
+            {
+                if (Vector3.Distance(AttackPoint.transform.position, unit.gameObject.transform.position) <= Character.Weapon.itemData.Range)
+                {
+                    if (!false) // if is not stunned && can attack again
+                    {
+                        if(Character.Weapon.itemData.Cooldown.IsOffCooldown())
+                        {
+                            CursorManager.Instance.SetCursorState(CursorState.Attack);
+                        }
+                        return;
+                    }
+                }
+            }
+        }
+        CursorManager.Instance.SetCursorState(CursorState.Default);
     }
 
     protected override void OnSamuraiDeath()

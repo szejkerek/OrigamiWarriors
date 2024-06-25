@@ -67,12 +67,12 @@ public class AllyAgent : GoapAgent
         else if(Input.GetKeyUp("8"))
         {
             PlayHaiSound();
-            AttackWeakCommand(null);// smalu -> attack small (min health enemy)
+            AttackWeakCommand(null);// smalu -> attack small (min Health enemy)
     }
         else if(Input.GetKeyUp("9"))
         {
             PlayHaiSound();
-            AttackStrongCommand(null);// bigu -> attack big (max health enemy)
+            AttackStrongCommand(null);// bigu -> attack big (max Health enemy)
         }
     }
 
@@ -118,8 +118,8 @@ public class AllyAgent : GoapAgent
 
         AttackCommand.OnAttackRecognized += AggressiveStanceCommand; // Kogeki (Kougeki) - Attack
         DefenseCommand.OnDefenseRecognized += DefensiveStanceCommand; // Mamoru - Defend
-        AttackBigCommand.OnAttackBigRecognized += AttackStrongCommand; // bigu -> attack big (max health enemy)
-        AttackSmallCommand.OnAttackSmallRecognized += AttackWeakCommand; // smalu -> attack small (min health enemy)
+        AttackBigCommand.OnAttackBigRecognized += AttackStrongCommand; // bigu -> attack big (max Health enemy)
+        AttackSmallCommand.OnAttackSmallRecognized += AttackWeakCommand; // smalu -> attack small (min Health enemy)
         MarchWanderCommand.onWanderRecognized += FleeCommand; // Gyoko (Gyoukou) - March
         FollowSupportCommand.onFollowRecognized += FollowCommand; // Hojo - Support
         StayIdleCommand.OnIdleBigRecognized += StayCommand; // Tome - Stop
@@ -153,13 +153,13 @@ public class AllyAgent : GoapAgent
     {
         iconFront.sprite = null;
     }
-    public void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min health enemy)
+    public void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min Health enemy)
   {
         iconBack.color = weak;
       SetupSensors(Sensor.TargetingMode.Weakest);
         
     }
-    public void AttackStrongCommand(AttackBigCommand command) // Kogeki Oki (Kougeki ookii) / Kogeki biggu -> attack big (max health enemy)
+    public void AttackStrongCommand(AttackBigCommand command) // Kogeki Oki (Kougeki ookii) / Kogeki biggu -> attack big (max Health enemy)
   {
         iconBack.color = strong;
         SetupSensors(Sensor.TargetingMode.Strongest);

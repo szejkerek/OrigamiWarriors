@@ -51,8 +51,7 @@ public class GameplayManager : MonoBehaviour
 
     private void OnGeneralDeath(Samurai samurai)
     {
-        LevelCompleted(isWin: false);
-        Application.Quit();
+        SavableDataManager.Instance.RestartGame(toMainMenu: true);
     }
 
     private void OnAllyDeath(Samurai samurai)

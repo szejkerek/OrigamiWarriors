@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 //
 public class SavableDataManager : Singleton<SavableDataManager>, ISavable
 {    
@@ -8,7 +7,17 @@ public class SavableDataManager : Singleton<SavableDataManager>, ISavable
     protected override void Awake()
     {
         base.Awake();
+        RestartGame();
+    }
+
+    public void RestartGame(bool toMainMenu = false)
+    {
+        data = new SaveableData();
         data.team = new Team(team);
+        if(toMainMenu)
+        {
+            SceneLoader.Instance.LoadScene(SceneConstants.MenuScene);
+        }
     }
 
     #region Save Logic

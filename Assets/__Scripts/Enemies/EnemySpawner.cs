@@ -13,6 +13,7 @@ public class EnemyChance
 
 public class EnemySpawner : MonoBehaviour
 {
+    public Interval<float> spawnInterval;
     public static Action OnEnemySpawned;
     [SerializeField] List<Transform> spawnPoints;
     [SerializeField] List<EnemyChance> enemyPrefabs;
@@ -28,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = UnityEngine.Random.Range(5f, 10f);
+            float waitTime = UnityEngine.Random.Range(spawnInterval.BottomBound, spawnInterval.UpperBound);
             yield return new WaitForSeconds(waitTime);
 
             int spawnIndex = UnityEngine.Random.Range(0, spawnPoints.Count);

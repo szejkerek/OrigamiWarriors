@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class Samurai : MonoBehaviour, IUnit
 {
     public CharacterStats temporaryStats;
-
     public bool IsAlly => true;
     public Character Character { get; private set; }
 

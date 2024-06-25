@@ -10,10 +10,8 @@ public class Generator2 : MonoBehaviour
     public Vector3 spawnRotation;
     public List<GameObject> liGoSpawn = new List<GameObject>();
     public GameObject floor;
-    public NavMeshSurface navSurface;
 
-
-    void Start()
+    public void Spawn()
     {
         if (floor == null)
         {
@@ -37,7 +35,7 @@ public class Generator2 : MonoBehaviour
 
 
         GameObject goToSpawn = liGoSpawn[Random.Range(0, liGoSpawn.Count)];
-        Collider objCollider = goToSpawn.GetComponent<Collider>();
+        //Collider objCollider = goToSpawn.GetComponent<Collider>();
 
         Vector3 spawnPosition = new Vector3(randomX, 0, randomZ) + transform.position + offset;
 
@@ -50,11 +48,6 @@ public class Generator2 : MonoBehaviour
         newhight += high / 2 + floor.transform.position.y + floorSize.y / 2;
 
         SpawnedObject.transform.position = new Vector3(SpawnedObject.transform.position.x, newhight, SpawnedObject.transform.position.z);
-
-
-        navSurface.BuildNavMesh();
-
-
     }
 
 }
