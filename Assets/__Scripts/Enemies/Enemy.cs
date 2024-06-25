@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IUnit
 {
+    public CharacterStats temporaryStats;
+
     public AssetReferenceItemSO Weapon;
     private Item weaponItem;
 
@@ -66,7 +68,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     public CharacterStats GetStats()
     {
-        return CharacterStats + weaponItem.GetStats();
+        return CharacterStats + weaponItem.GetStats() + temporaryStats;
     }
 
     public void AttackTarget(IUnit target)
