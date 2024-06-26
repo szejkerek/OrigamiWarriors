@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-
-
+using UnityEngine.AI;
 
 public class StatusManager : MonoBehaviour
 {
     bool isWeakenessApplied = false;
     int weaknessValue = 0;
+
+    bool isPoisonApplied = false;
+    float timeToTick = 0.5f;
+
+    bool isStunApplied = false;
+
     public void ApplyStun(float timer)
     {
         StartCoroutine(ApplyStunCorutine(timer));
@@ -17,11 +22,28 @@ public class StatusManager : MonoBehaviour
     IEnumerator ApplyStunCorutine(float timer)
     {
         Debug.Log("Stunned");
-        yield return null;
+        isStunApplied = true;
+        
+        GoapAgent agent = GetComponent<GoapAgent>();
+        NavMeshAgent navAgent = GetComponent<NavMeshAgent>();
+        navAgent.enabled = !isStunApplied;
+        agent.enabled = !isStunApplied;
+        agent.GetComponentInChildren<Animator>().enabled = !isStunApplied;
+        yield return new WaitForSeconds(timer);
+
+        isStunApplied = false;
+        navAgent.enabled = !isStunApplied;
+        agent.enabled = !isStunApplied;
+        agent.GetComponentInChildren<Animator>().enabled = !isStunApplied;
     }
     public void RevertStun()
     {
-
+        isStunApplied = false;
+        GoapAgent agent = GetComponent<GoapAgent>();
+        NavMeshAgent navAgent = GetComponent<NavMeshAgent>();
+        navAgent.enabled = !isStunApplied;
+        agent.enabled = !isStunApplied;
+        agent.GetComponentInChildren<Animator>().enabled = !isStunApplied;
     }
     public void ApplyWeakness(float timer, float weaknessRatio)
     {
@@ -35,7 +57,6 @@ public class StatusManager : MonoBehaviour
     }
     public void ApplyWeakness(float weaknessRatio)
     {
-        Debug.Log("Weakened");
         isWeakenessApplied = true;
         IUnit unit = GetComponent<IUnit>();
         weaknessValue = (int)((float)unit.GetStats().Damage * weaknessRatio);
@@ -43,24 +64,36 @@ public class StatusManager : MonoBehaviour
     }
     public void RevertWeakness()
     {
-        isWeakenessApplied = false;
-        WeaknessEffect(isWeakenessApplied);
+        if(isWeakenessApplied)
+        {
+            isWeakenessApplied = false;
+            WeaknessEffect(isWeakenessApplied);
+        }
         weaknessValue = 0;
     }
 
     public void ApplyPoison(float dmgPerTick, int ticks)
     {
-        StartCoroutine(ApplyWeaknessCorutine(dmgPerTick, ticks));
+        StartCoroutine(ApplyPoisonCorutine(dmgPerTick, ticks));
     }
     IEnumerator ApplyPoisonCorutine(float dmgPerTick, int ticks)
     {
+        isPoisonApplied = true;
+        int appliedTicks = 0;
         Debug.Log("Poisoned");
-        yield return null;
+        IUnit unit = GetComponent<IUnit>();
+        while (appliedTicks < ticks)
+        {
+            if(isPoisonApplied) unit.TakeDamage((int)dmgPerTick);
+            yield return new WaitForSeconds(timeToTick);
+            appliedTicks++;
+        }
+        isPoisonApplied = false;
     }
 
     public void RevertPoison()
     {
-
+        isPoisonApplied = false;
     }
 
     public void ApplyCleanse()

@@ -16,6 +16,9 @@ public class DamageDisplay : MonoBehaviour
 
     public float unitsAway;
 
+    public Sound[] damageSound;
+    //public Sound damage;
+
     public float moveSpeed = 1.0f;
     public float fadeDuration = 1.0f;
 
@@ -36,6 +39,8 @@ public class DamageDisplay : MonoBehaviour
 
     public void Init(int damage, Vector3 origin, Vector3 target)
     {
+        AudioManager.Instance.PlayAtPosition(this.transform.position, damageSound[Random.RandomRange(0, damageSound.Length-1)]);
+
         damageText.text = damage.ToString();
         float t = (float)(damage - dmgBounds.BottomBound) / (dmgBounds.UpperBound - dmgBounds.BottomBound);
         damageText.color = Color.Lerp(bottom, top, t);

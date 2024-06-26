@@ -10,6 +10,7 @@ public class ResourcesHolder
     public void AddMoney(int money)
     {
         Money += money;
+        InfoTextManager.Instance.AddInformation($"You gained {money} money.", InfoLenght.Long);
         OnResourcesUpdated?.Invoke(this);
     }
 
@@ -20,6 +21,7 @@ public class ResourcesHolder
             return false; 
 
         Money -= money;
+        InfoTextManager.Instance.AddInformation($"You lost {money} money.", InfoLenght.Long);
         OnResourcesUpdated?.Invoke(this);
         return true;
     }

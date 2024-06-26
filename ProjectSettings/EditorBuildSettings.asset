@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoreIntro.unity
     guid: afe7c5f22ea8c35438b0389c8cf79b62
   - enabled: 1
+    path: Assets/Scenes/GeneralDesign.unity
+    guid: 6102ed483f244764196a717796bbb95b
+  - enabled: 1
     path: Assets/Scenes/ChooseLevelScene.unity
     guid: 2d86f87c379ccf04a8ea61a79b06f450
   - enabled: 1

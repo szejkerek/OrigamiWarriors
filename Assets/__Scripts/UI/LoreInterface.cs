@@ -20,7 +20,7 @@ public class LoreInterface : MonoBehaviour
     void LevelSceneButtonOnClick()
     {
         AudioManager.Instance.PlayGlobal(buttonPressed);
-        SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
+        SceneLoader.Instance.LoadScene(SceneConstants.GeneralDesign);
     }
 
     void MenuSceneButtonOnClick()

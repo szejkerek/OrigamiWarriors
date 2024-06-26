@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     public Transform AttackPoint => attackPoint;
 
-    public Action OnAttack { get; set; }
+    public Action<IUnit> OnAttack { get; set; }
 
     [SerializeField] Transform attackPoint;
 
@@ -42,9 +42,10 @@ public class Enemy : MonoBehaviour, IUnit
 
     public void TakeDamage(int valueHP)
     {
-        int damageReducedByArmor = Mathf.Max(0, valueHP - CharacterStats.Armor);
+        int damageReducedByArmor = Mathf.Max(1, valueHP - CharacterStats.Armor);
         Health -= damageReducedByArmor;
-        Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {CharacterStats.Armor})");
+        InfoTextManager.Instance.AddInformation($"Inky took {damageReducedByArmor} damage.", InfoLenght.Short);
+
         if(Health < 0)
         {
             OnEnemyKilled?.Invoke(this);
@@ -71,9 +72,14 @@ public class Enemy : MonoBehaviour, IUnit
         return CharacterStats + weaponItem.GetStats() + temporaryStats;
     }
 
+    public int GetHealth()
+    {
+        return Health;
+    }
+
     public void AttackTarget(IUnit target)
     {
-        OnAttack?.Invoke();
+        OnAttack?.Invoke(target);
         weaponItem.itemData.Use(target, this);
     }
 

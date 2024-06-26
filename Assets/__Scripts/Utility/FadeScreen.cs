@@ -45,7 +45,7 @@ using UnityEngine;
             {
                 target.SetAlpha(Mathf.Lerp(alphaIn, alphaOut, timer / duration));
 
-                timer += Time.deltaTime;
+                timer += Time.unscaledDeltaTime;
                 yield return null;
             }
 

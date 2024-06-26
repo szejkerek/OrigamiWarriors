@@ -5,7 +5,7 @@ public class PassiveGigant : PassiveEffectSO
 {
     public override string GetDesctiption()
     {
-        return $"życie *200%, większy rozmiar postac";
+        return $"armor i obrażenia są *200%, większy rozmiar postac";
     }
 
     public override string GetName()

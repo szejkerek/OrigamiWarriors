@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
-public class TeamManagementInterface : Singleton<TeamManagementInterface>
+public class TeamManagementInterface : MonoBehaviour
 {
     public CharacterPanel CharacterPanel;
 

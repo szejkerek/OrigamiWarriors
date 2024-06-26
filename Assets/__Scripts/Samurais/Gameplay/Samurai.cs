@@ -8,7 +8,7 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public Character Character { get; private set; }
 
     public Transform AttackPoint => attackPoint;
-    public Action OnAttack { get; set; }
+    public Action<IUnit> OnAttack { get; set; }
 
     [SerializeField] Transform attackPoint;
 
@@ -39,14 +39,15 @@ public abstract class Samurai : MonoBehaviour, IUnit
     public void TakeDamage(int valueHP)
     {
         CharacterStats stats = GetStats();
-        int damageReducedByArmor = Mathf.Max(0, valueHP - stats.Armor);
+        int damageReducedByArmor = Mathf.Max(1, valueHP - stats.Armor);
         Character.LostHealth += damageReducedByArmor;
 
         if (stats.MaxHealth <= Character.LostHealth)
         {
             OnSamuraiDeath();
         }
-        Debug.Log($"{name} took {damageReducedByArmor} damage ({valueHP} - {stats.Armor})");
+
+        InfoTextManager.Instance.AddInformation($"{Character.DisplayName} took {damageReducedByArmor} damage.", InfoLenght.Short);
 
         samuraiRenderer.SetDamagePercent((float)Character.LostHealth/ (float)stats.MaxHealth);
 
@@ -80,9 +81,14 @@ public abstract class Samurai : MonoBehaviour, IUnit
         return Character.GetStats() + temporaryStats;
     }
 
+    public int GetHealth()
+    {
+        return GetStats().MaxHealth - Character.LostHealth;
+    }
+
     public void AttackTarget(IUnit target)
     {
-        OnAttack?.Invoke();
+        OnAttack?.Invoke(target);
         Character.Weapon.itemData.Use(target, this);
     }
 }

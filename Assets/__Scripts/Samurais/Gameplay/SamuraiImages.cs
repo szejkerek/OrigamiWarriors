@@ -18,7 +18,7 @@ public class SamuraiImages
        Helmet_F.gameObject.SetActive(active);
        Face_F.gameObject.SetActive(active);
        Head.gameObject.SetActive(active);
-       Weapon.gameObject.SetActive(active);
+       //Weapon.gameObject.SetActive(active);
        Chestplate.gameObject.SetActive(active);
        Pants.gameObject.SetActive(active);
     }

@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2777379717304871318, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.107
       objectReference: {fileID: 0}
     - target: {fileID: 2968177205095793731, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -324,10 +324,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c19d1b4fa5cb94ebe67c8e1dd5c732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temporaryStats:
+    Damage: 0
+    MaxHealth: 0
+    Armor: 0
+    Speed: 0
+    CritChance: 0
   attackPoint: {fileID: 5449479922154536055}
   m_Mask:
     serializedVersion: 2
     m_Bits: 2048
+  attack: {fileID: 11400000, guid: 8f50cd4ea78d753458ce030c0cd854f1, type: 2}
+  special: {fileID: 11400000, guid: f128f6343edb9bc45b3dbf8b195bf449, type: 2}
+  death: {fileID: 11400000, guid: 28c6bf8b1dc24dc489927f4b5a42dfd0, type: 2}
 --- !u!143 &2652560140134893046
 CharacterController:
   m_ObjectHideFlags: 0

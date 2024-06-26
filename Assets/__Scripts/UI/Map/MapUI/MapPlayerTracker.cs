@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -22,29 +23,22 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
     public List<AssetReferenceCharacterSO> possibleCharacters;
     public void SendPlayerToNode(MapNodeUI mapNode)
     {
-        if (locked)
-        {
-            return;
-        }
-
+        if(locked) return;
         locked = lockAfterSelecting;
         mapManager.currentMap.path.Add(mapNode.mapNode.locationOnMap);
         SavableDataManager.Instance.data.map = mapManager.currentMap;
         SavableDataManager.Instance.Save();
-        view.SetAttainableNodes();
-        view.SetLineColors();
-       
 
         switch (mapNode.mapNode.type)
         {
             case MapNodeType.Arena:
                 int sceneIndex = SceneConstants.Level_1;
-                if(mapManager.currentMap.path.Count > 1)
+                if (mapManager.currentMap.path.Count > 1)
                 {
                     sceneIndex = UnityEngine.Random.Range(SceneConstants.Level_1, SceneConstants.Level_1_3 + 1);
                 }
 
-                SceneLoader.Instance.LoadScene(sceneIndex); //TODO: Losowanie poziomu pomiędzy dostępnymi
+                SceneLoader.Instance.LoadScene(sceneIndex);
                 break;
             case MapNodeType.Armory:
                 PopupController.Instance.PopupPanel.ChooseModal(GetNewRandomCharacters(), TryAddNewCharacter, "Choose new ally", "Our elite squad has the opportunity to recruit a new, exceptional ally. Each candidate brings unique skills and experience that can change the course of our missions. Carefully consider their abilities and stats to choose the warrior who will best complement our team.");
@@ -83,6 +77,15 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
             default:
                 throw new NotImplementedException();
         }
+
+        StartCoroutine(UpdateMap());
+    }
+
+    public IEnumerator UpdateMap()
+    {
+        yield return new WaitForSeconds(1f);
+        view.SetAttainableNodes();
+        view.SetLineColors();
     }
 
     private List<Character> GetNewRandomCharacters()

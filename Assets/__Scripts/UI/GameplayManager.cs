@@ -10,14 +10,20 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] BlobCounter blobCounter;
 
     int killedEnemies;
+    public Sound battleAmbient;
 
     [Header("Enemy Spawner settings")]
     public EnemySpawner EnemySpawner;
     [SerializeField] int maxEnemiesOverall;
     [SerializeField] int maxEnemiesAtOnce;
 
+    [Header("Tutorial canvas")]
     [SerializeField] GameObject tutorialCanvas;
     private bool tutorialHidden = false;
+
+    [Header("GOAP Tutorial canvas")]
+    [SerializeField] GameObject goapTutorialCanvas;
+    private bool goapTutorialHidden = true;
 
     void Awake()
     {
@@ -36,12 +42,42 @@ public class GameplayManager : MonoBehaviour
         if (Input.anyKeyDown)
         {
           tutorialCanvas.SetActive(false);
-          Time.timeScale = 1.0f;
+          //Time.timeScale = 1.0f;
           tutorialHidden = true;
+
+          goapTutorialCanvas.SetActive(true);
+          goapTutorialHidden = false;
+          //Time.timeScale = 0.0f;
         }
       }
+      else if (!goapTutorialHidden)
+      { 
+        if (Input.anyKeyDown)
+        {
+          goapTutorialCanvas.SetActive(false);
+          Time.timeScale = 1.0f;
+          goapTutorialHidden = true;
+        }
+      }
+      else
+      {
+          if(Input.GetKeyDown(KeyCode.PageUp))
+          {
+              LevelCompleted(true);
+          }
+
+          if (Input.GetKeyDown(KeyCode.PageDown))
+          {
+              LevelCompleted(false);
+          }
+      }
     }
-  private void OnEnable()
+    private void Start()
+    {
+        AudioManager.Instance.PlayGlobal(battleAmbient, SoundType.Music);
+    }
+
+    private void OnEnable()
     {
         killedEnemies = 0;
         Enemy.OnEnemyKilled += OnEnemyKilled;

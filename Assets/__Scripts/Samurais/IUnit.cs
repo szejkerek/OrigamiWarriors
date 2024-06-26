@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IUnit
 {
-    Action OnAttack { get; set; }
+    Action<IUnit> OnAttack { get; set; }
     GameObject gameObject { get; }
     Transform AttackPoint { get; }
     bool IsAlly { get; }
@@ -23,4 +23,5 @@ public interface IUnit
     void HealToMax();
     void AttackTarget(IUnit target);
     CharacterStats GetStats();
+    int GetHealth();
 }

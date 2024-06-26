@@ -1138,6 +1138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942f38451b6fdcd4e81def255589a7d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temporaryStats:
+    Damage: 0
+    MaxHealth: 0
+    Armor: 0
+    Speed: 0
+    CritChance: 0
   Weapon:
     m_AssetGUID: 36b65e7a2f37eac4e8f5310b7e833dd5
     m_SubObjectName: 
@@ -3270,6 +3276,10 @@ PrefabInstance:
     - target: {fileID: 3717861454564409042, guid: 458424e89613f754eb8bbef6bebe209b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404081232204948244, guid: 458424e89613f754eb8bbef6bebe209b, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7694182794281819438, guid: 458424e89613f754eb8bbef6bebe209b, type: 3}
       propertyPath: m_AnchorMax.x
