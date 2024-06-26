@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Oczyszczajacy
   <Icon>k__BackingField:
-    m_AssetGUID: 995ddf3de65c52d48b8a23c1bdce909c
+    m_AssetGUID: ada5667da06ba32408e2518b170c49d0
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -44,4 +44,4 @@ MonoBehaviour:
     Armor: 0
     Speed: 0
     CritChance: 0
-  range: 10.17
+  <Range>k__BackingField: 10
