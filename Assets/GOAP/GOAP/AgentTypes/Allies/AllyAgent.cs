@@ -25,12 +25,15 @@ public class AllyAgent : GoapAgent
     private int currentAttackTemp = 0;
     private int currentDefendTemp = 0;
     private Samurai thisSamurai;
-
+    [Space]
+    [SerializeField] float commandDetectionRange;
+    [Space]
     [SerializeField] int defensiveStanceDefense;
     [SerializeField] int defensiveStanceAttack;
     [Space]
     [SerializeField] int offensiveStanceAttack;
     [SerializeField] int offensiveStanceDefense;
+
 
     //private enum  = false;
 
@@ -167,10 +170,23 @@ public class AllyAgent : GoapAgent
         currentAttackTemp = 0;
     }
 
-
+    private bool NearPlayer(float range)
+    {
+        if (playerPosition == null)
+        {
+            playerPosition = FindAnyObjectByType<SamuraiGeneral>().transform;
+        }
+        if (Vector3.Distance(playerPosition.position, transform.position) <= range)
+        {
+            Debug.Log(Vector3.Distance(playerPosition.position, transform.position));
+            return true;
+        }
+        else return false;
+    }
 
     public void AggressiveStanceCommand(AttackCommand command)
     {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconFront.sprite = sword;
         if (thisSamurai == null) return;
         ResetStance();
@@ -183,6 +199,7 @@ public class AllyAgent : GoapAgent
 
     public void DefensiveStanceCommand(DefenseCommand command)
     {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconFront.sprite = shield;
         if (thisSamurai == null) return;
         ResetStance();
@@ -195,36 +212,41 @@ public class AllyAgent : GoapAgent
     }
     public void NormalStanceCommand(StanceNormalCommand command)
     {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconFront.sprite = null;
         if (thisSamurai == null) return;
         ResetStance();
     }
     public void AttackWeakCommand(AttackSmallCommand command) // Kogeki chisai (Kougeki chiisaii) / Kogeki sumoru -> attack small (min Health enemy)
   {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconBack.color = weak;
       SetupSensors(Sensor.TargetingMode.Weakest);
         
     }
     public void AttackStrongCommand(AttackBigCommand command) // Kogeki Oki (Kougeki ookii) / Kogeki biggu -> attack big (max Health enemy)
   {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconBack.color = strong;
         SetupSensors(Sensor.TargetingMode.Strongest);
     }
     public void AttackNormalCommand(NormalAttackCommand command)
     {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconBack.color = any;
         SetupSensors(Sensor.TargetingMode.Normal);
     }
     private void SetupSensors(Sensor.TargetingMode mode)
     {
+        if (!NearPlayer(commandDetectionRange)) return;
         attackSensor.targetingMode = mode;
         chaseSensor.targetingMode = mode;
     }
   public void FleeCommand(MarchWanderCommand command) // Gyoko (Gyoukou) - March FLEEEE
   {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconBack.sprite = flee;
 
-        Debug.Log("FLEE!");
         if (CommadExists("GroupUp"))
         {
             goals.Remove(GetGoal("GroupUp"));
@@ -247,6 +269,7 @@ public class AllyAgent : GoapAgent
     }
     public void StayCommand(StayIdleCommand command) // Tome - Stop
   {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconBack.sprite = neutral;
         Debug.Log("STAY!");
         if(CommadExists("GroupUp"))
@@ -260,6 +283,7 @@ public class AllyAgent : GoapAgent
     }
     public void FollowCommand(FollowSupportCommand command) // Hojo (Hojou) - Support
     {
+        if (!NearPlayer(commandDetectionRange)) return;
         iconBack.sprite = go;
         Debug.Log("FOLLOW!");
         if (CommadExists("GroupUp"))

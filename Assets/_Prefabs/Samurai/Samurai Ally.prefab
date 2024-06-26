@@ -665,6 +665,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c584944de8c8c14eb7d68d5a8550083, type: 2}
   - {fileID: 11400000, guid: e16de076fd0208a479ae8a9d034e8bf4, type: 2}
   - {fileID: 11400000, guid: 7f288b4047ab8bc4ab91fb7344b79d0c, type: 2}
+  commandDetectionRange: 5
   defensiveStanceDefense: 10
   defensiveStanceAttack: -15
   offensiveStanceAttack: 20
