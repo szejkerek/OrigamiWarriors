@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, IUnit
 
     public void TakeDamage(int valueHP)
     {
-        int damageReducedByArmor = Mathf.Max(0, valueHP - CharacterStats.Armor);
+        int damageReducedByArmor = Mathf.Max(1, valueHP - CharacterStats.Armor);
         Health -= damageReducedByArmor;
         InfoTextManager.Instance.AddInformation($"Inky took {damageReducedByArmor} damage.", InfoLenght.Short);
 

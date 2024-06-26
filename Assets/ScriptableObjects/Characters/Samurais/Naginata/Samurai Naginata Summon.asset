@@ -23,7 +23,7 @@ MonoBehaviour:
     CritChance: 0.12
   <PassiveEffects>k__BackingField: []
   <Weapon>k__BackingField:
-    m_AssetGUID: 1363dc464d9c50b4fb66a0e0dc420ff8
+    m_AssetGUID: 3a6d39939b6465d4db702d02ad27df6e
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
