@@ -23,7 +23,7 @@ public class MenuInterface : MonoBehaviour
 
     public void Start()
     {
-        //AudioManager.Instance.PlayGlobal(menuAmbient, SoundType.Music);
+        AudioManager.Instance.PlayGlobal(menuAmbient, SoundType.Music);
     }
 
     void StartButtonOnClick()

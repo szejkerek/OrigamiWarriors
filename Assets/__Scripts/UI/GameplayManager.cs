@@ -74,7 +74,7 @@ public class GameplayManager : MonoBehaviour
     }
     private void Start()
     {
-        //AudioManager.Instance.PlayGlobal(battleAmbient, SoundType.Music);
+        AudioManager.Instance.PlayGlobal(battleAmbient, SoundType.Music);
     }
 
     private void OnEnable()
