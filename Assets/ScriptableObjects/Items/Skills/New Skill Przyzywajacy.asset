@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d9c59d4aba0b54b8f75938c04e8db6, type: 3}
   m_Name: New Skill Przyzywajacy
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Summoning Roar
+  <Name>k__BackingField: Summon
   <Icon>k__BackingField:
     m_AssetGUID: 3c60ded90dc0d4941bd3cedbb69e496c
     m_SubObjectName: 
