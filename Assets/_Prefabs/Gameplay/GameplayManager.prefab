@@ -2960,7 +2960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  spawnRadius: 2.83
+  spawnRadius: 2.6
   general: {fileID: 0}
 --- !u!1 &4303960193563861633
 GameObject:
@@ -4341,7 +4341,11 @@ MonoBehaviour:
   - {fileID: 0}
   enemyPrefabs:
   - EnemyPrefab: {fileID: 2355622456719026271, guid: 89a4e546fd7b0a84b943410842348fb4, type: 3}
-    chanceToSpawn: 1
+    chanceToSpawn: 0.8
+  - EnemyPrefab: {fileID: 2355622456719026271, guid: 51e85bb6ee1ed8d47abd235fc4935ac1, type: 3}
+    chanceToSpawn: 0.05
+  - EnemyPrefab: {fileID: 2355622456719026271, guid: 965761143e5c107439f6c8925f4e080c, type: 3}
+    chanceToSpawn: 0.15
 --- !u!1 &5507546454089202707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,8 +4633,8 @@ MonoBehaviour:
   blobCounter: {fileID: 6371728730421906349}
   battleAmbient: {fileID: 11400000, guid: e9ad94798f45b8f489df04c4df6f149e, type: 2}
   EnemySpawner: {fileID: 3839364399925804333}
-  maxEnemiesOverall: 10
-  maxEnemiesAtOnce: 2
+  maxEnemiesOverall: 6
+  maxEnemiesAtOnce: 3
   tutorialCanvas: {fileID: 7372915790635160747}
   goapTutorialCanvas: {fileID: 4918252628776293910}
 --- !u!1 &5968618911638452123
