@@ -22,7 +22,7 @@ MonoBehaviour:
     Speed: 4
     CritChance: 0.22
   <PassiveEffects>k__BackingField:
-  - {fileID: 11400000, guid: 23e250c1f0bd0d1428f6586e2a45acab, type: 2}
+  - {fileID: 11400000, guid: 54b1160cf747379478ec3c3618c90332, type: 2}
   - {fileID: 11400000, guid: e99da675b0a217a48a6544ae6a5463f4, type: 2}
   <Weapon>k__BackingField:
     m_AssetGUID: 91b1ee949c80d4d44ad3e8c5da173e6f
