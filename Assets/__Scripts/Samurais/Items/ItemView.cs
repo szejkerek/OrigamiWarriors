@@ -31,8 +31,9 @@ public class ItemView : MonoBehaviour
         Item item = currentItem.TryGetNextItem();
         if (item != null)
         {
-            Character currentCharacter = TeamManagementInterface.Instance.CharacterPanel.CurrentCharacter;
-            if(currentCharacter != null)
+           
+            Character currentCharacter = FindObjectOfType<TeamManagementInterface>().CharacterPanel.CurrentCharacter;
+            if (currentCharacter != null)
             {
                 if (currentCharacter.Weapon == currentItem)
                 {
