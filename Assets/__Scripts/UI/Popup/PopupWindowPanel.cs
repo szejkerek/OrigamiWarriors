@@ -35,6 +35,7 @@ public class PopupWindowPanel : MonoBehaviour
     [SerializeField] Sound buttonHover = null;
     [SerializeField] Sound eventAmbient = null;
     [SerializeField] Sound paperEffect = null;
+    [SerializeField] Sound backToMenu = null;
 
     CanvasGroup canvasGroup;
     Character choiceItem;
@@ -174,6 +175,8 @@ public class PopupWindowPanel : MonoBehaviour
     {      
         ChoiceUI.OnCharacterSelected -= SetChoice;
         if(MapPlayerTracker.Instance != null) MapPlayerTracker.Instance.locked = false;
+
+        //AudioManager.Instance.PlayGlobal(backToMenu, SoundType.Music);
 
         DOTween.Sequence()
         .Append(canvasGroup.DOFade(0, 0.5f))

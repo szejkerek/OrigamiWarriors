@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGridWidth: 5
   extraPaths: 2
-  numOfStartingNodes: 4
+  numOfStartingNodes: 1
   numOfPreBossNodes: 4
   mapNodeTypes:
   - {fileID: 11400000, guid: dbbcf0334dd1f9b47be1fc9c68e37918, type: 2}

@@ -5,12 +5,12 @@ public class PassiveGigant : PassiveEffectSO
 {
     public override string GetDesctiption()
     {
-        return $"armor i obrażenia są *200%, większy rozmiar postac";
+        return $"armor and damage are *200%, bigger body size";
     }
 
     public override string GetName()
     {
-        return "Wielki";
+        return "Well fed";
     }
 
     public override void OnStart(SamuraiEffectsManager context)

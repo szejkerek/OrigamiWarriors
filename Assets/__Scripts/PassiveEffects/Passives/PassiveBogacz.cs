@@ -8,12 +8,12 @@ public class PassiveBogacz : PassiveEffectSO
     public float bonusDamagePerGold;
     public override string GetDesctiption()
     {
-        return $"zadaje dodatkowe obra¿enia zalezne od liczby z³ota";
+        return $"gives additional damage depending on actual gold ammount {bonusDamagePerGold * 100:0} per 100g";
     }
 
     public override string GetName()
     {
-        return "Bogacz";
+        return "GoldenBoy";
     }
 
     public override void OnStart(SamuraiEffectsManager context)

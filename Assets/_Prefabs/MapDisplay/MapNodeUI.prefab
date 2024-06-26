@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 581600969326975547}
   - component: {fileID: 1548635920914649341}
   - component: {fileID: 2803301462499639050}
-  - component: {fileID: 1421181835734681631}
   - component: {fileID: 2243819572714398800}
+  - component: {fileID: 5585199897790113998}
   m_Layer: 5
   m_Name: MapNodeUI
   m_TagString: Untagged
@@ -41,7 +41,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 208.32, y: 157.6}
+  m_SizeDelta: {x: 163.94, y: 157.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6816293757036771721
 CanvasRenderer:
@@ -153,7 +153,20 @@ MonoBehaviour:
   sr: {fileID: 0}
   icon: {fileID: 1198583408203840456}
   islandImage: {fileID: 4625894431493103168}
---- !u!114 &1421181835734681631
+--- !u!114 &2243819572714398800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011797533409929308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa41aef512dfdd4c87bf91d934218b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 2
+--- !u!114 &5585199897790113998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,19 +195,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &2243819572714398800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4011797533409929308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa41aef512dfdd4c87bf91d934218b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 2
 --- !u!1 &6217247776950526056
 GameObject:
   m_ObjectHideFlags: 0

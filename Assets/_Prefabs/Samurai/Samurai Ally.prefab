@@ -639,6 +639,7 @@ MonoBehaviour:
   chaseSensor: {fileID: 5134524799086221647}
   attackSensor: {fileID: 6107446805975728489}
   text: {fileID: 0}
+  navMeshAgent: {fileID: 0}
   StayCommandSO: {fileID: 11400000, guid: 06dcccb6bad9a2d42b75979d8ca73912, type: 2}
   FollowCommandSO: {fileID: 11400000, guid: 6c66b78820d9ee647862d7befd834dc2, type: 2}
   FleeCommandSO: {fileID: 11400000, guid: 26a291f91bbeac44795b143d06fea885, type: 2}

@@ -7,12 +7,12 @@ public class PassiveSzlachcic : PassiveEffectSO
 
     public override string GetDesctiption()
     {
-        return $"każdy odwiedzony pokój/level daje +{GoldPerLevel} złota";
+        return $"every visited island gives +{GoldPerLevel} gold";
     }
 
     public override string GetName()
     {
-        return "Szlachcic";
+        return "Noble";
     }
 
     public override void OnStart(SamuraiEffectsManager context)

@@ -71,15 +71,24 @@ public class Sensor : MonoBehaviour
                     currentTarget = GetStrongest(false);
                     break;
                 default:
+                    List<GameObject> toDelete = new List<GameObject>();
                     foreach (GameObject t in targetsInRange)
                     {
-                        if (t == null) return;
+                        if (t == null)
+                        {
+                            toDelete.Add(t);
+                            continue;
+                        }
                         float currDistance = Vector3.Distance(transform.position, t.transform.position);
                         if (currDistance < minDistance)
                         {
                             minDistance = currDistance;
                             currentTarget = t;
                         }
+                    }
+                    foreach (GameObject t in toDelete)
+                    {
+                        targetsInRange.Remove(t);
                     }
                     break;
 
