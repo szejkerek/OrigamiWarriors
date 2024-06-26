@@ -27,25 +27,37 @@ public class PassiveShamanDebuffAOE : PassiveEffectSO
 
     public override void OnUpdate(SamuraiEffectsManager context, float deltaTime)
     {
-        if(affectedEnemies != null)
-        {
-            foreach(Enemy enemy in affectedEnemies)
-            {
-                if(enemy != null)enemy.GetComponent<StatusManager>().RevertWeakness();
-            }
-            affectedEnemies.Clear();
-        }
-        
 
+        List<Enemy> stillAffectedEnemies = new List<Enemy>();
+
+        foreach (Enemy enemy in affectedEnemies)
+        {
+            if (enemy != null)
+            {
+                if (Vector3.Distance(context.transform.position, enemy.transform.position) > range)
+                {
+                    enemy.GetComponent<StatusManager>().RevertWeakness();
+                }
+                else
+                {
+                    stillAffectedEnemies.Add(enemy);
+                }
+            }
+        }
+
+        affectedEnemies = stillAffectedEnemies;
         foreach (Enemy enemy in context.Enemies)
         {
             if (enemy == null)
-                return;
-            
+                continue;
+
             if (Vector3.Distance(context.transform.position, enemy.transform.position) <= range)
             {
-                affectedEnemies.Add(enemy);
-                enemy.GetComponent<StatusManager>().ApplyWeakness(damageDebuff);
+                if (!affectedEnemies.Contains(enemy))
+                {
+                    affectedEnemies.Add(enemy);
+                    enemy.GetComponent<StatusManager>().ApplyWeakness(damageDebuff);
+                }
             }
         }
     }

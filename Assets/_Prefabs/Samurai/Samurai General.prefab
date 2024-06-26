@@ -163,6 +163,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5499587950217469318, guid: b1f859028b8180742ac7200031f026dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.22
+      objectReference: {fileID: 0}
     - target: {fileID: 5746216813206886600, guid: b1f859028b8180742ac7200031f026dd, type: 3}
       propertyPath: m_Color.b
       value: 0.28773582
