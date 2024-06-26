@@ -11,7 +11,7 @@ public class VisualHelper
 
     public static int GetPrevIndex(int currentIndex, int count)
     {
-        return Mathf.Abs((currentIndex - 1) % count);
+        return (currentIndex - 1 + count) % count;
     }
 }
 
