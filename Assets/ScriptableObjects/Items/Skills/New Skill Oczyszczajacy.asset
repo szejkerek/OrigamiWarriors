@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad92ea234716af74a835a7989346c5f1, type: 3}
   m_Name: New Skill Oczyszczajacy
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Oczyszczajacy
+  <Name>k__BackingField: Cleanse
   <Icon>k__BackingField:
-    m_AssetGUID: ada5667da06ba32408e2518b170c49d0
+    m_AssetGUID: 227fbe2d15354d940a6fc3f8a3e1206c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
