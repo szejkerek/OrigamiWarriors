@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054442d4e76482f4585402a2c9c036ae, type: 3}
   m_Name: New Skill Swietlisty
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Lightening
+  <Name>k__BackingField: Lightning Roar
   <Icon>k__BackingField:
-    m_AssetGUID: ada5667da06ba32408e2518b170c49d0
+    m_AssetGUID: 227fbe2d15354d940a6fc3f8a3e1206c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
