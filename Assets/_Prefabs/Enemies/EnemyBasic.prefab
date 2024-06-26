@@ -802,7 +802,7 @@ MonoBehaviour:
   - Player
   - Samurai
   targetsInRange: []
-  targetingMode: 0
+  targetingMode: 1
   target: {fileID: 0}
 --- !u!1 &1932369863466657939
 GameObject:
@@ -2067,13 +2067,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5557ffa0cbe029f428a8fb0fd114b315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 2
+  detectionRadius: 3
   timerInterval: 1
   targetTags:
   - Player
   - Samurai
   targetsInRange: []
-  targetingMode: 0
+  targetingMode: 1
   target: {fileID: 0}
 --- !u!1 &4707723564709643857
 GameObject:
