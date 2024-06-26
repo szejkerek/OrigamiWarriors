@@ -14,7 +14,7 @@ public class SkillPrzyzywajacy : ItemSO
 
         if (!Cooldown.IsOffCooldown())
             return;
-
+        manager.Roar();
         throw new NotImplementedException();
         Instantiate(KamiGhost);
         Cooldown.ResetTimers();

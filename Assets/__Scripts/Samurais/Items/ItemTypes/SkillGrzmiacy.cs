@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "Character/Skill/Grzmiący")]
 public class SkillGrzmiacy : ItemSO
@@ -12,7 +13,7 @@ public class SkillGrzmiacy : ItemSO
 
         if (!Cooldown.IsOffCooldown())
             return;
-
+        manager.Roar();
         foreach (Enemy enemy in manager.Enemies)
         {
             if (!UnitInRange(origin, enemy, Range))
