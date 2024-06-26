@@ -74,8 +74,9 @@ public class AttackStrategy : IActionStrategy
         animator.SetBool("isMoving", false);
         animator.SetBool("isAttacking", true);
         Transform T = animator.gameObject.transform.parent.transform;
-
         T.LookAt(sensor.target.transform);
+
+
         //T.rotation = Quaternion.Euler(0, T.rotation.y, 0);
         timer.Start();
     }

@@ -178,7 +178,6 @@ public class AllyAgent : GoapAgent
         }
         if (Vector3.Distance(playerPosition.position, transform.position) <= range)
         {
-            Debug.Log(Vector3.Distance(playerPosition.position, transform.position));
             return true;
         }
         else return false;

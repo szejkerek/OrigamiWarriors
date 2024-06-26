@@ -20,7 +20,7 @@ public class GoapAgent : MonoBehaviour
     protected BeliefFactory beliefFactory;
 
   // References to the components of this particular agent
-  protected NavMeshAgent navMeshAgent;
+  public NavMeshAgent navMeshAgent;
   //AnimationController animations;
   Rigidbody rb;
 
