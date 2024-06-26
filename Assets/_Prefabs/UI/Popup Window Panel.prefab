@@ -780,10 +780,10 @@ RectTransform:
   - {fileID: 2085033256836908039}
   m_Father: {fileID: 3194642502544058335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 2995.1663, y: -1073}
+  m_SizeDelta: {x: 1413.6665, y: 1784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &904179421295659918
 CanvasRenderer:
@@ -2776,8 +2776,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 355, y: -35.11}
-  m_SizeDelta: {x: 700, y: 40.22}
+  m_AnchoredPosition: {x: 706.83325, y: -1310.2775}
+  m_SizeDelta: {x: 700, y: 937.445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2308392227083760174
 CanvasRenderer:
@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89209acc217e6c74b810a97feffa3ccc, type: 2}
-  m_sharedMaterial: {fileID: -8634595783515221009, guid: 78fd90de38720ae438cdffb028f66f09, type: 2}
+  m_sharedMaterial: {fileID: -2656689288306813932, guid: 89209acc217e6c74b810a97feffa3ccc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_margin: {x: -1414.1499, y: 0, z: -1403.8339, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &2671056041518407967
@@ -3071,8 +3071,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 355, y: -10}
-  m_SizeDelta: {x: 700, y: 0}
+  m_AnchoredPosition: {x: 706.83325, y: -423.2775}
+  m_SizeDelta: {x: 1403.6665, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5046340890238654337
 MonoBehaviour:
@@ -3189,6 +3189,7 @@ MonoBehaviour:
   buttonHover: {fileID: 11400000, guid: b9e7605912d0c72469e0273095154ae0, type: 2}
   eventAmbient: {fileID: 11400000, guid: 9d9db58481154ad4b915555a0e2a61a2, type: 2}
   paperEffect: {fileID: 11400000, guid: 121ebcfb14dc9194a827a981550b2aeb, type: 2}
+  backToMenu: {fileID: 11400000, guid: f86a5ea6324f78f4aad8616470b06972, type: 2}
 --- !u!225 &3645085684563890126
 CanvasGroup:
   m_ObjectHideFlags: 0

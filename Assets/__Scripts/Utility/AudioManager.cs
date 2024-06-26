@@ -82,8 +82,9 @@ using UnityEngine.Audio;
 
         if (type == SoundType.Event)
         {
-            PlayOnTarget(gameObject, sound);
             //musicSource.Stop();
+            PlayOnTarget(gameObject, sound);
+            
             //StartCoroutine(FadeInMusic(sound, 1f));
         }
         else if (type == SoundType.Music)
