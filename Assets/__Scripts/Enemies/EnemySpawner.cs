@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,10 +20,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] List<EnemyChance> enemyPrefabs;
 
     int spawnedEnemies;
+    Samurai samurai;
 
     public void Init(int maxEnemies, int atOnceLimit)
     {
         StartCoroutine(SpawnEnemyRoutine(maxEnemies, atOnceLimit));
+        samurai = FindObjectOfType<SamuraiGeneral>();
     }
 
     private IEnumerator SpawnEnemyRoutine(int maxEnemies, int atOnceLimit)
@@ -36,7 +39,8 @@ public class EnemySpawner : MonoBehaviour
             Transform spawnPoint = spawnPoints[spawnIndex];
             if(ActiveEnemyCount() < atOnceLimit)
             {
-                Instantiate(PickEnemy(), spawnPoint.position, spawnPoint.rotation);
+                var enemy = Instantiate(PickEnemy(), spawnPoint.position, spawnPoint.rotation);
+                enemy.transform.LookAt(samurai.transform);
                 OnEnemySpawned?.Invoke();
                 spawnedEnemies++;
                 if(spawnedEnemies >= maxEnemies)
