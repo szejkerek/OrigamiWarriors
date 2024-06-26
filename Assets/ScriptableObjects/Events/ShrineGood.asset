@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: ShrineGood
   m_EditorClassIdentifier: 
   Header: Remote shrine
-  Content: "As you sail through the ocean you spot a well-kept shrine. As you approach
-    it's tiny island you spot mountains of gold around it. Gold guarded by a spirit
-    Do you loot the shrine? \n(+/- 300 gold, 50% chance of success)"
+  Content: 'Upon your journey, you encounter a lonely island with a small shrine.
+    Upon closer inspection, you discover a generous offering from the locals. A choice
+    appears in your mind:
+
+    Take the gold and forget the way of honor, or pay
+    respect for a blessed journey and discard greed''s temptation? (Gamble 300g or
+    leave)'
   DisplayImage: {fileID: 21300000, guid: 80ef8c471fd83824c9e74c4a88b873e8, type: 3}
   answerOne: Loot
   answerTwo: Sail away
   OnAccept:
+    AddMoney: 1
     Money: 300
+    AddPassive: 0
+    passiveEffect: {fileID: 0}
   OnDecline:
+    AddMoney: 1
     Money: 0
+    AddPassive: 0
+    passiveEffect: {fileID: 0}
