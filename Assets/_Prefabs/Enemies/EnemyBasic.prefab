@@ -1126,6 +1126,7 @@ MonoBehaviour:
   chaseSensor: {fileID: 5914245531855884858}
   attackSensor: {fileID: 7450158866763468338}
   text: {fileID: 0}
+  navMeshAgent: {fileID: 0}
 --- !u!114 &6497439536198715751
 MonoBehaviour:
   m_ObjectHideFlags: 0
