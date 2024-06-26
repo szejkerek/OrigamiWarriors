@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configIndex: 0
   allMapConfigs:
-  - {fileID: 11400000, guid: 46fb7c6e566c1cc4c89ca477642a8c89, type: 2}
+  - {fileID: 11400000, guid: 703ea5291ea5d7248a09893265f73b51, type: 2}
   mapUI: {fileID: 92761192886802277}
 --- !u!1 &8206578306863837445
 GameObject:
@@ -108,22 +108,22 @@ MonoBehaviour:
   offsetFromNodes: 0
   visitedColor:
     serializedVersion: 2
-    rgba: 4285726606
+    rgba: 4290838475
   attainableColor:
     serializedVersion: 2
-    rgba: 4278512639
+    rgba: 4288215039
   lockedColor:
     serializedVersion: 2
     rgba: 4282137660
   lineVisitedColor:
     serializedVersion: 2
-    rgba: 4278776601
+    rgba: 4286035068
   lineAttainableColor:
     serializedVersion: 2
-    rgba: 4278250239
+    rgba: 4278238975
   lineLockedColor:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4288914339
 --- !u!1 &8440596679127956727
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,9 +207,23 @@ MonoBehaviour:
   view: {fileID: 92761192886802277}
   locked: 0
   events: {fileID: 11400000, guid: 35457ae58c79846479db892b6642662a, type: 2}
-  passiveEffects: {fileID: 11400000, guid: 9c17c1d5c453e794a881ba235e5e05b6, type: 2}
+  armory: {fileID: 11400000, guid: f128f6343edb9bc45b3dbf8b195bf449, type: 2}
+  boss: {fileID: 11400000, guid: a05f51ca03cc52545954ac4943062ae8, type: 2}
+  exp: {fileID: 11400000, guid: f128f6343edb9bc45b3dbf8b195bf449, type: 2}
+  forge: {fileID: 11400000, guid: 58c61ecc2e0dc5b4e9657b64714156d7, type: 2}
+  temple: {fileID: 11400000, guid: f128f6343edb9bc45b3dbf8b195bf449, type: 2}
+  rerol: {fileID: 11400000, guid: f128f6343edb9bc45b3dbf8b195bf449, type: 2}
+  passiveEffects: {fileID: 11400000, guid: d59abd4bb513e214dacc726711bb181e, type: 2}
   possibleCharacters:
   - m_AssetGUID: 5f11a0d9c73033148a0baa4648eb580a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 23624f97f4e053b40bb1d5f462d9c13c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 67b7ec78c56bef640aed8984edd8591f
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

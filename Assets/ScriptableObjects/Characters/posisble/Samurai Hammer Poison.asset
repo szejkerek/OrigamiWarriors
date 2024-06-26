@@ -16,10 +16,10 @@ MonoBehaviour:
   <SamuraiVisuals>k__BackingField: {fileID: 11400000, guid: f673e920a64039a40b7ef20a54c26f7e, type: 2}
   <CharacterGameObject>k__BackingField: {fileID: 808391767203527897, guid: ec5d570119cc01546b152a9815310d07, type: 3}
   <BaseStats>k__BackingField:
-    Damage: 50
+    Damage: 45
     MaxHealth: 600
     Armor: 15
-    Speed: 2
+    Speed: 4
     CritChance: 0.15
   <PassiveEffects>k__BackingField: []
   <Weapon>k__BackingField:
@@ -33,7 +33,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <Skill>k__BackingField:
-    m_AssetGUID: b61763aab64ac4344a84095868ba851d
+    m_AssetGUID: 78d138107a10b164e803920181014b8d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
