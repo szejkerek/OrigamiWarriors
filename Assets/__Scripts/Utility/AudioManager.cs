@@ -29,11 +29,10 @@ using UnityEngine.Audio;
         public void PlayAtPosition(Vector3 position, Sound sound)
         {
             GameObject gameObject = new GameObject(sound.name);
-            var soundObj = Instantiate(gameObject, position, Quaternion.identity);
-            var sourceObj = soundObj.AddComponent<AudioSource>();
+            var sourceObj = gameObject.AddComponent<AudioSource>();
             Play(sourceObj, sound, SoundType.SFX);
 
-            Destroy(soundObj, sound.Clip.length + 0.4f);
+            Destroy(gameObject, sound.Clip.length + 0.4f);
         }
 
         public void PlayMusic(Sound sound)

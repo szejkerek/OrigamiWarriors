@@ -9,12 +9,12 @@ public class PassiveTruciciel : PassiveEffectSO
     public int ticks;
     public override string GetDesctiption()
     {
-        return $"ataki nak³adaj¹ truciznê, zadaj¹ca celowi obra¿enie co sekundê";
+        return $"attacs give poison effect, it gives the target {dmgPerTick} damage every 0.5 second";
     }
 
     public override string GetName()
     {
-        return "Truciciel";
+        return "Poisoner";
     }
 
     public override void OnAttack(SamuraiEffectsManager context, IUnit target)

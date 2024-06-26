@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054442d4e76482f4585402a2c9c036ae, type: 3}
   m_Name: New Skill Swietlisty
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Swietlisty
+  <Name>k__BackingField: Lightening
   <Icon>k__BackingField:
     m_AssetGUID: ada5667da06ba32408e2518b170c49d0
     m_SubObjectName: 

@@ -12,7 +12,7 @@ public class PassiveShamanDebuffAOE : PassiveEffectSO
 
     public override string GetDesctiption()
     {
-        return $"zmniejsza atak pobliskich przeciwników o {damageDebuff * 100:0} %";
+        return $"lessens the attack of wereinks by {damageDebuff * 100:0} %";
     }
 
     public override string GetName()
