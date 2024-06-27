@@ -17,11 +17,13 @@ MonoBehaviour:
     a forge on a piece of land, but not a normal one; this one is ruled by an evil
     spirit, an Oni demon that exploits your curiosity.
 
-    "Want to be bigger?
-    Want to be stronger? Pay me gold, and you shall receive."
+    "Want to be bigger? Want
+    to be stronger? Pay me gold, and you shall receive."
 
-    Will you give
-    in to his temptation or will you fight with your own strength? (Pay 500g)'
+    Will you give in to
+    his temptation or will you fight with your own strength?
+
+    (Pay 500g)'
   DisplayImage: {fileID: 21300000, guid: 23c11cd9e67b35040942523fef94f301, type: 3}
   answerOne: Yes
   answerTwo: No
