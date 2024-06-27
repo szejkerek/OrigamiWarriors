@@ -10383,11 +10383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2915213199148667229, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: maxEnemiesAtOnce
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2915213199148667229, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: maxEnemiesOverall
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3839364399925804333, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: spawnPoints.Array.data[0]

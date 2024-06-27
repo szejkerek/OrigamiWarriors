@@ -11,13 +11,13 @@ public class InfoTextManager : Singleton<InfoTextManager>
     private bool isDissolving = false;
     public void AddInformation(string text, InfoLenght lenght = InfoLenght.Medium)
     {
-        var info = Instantiate(infoText, infoParent);
-        info.Init(text, lenght);
-        infoQueue.Enqueue(info);
-        if (!isDissolving)
-        {
-            StartCoroutine(ProcessQueue());
-        }
+        //var info = Instantiate(infoText, infoParent);
+        //info.Init(text, lenght);
+        //infoQueue.Enqueue(info);
+        //if (!isDissolving)
+        //{
+        //    StartCoroutine(ProcessQueue());
+        //}
     }
 
     IEnumerator ProcessQueue()

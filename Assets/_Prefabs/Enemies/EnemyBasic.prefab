@@ -1153,8 +1153,8 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CharacterStats:
-    Damage: 10
-    MaxHealth: 400
+    Damage: 12
+    MaxHealth: 500
     Armor: 15
     Speed: 3
     CritChance: 0.63
