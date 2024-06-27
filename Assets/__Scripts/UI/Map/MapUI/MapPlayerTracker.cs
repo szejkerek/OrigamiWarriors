@@ -32,7 +32,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         switch (mapNode.mapNode.type)
         {
             case MapNodeType.Arena:
-                int sceneIndex = SceneConstants.Level_1;
+                int sceneIndex = SceneConstants.Level_1_2;
                 if (mapManager.currentMap.path.Count > 1)
                 {
                     sceneIndex = UnityEngine.Random.Range(SceneConstants.Level_1, SceneConstants.Level_1_3 + 1);
