@@ -17,9 +17,8 @@ MonoBehaviour:
     Upon closer inspection, you discover a generous offering from the locals. A choice
     appears in your mind:
 
-    Take the gold and forget the way of honor, or pay
-    respect for a blessed journey and discard greed''s temptation?  (Gamble 300g
-    or leave)'
+    Take the gold and forget the way of honor or pay respect
+    for a blessed journey and discard greed''s temptation?  (Gamble 300g or leave)'
   DisplayImage: {fileID: 21300000, guid: 80ef8c471fd83824c9e74c4a88b873e8, type: 3}
   answerOne: Loot
   answerTwo: Sail away
