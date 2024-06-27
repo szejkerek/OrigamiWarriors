@@ -43,7 +43,7 @@ public class TeamManagementInterface : MonoBehaviour
     {
         characterViews.Clear();
         Team currentTeam = SavableDataManager.Instance.data.team;
-        SpawnAndSetCharacter(currentTeam.General, select:true);
+        SpawnAndSetCharacter(currentTeam.General, select:true, isGeneral:true);
         
         foreach (var member in currentTeam.TeamMembers)
         {
@@ -51,10 +51,10 @@ public class TeamManagementInterface : MonoBehaviour
         }
     }
 
-    void SpawnAndSetCharacter(Character character, bool select = false)
+    void SpawnAndSetCharacter(Character character, bool select = false, bool isGeneral = false)
     {
         CharacterView characterView = Instantiate(CharacterViewPrefab, charactersPartent);
-        characterView.SetCharacter(character);
+        characterView.SetCharacter(character, isGeneral);
         characterViews.Add(characterView);
 
         if(select)
