@@ -72,14 +72,18 @@ public class EnemySpawner : MonoBehaviour
     GameObject PickEnemy()
     {
         List<EnemyChance> enemies = new();
+        float r = UnityEngine.Random.Range(0f, 1f);
+        float sum = 0;
         foreach (var item in enemyPrefabs)
         {
-            if (UnityEngine.Random.Range(0f,1f) <= item.chanceToSpawn)
-            {
-                enemies.Add(item);
-            }
+            sum += item.chanceToSpawn;
+            if (sum >= r) return item.EnemyPrefab;
+            //if (UnityEngine.Random.Range(0f,1f) <= item.chanceToSpawn)
+            //{
+            //    enemies.Add(item);
+            //}
         }
-
-        return enemies.SelectRandomElement().EnemyPrefab;
+        return enemyPrefabs.Last().EnemyPrefab;
+        //return enemies.SelectRandomElement().EnemyPrefab;
     }
 }

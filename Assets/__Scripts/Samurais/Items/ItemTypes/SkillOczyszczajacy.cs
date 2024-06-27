@@ -11,7 +11,7 @@ public class SkillOczyszczajacy : ItemSO
 
         if (!Cooldown.IsOffCooldown())
             return;
-
+        manager.Roar();
         foreach (Samurai enemy in manager.Team)
         {
             if (!UnitInRange(origin, enemy, Range))

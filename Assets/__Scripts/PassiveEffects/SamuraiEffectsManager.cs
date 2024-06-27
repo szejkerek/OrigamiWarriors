@@ -11,6 +11,7 @@ public class SamuraiEffectsManager : MonoBehaviour
     public Samurai Owner;
     public List<Samurai> Team;
     public List<Enemy> Enemies;
+    public ParticleSystem particleSystemRoar;
 
     public void Initialize(Character character)
     {
@@ -19,6 +20,7 @@ public class SamuraiEffectsManager : MonoBehaviour
         Owner = GetComponent<Samurai>();
 
         passives.ForEach(e => e.OnStart(this));
+        particleSystemRoar.Stop();
     }
 
     private void OnEnable()
@@ -53,5 +55,17 @@ public class SamuraiEffectsManager : MonoBehaviour
     private void Update()
     {
         passives.ForEach(e => e.OnUpdate(this, Time.deltaTime));
+    }
+
+    public void Roar()
+    {
+        particleSystemRoar.Play();
+        StartCoroutine(RoarParticlesCall(1f));
+    }
+
+    IEnumerator RoarParticlesCall(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        particleSystemRoar.Stop();
     }
 }

@@ -142,6 +142,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c60ded90dc0d4941bd3cedbb69e496c
+    m_Address: Assets/Art/Skille/poisonshout.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 227fbe2d15354d940a6fc3f8a3e1206c
+    m_Address: Assets/Art/Skille/spark.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8dd57fd31fda83b428c55bf014b570e3
+    m_Address: Assets/Art/Skille/weakshout.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bf59f1a54910b5478d20fc926a76bbe
+    m_Address: Assets/Art/2D/ExportedIcons/Icon_FLag.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f09f78c0cc6a4304e994adfab4308c06, type: 2}
   m_SchemaSet:

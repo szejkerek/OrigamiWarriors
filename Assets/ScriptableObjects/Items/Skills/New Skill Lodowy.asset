@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4997d6513382d442b4f9f1563e9bd21, type: 3}
   m_Name: New Skill Lodowy
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Lodowy
+  <Name>k__BackingField: Weaken
   <Icon>k__BackingField:
-    m_AssetGUID: ada5667da06ba32408e2518b170c49d0
+    m_AssetGUID: 8dd57fd31fda83b428c55bf014b570e3
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -33,14 +33,14 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
-    Damage: 0
-    MaxHealth: 0
+    Damage: 10
+    MaxHealth: 10
     Armor: 0
     Speed: 0
     CritChance: 0
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 0
-    MaxHealth: 0
+    Damage: 10
+    MaxHealth: 10
     Armor: 0
     Speed: 0
     CritChance: 0

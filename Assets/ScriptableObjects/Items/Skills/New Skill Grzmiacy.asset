@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04e2bc1de472cc4e8ba280b1c334fa9, type: 3}
   m_Name: New Skill Grzmiacy
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Grzmot
+  <Name>k__BackingField: Thunder
   <Icon>k__BackingField:
-    m_AssetGUID: ada5667da06ba32408e2518b170c49d0
+    m_AssetGUID: 227fbe2d15354d940a6fc3f8a3e1206c
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     Speed: 0
     CritChance: 0
   <StatsModifiersPerLevel>k__BackingField:
-    Damage: 0
+    Damage: 10
     MaxHealth: 0
     Armor: 0
     Speed: 0

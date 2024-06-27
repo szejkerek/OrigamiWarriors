@@ -3,7 +3,7 @@ using System.Collections;
 
 // Cartoon FX  - (c) 2015 Jean Moreno
 
-// Decreases a light's intensity over cooldowTime.
+// Decreases a light's intensity over time.
 
 [RequireComponent(typeof(Light))]
 public class CFX_LightIntensityFade : MonoBehaviour

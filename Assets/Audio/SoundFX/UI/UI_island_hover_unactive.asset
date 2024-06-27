@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UI_island_hover_unactive
   m_EditorClassIdentifier: 
   <Clip>k__BackingField: {fileID: 8300000, guid: 3b5a648f2aa561a44811d7e1f562bae3, type: 3}
-  volume: 0.07
+  volume: 0.12
   pitchVariation: 0
   loop: 0
   <Settings3D>k__BackingField:

@@ -13,14 +13,11 @@ MonoBehaviour:
   m_Name: AllEvents
   m_EditorClassIdentifier: 
   ForgeEvents:
-  - {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
-  - {fileID: 11400000, guid: 8757deb4c26d786498e2d61c124802cc, type: 2}
+  - {fileID: 11400000, guid: 6196eb0ad6dc3374881a44a62f4e9293, type: 2}
   ExperienceEvents:
-  - {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
-  - {fileID: 11400000, guid: 8757deb4c26d786498e2d61c124802cc, type: 2}
+  - {fileID: 11400000, guid: c37b8763d1aa49a44989fc80e8f10edd, type: 2}
   TempleEvents:
   - {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
   - {fileID: 11400000, guid: 8757deb4c26d786498e2d61c124802cc, type: 2}
   BossEvents:
-  - {fileID: 11400000, guid: 6eb9120b00af2a442a817b940111f696, type: 2}
-  - {fileID: 11400000, guid: 8757deb4c26d786498e2d61c124802cc, type: 2}
+  - {fileID: 11400000, guid: 1b5a93e03623f734a8ced9ee3969f5d8, type: 2}

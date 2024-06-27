@@ -9,12 +9,12 @@ public class PassiveHealingOvertime : PassiveEffectSO
 
     public override string GetDesctiption()
     {
-        return $"leczy pobliskie jednostki o {healthPerTick}";
+        return $"heals nearby allies by {healthPerTick}";
     }
 
     public override string GetName()
     {
-        return "Lekarz";
+        return "Healer";
     }
 
     public override void OnUpdate(SamuraiEffectsManager context, float deltaTime)
