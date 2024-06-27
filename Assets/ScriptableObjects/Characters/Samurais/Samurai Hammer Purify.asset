@@ -21,7 +21,8 @@ MonoBehaviour:
     Armor: 15
     Speed: 2
     CritChance: 0.15
-  <PassiveEffects>k__BackingField: []
+  <PassiveEffects>k__BackingField:
+  - {fileID: 11400000, guid: e1c79e4c851260744b3dc976fb9745ed, type: 2}
   <Weapon>k__BackingField:
     m_AssetGUID: adeb505dd502c814fba4692cea87893c
     m_SubObjectName: 

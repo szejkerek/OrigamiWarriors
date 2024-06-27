@@ -12,7 +12,7 @@ public class SkillSwietlisty : ItemSO
 
         if (!Cooldown.IsOffCooldown())
             return;
-
+        manager.Roar();
         foreach (Enemy enemy in manager.Enemies)
         {
             if (!UnitInRange(origin, enemy, Range))

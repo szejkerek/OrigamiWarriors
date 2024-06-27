@@ -32,7 +32,7 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
         switch (mapNode.mapNode.type)
         {
             case MapNodeType.Arena:
-                int sceneIndex = SceneConstants.Level_1;
+                int sceneIndex = SceneConstants.Level_1_2;
                 if (mapManager.currentMap.path.Count > 1)
                 {
                     sceneIndex = UnityEngine.Random.Range(SceneConstants.Level_1, SceneConstants.Level_1_3 + 1);
@@ -61,11 +61,8 @@ public class MapPlayerTracker : Singleton<MapPlayerTracker>
                 break;
             case MapNodeType.WeaponReroll:
 
-                List<Character> choices2 = new()
-                {
-                    SavableDataManager.Instance.data.team.TeamMembers[0],
-                    SavableDataManager.Instance.data.team.TeamMembers[1],
-                    SavableDataManager.Instance.data.team.TeamMembers[2] };
+                List<Character> choices2 = SavableDataManager.Instance.data.team.TeamMembers.SelectRandomElements(3);
+                if (choices2.Count < 3) choices2.Add(SavableDataManager.Instance.data.team.General);
 
                 PassiveEffectSO passiveEffectRandom = passiveEffects.allPassiveEffectSO.SelectRandomElement();
                 string passiveName = passiveEffectRandom.GetName();

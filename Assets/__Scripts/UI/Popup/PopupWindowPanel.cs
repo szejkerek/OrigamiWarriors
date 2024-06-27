@@ -176,7 +176,7 @@ public class PopupWindowPanel : MonoBehaviour
         ChoiceUI.OnCharacterSelected -= SetChoice;
         if(MapPlayerTracker.Instance != null) MapPlayerTracker.Instance.locked = false;
 
-        //AudioManager.Instance.PlayGlobal(backToMenu, SoundType.Music);
+        AudioManager.Instance.PlayGlobal(backToMenu, SoundType.Music);
 
         DOTween.Sequence()
         .Append(canvasGroup.DOFade(0, 0.5f))

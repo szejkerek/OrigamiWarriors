@@ -20,6 +20,7 @@ public class CharacterView : MonoBehaviour
         selectedBorder.SetActive(false);
         characterBtn.onClick.AddListener(SelectCharacter);
         OnCharacterSelected += DisableBorder;
+        
         //returnBtn.onClick.AddListener(ResetView);
     }
     public void EnableBorder()
@@ -50,10 +51,12 @@ public class CharacterView : MonoBehaviour
         characterUIDisplay.Clear();
     }
 
-    public void SetCharacter(Character character)
+    public void SetCharacter(Character character, bool isGeneral = false)
     {
         this.character = character;
         characterUIDisplay.Init(character);
+        if(isGeneral)
+            characterUIDisplay.SetColor(new Color(255f / 255, 73f / 255, 73f / 255, 255f / 255));
         //returnBtn.gameObject.SetActive(true);
     }
 

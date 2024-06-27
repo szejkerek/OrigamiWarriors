@@ -74,7 +74,7 @@ public class GameplayManager : MonoBehaviour
     }
     private void Start()
     {
-        //AudioManager.Instance.PlayGlobal(battleAmbient, SoundType.Music);
+        AudioManager.Instance.PlayGlobal(battleAmbient, SoundType.Music);
     }
 
     private void OnEnable()
@@ -119,6 +119,14 @@ public class GameplayManager : MonoBehaviour
         LevelResults.isWin = isWin;
         SavableDataManager.Instance.data.levelResults = LevelResults;
         LevelResults.Apply();
+
+        SavableDataManager.Instance.data.team.General.LostHealth -= ((int)(SavableDataManager.Instance.data.team.General.GetStats().MaxHealth * 0.25f));
+        SavableDataManager.Instance.data.team.General.LostHealth = Math.Max(0, SavableDataManager.Instance.data.team.General.LostHealth);
+
+        SavableDataManager.Instance.data.team.TeamMembers.ForEach(member => {
+           member.LostHealth -= ((int)(member.GetStats().MaxHealth * 0.25f));
+            member.LostHealth = Math.Max(0, member.LostHealth);
+        });
 
         SceneLoader.Instance.LoadScene(SceneConstants.ChooseLevelScene);
     }

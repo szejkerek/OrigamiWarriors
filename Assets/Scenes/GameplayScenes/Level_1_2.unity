@@ -11401,6 +11401,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2915213199148667229, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
+      propertyPath: maxEnemiesAtOnce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915213199148667229, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
+      propertyPath: maxEnemiesOverall
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3472585388716259536, guid: c8286ba9cf8699441bdf3dd3ecd82c84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

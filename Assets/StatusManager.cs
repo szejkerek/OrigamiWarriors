@@ -9,9 +9,11 @@ public class StatusManager : MonoBehaviour
 {
     bool isWeakenessApplied = false;
     int weaknessValue = 0;
+    [SerializeField] GameObject weaknessParticle;
 
     bool isPoisonApplied = false;
     float timeToTick = 0.5f;
+    [SerializeField] GameObject poisonParticle;
 
     bool isStunApplied = false;
 
@@ -58,6 +60,7 @@ public class StatusManager : MonoBehaviour
     public void ApplyWeakness(float weaknessRatio)
     {
         isWeakenessApplied = true;
+        weaknessParticle.SetActive(isWeakenessApplied);
         IUnit unit = GetComponent<IUnit>();
         weaknessValue = (int)((float)unit.GetStats().Damage * weaknessRatio);
         WeaknessEffect(isWeakenessApplied);
@@ -67,6 +70,7 @@ public class StatusManager : MonoBehaviour
         if(isWeakenessApplied)
         {
             isWeakenessApplied = false;
+            weaknessParticle.SetActive(isWeakenessApplied);
             WeaknessEffect(isWeakenessApplied);
         }
         weaknessValue = 0;
@@ -79,6 +83,7 @@ public class StatusManager : MonoBehaviour
     IEnumerator ApplyPoisonCorutine(float dmgPerTick, int ticks)
     {
         isPoisonApplied = true;
+        poisonParticle.SetActive(isPoisonApplied);
         int appliedTicks = 0;
         Debug.Log("Poisoned");
         IUnit unit = GetComponent<IUnit>();
@@ -89,11 +94,13 @@ public class StatusManager : MonoBehaviour
             appliedTicks++;
         }
         isPoisonApplied = false;
+        poisonParticle.SetActive(isPoisonApplied);
     }
 
     public void RevertPoison()
     {
         isPoisonApplied = false;
+        poisonParticle.SetActive(isPoisonApplied);
     }
 
     public void ApplyCleanse()

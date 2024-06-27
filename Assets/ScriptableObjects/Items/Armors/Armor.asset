@@ -23,8 +23,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MaxLevel>k__BackingField: 10
-  <Cost>k__BackingField: 1
+  <MaxLevel>k__BackingField: 8
+  <Cost>k__BackingField: 15
+  Cooldown:
+    cooldowTime: 0
   <NextItem>k__BackingField:
     m_AssetGUID: 
     m_SubObjectName: 
@@ -32,11 +34,14 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   <BaseStats>k__BackingField:
     Damage: 0
-    Health: 68
+    MaxHealth: 15
+    Armor: 2
     Speed: 0
     CritChance: 0
   <StatsModifiersPerLevel>k__BackingField:
     Damage: 0
-    Health: 9
+    MaxHealth: 15
+    Armor: 1
     Speed: 0
     CritChance: 0
+  <Range>k__BackingField: 0

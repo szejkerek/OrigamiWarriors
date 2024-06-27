@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Beggar
   m_EditorClassIdentifier: 
   Header: A poor man
-  Content: An old ronin is sitting on the bank. He's eating a rotten fish. Do you
-    have any spare money for a seasoned warrior?
+  Content: 'While traveling to your destination, you spot a strange old man sitting
+    on the edge of the island. A ronin,  samurai without a master, desperately trying
+    to escape hunger by eating a rotten fish.
+
+    Will you spare a coin for a poor
+    warrior or will you ignore his plight? (Give 100g)'
   DisplayImage: {fileID: 21300000, guid: 275e59aab10495c458af1d9163c60d0c, type: 3}
   answerOne: Yes
   answerTwo: No
