@@ -15,6 +15,7 @@ public class SkillSwietlisty : ItemSO
         manager.Roar();
         foreach (Enemy enemy in manager.Enemies)
         {
+      if (enemy == null) continue;
             if (!UnitInRange(origin, enemy, Range))
                 continue;
 
